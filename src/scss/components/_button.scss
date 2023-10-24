@@ -1,0 +1,107 @@
+.button {
+    border-radius: 50px;
+    cursor: pointer;
+    padding: 13px 24px;
+    text-transform: uppercase;
+    transition: all 0.2s ease 0s;
+    &_big {
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        height: 150px;
+        width: 150px;
+    }
+    &_primary {
+        background-color: $base-1;
+        color: $base-4;
+        @include ishover {
+            background-color: $base-4;
+            color: $base-1;
+        }
+    }
+    &_second {
+        background-color: rgba($color: $base-1, $alpha: 0.17);
+        color: $base-1;
+        @include ishover {
+            background-color: $base-1;
+            color: $base-4;
+        }
+    }
+    &_outline {
+        &_white {
+            border: 1px solid $base-1;
+            color: $base-1;
+            @include ishover {
+                background-color: $base-1;
+                color: $base-4
+            }
+        }
+        &_black {
+            border: 1px solid $base-4;
+            color: $base-4;
+            @include ishover {
+                background-color: $base-4;
+                color: $base-1
+            }
+        }
+    }
+    &_third {
+        background-color: $base-4;
+        border: 1px solid transparent;
+        color: $base-1;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        @include ishover {
+            background-color: transparent;
+            border-color: $base-4;
+            color: $base-4;
+        }
+    }
+    &_disabled, &:disabled {
+        background-color: $base-3;
+        color: rgba($color: $base-4, $alpha: 0.6);
+        cursor: auto;
+        @include ishover {
+            background-color: $base-3;
+            border-color: transparent;
+            color: rgba($color: $base-4, $alpha: 0.6);
+        }
+    }
+    &__bullets {
+        display: none;
+    }
+    &__bullet {
+        border-radius: 50%;
+        display: inline-flex;
+        height: 4px;
+        width: 4px;
+        animation: bullet-bounce 1s ease-in-out infinite;
+        .button_primary, .button_outline & {
+            background-color: $base-4
+        }
+        .button_second, .button_third & {
+            background-color: $base-1;
+        }
+        &:not(:last-child) {
+            margin-right: 3px;
+        }
+        &:nth-child(2) {
+            animation-delay: -0.85s;
+        }
+        &:nth-child(3) {
+            animation-delay: -0.75s;
+        }
+    }
+}
+
+
+@keyframes bullet-bounce {
+    0%, 60%, 100% {
+        transform: translate(0, 0);
+    }
+    30% {
+        transform: translate(0, -100%);
+    }
+}

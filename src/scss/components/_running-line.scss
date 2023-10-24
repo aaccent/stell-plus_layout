@@ -1,0 +1,30 @@
+.running-line {
+    display: flex;
+    &__wrapper {
+        display: flex;
+        animation: run 5s linear infinite;
+    }
+    &__item {
+        flex-shrink: 0;
+        p {
+            @include text_hero;
+            @media (min-width: 576px) and (max-width: 1604px) {
+                font-size: calc(80px + 100 * (100vw - 576px) / (1604 - 576));
+            }
+            @include phone {
+                font-size: 80px;
+            }
+            white-space: nowrap;
+            opacity: 0.1;
+        }
+    }
+}
+
+@keyframes run {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}

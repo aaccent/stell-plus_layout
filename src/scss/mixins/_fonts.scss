@@ -1,0 +1,81 @@
+@mixin heading_h1 {
+    font-size: 90px;
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: 0.9px;
+}
+
+@mixin heading_h2 {
+    font-size: 62px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: 0.62px;
+}
+
+@mixin text_hero {
+    font-size: 180px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+@mixin text_t1 {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.26px;
+    
+}
+@mixin text_t2 {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+}
+@mixin text_t3 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+}
+@mixin text_t4 {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.16px;
+}
+@mixin text_t5 {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+}
+@mixin text_t5-2 {
+    @include text_t5;
+    line-height: 1.2;
+}
+@mixin text_t6 {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.12px;
+    text-transform: uppercase;
+}
+@mixin number_n1 {
+    font-size: 128px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0.9;
+}
+@mixin number_n2 {
+    font-size: 90px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0.9
+}

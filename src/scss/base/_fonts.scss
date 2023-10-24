@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "Object Sans";
+    font-style: normal; 
+    font-weight: 400;
+    src: local("Object Sans"), url("../fonts/ObjectSans-Regular.woff2") format("woff2"), url("../fonts/ObjectSans-Regular.woff") format("woff")
+}
+
+@font-face {
+    font-family: "Object Sans";
+    font-style: normal; 
+    font-weight: 800;
+    src: local("Object Sans"), url("../fonts/ObjectSans-Heavy.woff2") format("woff2"), url("../fonts/ObjectSans-Heavy.woff") format("woff")
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal; 
+    font-weight: 500;
+    src: local("Inter"), url("../fonts/Inter-Medium.woff2") format("woff2"), url("../fonts/Inter-Medium.woff") format("woff")
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal; 
+    font-weight: 600;
+    src: local("Inter"), url("../fonts/Inter-SemiBold.woff2") format("woff2"), url("../fonts/Inter-SemiBold.woff") format("woff")
+}
+
+@font-face {
+    font-family: "Manrope";
+    font-style: normal; 
+    font-weight: 600;
+    src: local("Manrope"), url("../fonts/Manrope-SemiBold.woff2") format("woff2"), url("../fonts/Manrope-SemiBold.woff") format("woff")
+}
+
+// @font-face {
+//     font-family: 'Object Sans';
+//     src: url('ObjectSans-Regular.eot');
+//     src: local('Object Sans Regular'), local('ObjectSans-Regular'),
+//         url('ObjectSans-Regular.eot?#iefix') format('embedded-opentype'),
+//         url('ObjectSans-Regular.woff2') format('woff2'),
+//         url('ObjectSans-Regular.woff') format('woff'),
+//         url('ObjectSans-Regular.ttf') format('truetype');
+//     font-weight: normal;
+//     font-style: normal;
+// }

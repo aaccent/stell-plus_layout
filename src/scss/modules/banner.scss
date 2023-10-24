@@ -1,0 +1,160 @@
+.banner-section {
+    position: relative;
+
+    &__slide {
+        padding: 0;
+        p {
+            flex-basis: calc(680 / 1608 * 100%);
+            @include text_t2;
+        }
+    }
+    &__slide-content {
+        display: flex;
+        align-items: center;
+        flex-basis: 100%;
+        .container {
+            display: flex;
+            align-items: center;
+            column-gap: 9%;
+            row-gap: 20px;
+        }
+        @include tablet {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    }
+    .swiper-controls {
+        bottom: 40px;
+        &__container {
+            gap: 12px;
+        }
+        &__inner {
+            gap: 28px;
+        }
+        &__container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        &__link {
+            background-color: rgba($color: $base-1, $alpha: 0.17);
+            @include text_t6;
+            text-align: center;
+            text-transform: uppercase;
+            @include ishover {
+                background-color: $base-1;
+                color: #3D3D3D;
+            }
+        }
+        @include gap {
+            margin-left: 20px;
+        }
+    }
+}
+
+.banner-slider {
+    &__slide {
+        padding: 0;
+    }
+    &_outer &__slide {
+        height: 810px;
+    }
+    &_inner {
+        border-top: 1px dashed rgba($color: $base-1, $alpha: 0.25);
+        padding-top: 32px;
+        padding-bottom: 40px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 1;
+        & > .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            column-gap: 10px;
+            row-gap: 30px;
+        }
+        .swiper {
+            flex-basis: calc(1070 / 1608 * 100%);
+            margin: 0;
+        }
+        .swiper-slide {
+            transition: all 0.3s ease 0s;
+        }
+        .swiper-controls {
+            flex-shrink: 0;
+        }
+        .banner-slide {
+            display: flex;
+            align-items: center;
+            row-gap: 16px;
+            column-gap: calc(144 / 1070 * 100%);
+            height: auto;
+            @include gap {
+                // надо пересмотреть точку брекпойнта
+                flex-direction: column;
+                align-items: flex-start;  
+            }
+        }
+        .swiper-controls {
+            position: static;
+            width: auto;
+            transform: none;
+            @include tablet {
+                &__container {
+                    flex-direction: column;
+                    align-items: stretch;
+                }
+            }
+        }
+    }
+    @include gap {
+        &_inner {
+            & > .container {
+                flex-wrap: wrap;
+                align-items: flex-start;
+                gap: 30px;
+                padding-left: 0;
+                padding-right: 0;
+
+            }
+            .swiper {
+                flex: 1 0 100%;
+            }
+            .banner-slider__slide {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+    }
+}
+
+.banner-slide {
+    &__img {
+        width: 100%;
+        height: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        &:after {
+            background: linear-gradient(359deg, rgba(0, 0, 0, 0.35) 4.85%, rgba(0, 0, 0, 0.00) 29.04%);
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__btn {
+        @include text_t6;
+        position: absolute;
+        top: 34%;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}

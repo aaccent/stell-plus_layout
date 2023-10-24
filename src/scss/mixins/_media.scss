@@ -1,0 +1,7 @@
+@mixin ishover {
+    @media screen and (any-hover: hover) {
+        &:hover {
+            @content
+        }
+    }
+};

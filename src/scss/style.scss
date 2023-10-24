@@ -1,0 +1,20 @@
+@import "base/_vars.scss";
+@import "base/_fonts.scss";
+@import "base/_icons.scss";
+@import "mixins/_breakpoints.scss";
+@import "mixins/_media.scss";
+@import "mixins/_fonts";
+@import "base.scss";
+
+@import "components/button.scss";
+@import "components/swiper-controls";
+@import "components/running-line";
+
+@import "modules/header.scss";
+@import "modules/hero.scss";
+@import "modules/commercial.scss";
+@import "modules/equipment.scss";
+@import "modules/services.scss";
+@import "modules/banner.scss";
+@import "modules/about.scss";
+@import "modules/footer.scss";
