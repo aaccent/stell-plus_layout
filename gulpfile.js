@@ -12,8 +12,8 @@ import { reset } from "./gulp/tasks/reset.js"
 import { images } from "./gulp/tasks/images.js"
 import { html } from "./gulp/tasks/html.js"
 import { server } from "./gulp/tasks/server.js"
-import { scss } from "./gulp/tasks/scss.js"
-import { js } from "./gulp/tasks/js.js"
+import { scss, css_libs } from "./gulp/tasks/scss.js"
+import { js, js_libs } from "./gulp/tasks/js.js"
 import { fonts } from "./gulp/tasks/fonts.js"
 import { json } from "./gulp/tasks/json.js"
 import { zip } from "./gulp/tasks/zip.js"
@@ -27,7 +27,7 @@ function watcher() {
     gulp.watch(path.watch.js, js)
 }
 
-const mainTasks = gulp.parallel(html, images, scss, js, fonts, json)
+const mainTasks = gulp.parallel(html, images, css_libs, scss, js_libs, js, fonts, json)
 
 // последовательное выполнение задач
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server))

@@ -117,6 +117,28 @@ window.onload = function() {
             document.body.classList.toggle("body_lock")
         }
 
+        // lang
+        if (targetEl.closest(".header__dropdown-head")) {
+            targetEl.closest(".header__dropdown").classList.toggle("header__dropdown_open")
+        } else {
+            document.querySelector(".header__dropdown").classList.remove("header__dropdown_open")
+        }
+
+        if (targetEl.closest(".header__dropdown-item")) {
+            const newLang = targetEl.closest(".header__dropdown-item");
+            const lang = {
+                img: newLang.querySelector("img").getAttribute("src"),
+                label: newLang.querySelector("div").dataset.value
+            }
+
+            document.querySelector(".header__dropdown-item_active").classList.remove("header__dropdown-item_active")
+            newLang.classList.add("header__dropdown-item_active")
+
+            const dropdownHeadEl = document.querySelector(".header__dropdown-head")
+            dropdownHeadEl.querySelector("img").setAttribute("src", lang.img)
+            dropdownHeadEl.querySelector("div").innerHTML = lang.label
+            targetEl.closest(".header__dropdown").classList.remove("header__dropdown_open")
+        }
         // footer form 
         if (!targetEl.closest(".contact-us-form__control")) {
             let focusedControl = document.querySelector(".contact-us-form__control_focused");
@@ -128,6 +150,34 @@ window.onload = function() {
                 document.querySelector(".select_open").classList.remove("select_open")
                 document.querySelector(".select__options-wrapper").style.height = ""
             }
+        }
+
+        // filters equipment page
+        if (targetEl.closest(".tag")) {
+            let currentTagrEl = targetEl.closest(".tag")
+            let clearTagEl = document.querySelector(".tag_clear");
+            // клик по сбросу
+            if (currentTagrEl === clearTagEl) {
+                let activeTagEls = document.querySelectorAll(".tag_selected")
+                for (let i = 0; i < activeTagEls.length; i++) {
+                    activeTagEls[i].classList.remove("tag_selected")
+                }
+                clearTagEl.classList.add("tag_disabled")
+            // клик по фильтру
+            } else {
+                targetEl.closest(".tag").classList.toggle("tag_selected")
+                if (!document.querySelectorAll(".tag_selected").length) {
+                    clearTagEl.classList.add("tag_disabled")
+                } else if (clearTagEl.classList.contains("tag_disabled")) {
+                    clearTagEl.classList.remove("tag_disabled")
+                }
+            }
+        }
+
+        // ----------- single product page ----------------
+        if (targetEl.classList.contains("product-section__all-params")) {
+            const popupEl = document.querySelector(".product-section__popup")
+            popupEl.classList.add("popup_open")
         }
         // header phone
         // if (window.innerWidth <= 576 && isMobile.any()) {

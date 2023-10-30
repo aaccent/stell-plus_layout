@@ -1,0 +1,101 @@
+.hero-section {
+    background-color: #F0F0F0;
+    display: flex;
+    padding-top: 135px;
+    padding-bottom: 70px;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    &__container {
+        display: flex;
+    }
+    &__content {
+        display: flex;
+        flex: 0 1 100%;
+        position: relative;
+    }
+    &__img {
+        // background: lightgray -68.546px 0px / 144.103% 105.128% no-repeat;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        height: 100%;
+        transform: translate(-50%, 0);
+        mix-blend-mode: darken;
+        img {
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+        }
+        @include phone {
+            width: 90%;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    &__head {
+        color: $base-4;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-basis: 100%;
+        font-size: 90px;
+        &_horizontal {
+            margin-top: auto;
+        }
+        &_vertical {
+            flex-direction: column;
+        }
+        @media (min-width: 576px) and (max-width: 1608px) {
+            font-size: calc(70px + 20 * (100vw - 576px) / (1608 - 576));
+        }
+        @include phone {
+            font-size: 70px
+        }
+    }
+    &__title {
+        @include heading_h2;
+        font-size: calc(62 / 90 * 1em);
+        flex-basis: calc(500 / 1568 * 100%);
+        text-transform: lowercase;
+    }
+    &__running-line {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+    }
+    &__icons {
+        display: flex;
+        gap: 8px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    &__icons {
+        color: $base-4;
+    }
+    &__stat {
+        display: flex;
+        align-items: flex-start;
+        flex-basis: calc(210 / 1568 * 100%);
+        gap: 10px;
+        @include gap {
+            display: none
+        }
+    }
+    &__stat-value {
+        @include number_n2;
+        font-size: 1em;
+    }
+    &__stat-unit {
+        @include text_t5-3
+    }
+    &__running-line {
+        p {
+            opacity: 1;
+        }
+    }
+}

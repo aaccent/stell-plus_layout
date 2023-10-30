@@ -7,8 +7,10 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-    width: auto;
-    height: auto;
+    cursor: pointer;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
     &:after {
         content: none
     }
@@ -43,7 +45,7 @@
         border: 1px solid rgba($color: $base-1, $alpha: 0.17);
         display: flex;
         align-items: center;
-        gap: 50px;
+        gap: 28px;
         @include text_t6;
         padding: 7px 16px;
     }

@@ -9,7 +9,9 @@ const path = {
         files: `${buildFolder}/files/`,
         html: `${buildFolder}/`,
         css: `${buildFolder}/css/`,
+        css_libs: `${buildFolder}/css/libs`,
         js: `${buildFolder}/js/`,
+        js_libs: `${buildFolder}/js/libs/`,
         fonts: `${buildFolder}/fonts/`,
         images: `${buildFolder}/images/`,
         json: `${buildFolder}/json/`
@@ -18,8 +20,10 @@ const path = {
         files: `${srcFolder}/files/**/*.*`,
         html: `${srcFolder}/*.html`,
         pug: `${srcFolder}/pug/*.pug`,
-        scss: `${srcFolder}/scss/style.scss`,
+        scss: `${srcFolder}/scss/*.scss`,
+        css_libs: `${srcFolder}/scss/libs/*.css`,
         js: `${srcFolder}/js/app.js`,
+        js_libs: `${srcFolder}/js/libs/*.js`,
         fonts: `${srcFolder}/fonts`,
         images: `${srcFolder}/images/**/*`,
         json: `${srcFolder}/json/*`

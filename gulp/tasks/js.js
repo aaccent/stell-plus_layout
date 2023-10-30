@@ -12,17 +12,9 @@ const js = () => {
         .pipe(app.plugins.browserSync.stream())
 }
 
-export { js }
+const js_libs = () => {
+    return app.gulp.src(app.path.src.js_libs)
+        .pipe(app.gulp.dest(app.path.build.js_libs))
+}
 
-// const concat        = require('gulp-concat');
-
-// function scripts() {
-//     return src([
-//       'node_modules/jquery/dist/jquery.js',
-//       'app/js/main.js'
-//     ])
-//       .pipe(concat('main.min.js'))
-//       .pipe(uglify())
-//       .pipe(dest('app/js'))
-//       .pipe(browserSync.stream())
-// }
+export { js, js_libs }

@@ -9,7 +9,7 @@ import groupCssMediaQueries from "gulp-group-css-media-queries"
 const sass = gulpSass(dartSass)
 
 const scss = () => {
-    return app.gulp.src(app.path.src.scss, { sourcemaps: true})
+    return app.gulp.src([app.path.src.scss, `!./src/scss/base.scss`], { sourcemaps: true})
         .pipe(sass({
             outputStyle: "expanded"
         }))
@@ -27,4 +27,9 @@ const scss = () => {
         .pipe(app.plugins.browserSync.stream())
 }
 
-export { scss }
+const css_libs = () => {
+    return app.gulp.src(app.path.src.css_libs)
+        .pipe(app.gulp.dest(app.path.build.css_libs))
+}
+
+export { scss, css_libs }

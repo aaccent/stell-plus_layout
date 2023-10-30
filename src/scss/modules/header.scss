@@ -136,8 +136,7 @@
         border-radius: 50px;
         cursor: pointer;
         position: relative;
-        // padding: 10px;
-        @include ishover {
+        &_open {
             background-color: $base-1;
             .header__dropdown-head {
                 .site-lang__text {
@@ -145,9 +144,18 @@
                 }
             }
             .header__dropdown-list {
+                pointer-events: auto;
                 opacity: 1;
                 visibility: visible;
-                transform: translate(0, 0);
+                transform: translate(0, 12px);
+            }
+        }
+        @include ishover {
+            background-color: $base-1;
+            .header__dropdown-head {
+                .site-lang__text {
+                    color: #3D3D3D;
+                }
             }
         }
     }
@@ -167,6 +175,7 @@
         top: 100%;
         right: 0;
         opacity: 0;
+        pointer-events: none;
         visibility: hidden;
         overflow: hidden;
         transform: translate(0, -10px);
@@ -242,11 +251,30 @@
             }
         }
     }
+    &_black {
+        color: $base-4;
+        .header__burger {
+            &::before, &::after, span {
+                background-color: $base-4;
+            }
+        }
+    }
     &_scroll {
         .header__wrapper {
             background-color: $base-1;
             border-bottom: 1px solid rgba(51, 51, 51, 0.10);
             color: $base-4;
+            @include min_tablet {
+                padding: 13px 0;
+            }
+        }
+        .header__dropdown {
+            &_open {
+                background-color: $base-2;
+            }
+            @include ishover {
+                background-color: $base-2;
+            }
         }
         .header__burger {
             &::before, &::after, span {
@@ -262,15 +290,6 @@
                     }
                 }
             }
-            .header__dropdown {
-                &:hover {
-                    background-color: $base-2
-                }
-            }
-        }
-        .header__menu {
-            background-color: $base-1;
-            color: $base-4;
         }
         .header__menu-item {
             &_hover {
@@ -327,6 +346,10 @@
             transition: transform 0.3s ease 0s;
             &_open {
                 transform: translate(0, 0);
+            }
+            .header_scroll &, .header_black & {
+                background-color: $base-1;
+                color: $base-4
             }
         }
         &__menu-list {
@@ -453,6 +476,10 @@
     align-items: center;
     gap: 9px;
     padding: 16px;
+    &__img {
+        width: 20px;
+        height: 20px;
+    }
     &__text {
         color: $base-4;
         font-size: 12px;

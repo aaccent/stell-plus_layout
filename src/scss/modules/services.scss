@@ -1,5 +1,16 @@
 .services-section {
     background-color: $base-4;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    color: $base-1;
+    margin-bottom: 0;
+    padding-bottom: 90px;
+    &__header {
+        border-color: rgba($color: $base-1, $alpha: 0.26);
+    }
+    &__title {
+        max-width: 821px //calc(821 / 1568 * 100%);
+    }
     &__list-item {
         &:not(:first-child) {
             border-top: 1px dashed rgba($color: $base-1, $alpha: 0.26);
@@ -116,6 +127,7 @@
     }
     &__link {
         grid-column: 3;
+        justify-self: flex-start;
         @include text_t5;
         text-transform: uppercase;
     }

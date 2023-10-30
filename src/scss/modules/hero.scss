@@ -6,7 +6,7 @@
         align-items: flex-end;
         position: relative;
         padding: 90px 0;
-        height: 810px;
+        height: 100vh
     }
     &__img {
         position: absolute;
@@ -21,9 +21,19 @@
             object-fit: cover;
         }
     }
+    .swiper-controls {
+        pointer-events: none;
+    }
+    .swiper-controls__inner {
+        pointer-events: auto
+    }
 }
 
 .hero-slide {
+    &__content {
+        // width: 50%;
+        max-width: 780px;
+    }
     &__title {
         @include heading_h1;
         text-transform: lowercase;
@@ -64,15 +74,30 @@
             font-size: 20px;
             line-height: 1;
             padding: 9px;
+            transition: background-color 0.2s ease 0s;
+            &:before {
+                transition: color 0.2s ease 0s;
+            }
+        }
+        @include ishover {
+            .icon-play {
+                background-color: $base-1;
+                &:before {
+                    color: $base-4;
+                }
+            }
         }
     }
     @include gap {
+        &__content {
+            // width: 100%;
+        }
         &__desc {
             font-size: 18px;
         }
     }
     @include phone {
-        height: 550px;
+        // height: 550px;
         &__desc {
             font-size: 16px;
         }

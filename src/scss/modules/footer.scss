@@ -270,6 +270,13 @@
         &:not(:last-child) {
             margin-bottom: 8px;
         }
+        &:not(&_selected) {
+            @include ishover {
+                .select__option-radio {
+                    background-color: #E2E2E2;
+                }
+            }
+        }
         &_selected {
             .select__option-radio {
                 &:before {
@@ -286,6 +293,7 @@
         position: relative;
         width: 14px;
         height: 14px;
+        transition: background-color 0.2s ease 0s;
         &:before {
             background-color: $base-4;
             border-radius: 50%;
