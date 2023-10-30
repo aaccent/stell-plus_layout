@@ -471,5 +471,78 @@ window.onload = function() {
     for (let i = 0; i < runningLineEls.length; i++) {
         new RunningLine(runningLineEls[i]).init()
     }
+
+    // cases page
+
+    new Swiper (".section__images.swiper", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        watchOverflow: true,
+        breakpoints: {
+            576: {
+                slidesPerView: 2,
+            }
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            type: "bullets"
+        }
+    })
+
+    new Swiper(".equipments-slider", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        breakpoints: {
+            480: {
+                slidesPerView: "2"
+            },
+            768: {
+                slidesPerView: "3"
+            },
+            1024: {
+                slidesPerView: 4
+            }
+        },
+        navigation: {
+            nextEl: ".equipments-section .swiper-button-next",
+            prevEl: ".equipments-section .swiper-button-prev",
+        },
+    })
+
+    new Swiper(".results-slider .swiper", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        pagination: {
+            el: ".results-slider .swiper-pagination",
+            type: "fraction",
+            formatFractionCurrent: function(current) {
+                return current < 9 ? "0" + current : current
+            },
+            formatFractionTotal: function(total) {
+                return total < 9 ? "0" + total : total
+            },
+            renderFraction: function (currentClass, totalClass) {
+                return '<span class="' + currentClass + '"></span>' +
+                '<span class="swiper-pagination-divider"> — </span>' +
+                '<span class="' + totalClass + '"></span>';
+            },
+        },
+        navigation: {
+            nextEl: ".results-slider .swiper-button-next",
+            prevEl: ".results-slider .swiper-button-prev",
+        },
+    })
+    
+    new Swiper(".projects-slider .swiper", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        breakpoints: {
+            slidesPerView: 2
+        },
+        navigation: {
+            nextEl: ".projects-section .swiper-button-next",
+            prevEl: ".projects-section .swiper-button-prev",
+        },
+    })
 }
 

@@ -30,6 +30,14 @@ input {
     outline: none
 }
 
+.body_lock {
+    // height: 100%;
+    overflow: hidden;
+}
+
+.page {
+    
+}
 .container {
     margin: 0 auto;
     padding: 0 20px;
@@ -41,10 +49,6 @@ input {
     // }
 }
 
-.body_lock {
-    // height: 100%;
-    overflow: hidden;
-}
 
 .section {
     border-top-left-radius: 16px;
