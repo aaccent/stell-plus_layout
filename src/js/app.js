@@ -176,8 +176,15 @@ window.onload = function() {
 
         // ----------- single product page ----------------
         if (targetEl.classList.contains("product-section__all-params")) {
+            document.body.classList.add("body_lock")
             const popupEl = document.querySelector(".product-section__popup")
             popupEl.classList.add("popup_open")
+        }
+        if (targetEl.closest(".popup__close") || targetEl.classList.contains("popup__container")) {
+            document.querySelector(".popup_open").addEventListener("transitionend", e => {
+                document.body.classList.remove("body_lock")
+            }, { once: true })
+            document.querySelector(".popup_open").classList.remove("popup_open")
         }
         // header phone
         // if (window.innerWidth <= 576 && isMobile.any()) {

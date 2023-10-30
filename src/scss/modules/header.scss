@@ -5,6 +5,7 @@
     width: 100%;
     min-height: 40px;
     &__wrapper {
+        border-bottom: 1px dashed rgba($color: $base-1, $alpha: 0.15);
         position: fixed;
         top: 0;
         left: 0;
@@ -253,6 +254,9 @@
     }
     &_black {
         color: $base-4;
+        .header__wrapper {
+            border-bottom: 1px dashed rgba($color: $base-4, $alpha: 0.1);
+        }
         .header__burger {
             &::before, &::after, span {
                 background-color: $base-4;

@@ -17,6 +17,7 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    margin-bottom: -15px;
     &__head {
         color: $base-1;
         flex-basis: 50%
@@ -323,6 +324,7 @@
 }
 
 .approach-section {
+    background-color: $base-1;
     color: $base-4;
     .container {
         display: flex;
@@ -422,7 +424,14 @@
     }
 }
 
-
+@import "modules/services.scss";
+.services-section {
+    margin-bottom: -15px
+}
+@import "modules/projects.scss";
+.projects-section {
+    background-color: $base-1
+}
 @import "modules/header.scss";
 
 @import "modules/footer.scss";

@@ -76,6 +76,9 @@ tbody td {
 
 @import "blocks/hero.scss";
 
+@import "modules/header.scss";
+@import "modules/projects.scss";
+
 .product-section {
     background-color: #F0F0F0;
     color: $base-4;
@@ -167,120 +170,5 @@ tbody td {
         }
     }
 }
-
-.projects-section {
-    &__projects {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        margin: 48px 0 0;
-    }
-    &__project {
-        flex-basis: calc(50% - 8px);
-    }
-    @media screen and (max-width: 920px) {
-        &__projects {
-            justify-content: center;
-        }
-        &__project {
-            flex-basis: min(680px, 100%);
-        }
-    }
-}
-
-.project {
-    // background: linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 100%), lightgray 0px -104.34px / 100% 121.897% no-repeat;
-    border-radius: 12px;
-    // padding: 24px;
-    position: relative;
-    &__img {
-        padding-top: calc(480 / 776 * 100%);
-        height: 0;
-        position: relative;
-        img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            vertical-align: top;
-        }
-    }
-    &__logo {
-        background-color: $base-1;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        top: 5%;
-        right: 3.1%;
-        width: 62px;
-        height: 62px;
-        img {
-            vertical-align: top;
-        }
-    }
-    &__content {
-        background-color: $base-1;
-        border-radius: 8px;
-        padding: calc(20 / 480 * 100%);
-        position: absolute;
-        left: 3.1%;
-        // right: 3.1%;
-        bottom: 5%;
-        max-width: 366px;
-        width: calc(366 / 480 * 100%)
-    }
-    &__name {
-        @include text_t1;
-    }
-    &__address {
-        @include text_t6_2;
-        margin: 12px 0 0;
-        opacity: 0.7;
-    }
-    &__arrow {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 12.72%;
-        right: 3.825%;
-        width: 20px;
-        height: 20px;
-        &:before {
-            border: 5px solid $base-4;
-            border-top-color: transparent;
-            border-right-color: transparent;
-            border-bottom-color: transparent;
-            content: "";
-            display: block;
-            width: 0;
-            height: 0;
-        }
-    }
-    @include phone {
-        &__content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: auto;
-            right: 3.1%;
-        }
-        &__name {
-            font-size: 20px;
-        }
-        &__address {
-            display: none;
-        }
-        &__arrow {
-            position: static;
-        }
-    }
-}
-
-@import "modules/header.scss";
 
 @import "modules/footer.scss";

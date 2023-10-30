@@ -93,6 +93,7 @@
     }
     &__icon {
         border-radius: 16px;
+        grid-column: 3;
         width: 123px;
         height: 123px;
         overflow: hidden;
@@ -122,6 +123,7 @@
         text-transform: lowercase;
     }
     &__about {
+        grid-column: 3;
         @include text_t2;
         opacity: 0.6;
     }

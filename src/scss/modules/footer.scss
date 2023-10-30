@@ -2,6 +2,8 @@
     background-color: $base-4;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    position: relative;
+    z-index: 1;
     &__running-line {
         .running-line__wrapper {
             padding: 50px 0;
