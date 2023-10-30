@@ -1,0 +1,60 @@
+extends templates/layout
+
+block head
+    title  
+    link(rel="stylesheet", href="css/libs/swiper-bundle.min.css")
+    link(rel="stylesheet", href="css/projects.min.css")
+block header
+    - var is_black = true
+block content 
+    .page.container
+        nav.breadcrumbs 
+            ul.breadcrumbs__list 
+                li.breadcrumbs__item 
+                    a.breadcrumbs__link(href="#") Главная
+                li.breadcrumbs__item 
+                    a.breadcrumbs__link(href="#") Проекты   
+        section.projects-section.projects.section 
+            .projects-section__body
+                    h1.projects-section__title Проекты
+                    .projects-section__projects 
+                        article.projects-section__project.project 
+                            .project__img
+                                img(src="./images/project-1.png", alt="")
+                            .project__logo 
+                                img(src="./images/perekrestok-logo.svg" alt="")
+                            .project__content 
+                                .project__name Перекресток
+                                .project__address Московская область, г. Одинцово, ул. Маршала Неделина, 6,
+                                .project__arrow
+                        article.projects-section__project.project 
+                            .project__img
+                                img(src="./images/project-2.png", alt="")
+                            .project__logo 
+                                img(src="./images/vkus-logo.svg" alt="")
+                            .project__content 
+                                .project__name Азбука вкуса
+                                .project__address Московская область, г. Одинцово, ул. Маршала Неделина, 6,
+                                .project__arrow
+                        article.projects-section__project.project 
+                            .project__img
+                                img(src="./images/project-3.png", alt="")
+                            .project__logo 
+                                img(src="./images/5ka-logo.svg" alt="")
+                            .project__content 
+                                .project__name Пятерочка
+                                .project__address Московская область, г. Одинцово, ул. Маршала Неделина, 6,
+                                .project__arrow
+                        article.projects-section__project.project 
+                            .project__img
+                                img(src="./images/project-4.png", alt="")
+                            .project__logo 
+                                img(src="./images/fp-logo.svg" alt)
+                            .project__content 
+                                .project__name Fix Price
+                                .project__address Московская область, г. Одинцово, ул. Маршала Неделина, 6,
+                                .project__arrow
+                    button.projects-section__more.button.button_big.button_outline.button_outline_black Еще
+block scripts 
+    script(src="js/libs/swiper-bundle.min.js")
+    script(src="js/app.min.js") 
