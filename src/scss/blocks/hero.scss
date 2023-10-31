@@ -1,6 +1,7 @@
 .hero-section {
     background-color: #F0F0F0;
     display: flex;
+    margin-bottom: -15px;
     padding-top: 135px;
     padding-bottom: 70px;
     height: 100vh;
@@ -60,12 +61,19 @@
         flex-basis: calc(500 / 1568 * 100%);
         text-transform: lowercase;
     }
+    &__desc {
+        @include text_t2;
+        opacity: 0.6
+    }
     &__running-line {
         position: absolute;
         top: 50%;
         left: 50%;
         width: 100%;
         transform: translate(-50%, -50%);
+        p {
+            opacity: 1;
+        }
     }
     &__icons {
         display: flex;
@@ -93,9 +101,35 @@
     &__stat-unit {
         @include text_t5-3
     }
-    &__running-line {
-        p {
-            opacity: 1;
+    &__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 86px;
+        height: 86px;
+        &::before {
+            border: 10px solid $base-1;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            content: "";
+            transform: translate(0, 50%);
+        }
+        @include ishover {
+            &::before {
+                border-top-color: $base-4;
+            }
+        }
+    }
+    @include phone {
+        &__button {
+            margin: 0 auto;
+            position: static;
+            transform: none;
+            width: 66px;
+            height: 66px;
+            order: 2;
         }
     }
 }

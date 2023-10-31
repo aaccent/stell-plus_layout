@@ -98,6 +98,21 @@ input {
         text-transform: uppercase;
         white-space: nowrap;
     }
+    &__images {
+        margin: 50px 0 0
+    }
+    &__img {
+        border-radius: 16px;
+        flex: 1 1 100%;
+        overflow: hidden;
+        max-height: 690px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            vertical-align: top
+        }
+    }
     @include gap {
         padding: 45px 0;
         &__header {
@@ -112,6 +127,16 @@ input {
             &__desc {
                 margin: 0;
             }
+        }
+    }
+    @include phone {
+        &__images {
+            margin: 30px -20px 0;
+        }
+        &__img {
+            border-radius: 0;
+            flex-shrink: 0;
+            height: 420px
         }
     }
 }

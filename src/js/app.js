@@ -186,6 +186,8 @@ window.onload = function() {
             }, { once: true })
             document.querySelector(".popup_open").classList.remove("popup_open")
         }
+
+        // ----------- case page ----------------
         // header phone
         // if (window.innerWidth <= 576 && isMobile.any()) {
         //     if (targetEl.classList.contains("header__phone-icon")) {
@@ -417,7 +419,6 @@ window.onload = function() {
     })
 
     // running line 
-
     class RunningLine {
         breakpoint;
         mediaQuery;
@@ -537,12 +538,61 @@ window.onload = function() {
         slidesPerView: 1,
         spaceBetween: 16,
         breakpoints: {
-            slidesPerView: 2
+            860: {
+                slidesPerView: 2
+            }
         },
         navigation: {
             nextEl: ".projects-section .swiper-button-next",
             prevEl: ".projects-section .swiper-button-prev",
         },
+        on: {
+            touchMove: function(swiper, event) {
+                let swipeHint = document.getElementById("swipe")
+
+                if (swipeHint) {
+                    swipeHint.style.cssText = `
+                        opacity: 0;
+                        visibility: hidden;
+                        transform: scale(0.65);
+                    `
+                    swipeHint.addEventListener("transitionend", (e) => {
+                        e.target.remove()
+                    }, { once: true })
+                }
+            },
+        }
+    })
+
+    new Swiper(".timeline-slider .swiper", {
+        slidesPerView: 1,
+        spaceBetween: 55,
+        // breakpoints: {
+        //     576: {
+        //         slidesPerView: "auto"
+        //     },
+        //     768: {
+        //         slidesPerView: "1"
+        //     }
+        // },
+        pagination: {
+            el: ".timeline-slider .swiper-pagination",
+            type: "progressbar",
+        }
+    })
+
+    new Swiper(".certificates-section__slider .swiper", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        breakpoints: {
+            576: {
+                slidesPerView: "auto"
+            },
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            type: "progressbar",
+        }
     })
 }
 
