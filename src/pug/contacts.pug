@@ -1,0 +1,71 @@
+extends templates/layout
+
+block head
+    title  
+    link(rel="stylesheet", href="css/libs/swiper-bundle.min.css")
+    link(rel="stylesheet", href="css/contacts.min.css")
+block header
+    - var is_black = false
+block content 
+    .page
+        nav.breadcrumbs 
+            .container
+                ol.breadcrumbs__list 
+                    li.breadcrumbs__item 
+                        a.breadcrumbs__link(href="#") Главная
+                    li.breadcrumbs__item 
+                        a.breadcrumbs__link(href="#") Контакты
+        section.map-section
+            .container
+                .section__header 
+                    h2.map-section__title.section__title Контакты
+                div#map
+        section.departments-section.section 
+            .section__header 
+                .container 
+                    h2.departments-section__title.section__title Контактные данные отделов компании
+            .section__body 
+                .container
+                    .section__info
+                        .departments-section__tab-panel 
+                            button.button.button_outline.button_outline_black.departments-section__tab-button(type="button") Департамент продаж
+                            button.button.button_outline.button_outline_black.departments-section__tab-button(type="button") Отдел логистики
+                            button.button.button_outline.button_outline_black.departments-section__tab-button(type="button") Отдел закупок
+                        .departments-section__info 
+                            .departments-section__info-col
+                                .departments-section__info-title Контакты 
+                                a(href="tel:+74959970687") +7 (495) 997-06-87
+                                a(href="mailto: info@stellplus.com") info@stellplus.com
+                            .departments-section__info-col
+                                .departments-section__info-title График работы
+                                .departments-section__info-desc Пн-Пт: c 09:00 до 18:00
+                                .departments-section__info-desc Сб-Вск: выходной     
+                    .departments-section__employees 
+                        article.employee 
+                            .employee__img
+                                img(src="", alt="")
+                            .employee__position управляющая
+                            h4.employee__name Ольга Новоселова
+                            a.employee__email(href="mailto:o.novoselova@mail.ru") o.novoselova@mail.ru
+                        article.employee 
+                            .employee__img
+                                img(src="", alt="")
+                            .employee__position Помощник управляющего
+                            h4.employee__name Александр Иванов
+                            a.employee__email(href="mailto:ivanov.alex@mail.ru") ivanov.alex@mail.ru
+                        article.employee 
+                            .employee__img
+                                img(src="", alt="")
+                            .employee__position Главный менеджер
+                            h4.employee__name Егор Кондрашов
+                            a.employee__email(href="mailto:kondrashov.stellplus@mail.ru") kondrashov.stellplus@mail.ru
+                        article.employee 
+                            .employee__img
+                                img(src="", alt="")
+                            .employee__position Менеджер продаж
+                            h4.employee__name Максим Дементьев
+                            a.employee__email(href="mailto:dementyev.max@mail.ru") dementyev.max@mail.ru
+block scripts
+    script(src='https://api-maps.yandex.ru/2.1/?apikey=4f70d3b1-f6e2-4ee2-bf65-83f325f91da4&load=package.standard&lang=en-UA' type='text/javascript')
+    script(src="js/libs/swiper-bundle.min.js")
+    script(src="js/app.min.js") 

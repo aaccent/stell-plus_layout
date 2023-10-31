@@ -594,5 +594,64 @@ window.onload = function() {
             type: "progressbar",
         }
     })
+
+    // -----------conatcts page----------
+    function init() {
+        let map = new ymaps.Map("map", {
+            center: [55.87536950426372,37.70936200000002],
+            zoom: 17
+        })
+
+        let MyBalloonContentLayoutClass = ymaps.templateLayoutFactory.createClass(
+            '<div class="balloon">' +
+            '<h4 class="balloon__title">{{ properties.title }}</h4>' +
+            '<div class="balloon__img"><img src="" alt="" /></div>' +
+            '<div class="balloon__info">' +
+            '<div class="balloon__address">{{ properties.address }}</div>' +
+            '<div class="balloon__time">{{ properties.time }}</div>' +
+            '<a class="balloon__phone" href="tel:{{ properties.phone }}">{{ properties.phone }}</a>' +
+            '<a class="balloon__email" href="mailto:{{ properties.email }}">{{ properties.email }}</a>' +
+            '</div>' +
+            '</div>'
+        );
+        let placeMark = new ymaps.Placemark([55.87536950426372,37.70936200000002], {
+            title: "Центральный офис",
+            address: "Москва, ул. Палехская, д. 131, пом. 1, ком. 10",
+            time: "Пн-Пт: c 09:00 до 18:00",
+            phone: "+7 (495) 997-06-87", 
+            mail: "info@stellplus.com<"
+            // balloonContentBody: [
+            //     '<div class="balloon">',
+            //     '<h4 class="balloon__title">Центральный офис</h4>',
+            //     '<div class="balloon__img"><img src="" alt="" /></div>',
+            //     '<div class="balloon__info">',
+            //     '<div class="balloon__address">Москва, ул. Палехская, д. 131, пом. 1, ком. 10</div>',
+            //     '<div class="balloon__time">Пн-Пт: c 09:00 до 18:00</div>',
+            //     '<a class="balloon__phone" href="tel:+74959970687">+7 (495) 997-06-87</a>',
+            //     '<a class="balloon__email" href="mailto:info@stellplus.com">info@stellplus.com</a>',
+            //     '</div>',
+            //     '</div>'
+            // ].join(""),
+
+        }, {
+            iconLayout: "default#image",
+            iconImageHref: "../images/map-mark.svg",
+            iconImageSize: [60, 60],
+            balloonContentLayout: MyBalloonContentLayoutClass
+        })
+
+        map.controls.remove('geolocationControl'); // удаляем геолокацию
+        map.controls.remove('searchControl'); // удаляем поиск
+        map.controls.remove('trafficControl'); // удаляем контроль трафика
+        map.controls.remove('typeSelector'); // удаляем тип
+        map.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
+        map.controls.remove('zoomControl'); // удаляем контрол зуммирования
+        map.controls.remove('rulerControl'); // удаляем контрол правил
+        map.behaviors.disable(['scrollZoom']); // отключаем скролл карты (опционально)
+
+        map.geoObjects.add(placeMark)
+    }
+
+    ymaps.ready(init)
 }
 
