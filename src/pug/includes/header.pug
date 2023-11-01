@@ -1,4 +1,4 @@
-header.header(class=is_black && "header_black")
+header.header(class=color && "header_" + color)
     .header__wrapper
         .header__container.container
             a.header__logo.logo(href="/") 
@@ -35,9 +35,8 @@ header.header(class=is_black && "header_black")
             .header__actions 
                 .header__phone 
                     a.header__phone-link(href="tel:+74959970687") +7 (495) 997-06-87 
-                    a.header__phone-link.header__phone-link_icon(href="tel:+74959970687")
-                        svg(xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none')
-                            path(fill-rule='evenodd' clip-rule='evenodd' d='M15.0006 11.4264L13.8985 10.3242C13.3479 9.7736 12.4552 9.7736 11.9056 10.3242L11.0392 11.1905C10.8457 11.3841 10.5525 11.4489 10.3026 11.339C9.04727 10.7893 7.80698 9.95588 6.70107 8.84996C5.59985 7.74874 4.76923 6.5141 4.21862 5.26348C4.10399 5.00509 4.1707 4.70159 4.37084 4.50146L5.14695 3.72534C5.77743 3.09486 5.77743 2.20318 5.22682 1.65257L4.12466 0.550406C3.39083 -0.183428 2.20128 -0.183428 1.46745 0.550406L0.854825 1.16209C0.158576 1.85834 -0.131763 2.86278 0.0561583 3.85877C0.520325 6.31396 1.94665 9.00218 4.24775 11.3033C6.54885 13.6044 9.23707 15.0307 11.6923 15.4949C12.6882 15.6828 13.6927 15.3925 14.3889 14.6962L15.0006 14.0845C15.7345 13.3507 15.7345 12.1611 15.0006 11.4264Z' fill='currentColor')
+                    a.header__phone-link.header__phone-link_icon.icon-phone(href="tel:+74959970687")
+                        
                 .header__dropdown 
                     .header__dropdown-head.site-lang_min
                         img.site-lang__img(src="./images/ru-flag_icon.webp", alt="")

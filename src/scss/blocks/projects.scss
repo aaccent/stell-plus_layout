@@ -1,0 +1,19 @@
+.projects-section {
+    &__projects {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin: 48px 0 0;
+    }
+    &__project {
+        flex-basis: calc(50% - 8px);
+    }
+    @media screen and (max-width: 920px) {
+        &__projects {
+            justify-content: center;
+        }
+        &__project {
+            flex-basis: min(680px, 100%);
+        }
+    }
+}

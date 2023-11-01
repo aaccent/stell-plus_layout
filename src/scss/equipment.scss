@@ -7,19 +7,33 @@
 @import "base.scss";
 
 @import "components/button.scss";
-@import "components/running-line";
+@import "components/breadcrumbs.scss";
+@import "components/equipment.scss";
 
 @import "blocks/hero.scss";
+.hero-section {
+    &__breadcrumbs {
+        position: absolute;
+        top: 0;
+        left: 0;
+        .breadcrumbs__link {
+            color: $base-4
+        }
+        .breadcrumbs__item {
+            &:not(:last-child) {
+                &:after {
+                    color: $base-4;
+                }
+            }
+        }
+    }
+}
 @import "modules/header.scss";
-
 @import "modules/equipment.scss";
 
 .equipment {
     &__header {
         padding-bottom: 32px;
-    }
-    &__body {
-        // padding: 32px 0;
     }
     &__grid {
         display: grid;

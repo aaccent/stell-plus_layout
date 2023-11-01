@@ -9,10 +9,11 @@
 @import "components/button.scss";
 @import "components/swiper-controls";
 @import "components/breadcrumbs.scss";
+@import "components/equipment.scss";
 
 @import "blocks/hero.scss";
 .hero-section {
-    background-image: url(../images/about-hero.png);
+    background-image: url(../images/about/about-hero.png);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -105,6 +106,10 @@
         border-radius: 12px;
         flex-basis: calc(50% - 8px);
         padding: 20px 24px;
+        .icon {
+            color: $base-1;
+            font-size: 64px;
+        }
         svg {
             width: 64px;
             height: 64px
@@ -259,6 +264,9 @@
 }
 
 @import "modules/equipment.scss";
+.equipment-section {
+    margin-bottom: 0
+}
 @import "modules/banner.scss";
 
 .certificates-section {

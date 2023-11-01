@@ -7,8 +7,11 @@
 @import "base.scss";
 
 @import "components/button.scss";
-@import "components/running-line";
+@import "components/breadcrumbs.scss";
 @import "components/popup.scss";
+@import "components/project.scss";
+
+@import "blocks/projects.scss";
 
 .popup {
     &__container {
@@ -75,13 +78,38 @@ tbody td {
 }
 
 @import "blocks/hero.scss";
-
+.hero-section {
+    &__breadcrumbs {
+        position: absolute;
+        top: 0;
+        left: 0;
+        .breadcrumbs__link {
+            color: $base-4
+        }
+        .breadcrumbs__item {
+            &:not(:last-child) {
+                &:after {
+                    color: $base-4;
+                }
+            }
+        }
+    }
+    &__etc {
+        @include text_t5;
+        opacity: 0.6;
+    }
+    @include phone {
+        &__etc {
+            top: 30px
+        }
+    }
+}
 @import "modules/header.scss";
-@import "modules/projects.scss";
 
 .product-section {
     background-color: #F0F0F0;
     color: $base-4;
+    margin-bottom: -15px;
     &__container {
         display: flex;
         justify-content: space-between;
@@ -131,6 +159,9 @@ tbody td {
             @include text_t5-2
         }
     }
+    .icon-certificate {
+        font-size: 60px;
+    }
     &__certificate-icon {
         padding: 7.5px
     }
@@ -170,5 +201,4 @@ tbody td {
         }
     }
 }
-
 @import "modules/footer.scss";

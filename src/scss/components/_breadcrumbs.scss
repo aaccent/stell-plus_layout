@@ -9,17 +9,19 @@
         opacity: 0.5;
         &:not(:last-child) {
             &:after {
-                background-color: $base-1;
-                border-radius: 50%;
-                content: "";
+                content: "\e901";
+                font-family: "icons";
+                font-size: 16px;
                 display: inline-block;
                 margin-left: 4px;
-                width: 8px;
-                height: 8px;
             }
         }
         &:last-child {
             opacity: 1;
+            .breadcrumbs__link {
+                cursor: auto;
+                pointer-events: none;
+            }
         }
     }
     &__link {
@@ -30,5 +32,6 @@
         line-height: 1;
         letter-spacing: 0.1px;
         text-transform: uppercase;
+        white-space: nowrap;
     }
 }

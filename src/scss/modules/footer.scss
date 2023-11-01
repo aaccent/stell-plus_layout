@@ -1,9 +1,15 @@
+@import "../components/running-line.scss";
+@import "../components/commercial.scss";
+
 .footer {
     background-color: $base-4;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     position: relative;
     z-index: 1;
+    &__commercial {
+        overflow: hidden;
+    }
     &__running-line {
         .running-line__wrapper {
             padding: 50px 0;
@@ -248,7 +254,7 @@
     }
     .select__button {
         color: inherit;
-        transform: rotate(180deg);
+        transform: rotate(-90deg);
         transition: transform 0.2s ease 0s;
         &:before {
             color: inherit;
@@ -314,8 +320,8 @@
     &_open {
         .select__head {
             opacity: 1;
-            .icon-arrow-down {
-                transform: rotate(0);
+            .select__button {
+                transform: rotate(90deg);
             }
             &:after {
                 transform: scale(1);
@@ -514,8 +520,13 @@
         display: flex;
         align-self: center;
         gap: 6px;
-        @include text_t4;
-        text-transform: lowercase;
+        .span:last-child {
+            @include text_t4;
+            text-transform: lowercase;
+        }
+        .icon-clip {
+            font-size: 25px;
+        }
     }
     &__file-doc {
         background-color: #F0F0F0;
@@ -554,13 +565,12 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        span {
+        span:last-child {
             @include text_t2;
             text-transform: lowercase;
         }
-        svg {
-            width: 28px;
-            height: 28px;
+        .icon-checkmark {
+            font-size: 28px;
         }
     }
     &_sending {

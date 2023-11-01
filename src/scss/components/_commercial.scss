@@ -1,0 +1,30 @@
+.commercial {
+    background-color: $base-4;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin: -25px 0 -15px;
+    padding: 64px 0 77px;
+    overflow-x: hidden;
+    .hero-section + & {
+        position: relative;
+        z-index: 1;
+    }
+    &__running-line {
+        border-top: 1px dashed rgba($color: $base-1, $alpha: 0.1);
+        border-bottom: 1px dashed rgba($color: $base-1, $alpha: 0.1);
+        p {
+            opacity: 0.1;
+        }
+    }
+    &__slogan {
+        margin: 0.305em 0 0.22em;
+    }
+    @media (min-width: 576px) and (max-width: 1604px) {
+        padding-top: calc(28px + 26 * (100vw - 576px) / (1604 - 576));
+        padding-bottom: calc(34px + 41 * (100vw - 576px) / (1604 - 576))
+    }
+    @include phone {
+        margin-bottom: -10px;
+        padding: 28px 0 34px
+    }
+}

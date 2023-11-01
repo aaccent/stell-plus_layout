@@ -3,23 +3,22 @@ extends templates/layout
 block head
     title  
     link(rel="stylesheet", href="css/libs/swiper-bundle.min.css")
-    link(rel="stylesheet", href="css/service.min.css")
-block header
-    - var is_black = false
+    link(rel="stylesheet", href="css/single-service.min.css")
 block content 
     section.hero-section
         .hero-section__container.container
+            nav.hero-section__breadcrumbs.breadcrumbs 
+                ol.breadcrumbs__list 
+                    li.breadcrumbs__item 
+                        a.breadcrumbs__link(href="#") Главная
+                    li.breadcrumbs__item 
+                        a.breadcrumbs__link(href="#") Проектирование
             .hero-section__content
-                nav.breadcrumbs 
-                    ol.breadcrumbs__list 
-                        li.breadcrumbs__item 
-                            a.breadcrumbs__link(href="#") Главная
-                        li.breadcrumbs__item 
-                            a.breadcrumbs__link(href="#") Проектирование
                 .hero-section__head.hero-section__head_vertical
                     h1.hero-section__title Проектирование стеллажных систем
                     p.hero-section__desc Готовые решения для магазинов, распределительного центра и сферы ритейл продаж
                 .hero-section__button.button.button_big.button_outline.button_outline_white
+                    span.icon-play
                 .hero-section__projects
                     .hero-section__projects-logos 
                         .hero-section__projects-logo
@@ -49,7 +48,7 @@ block content
             .container
                 .about-section__advantages 
                     article.about-section__advantage.about-section__advantage_big.advantage
-                        .advantage__arrow
+                        span.icon-play
                         span.advantage__type 1. Скорость
                         h4.advantage__name Минимальный срок изготовления
                         img.advantage__model(src="./images/pallet-3d.png", alt="")
@@ -58,18 +57,18 @@ block content
                             span.advantage__stat-value 24
                             span.advantage__stat-unit рабочих#[br]дней
                     article.about-section__advantage.advantage 
-                        .advantage__arrow
+                        span.icon-play
                         span.advantage__type 2. Клиенты
                         h4.advantage__name Доверие крупных игроков рынка
                         p.advantage__desc Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое
                         .advantage__icon
                             img(src="./images/partner.svg", alt="")
                     article.about-section__advantage.advantage 
-                        .advantage__arrow
+                        span.icon-play
                         span.advantage__type 3. Качество
                         h4.advantage__name Подтверждено сертификатом ISO
                         p.advantage__desc Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое
-                        .advantage__icon
+                        span.advantage__icon
                             img(src="./images/certificate.svg" alt="")
     section.approach-section.section 
         .section__header 
@@ -103,7 +102,7 @@ block content
                             .service__num 1
                             h4.service__name Получаем ваше обрашение
                         .service__icon
-                            img(src="./images/service-icon.png", alt="") 
+                            img(src="./images/task-icon.png", alt="") 
                         button.service__button.button.button_second(type="button") +
                         p.service__about Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки. Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки
                 .services-section__list-item.service 
@@ -112,7 +111,7 @@ block content
                             .service__num 2
                             h4.service__name Знакомимся с вашим проектом
                         .service__icon 
-                            img(src="./images/service-icon.png", alt="")
+                            img(src="./images/task-icon.png", alt="")
                         button.service__button.button.button_second(type="button") +
                         p.service__about Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки. Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки
                 .services-section__list-item.service 
@@ -121,7 +120,7 @@ block content
                             .service__num 3
                             h4.service__name Предлагаем решения задачи
                         .service__icon 
-                            img(src="./images/service-icon.png", alt="")
+                            img(src="./images/task-icon.png", alt="")
                         button.service__button.button.button_second(type="button") +
                         p.service__about Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки. Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки
                 .services-section__list-item.service 
@@ -130,7 +129,7 @@ block content
                             .service__num 4
                             h4.service__name Согласовываем все ваши правки
                         .service__icon 
-                            img(src="./images/service-icon.png", alt="")
+                            img(src="./images/task-icon.png", alt="")
                         button.service__button.button.button_second(type="button") +
                         p.service__about Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки. Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки
                 .services-section__list-item.service 
@@ -139,7 +138,7 @@ block content
                             .service__num 5
                             h4.service__name Финальный результат
                         .service__icon 
-                            img(src="./images/service-icon.png", alt="")                    
+                            img(src="./images/task-icon.png", alt="")                    
                         button.service__button.button.button_second(type="button") +
                         p.service__about Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки. Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки
     section.projects-section.projects.section 
@@ -151,44 +150,8 @@ block content
                 .section__info
                     .section__param (24 проекта) 
                     p.section__desc Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки. Наши менеджеры всегда помогут подобрать стеллажи, подготовят
-                    a.section__link.link(href="#") Смотреть все
-                .projects-section__projects 
-                    article.projects-section__project.project 
-                        .project__img
-                            img(src="./images/project-1.png", alt="")
-                        .project__logo 
-                            img(src="./images/perekrestok-logo.svg" alt="")
-                        .project__content 
-                            .project__name Перекресток
-                            .project__address Московская область, г. Одинцово, ул. Маршала Неделина, 6,
-                            .project__arrow
-                    article.projects-section__project.project 
-                        .project__img
-                            img(src="./images/project-2.png", alt="")
-                        .project__logo 
-                            img(src="./images/vkus-logo.svg" alt="")
-                        .project__content 
-                            .project__name Азбука вкуса
-                            .project__address Московская область, г. Одинцово, ул. Маршала Неделина, 6,
-                            .project__arrow
-                    article.projects-section__project.project 
-                        .project__img
-                            img(src="./images/project-3.png", alt="")
-                        .project__logo 
-                            img(src="./images/5ka-logo.svg" alt="")
-                        .project__content 
-                            .project__name Пятерочка
-                            .project__address Московская область, г. Одинцово, ул. Маршала Неделина, 6,
-                            .project__arrow
-                    article.projects-section__project.project 
-                        .project__img
-                            img(src="./images/project-4.png", alt="")
-                        .project__logo 
-                            img(src="./images/fp-logo.svg" alt)
-                        .project__content 
-                            .project__name Fix Price
-                            .project__address Московская область, г. Одинцово, ул. Маршала Неделина, 6,
-                            .project__arrow
+                    a.section__link.link(href="/projects.html") Смотреть все
+                include includes/projects-grid
 block scripts 
     script(src="js/libs/swiper-bundle.min.js")
     script(src="js/app.min.js") 

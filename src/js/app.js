@@ -187,7 +187,24 @@ window.onload = function() {
             document.querySelector(".popup_open").classList.remove("popup_open")
         }
 
-        // ----------- case page ----------------
+        // ----------- contacts page ----------------
+
+        if (targetEl.classList.contains("departments-section__tab-button")) {
+            let departmentName = targetEl.dataset.department;
+            let departmentsContainer = document.querySelector(".departments-section__departments");
+
+            document.querySelector(".departments-section__tab-button_active").classList.remove("departments-section__tab-button_active")
+            targetEl.classList.add("departments-section__tab-button_active")
+
+            departmentsContainer.style.opacity = "0"
+            departmentsContainer.addEventListener("transitionend", () => {
+                let activeDepartmentClass = "departments-section__department_active"
+                departmentsContainer.querySelector("." + activeDepartmentClass).classList.remove(activeDepartmentClass)
+                departmentsContainer.style.opacity = ""
+                departmentsContainer.querySelector(".departments-section__department_" + departmentName).classList.add(activeDepartmentClass);
+
+            }, { once: true })
+        }
         // header phone
         // if (window.innerWidth <= 576 && isMobile.any()) {
         //     if (targetEl.classList.contains("header__phone-icon")) {

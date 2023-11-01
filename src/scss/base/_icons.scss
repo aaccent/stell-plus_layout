@@ -20,48 +20,80 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-arrow-1:before {
-    content: "\e902";
-    color: #fff;
-}
-.icon-arrow-2:before {
-    content: "\e903";
-    color: #fff;
+.icon-partner:before {
+    content: "\e90b";
+    color: inherit;
 }
 .icon-arrow-down:before {
+    content: "\e900";
+    color: $base-4;
+}
+.icon-arrow-next:before {
+    content: "\e901";
+    color: $base-4;
+}
+.icon-arrow-right:before {
+    content: "\e902";
+    color: inherit;
+}
+.icon-certificate:before {
+    content: "\e903";
+    color: inherit;
+}
+.icon-checkmark:before {
     content: "\e904";
-    color: #fff;
+    color: inherit;
+}
+.icon-clip:before {
+    content: "\e905";
+    color: inherit;
 }
 .icon-clock:before {
-    content: "\e908";
-    color: #fff;
+    content: "\e906";
+    color: $base-4;
+}
+.icon-close:before {
+    content: "\e907";
+    color: $base-4;
 }
 .icon-email:before {
-    content: "\e90a";
-    color: #fff;
-}
-.icon-load:before {
-    content: "\e90b";
-    color: #fff;
+    content: "\e908";
+    color: $base-4;
 }
 .icon-map-pin:before {
-    content: "\e90c";
-    color: #fff;
+    content: "\e909";
+    color: $base-4;
+}
+.icon-minus:before {
+    content: "\e90a";
+    color: $base-4;
 }
 .icon-phone:before {
-    content: "\e90f";
-    color: #fff;
+    content: "\e90c";
+    color: inherit;
 }
 .icon-play:before {
-    content: "\e910";
-    color: #fff;
+    content: "\e90d";
+    color: inherit;
+}
+.icon-plus:before {
+    content: "\e90e";
+    color: $base-4;
+}
+.icon-square:before {
+    content: "\e90f";
+    color: inherit;
 }
 .icon-stellplus:before {
-    content: "\e913";
-    color: #fff;
+    content: "\e910";
+    color: $base-4;
+}
+.icon-user:before {
+    content: "\e911";
+    color: inherit;
 }
 .icon-video:before {
-    content: "\e915";
-    color: #fff;
+    content: "\e912";
+    color: $base-4;
 }
-  
+

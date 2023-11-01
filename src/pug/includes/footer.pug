@@ -1,7 +1,7 @@
 footer.footer 
-    aside.footer__commercial.commercial(style="display:none")
+    aside.footer__commercial.commercial
         .footer__running-line.commercial__running-line.running-line 
-            .running-line__wrappere
+            .running-line__wrapper
                 .running-line__item
                     .footer__shops-wrapper
                         .footer__shop-logo
@@ -143,7 +143,7 @@ footer.footer
                     input(type="text" name="call time").select__input
                     button.select__head(type="button") 
                         span.select__label Время звонка
-                        span.select__button.icon-arrow-down
+                        span.select__button.icon-play
                     .select__options-wrapper
                         ul.contact-us-form__select-options.select__options
                             li.contact-us-form__select-option.select__option(data-value="9-12")
@@ -173,27 +173,19 @@ footer.footer
                             .contact-us-form__file-field
                                 input.contact-us-form__file-input(type="file" id="file" accept=".pdf, .doc, .docx")
                                 label.contact-us-form__file-label(for="file") 
-                                    svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none')
-                                        path(d='M13.8791 8.37527L8.39309 13.8613C7.56709 14.6873 7.56709 16.0273 8.39309 16.8533V16.8533C9.21909 17.6793 10.5591 17.6793 11.3851 16.8533L18.6171 9.62127C20.1321 8.10627 20.1321 5.65027 18.6171 4.13527V4.13527C17.1021 2.62027 14.6461 2.62027 13.1311 4.13527L5.89909 11.3673C3.69509 13.5713 3.69509 17.1433 5.89909 19.3473V19.3473C8.10309 21.5513 11.6751 21.5513 13.8791 19.3473L18.2681 14.9583' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round')
+                                    span.icon-clip
+                                    //- svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none')
+                                    //-     path(d='M13.8791 8.37527L8.39309 13.8613C7.56709 14.6873 7.56709 16.0273 8.39309 16.8533V16.8533C9.21909 17.6793 10.5591 17.6793 11.3851 16.8533L18.6171 9.62127C20.1321 8.10627 20.1321 5.65027 18.6171 4.13527V4.13527C17.1021 2.62027 14.6461 2.62027 13.1311 4.13527L5.89909 11.3673C3.69509 13.5713 3.69509 17.1433 5.89909 19.3473V19.3473C8.10309 21.5513 11.6751 21.5513 13.8791 19.3473L18.2681 14.9583' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round')
                                     span Прикрепить файл
                             .contact-us-form__file-doc.button
                                 span
                                 button(type="button")
                     .contact-us-form__actions-wrapper(style="display: none")
                         .contact-us-form__success-label 
-                            svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none')
-                                path(d='M4.40909 11.3182L9.59091 16.5L19.0909 7' stroke='currentColor' stroke-width='1.5')
+                            spna.icon-checkmark
+                            //- svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none')
+                            //-     path(d='M4.40909 11.3182L9.59091 16.5L19.0909 7' stroke='currentColor' stroke-width='1.5')
                             span успешно отправлено
-                    
-
-            //-     <div class="form__file">
-            //-     <input class="form__file-input form__input_required" id="file" type="file" name="phone" accept=".pdf, .doc, .docx" placeholder="Телефон*">
-            //-     <label class="form__file-label" for="file"> 
-            //-       <svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none">
-            //-         <path d="M12.172 4.99968L5.58602 11.5857C5.395 11.7702 5.24264 11.9909 5.13782 12.2349C5.033 12.4789 4.97783 12.7413 4.97552 13.0069C4.97321 13.2724 5.02381 13.5358 5.12438 13.7816C5.22494 14.0274 5.37344 14.2507 5.56123 14.4385C5.74902 14.6263 5.97232 14.7748 6.21811 14.8753C6.4639 14.9759 6.72726 15.0265 6.99282 15.0242C7.25838 15.0219 7.52082 14.9667 7.76483 14.8619C8.00884 14.7571 8.22953 14.6047 8.41402 14.4137L14.828 7.82768C15.5567 7.07327 15.9598 6.06286 15.9507 5.01407C15.9416 3.96528 15.5209 2.96203 14.7793 2.2204C14.0377 1.47877 13.0344 1.05809 11.9856 1.04898C10.9368 1.03987 9.92643 1.44304 9.17202 2.17168L2.75702 8.75668C1.63171 9.88199 0.999512 11.4082 0.999512 12.9997C0.999512 14.5911 1.63171 16.1174 2.75702 17.2427C3.88233 18.368 5.40859 19.0002 7.00002 19.0002C8.59145 19.0002 10.1177 18.368 11.243 17.2427L17.5 10.9997" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            //-       </svg><span>Прикрепить файл*</span>
-            //-     </label>
-            //-   </div>
     .footer__footer 
         .footer__footer-top
             .container

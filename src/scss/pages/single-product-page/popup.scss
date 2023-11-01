@@ -1,0 +1,38 @@
+.popup {
+    &__container {
+        height: 100%
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        &:after {
+            background: linear-gradient(13deg, rgba(255, 255, 255, 0.80) 9.4%, rgba(255, 255, 255, 0.00) 231.73%);
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 106px;
+        }
+    }
+    &__title {
+        @media (max-width: 576px) and (min-width: 1608px) {
+            font-size: calc(32px + 16 * (100vw - 576px) / (1608 - 576));
+        }
+        @include phone {
+            font-size: 36px;
+        }
+    }
+    &__body {
+        margin-right: -24px;
+        padding-right: 24px;
+        overflow: auto;
+    }
+
+    @include phone {
+        &__close {
+            padding: 8px;
+        }
+    }
+}

@@ -7,10 +7,13 @@
 
 .swiper-button-prev,
 .swiper-button-next {
+    color: $base-1;
     cursor: pointer;
+    font-size: 25px;
+    line-height: 1;
     flex-shrink: 0;
-    width: 24px;
-    height: 24px;
+    width: auto;
+    height: auto;
     &:after {
         content: none
     }
@@ -19,10 +22,8 @@
     }
 }
 
-.swiper-button-next {
-    svg {
-        transform: rotate(-180deg);
-    }
+.swiper-button-prev {
+    transform: rotate(-180deg);
 }
 
 .swiper-pagination-divider,

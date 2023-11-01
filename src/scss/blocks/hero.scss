@@ -9,11 +9,15 @@
     overflow: hidden;
     &__container {
         display: flex;
+        flex-direction: column;
     }
     &__content {
         display: flex;
         flex: 0 1 100%;
         position: relative;
+    }
+    &__breadcrumbs {
+        margin-bottom: 20px;
     }
     &__img {
         // background: lightgray -68.546px 0px / 144.103% 105.128% no-repeat;
@@ -75,15 +79,13 @@
             opacity: 1;
         }
     }
-    &__icons {
+    &__etc {
+        color: $base-4;
         display: flex;
         gap: 8px;
         position: absolute;
         top: 0;
         right: 0;
-    }
-    &__icons {
-        color: $base-4;
     }
     &__stat {
         display: flex;
@@ -108,16 +110,20 @@
         position: absolute;
         width: 86px;
         height: 86px;
-        &::before {
-            border: 10px solid $base-1;
-            border-left-color: transparent;
-            border-right-color: transparent;
-            border-bottom-color: transparent;
-            content: "";
-            transform: translate(0, 50%);
+        .icon-play {
+            font-size: 18px;
+            transform: rotate(90deg);
         }
+        // &::before {
+        //     border: 10px solid $base-1;
+        //     border-left-color: transparent;
+        //     border-right-color: transparent;
+        //     border-bottom-color: transparent;
+        //     content: "";
+        //     transform: translate(0, 50%);
+        // }
         @include ishover {
-            &::before {
+            .icon-play {
                 border-top-color: $base-4;
             }
         }

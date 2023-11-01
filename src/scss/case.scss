@@ -16,18 +16,11 @@
     margin: 32px 0 0;
     &__item:not(:last-child) {
         &:after {
-            background-color: $base-4
+            color: $base-4
         }
     }
     &__link {
         color: $base-4;
-    }
-}
-
-.page {
-    padding-top: 108px;
-    @include phone {
-        padding-top: 97px
     }
 }
 
@@ -83,7 +76,7 @@
 
 .banner-section {
     margin: 35px 0 0;
-    .container {
+    &__content {
         border-radius: 16px;
         position: relative;
         height: 720px;
@@ -115,6 +108,17 @@
         height: auto;
         transform: translate(-50%, -50%);
         z-index: 2;
+        @include gap {
+            width: 50%
+        }
+        @include phone {
+            width: 75%
+        }
+    }
+    @include phone {
+        &__content {
+            height: 620px;
+        }
     }
 }
 
@@ -145,11 +149,12 @@
         border-radius: 50px;
         display: block;
         color: $base-4;
+        line-height: 1;
         padding: 24px 74px;
         width: auto;
         height: auto;
-        svg {
-            vertical-align: top;
+        span {
+            font-size: 32px;
         }
         @media (min-width: 576px) and (max-width: 1608px) {
             padding-left: calc(12px + 62 * (100vw - 576px) / (1608 - 576));
@@ -161,16 +166,7 @@
             padding: 12px;
         }
     }
-    .swiper-button-prev {
-        svg {
-            transform: rotate(-180deg)
-        }
-    }
-    .swiper-button-next {
-        svg {
-            transform: rotate(0)
-        }
-    }
+
     @include gap {
         &__header .container {
             flex-direction: column;
@@ -179,9 +175,11 @@
     }
 }
 
-.results-section {
+.equipments-section {
+    .swiper-slide {
+        height: auto
+    }
 }
-
 .results-slider {
     border-radius: 16px;
     margin: 75px 0 0;

@@ -103,6 +103,7 @@
         background-color: $base-1;
         border-radius: 12px;
         box-shadow: 0 2px 8px 0px rgba($color: black, $alpha: 0.15);
+        overflow: hidden;
     }
     &__submenu-item {
         text-transform: uppercase;
@@ -199,11 +200,7 @@
         white-space: nowrap;
         &_icon {
             display: none;
-            svg {
-                width: 24px;
-                height: 24px;
-                vertical-align: middle;
-            }
+            font-size: 32px;
         }
     }
 
@@ -252,16 +249,27 @@
             }
         }
     }
-    &_black {
+    &_white {
         color: $base-4;
         .header__wrapper {
             border-bottom: 1px dashed rgba($color: $base-4, $alpha: 0.1);
+        }
+        .header__menu-list {
+            background-color: $base-1;
+        }
+        .header__menu-item {
+            @include ishover {
+                &::before {
+                    background-color: $base-2;
+                }
+            }
         }
         .header__burger {
             &::before, &::after, span {
                 background-color: $base-4;
             }
         }
+
     }
     &_scroll {
         .header__wrapper {

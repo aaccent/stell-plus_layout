@@ -8,11 +8,15 @@
 
 @import "components/button.scss";
 @import "components/breadcrumbs";
+@import "components/project.scss";
+
+@import "blocks/projects.scss";
 
 .breadcrumbs {
+    margin: 32px 0 0;
     &__item:not(:last-child) {
         &:after {
-            background-color: $base-4
+            color: $base-4
         }
     }
     &__link {
@@ -20,19 +24,10 @@
     }
 }
 
-body {
-    padding-top: 108px;
-    @include phone {
-        padding-top: 97px
-    }
-}
-.page {
-    padding-top: 32px
-}
 @import "modules/header.scss";
-@import "modules/projects.scss";
+
 .projects-section {
-    padding-top: 20px !important;
+    padding-top: 20px;
     &__title {
         @include heading_h1;
         text-transform: lowercase;
@@ -59,6 +54,7 @@ body {
         }
     }
     @include gap {
+        padding-top: 20px;
         &__projects {
             margin-top: 32px;
         }

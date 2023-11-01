@@ -7,12 +7,14 @@
 @import "base.scss";
 
 @import "components/button.scss";
-@import "components/swiper-controls";
-@import "components/running-line";
+@import "components/swiper-controls.scss";
+@import "components/equipment.scss";
 
 @import "modules/header.scss";
+.header__wrapper {
+    border-bottom: none
+}
 @import "modules/hero.scss";
-@import "modules/commercial.scss";
 @import "modules/equipment.scss";
 @import "modules/services.scss";
 @import "modules/banner.scss";
