@@ -66,7 +66,7 @@
 }
 .icon-minus:before {
     content: "\e90a";
-    color: $base-4;
+    color: inherit;
 }
 .icon-phone:before {
     content: "\e90c";
@@ -78,7 +78,7 @@
 }
 .icon-plus:before {
     content: "\e90e";
-    color: $base-4;
+    color: inherit;
 }
 .icon-square:before {
     content: "\e90f";

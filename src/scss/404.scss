@@ -1,0 +1,93 @@
+@import "base/_vars.scss";
+@import "base/_fonts.scss";
+@import "base/_icons.scss";
+@import "mixins/_breakpoints.scss";
+@import "mixins/_media.scss";
+@import "mixins/_fonts";
+@import "base.scss";
+
+@import "components/breadcrumbs.scss";
+@import "components/button.scss";
+
+@import "modules/header.scss";
+
+body {
+    background-color: $base-4;
+    overflow: hidden;
+}
+.page {
+    display: flex;
+    position: relative;
+    min-height: 100vh;
+    &__bg {
+        color: $base-1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        z-index: -1;
+        overflow: hidden;
+        svg {
+            width: 180%;
+            height: 180%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            @include tablet {
+                top: 50%;
+                width: 150%;
+                height: 150%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+    .breadcrumbs {
+        position: absolute;
+        top: 32px;
+        left: 20px;
+    }
+    .container {
+        color: $base-1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        text-align: center
+    }
+    &__content {
+        transform: translate(0, -70px)
+    }
+    &__header {
+        @include heading_hero;
+        margin-bottom: 0.25em;
+        @media (min-width: 576px) and (max-width: 1608px) {
+            font-size: calc(120px + 60 * (100vw - 576px) / (1604 - 576));
+        }
+        @include phone {
+            font-size: 120px;
+        }
+        white-space: nowrap;
+    }
+    
+    &__desc {
+        @include heading_h3;
+        margin-bottom: 0.67em;
+        @media (min-width: 576px) and (max-width: 1608px) {
+            font-size: calc(28px + 20 * (100vw - 576px) / (1604 - 576));
+        }
+        @include phone {
+            font-size: 28px;
+        }
+    }
+    &__button {
+        display: inline-block;
+        @include ishover {
+            background-color: $base-3;
+            color: $base-1
+        }
+    }
+}

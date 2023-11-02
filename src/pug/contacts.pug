@@ -17,7 +17,27 @@ block content
             .container
                 .section__header 
                     h2.map-section__title.section__title Контакты
-                div#map
+                .map-section__body.section__body
+                    div#map
+                    .balloon#balloon
+                        .balloon__content
+                            .balloon__title Центральный офис
+                            .balloon__img 
+                                img(src="./images/contacts/balloon-image.png", alt="")
+                            .balloon__info 
+                                .balloon__address 
+                                    span.icon-map-pin
+                                    span Москва, ул. Палехская, д. 131, пом. 1, ком. 10
+                                .balloon__time 
+                                    span.icon-clock 
+                                    span Пн-Пт: c 09:00 до 18:00
+                                .balloon__phone
+                                    span.icon-phone 
+                                    a(href="tel:+74959970687") +7 (495) 997-06-87 
+                                .balloon__email
+                                    span.icon-email
+                                    a(href="mailto:info@stellplus.com") info@stellplus.com
+                            a.balloon__link(href="#").link Проложить маршрут
         section.departments-section.section 
             .section__header 
                 .container 

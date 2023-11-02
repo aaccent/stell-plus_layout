@@ -1,0 +1,31 @@
+[
+    {
+        "title": "Центральный офис",
+        "image": "./images/contacts/balloon-image.png",
+        "address": "Москва, ул. Палехская, д. 131, пом. 1, ком. 10",
+        "time": "Пн-Пт: c 09:00 до 18:00",
+        "email": "info@stellplus.com",
+        "phone": "+74959970687",
+        "coord": [55.75, 37.50]
+    },
+    {
+        "title": "Восточный офис",
+        "image": "./images/contacts/balloon-image.png",
+        "address": "Москва, ул. Палехская, д. 131, пом. 1, ком. 10",
+        "time": "Пн-Пт: c 09:00 до 18:00",
+        "email": "info@stellplus.com",
+        "phone": "+74959970687",
+        "coord": [55.75, 37.71]
+    },
+    {
+        "title": "Южный офис",
+        "image": "./images/contacts/balloon-image.png",
+        "address": "Москва, ул. Палехская, д. 131, пом. 1, ком. 10",
+        "time": "Пн-Пт: c 09:00 до 18:00",
+        "email": "info@stellplus.com",
+        "phone": "+74959970687",
+        "coord": [55.70, 37.70]
+    }
+]
+
+
