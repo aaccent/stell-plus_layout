@@ -8,12 +8,7 @@
         flex-shrink: 0;
         p {
             @include heading_hero;
-            @media (min-width: 576px) and (max-width: 1604px) {
-                font-size: calc(80px + 100 * (100vw - 576px) / (1604 - 576));
-            }
-            @include phone {
-                font-size: 80px;
-            }
+            text-transform: uppercase;
             white-space: nowrap;
         }
     }

@@ -3,6 +3,7 @@ $gap: 768px;
 $tablet: 992px;
 $desktop: 1280px;
 
+$container_max: 1680px;
 
 @mixin phone {
     @media (max-width: $phone) {
@@ -51,6 +52,12 @@ $desktop: 1280px;
         @content
     }
 };
+
+@mixin min_container {
+    @media screen and (min-width: $container_max) {
+        @content
+    }
+}
 
 
 

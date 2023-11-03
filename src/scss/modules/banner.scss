@@ -29,9 +29,6 @@
         &__container {
             gap: 12px;
         }
-        &__inner {
-            gap: 28px;
-        }
         &__container {
             padding-left: 0;
             padding-right: 0;
@@ -109,6 +106,14 @@
             }
         }
     }
+    @include min_container {
+        &_outer &__slide {
+            height: calc(810px + 810 * var(--screen-dif));
+        }
+        &_inner {
+
+        }
+    }
     @include gap {
         &_inner {
             & > .container {
@@ -149,11 +154,27 @@
             height: 100%;
         }
     }
+    &__text {
+        @include text_t2;
+    }
+    &__logo {
+        svg {
+            vertical-align: top
+        }
+    }
     &__btn {
         @include text_t6;
         position: absolute;
         top: 34%;
         left: 50%;
         transform: translate(-50%, 0);
+    }
+    @include min_container {
+        &__logo {
+            svg {
+                width: calc(252px + 252 * var(--screen-diff));
+                height: auto;
+            }
+        }
     }
 }

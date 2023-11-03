@@ -1,6 +1,5 @@
 .about-section {
     border-radius: 0;
-    margin-bottom: -15px;
     &__desc {
         flex-basis: calc(545 / 1608 * 100%);
         margin-left: auto;
@@ -25,6 +24,22 @@
         flex-basis: 364px;
         height: 448px;
     }
+    @include min_container {
+        &__link {
+            margin-left: calc(85px + 85 *  var(--screen-diff));
+        }
+        &__stats {
+            --padding-top: calc(240px + 240 *  var(--screen-diff));
+            --padding-x: calc(32px + 32 *  var(--screen-diff));
+            margin-top: calc(78px + 78 *  var(--screen-diff));
+            padding: var(--padding-top) var(--padding-x) var(--padding-x)
+        }
+        &__stat-card {
+            flex-basis: calc(364px + 364 *  var(--screen-diff));
+            height: calc(448px + 448 *  var(--screen-diff));
+        }
+    }
+
     @include desktop {
         &__desc {
             flex-basis: 45%;
@@ -134,12 +149,29 @@
     }
     &__unit {
         flex-shrink: 0;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 1.2;
+        @include text_t3;
         text-transform: uppercase;
         @include gap {
-            @include text_t4
+            font-size: 16px;
+        }
+    }
+    @include min_container {
+        --padding-x: calc(24px + 24 * var(--screen-diff));
+        --padding-y: calc(16px + 16 * var(--screen-diff));
+        &__inner-wrapper {
+            padding: var(--padding-y) var(--padding-x);
+        }
+        .icon-play {
+            font-size: calc(24px + 24 * var(--screen-diff));
+        }
+        &__icon {
+            font-size: calc(64px + 64 * var(--screen-diff));
+        }
+        &__name {
+            max-width: calc(220px + 220 * var(--screen-diff));
+        }
+        &__stat {
+            
         }
     }
     @include phone {

@@ -29,7 +29,7 @@
     }
     &__name {
         @include text_t2;
-        margin: 33px 0 0;
+        margin: 1.5em 0 0;
         text-transform: lowercase;
         @include min_gap {
             max-width: 246px;
@@ -40,6 +40,20 @@
             img {
                 transform: scale(1.05);
             }
+        }
+    }
+    @include min_container {
+        border-radius: calc(12px + 12 * var(--screen-diff));
+        --padding-top: calc(50px + 50 * var(--screen-diff));
+        --padding-x: calc(24px + 24 * var(--screen-diff));
+        --padding-bottom: calc(20px + 20 * var(--screen-diff));
+        padding: var(--padding-top) var(--padding-x) var(--padding-bottom);
+        &__amount {
+            top: calc(24px + 24 * var(--screen-diff));
+            right: calc(24px + 24 * var(--screen-diff))
+        }
+        &__name {
+            max-width: calc(246px + 246 * var(--screen-diff));
         }
     }
 }

@@ -1,7 +1,9 @@
 .button {
     border-radius: 50px;
     cursor: pointer;
-    padding: 13px 24px;
+    @include text_t6;
+    padding: 1em 2em;
+    // padding: 13px 24px;
     text-transform: uppercase;
     transition: all 0.2s ease 0s;
     &_big {
@@ -12,6 +14,10 @@
         padding: 0;
         height: 150px;
         width: 150px;
+        @include min_container {
+            width: calc(150px + 150 * var(--screen-diff)) ;
+            height: calc(150px + 150 * var(--screen-diff)) ;
+        }
     }
     &_primary {
         background-color: $base-1;

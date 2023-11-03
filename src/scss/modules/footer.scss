@@ -12,7 +12,8 @@
     }
     &__running-line {
         .running-line__wrapper {
-            padding: 50px 0;
+            --padding-y: calc(50 / 1680 * 100%);
+            padding: var(--padding-y) 0;
         }
     }
     &__shops-wrapper {
@@ -23,13 +24,18 @@
     }
     &__shop-logo {
         color: rgba($color: $base-1, $alpha: 0.2);
+        svg {
+            vertical-align: top;
+        }
     }
     &__contact-us {
         background-image: url(../images/form-bg.png);
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 16px;
-        padding: 90px 0 56px;
+        // padding: 90px 0 56px;
+        padding-top: calc(90 / 1680 * 100%);
+        padding-bottom: calc(56 / 1680 * 100%);
     }
     &__contact-us-container {
         display: flex;
@@ -42,24 +48,18 @@
     &__contact-us-title {
         @include heading_h1;
         text-transform: lowercase;
-        @media (min-width: 576px) and (max-width: 1608px) {
-            font-size: calc(44px + 46 * (100vw - 576px) / (1608 - 576));
-        }
-        @include phone {
-            font-size: 44px
-        }
     }
     &__contact-us-desc {
         @include text_t2;
-        margin: 24px 0 0;
-        max-width: 650px;
+        margin: 1.1em 0 0;
+        // max-width: 650px;
         opacity: 0.6;
     }
     &__contact-us-form {
         align-self: flex-end;
         flex: 0 0 49.5%;
         margin-top: calc(200 / 1568 * 100%);
-        max-width: 780px;
+        // max-width: 780px;
     }
     &__col {
         flex-shrink: 0;
@@ -72,12 +72,15 @@
     }
     &__footer {
         &-top {
+            --padding-y: calc(64 / 1680 * 100%);
             border-bottom: 1px dashed rgba($color: $base-1, $alpha: 0.2);
-            padding: 64px 0;
+            padding: var(--padding-y) 0;
         }
         &-bottom {
-            @include text_t5-2;
-            padding: 25px 0;
+            --padding-y: calc(25 / 1680 * 100%);
+            @include text_t5;
+            line-height: 1.2;
+            padding: var(--padding-y) 0;
             opacity: 0.6;
             .footer__col {
                 &:nth-child(2) {
@@ -104,6 +107,33 @@
                 margin-top: 12px;
             }
         }
+    }
+    @include min_container {
+        &__shops-wrapper {
+            --padding-x: calc(60px + 60 * var(--screen-diff));
+            gap: var(--padding-x);
+            padding: 0 var(--padding-x);
+        } 
+        &__shop-logo {
+            &:first-child {
+                svg {
+                    width: calc(241px + 241 * var(--screen-diff));
+                    height: auto;
+                }
+            }
+            &:last-child {
+                svg {
+                    width: calc(182px + 182 * var(--screen-diff));
+                    height: auto;
+                }
+            }
+        }
+        // &__contact-us-desc {
+        //     max-width: calc(650px + 650 * var(--screen-diff));
+        // }
+        // &__contact-us-form {
+        //     max-width: calc(780px + 780 * var(--screen-diff));
+        // }
     }
     @include desktop {
         &__footer {
@@ -136,12 +166,6 @@
         }
     }
     @include tablet {
-        &__running-line {
-            .running-line__wrapper {
-                padding-top: 35px;
-                padding-bottom: 35px;
-            }
-        }
         &__contact-us-container {
             flex-direction: column;
             gap: 60px;
@@ -149,18 +173,16 @@
                 flex-basis: auto;
             }
         }
+        &__contact-us-desc {
+            max-width: 650px;
+        }
         &__contact-us-form {
             align-self: flex-start;
             margin-top: 0;
+            max-width: 780px;
         }
     }
     @include gap {
-        &__running-line {
-            .running-line__wrapper {
-                padding-top: 20px;
-                padding-bottom: 20px;
-            }
-        }
         &__contact-us {
             padding-top: 45px;
             padding-bottom: 30px;
@@ -273,7 +295,8 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        @include text_t5-2;
+        @include text_t5;
+        line-height: 1.2;
         pointer-events: none;
         &:not(:last-child) {
             margin-bottom: 8px;
@@ -299,8 +322,8 @@
         border: 1px solid #E2E2E2;
         border-radius: 50%;
         position: relative;
-        width: 14px;
-        height: 14px;
+        width: 1em;
+        height: 1em;
         transition: background-color 0.2s ease 0s;
         &:before {
             background-color: $base-4;
@@ -416,7 +439,7 @@
     &__input, &__textarea {
         color: inherit;
         @include text_t4;
-        padding-bottom: 14px;
+        padding-bottom: 0.875em;
         width: 100%;
         text-transform: uppercase;
         & + label + .contact-us-form__control:after {
@@ -489,6 +512,7 @@
     }
     &__actions {
         margin: -16px 0 0;
+        flex-basis: 100%;
     }
     &__actions-wrapper {
         display: flex;
@@ -536,7 +560,7 @@
         align-items: center;
         gap: 20px;
         @include text_t6;
-        padding-right: 13px;
+        padding-right: 1em;
         text-transform: uppercase;
         button {
             position: relative;

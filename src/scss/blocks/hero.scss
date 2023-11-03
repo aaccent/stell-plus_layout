@@ -60,8 +60,11 @@
         }
     }
     &__title {
-        @include heading_h2;
         font-size: calc(62 / 90 * 1em);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 0.9;
+        letter-spacing: 0.62px;
         flex-basis: calc(500 / 1568 * 100%);
         text-transform: lowercase;
     }
@@ -97,8 +100,10 @@
         }
     }
     &__stat-value {
-        @include number_n2;
         font-size: 1em;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 0.9
     }
     &__stat-unit {
         @include text_t5-3
@@ -114,20 +119,22 @@
             font-size: 18px;
             transform: rotate(90deg);
         }
-        // &::before {
-        //     border: 10px solid $base-1;
-        //     border-left-color: transparent;
-        //     border-right-color: transparent;
-        //     border-bottom-color: transparent;
-        //     content: "";
-        //     transform: translate(0, 50%);
-        // }
         @include ishover {
             .icon-play {
                 border-top-color: $base-4;
             }
         }
     }
+    @include min_container {
+        margin-bottom: calc(-15px - 15 * var(--screen-diff));
+        padding-top: calc(135px + 135 * var(--screen-diff));
+        padding-bottom: calc(70px + 70 * var(--screen-diff));
+        min-height: 650px;
+        &__head {
+            font-size: calc(90px + 90 * var(--screen-diff));
+        }
+    }
+
     @include phone {
         &__button {
             margin: 0 auto;

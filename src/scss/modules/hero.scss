@@ -33,16 +33,13 @@
     &__content {
         // width: 50%;
         max-width: 780px;
+        @media screen and (min-width: 1680px) {
+            max-width: calc(780px + 780 * var(--screen-diff));
+        }
     }
     &__title {
         @include heading_h1;
         text-transform: lowercase;
-        @media (min-width: 576px) and (max-width: 1608px) {
-            font-size: calc(44px + 46 * (100vw - 576px) / (1608 - 576));
-        }
-        @include phone {
-            font-size: 44px
-        }
     }
     &__desc {
         @include text_t2;
@@ -60,7 +57,7 @@
     &__link {
         background-color: $base-1;
         color: $base-4;
-        @include text_t6;
+        // @include text_t6;
     }
     &__video {
         display: flex;
@@ -89,9 +86,6 @@
         }
     }
     @include gap {
-        &__content {
-            // width: 100%;
-        }
         &__desc {
             font-size: 18px;
         }

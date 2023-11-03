@@ -35,8 +35,6 @@
     }
     &__menu-item {
         position: relative;
-        padding: 9px 20px;
-        transition: color 0.3s ease 0s;
         &::before {
             background-color: $base-1;
             border-radius: 50px;
@@ -48,9 +46,10 @@
             height: 100%;
             opacity: 0;
             transition: opacity 0.3s ease 0s;
+            z-index: -1;
         }
         @include min_tablet {
-            @media screen and (any-hover: hover) {
+            @include ishover {
                 &:hover {
                     color: $base-4;
                     &:before {
@@ -79,12 +78,12 @@
         }
     }
     &__menu-link {
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 1;
-        letter-spacing: 0.12px;
+        display: inline-block;
+        padding: 0.75em 1.67em;
+        @include text_t6;
         position: relative;
         text-transform: uppercase;
+        transition: color 0.3s ease 0s;
     }
     &__submenu {
         padding: 14px 0 0;
@@ -114,11 +113,8 @@
     &__submenu-link {
         display: block;
         color: $base-4;
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 1;
-        letter-spacing: 0.12px;
-        padding: 24px;
+        @include text_t6;
+        padding: 2em;
         white-space: nowrap;
         @include min_tablet {
             @include ishover {
@@ -197,7 +193,7 @@
     }
     &__phone-link {
         display: inline-block;
-        white-space: nowrap;
+        @include text_t4;
         &_icon {
             display: none;
             font-size: 32px;
@@ -311,11 +307,27 @@
                 }
             }
         }
-        @include min_gap {
-            padding: 13px 0;
-        }
     }
 
+    @media screen and (min-width: 1680px) {
+        min-height: calc(40px + 40 *var(--screen-diff));
+        &__wrapper {
+            --padding-y: calc(32px + 32 * var(--screen-diff));
+            padding: var(--padding-y) 0;
+        }
+        &__menu-list {
+            padding: calc(2px + 2 * var(--screen-diff));
+        }
+        &__actions {
+            column-gap: calc(30px + 30 * var(--screen-diff));
+        }
+        &_scroll {
+            .header__wrapper {
+                --padding-y: calc(13px + 13 * var(--screen-diff));
+                padding: var(--padding-y) + 0
+            }
+        }
+    }
     @include desktop {
         &__dropdown-head {
             .site-lang__text {
@@ -421,45 +433,6 @@
                 display: none;
             }
         }
-        // &__phone {
-        //     position: relative;
-        //     @include ishover {
-        //         .header__phone-link {
-        //             pointer-events: auto;
-        //             opacity: 1;
-        //             visibility: visible;
-        //             transform: translate(20%, 0);
-        //         }
-        //     }
-        //     &_hover {
-        //         .header__phone-link {
-        //             pointer-events: auto;
-        //             opacity: 1;
-        //             visibility: visible;
-        //             transform: translate(20%, 0);
-        //         }
-        //     }
-        // }
-        // &__phone-link {
-        //     display: none;
-        //     &_icon {
-        //         display: block;
-        //     }
-        // }
-        // &__phone-link {
-        //     background-color: $base-1;
-        //     border-radius: 20px;
-        //     color: $base-4;
-        //     padding: 8px;
-        //     pointer-events: none;
-        //     position: absolute;
-        //     top: 100%;
-        //     right: 0%;
-        //     opacity: 0;
-        //     visibility: hidden;
-        //     transform: translate(20%, -10px);
-        //     transition: all 0.3s ease 0s;
-        // }
     }
 }
 
@@ -468,19 +441,27 @@
     display: flex;
     align-items: center;
     gap: 12px;
-}
-
-.logo__icon {
-    color: inherit
-}
-
-.logo__text {
-    color: inherit;
-    font-family: Inter;
-    font-size: 16px;
-    line-height: normal;
-    letter-spacing: 0.32px;
-    text-transform: uppercase;
+    &__text {
+        color: inherit;
+        font-family: Inter;
+        font-size: 16px;
+        line-height: normal;
+        letter-spacing: 0.32px;
+        text-transform: uppercase;
+        @media screen and (min-width: 1680px) {
+            font-size: calc(16px + 16 * var(--screen-diff));
+        }
+    }
+    @media screen and (min-width: 1680px) {
+        gap: calc(32px + 32 * var(--screen-diff));
+        svg {
+            width: calc(35px + 35 * var(--screen-diff));
+            height: auto;
+        }
+        &__text {
+            font-size: calc(16px + 16 * var(--screen-diff));
+        }
+    }
 }
 
 .site-lang {
@@ -494,18 +475,24 @@
     }
     &__text {
         color: $base-4;
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 1;
-        letter-spacing: 0.12px;
+        @include text_t6;
         text-transform: uppercase;
         white-space: nowrap;
-        // @include phone {
-        //     display: none;
-        // }
     }
     &_min {
         gap: 6px;
         padding: 9px;
+    }
+    @include min_container{
+        gap: calc(9px + 9 * var(--screen-diff));
+        padding: calc(16px + 16 * var(--screen-diff));
+        &__img {
+            width: calc(20px + 20 * var(--screen-diff));
+            height: calc(20px + 20 * var(--screen-diff))
+        }
+        &_min {
+            gap: calc(6px + 6 * var(--screen-diff));
+            padding: calc(9px + 9 * var(--screen-diff));
+        }
     }
 }

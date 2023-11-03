@@ -55,7 +55,19 @@
     }
 }
 
+.section_one {
+    .section__title {
+        @include min_gap {
+            width: calc(901 / 1580 * 100%);
+        }
+    }
+}
 .suggest-section {
+    .section__title {
+        @include min_gap {
+            width: calc(1170 / 1580 * 100%);
+        }
+    }
     &__body {
         .container {
             display: flex;
@@ -187,6 +199,7 @@
         }
     }
 }
+
 .timeline-slider {
     flex: 1 1 auto;
     min-width: 0;
@@ -208,6 +221,11 @@
         overflow: hidden;
         .swiper-pagination-progressbar-fill {
             background-color: $base-1;
+        }
+    }
+    @include min_container {
+        .swiper {
+            max-width: 45%;
         }
     }
     @include gap {

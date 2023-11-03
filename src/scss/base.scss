@@ -1,3 +1,43 @@
+:root {
+    --init-width: 1680;
+    --init-width_units: calc(var(--init-width) * 1px);
+    --heading-hero_font-size: 180px;
+    --heading-h1_font-size: 90px;
+    --heading-h2_font-size: 62px;
+    --text-t1_font-size: 26px;
+    --text-t2_font-size: 22px;
+    --text-t3_font-size: 18px;
+    --text-t4_font-size: 16px;
+    --text-t5_font-size: 14px;
+    --text-t6_font-size: 12px;
+    --number-n1_font-size: 128px;
+    --number-n2_font-size: 90px;
+    @media screen and (min-width: 1680px) {
+        --screen-diff: calc((100vw - var(--init-width_units))/var(--init-width));
+        --heading-hero_font-size: calc(180px + 180 * var(--screen-diff));
+        --heading-h1_font-size: calc(90px + 90 * var(--screen-diff));
+        --heading-h2_font-size: calc(62px + 62 * var(--screen-diff));
+        --text-t1_font-size: calc(26px + 26 * var(--screen-diff));
+        --text-t2_font-size: calc(22px + 22 * var(--screen-diff));
+        --text-t3_font-size: calc(18px + 18 * var(--screen-diff));
+        --text-t4_font-size: calc(16px + 16 * var(--screen-diff));
+        --text-t5_font-size: calc(14px + 14 * var(--screen-diff));
+        --text-t6_font-size: calc(12px + 12 * var(--screen-diff));
+        --number-n1_font-size: calc(128px + 128 * var(--screen-diff));
+        --number-n2_font-size: calc(90px + 90 * var(--screen-diff));
+    }
+    @media (min-width: 576px) and (max-width: 1608px) {
+        --heading-hero_font-size: calc(80px + 100 * (100vw - 576px) / (1608 - 576));
+        --heading-h1_font-size: calc(44px + 46 * (100vw - 576px) / (1608 - 576));
+        --heading-h2_font-size: calc(32px + 30 * (100vw - 576px) / (1608 - 576));
+    }
+    @include phone {
+        --heading-hero_font-size: 80px;
+        --heading-h1_font-size: 44px;
+        --heading-h2_font-size: 32px;
+    }
+}
+
 *, *:before, *:after {
     box-sizing: border-box;
     margin: 0;
@@ -40,16 +80,20 @@ input {
     @include tablet { 
         padding-top: 97px
     }
+    @media screen and (min-width) {
+        padding-top: calc(108px + 108 * var(--screen-diff));;
+    }
 }
 .container {
     margin: 0 auto;
     padding: 0 20px;
     width: 100%;
     max-width: 1608px;
-    // @include phone {
-    //     padding-left: 16px;
-    //     padding-right: 16px;
-    // }
+    @media screen and (min-width: 1680px) {
+        --padding-x: calc(20px + 20 * var(--screen-diff));
+        padding: 0 var(--padding-x);
+        max-width: calc(1608px + 1608 * var(--screen-diff));
+    }
 }
 
 
@@ -70,12 +114,6 @@ input {
         @include heading_h2;
         flex-basis: calc(1067/1608 * 100%);
         text-transform: lowercase;
-        @media (min-width: 576px) and (max-width: 1608px) {
-            font-size: calc(32px + 30 * (100vw - 576px) / (1608 - 576));
-        }
-        @include phone {
-            font-size: 32px;
-        }
     }
     &__body {
         padding: 32px 0 0;
@@ -115,6 +153,20 @@ input {
             height: 100%;
             object-fit: cover;
             vertical-align: top
+        }
+    }
+    @media screen and (min-width: 1680px) {
+        margin-bottom: calc(-15px - 15 * var(--screen-diff));
+        padding-top: calc(90px + 90 * var(--screen-diff));
+        padding-bottom: calc(105px + 105 * var(--screen-diff));
+        &__header {
+            padding-bottom: calc(64px + 64 * var(--screen-diff));
+        }
+        &__body {
+            padding-top: calc(32px + 32 * var(--screen-diff))
+        }
+        &__images {
+            margin-top: calc(50px + 50 * var(--screen-diff))
         }
     }
     @include gap {

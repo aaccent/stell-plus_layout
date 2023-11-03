@@ -17,6 +17,9 @@
     &:after {
         content: none
     }
+    @include min_container {
+        font-size: calc(25px + 25 * var(--screen-diff));
+    }
     @include gap {
         display: none;
     }
@@ -49,6 +52,11 @@
         gap: 28px;
         @include text_t6;
         padding: 7px 16px;
+    }
+    @include min_container {
+        &__inner {
+            gap: calc(28px + 28 * var(--screen-diff))
+        }
     }
     @include gap {
         &__inner {

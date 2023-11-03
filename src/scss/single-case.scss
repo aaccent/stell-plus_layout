@@ -27,7 +27,18 @@
 .section {
     border-radius: 0;
     &__desc {
-        flex-basis: calc(623 / 1568 * 100%);
+        @include min_gap {
+            flex-basis: calc(623 / 1568 * 100%);
+        }
+    }
+
+    &-one, &-two, &-three {
+        .section__title {
+            width: calc(1040 / 1568 * 100%);
+            @include gap {
+                width: 100%;
+            }
+        }
     }
 }
 
