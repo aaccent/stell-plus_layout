@@ -13,7 +13,7 @@ const scss = () => {
         .pipe(sass({
             outputStyle: "expanded"
         }))
-        // .pipe(groupCssMediaQueries())
+        .pipe(groupCssMediaQueries())
         .pipe(autoprefixer({
             grid: true,
             overrideBrowserslist: ["last 10 versions"],

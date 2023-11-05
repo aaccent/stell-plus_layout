@@ -4,6 +4,7 @@
     --heading-hero_font-size: 180px;
     --heading-h1_font-size: 90px;
     --heading-h2_font-size: 62px;
+    --heading-h3_font-size: 48px;
     --text-t1_font-size: 26px;
     --text-t2_font-size: 22px;
     --text-t3_font-size: 18px;
@@ -12,29 +13,34 @@
     --text-t6_font-size: 12px;
     --number-n1_font-size: 128px;
     --number-n2_font-size: 90px;
-    @media screen and (min-width: 1680px) {
+    --breadcrumbs_font-size: 10px;
+    @include min_container {
         --screen-diff: calc((100vw - var(--init-width_units))/var(--init-width));
         --heading-hero_font-size: calc(180px + 180 * var(--screen-diff));
         --heading-h1_font-size: calc(90px + 90 * var(--screen-diff));
         --heading-h2_font-size: calc(62px + 62 * var(--screen-diff));
+        --heading-h3_font-size: calc(48px + 48 * var(--screen-diff));
         --text-t1_font-size: calc(26px + 26 * var(--screen-diff));
         --text-t2_font-size: calc(22px + 22 * var(--screen-diff));
         --text-t3_font-size: calc(18px + 18 * var(--screen-diff));
         --text-t4_font-size: calc(16px + 16 * var(--screen-diff));
         --text-t5_font-size: calc(14px + 14 * var(--screen-diff));
         --text-t6_font-size: calc(12px + 12 * var(--screen-diff));
+        --breadcrumbs_font-size: calc(10px + 10 * var(--screen-diff));
         --number-n1_font-size: calc(128px + 128 * var(--screen-diff));
         --number-n2_font-size: calc(90px + 90 * var(--screen-diff));
     }
     @media (min-width: 576px) and (max-width: 1608px) {
         --heading-hero_font-size: calc(80px + 100 * (100vw - 576px) / (1608 - 576));
-        --heading-h1_font-size: calc(44px + 46 * (100vw - 576px) / (1608 - 576));
+        --heading-h1_font-size: calc(45px + 45 * (100vw - 576px) / (1608 - 576));
         --heading-h2_font-size: calc(32px + 30 * (100vw - 576px) / (1608 - 576));
+        --heading-h3_font-size: calc(32px + 16 * (100vw - 576px) / (1608 - 576));
     }
     @include phone {
         --heading-hero_font-size: 80px;
-        --heading-h1_font-size: 44px;
+        --heading-h1_font-size: 45px;
         --heading-h2_font-size: 32px;
+        --heading-h3_font-size: 32px;
     }
 }
 
@@ -43,6 +49,10 @@
     margin: 0;
     padding: 0
 }
+
+// html {
+//     font-size: 16px;
+// }
 
 body {
     color: $base-1;
@@ -80,7 +90,7 @@ input {
     @include tablet { 
         padding-top: 97px
     }
-    @media screen and (min-width) {
+    @include min_container {
         padding-top: calc(108px + 108 * var(--screen-diff));;
     }
 }
@@ -89,7 +99,7 @@ input {
     padding: 0 20px;
     width: 100%;
     max-width: 1608px;
-    @media screen and (min-width: 1680px) {
+    @include min_container {
         --padding-x: calc(20px + 20 * var(--screen-diff));
         padding: 0 var(--padding-x);
         max-width: calc(1608px + 1608 * var(--screen-diff));
@@ -131,6 +141,7 @@ input {
     }
     &__desc {
         @include text_t2;
+        flex-basis: calc(545 / 1568 * 100%);
         margin-right: auto;
         opacity: 0.6;
     }
@@ -145,7 +156,6 @@ input {
     }
     &__img {
         border-radius: 16px;
-        flex: 1 1 100%;
         overflow: hidden;
         max-height: 690px;
         img {
@@ -155,7 +165,7 @@ input {
             vertical-align: top
         }
     }
-    @media screen and (min-width: 1680px) {
+    @include min_container {
         margin-bottom: calc(-15px - 15 * var(--screen-diff));
         padding-top: calc(90px + 90 * var(--screen-diff));
         padding-bottom: calc(105px + 105 * var(--screen-diff));
@@ -188,10 +198,14 @@ input {
     }
     @include phone {
         &__images {
-            margin: 30px -20px 0;
+            margin-top: 30px;
+            &.swiper {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding: 0 20px;
+            }
         }
         &__img {
-            border-radius: 0;
             flex-shrink: 0;
             height: 420px
         }
@@ -229,5 +243,24 @@ input {
     }
     &:after {
         transform: rotate(45deg);
+    }
+}
+
+.swiper {
+    &-swipe {
+        pointer-events: none;
+        position: absolute;
+        // top: calc(70 / 480 * 100%);
+        // right: calc(538 / 1568 * 100%);
+        transition: all 0.2s ease 0s;
+        z-index: 1;
+        // @media (min-width: 576px) and (max-width: 1608px) {
+        //     width: calc(80px + 70 * (100vw - 576px) / (1608 - 576));
+        //     height: calc(80px + 70 * (100vw - 576px) / (1608 - 576))
+        // }
+        // @include phone {
+        //     width: 80px;
+        //     height: 80px
+        // }
     }
 }

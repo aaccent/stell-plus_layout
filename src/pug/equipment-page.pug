@@ -1,0 +1,101 @@
+extends templates/layout
+block head
+    title  
+    link(rel="stylesheet", href="css/equipment-page.min.css")
+block header 
+    - var color = "white"
+block content 
+    section.hero-section
+        .hero-section__running-line.running-line 
+            .running-line__wrapper 
+                .running-line__item 
+                    p Складское оборудование
+        .hero-section__container.container
+            .hero-section__content
+                nav.hero-section__breadcrumbs.breadcrumbs 
+                        ol.breadcrumbs__list 
+                            li.breadcrumbs__item 
+                                a.breadcrumbs__link(href="/") Главная
+                            li.breadcrumbs__item 
+                                a.breadcrumbs__link(href="#") Сладское оборудование
+                .hero-section__img 
+                    img(src="./images/equipments/equipment.png", alt="3d model")
+                .hero-section__etc
+                    svg(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none')
+                        circle(cx='12' cy='12' r='11.5' stroke='currentColor')
+                    svg(xmlns='http://www.w3.org/2000/svg' width='23' height='24' viewBox='0 0 23 24' fill='none')
+                        rect(x='0.5' y='1' width='22' height='22' stroke='currentColor')
+                        path(d='M17 18.9282L5 12L17 5.0718L17 18.9282Z' stroke='currentColor')
+                .hero-section__head.hero-section__head_horizontal
+                    h1.hero-section__title Складское оборудование
+                    .hero-section__stat 
+                        .hero-section__stat-value 32 
+                        .hero-section__stat-unit товара в категории
+    section.equipment.section
+        .equipment__header.section__header
+            .container 
+                .equipment__filter-panel.filter-panel
+                    .filter-panel__tags 
+                        .filter-panel__tag.tag.button
+                            span.tag__text Фронтальные стеллажи
+                            button.tag__icon(type="button")
+                        .filter-panel__tag.tag.button
+                            span.tag__text Паллетные стеллажи
+                            button.tag__icon(type="button")
+                        .filter-panel__tag.tag.button
+                            span.tag__text Глубинные стеллажи
+                            button.tag__icon(type="button")
+                        .filter-panel__tag.tag.button
+                            span.tag__text Набивные  стеллажи
+                            button.tag__icon(type="button")
+                        .filter-panel__tag.tag.button
+                            span.tag__text Среднегрузовые  стеллажи
+                            button.tag__icon(type="button")
+                        .filter-panel__tag.tag.button
+                            span.tag__text Консольные  стеллажи
+                            button.tag__icon(type="button")
+                        .filter-panel__tag.tag.button
+                            span.tag__text Мезонины
+                            button.tag__icon(type="button")
+                    .tag.tag_clear.tag_disabled.button 
+                        span.tag__text Сбросить все
+                        button.tag__icon(type="button")
+        .equipment__body.section__body
+            .container
+                .equipment__grid
+                    article.equipment-item 
+                        .equipment-item__img 
+                            img(src="./images/equipments/equipment-5.png", alt="")
+                        h4.equipment-item__name Фронтальный стеллаж
+                    article.equipment-item 
+                        .equipment-item__img 
+                            img(src="./images/equipments/equipment.png", alt="")
+                        h4.equipment-item__name Набивной стеллаж
+                    article.equipment-item 
+                        .equipment-item__img 
+                            img(src="./images/equipments/equipment-6.png", alt="")
+                        h4.equipment-item__name Тоннельный стеллаж
+                    article.equipment-item 
+                        .equipment-item__img 
+                            img(src="./images/equipments/equipment-7.png", alt="")
+                        h4.equipment-item__name Гравитационный стеллаж
+                    article.equipment-item 
+                        .equipment-item__img 
+                            img(src="./images/equipments/equipment-8.png", alt="")
+                        h4.equipment-item__name Мобильный стеллаж
+                    article.equipment-item 
+                        .equipment-item__img 
+                            img(src="./images/equipments/equipment-9.png", alt="")
+                        h4.equipment-item__name Глубинный стеллаж
+                    article.equipment-item 
+                        .equipment-item__img 
+                            img(src="./images/equipments/equipment-10.png", alt="")
+                        h4.equipment-item__name Въездной стеллаж
+                    article.equipment-item 
+                        .equipment-item__img 
+                            img(src="./images/equipments/equipment-11.png", alt="")
+                        h4.equipment-item__name Фронтальный стеллаж
+                button.equipment__more.button.button_big.button_outline_black Ещё
+block scripts 
+    script(src="js/script.min.js") 
+    script(src="js/equipment.min.js")

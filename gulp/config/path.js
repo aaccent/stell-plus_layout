@@ -22,7 +22,7 @@ const path = {
         pug: `${srcFolder}/pug/*.pug`,
         scss: `${srcFolder}/scss/*.scss`,
         css_libs: `${srcFolder}/scss/libs/*.css`,
-        js: `${srcFolder}/js/app.js`,
+        js: `${srcFolder}/js/*.js`,
         js_libs: `${srcFolder}/js/libs/*.js`,
         fonts: `${srcFolder}/fonts`,
         images: `${srcFolder}/images/**/*`,

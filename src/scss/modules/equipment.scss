@@ -18,9 +18,15 @@
         cursor: pointer;
         @include ishover {
             .equipment-section__shops-item {
-                &:not(:last-child) {
-                    margin-right: 5px;
+                &:first-child {
+                    transform: translate(-22.5%, 0);
                 }
+                &:last-child {
+                    transform: translate(22.5%, 0);
+                }
+                // &:not(:last-child) {
+                //     margin-right: 5px;
+                // }
             }
         }
     }
@@ -28,14 +34,21 @@
         background-color: $base-1;
         border: 1px solid rgba($color: $base-4, $alpha: 0.2);
         border-radius: 50%;
+        color: $base-4;
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
         width: 80px;
         height: 80px;
-        transition: margin-right 0.3s ease 0s;
+        transition: transform 0.3s ease 0s;
+        z-index: 1;
         &:not(:last-child) {
             margin-right: -13px;
+        }
+        svg {
+            width: 47.5%;
+            height: 47.5%;
         }
     }
     .section__desc {

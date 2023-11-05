@@ -133,6 +133,11 @@
         &__head {
             font-size: calc(90px + 90 * var(--screen-diff));
         }
+        &__button {
+            .icon-play {
+                font-size: calc(18px + 18 * var(--screen-diff));
+            }
+        }
     }
 
     @include phone {

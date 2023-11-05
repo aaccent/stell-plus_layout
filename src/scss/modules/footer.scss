@@ -233,6 +233,10 @@
     &__menu-link {
         @include text_t3;
         opacity: 0.6;
+        transition: color 0.2s ease 0s;
+        @include ishover {
+            color: $base-3;
+        }
     }
 }
 
@@ -249,11 +253,12 @@
     &__head {
         border-bottom: 1px solid rgba($color: $base-4, $alpha: 0.2);
         cursor: pointer;
+        @include text_t4;
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
         position: relative;
-        padding-bottom: 14px;
+        padding-bottom: 0.875em;
         width: 100%; // ???
         opacity: 0.5;
         &:after {
@@ -271,7 +276,6 @@
     }
     .select__label {
         color: $base-4;
-        @include text_t4;
         text-transform: uppercase;
     }
     .select__button {
@@ -289,17 +293,17 @@
     }
     &__options {
         color: $base-4;
-        padding: 16px 0 0;
+        @include text_t5;
+        padding-top: calc(16 / 14 * 1em);
     }
     &__option {
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        @include text_t5;
         line-height: 1.2;
         pointer-events: none;
         &:not(:last-child) {
-            margin-bottom: 8px;
+            margin-bottom: calc(8 / 14 * 1em);
         }
         &:not(&_selected) {
             @include ishover {
@@ -447,7 +451,7 @@
         }
         &:focus {
             & + label {
-                transform: translate(0, - 20px) scale(0.75);
+                transform: translate(0, - 1.25em) scale(0.75);
             }
         }
         &:disabled {
@@ -462,6 +466,13 @@
         &_visible {
             opacity: 1;
             visibility: visible;
+        }
+        .icon-close {
+            color: $base-4;
+            font-size: 18px;
+            display: block;
+            font-size: inherit;
+            transform: translate(0, -0.875em);
         }
     }
     &__textarea {
@@ -488,7 +499,7 @@
         flex-basis: 100%;
     }
     &__error-text {
-        color: #C71D1D;
+        color: $red;
         font-size: 10px;
         font-weight: 400;
         line-height: 1;
@@ -540,16 +551,14 @@
     }
     &__file-label {
         color: $base-4;
+        @include text_t4-2;
         cursor: pointer;
         display: flex;
         align-self: center;
-        gap: 6px;
-        .span:last-child {
-            @include text_t4;
-            text-transform: lowercase;
-        }
+        gap: calc(6 / 16 * 1em);
+        text-transform: lowercase;
         .icon-clip {
-            font-size: 25px;
+            font-size: 1.5625em;
         }
     }
     &__file-doc {
@@ -558,7 +567,7 @@
         cursor: auto;
         display: none;
         align-items: center;
-        gap: 20px;
+        gap: calc;
         @include text_t6;
         padding-right: 1em;
         text-transform: uppercase;
@@ -586,20 +595,20 @@
     }
     &__success-label {
         color: $base-4;
+        @include text_t2;
         display: flex;
         align-items: center;
         gap: 8px;
         span:last-child {
-            @include text_t2;
             text-transform: lowercase;
         }
         .icon-checkmark {
-            font-size: 28px;
+            font-size: calc(28 / 22 * 1em);
         }
     }
     &_sending {
         $disabled-color: rgba(0, 0, 0, 0.38);
-        .contact-us-form__control {
+        .contact-us-form__control, .select__label {
             border-bottom-color: $disabled-color;
             color: $disabled-color;
             cursor: auto;
@@ -632,6 +641,9 @@
                 display: block !important;
             }
         }
+    }
+    @include min_container {
+        padding: calc(40 / 1568 * 100%)
     }
     @include phone {
         padding-left: 20px;

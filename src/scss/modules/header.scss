@@ -46,7 +46,6 @@
             height: 100%;
             opacity: 0;
             transition: opacity 0.3s ease 0s;
-            z-index: -1;
         }
         @include min_tablet {
             @include ishover {
@@ -260,6 +259,11 @@
                 }
             }
         }
+        .header__dropdown {
+            @include ishover {
+                background-color: $base-2;
+            }
+        }
         .header__burger {
             &::before, &::after, span {
                 background-color: $base-4;
@@ -371,7 +375,7 @@
             &_open {
                 transform: translate(0, 0);
             }
-            .header_scroll &, .header_black & {
+            .header_scroll &, .header_white & {
                 background-color: $base-1;
                 color: $base-4
             }
@@ -483,16 +487,16 @@
         gap: 6px;
         padding: 9px;
     }
-    @include min_container{
-        gap: calc(9px + 9 * var(--screen-diff));
-        padding: calc(16px + 16 * var(--screen-diff));
-        &__img {
-            width: calc(20px + 20 * var(--screen-diff));
-            height: calc(20px + 20 * var(--screen-diff))
-        }
-        &_min {
-            gap: calc(6px + 6 * var(--screen-diff));
-            padding: calc(9px + 9 * var(--screen-diff));
-        }
-    }
+    // @include min_container{
+    //     gap: calc(9px + 9 * var(--screen-diff));
+    //     padding: calc(16px + 16 * var(--screen-diff));
+    //     &__img {
+    //         width: calc(20px + 20 * var(--screen-diff));
+    //         height: calc(20px + 20 * var(--screen-diff))
+    //     }
+    //     &_min {
+    //         gap: calc(6px + 6 * var(--screen-diff));
+    //         padding: calc(9px + 9 * var(--screen-diff));
+    //     }
+    // }
 }

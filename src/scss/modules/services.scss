@@ -20,6 +20,7 @@
         }
     }
     @include min_container {
+        margin-bottom: 0;
         padding-bottom: calc(90px + 90 * var(--screen-diff));
         &__title {
             max-width: calc(821px + 821 * var(--screen-diff));
@@ -144,7 +145,7 @@
         text-transform: uppercase;
     }
     @include min_container {
-        --padding-y: calc(25px + 25 * var(--screen-diff));
+        --padding-y: calc(25 / 1680 * 100%);
         padding: var(--padding-y) 0;
         &__head {
             gap: calc(32px + 32 * var(--screen-diff));

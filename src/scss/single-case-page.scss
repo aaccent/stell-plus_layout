@@ -1,0 +1,270 @@
+@import "base/_vars.scss";
+@import "base/_fonts.scss";
+@import "base/_icons.scss";
+@import "mixins/breakpoints.scss";
+@import "mixins/media.scss";
+@import "mixins/fonts";
+@import "base.scss";
+
+@import "components/button.scss";
+@import "components/swiper-controls";
+@import "components/breadcrumbs.scss";
+@import "components/_equipment.scss";
+@import "components/project.scss";
+
+.breadcrumbs {
+    margin: 32px 0 0;
+    &__item:not(:last-child) {
+        &:after {
+            color: $base-4
+        }
+    }
+    &__link {
+        color: $base-4;
+    }
+}
+
+.section {
+    border-radius: 0;
+    &__desc {
+        @include min_gap {
+            flex-basis: calc(623 / 1568 * 100%);
+        }
+    }
+}
+
+// .swiper-pagination-bullet {
+//     background-color: transparent;
+//     position: relative;
+//     padding: 8px;
+//     width: auto;
+//     height: auto;
+//     &:before {
+//         background-color: $base-2;
+//         border-radius: 50%;
+//         display: block;
+//         content: "";
+//         // position: absolute;
+//         // top: calc(50% - 6px);
+//         // left: calc(50% - 6px);
+//         width: 12px;
+//         height: 12px;
+//         transition: background-color .3s ease 0s;
+//     }
+//     &:after {
+//         border: 1px solid $base-1;
+//         border-radius: 50%;
+//         content: "";
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 100%;
+//         height: 100%;
+//         transform: scale(.4);
+//         transition: transform .3s ease 0s;
+//         z-index: -1;
+//     }
+//     &-active {
+//         &::before {
+//             background-color: $base-1
+//         }
+//         &:after {
+//             transform: scale(1)
+//         }
+//     }
+// }
+
+@import "modules/header.scss";
+
+.banner-section {
+    margin: 35px 0 0;
+    &__content {
+        border-radius: 16px;
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+        &::after {
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%);// lightgray 0px -319.128px / 100% 148.765% no-repeat;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; 
+            z-index: 1;
+        }
+    }
+    &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &__logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(450 / 1608 * 100%);
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        @include gap {
+            width: 50%
+        }
+        @include phone {
+            width: 75%
+        }
+    }
+    @include phone {
+        &__content {
+            height: 620px;
+        }
+    }
+}
+
+.section-one {
+    .section__title {
+        text-transform: none
+    }
+}
+
+.section-one, .section-two, .section-three, .results-section {
+    .section__title {
+        width: calc(1040 / 1568 * 100%);
+        @include gap {
+            width: 100%;
+        }
+    }
+}
+
+.equipments-section, .projects-section {
+    &__header {
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+    }
+    &__title {
+        flex-basis: calc(927 / 1568 * 100%);
+    }
+    .swiper-buttons {
+        display: flex;
+        gap: 16px;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+        border: 1px solid rgba($color: $base-4, $alpha: 0.2);
+        border-radius: 50px;
+        display: block;
+        color: $base-4;
+        font-size: 32px;
+        line-height: 1;
+        padding: 24px 74px;
+        width: auto;
+        height: auto;
+        span {
+            font-size: inherit;
+        }
+        @include min_container {
+            border-radius: calc(50px + 50 * var(--screen-diff));
+            font-size: calc(32px + 32 * var(--screen-diff));
+            padding: 0.75em 2.3125em
+        }
+        @media (min-width: 576px) and (max-width: 1608px) {
+            padding-left: calc(12px + 62 * (100vw - 576px) / (1608 - 576));
+            padding-right: calc(12px + 62 * (100vw - 576px) / (1608 - 576));
+            padding-top: calc(12px + 12 * (100vw - 576px) / (1608 - 576));
+            padding-bottom: calc(12px + 12 * (100vw - 576px) / (1608 - 576));
+        }
+        @include phone {
+            padding: 12px;
+        }
+    }
+
+    @include gap {
+        &__header .container {
+            flex-direction: column;
+            gap: 15px
+        }
+    }
+}
+
+.equipments-section {
+    .swiper-slide {
+        height: auto
+    }
+    @media screen and (max-width: 480px) {
+        .swiper {
+            padding: 0 20px;
+            margin-left: -20px;
+            margin-right: -20px;
+        }
+    }
+}
+.results-slider {
+    border-radius: 16px;
+    margin: 75px 0 0;
+    overflow: hidden;
+    &__slide {
+        border-radius: 16px;
+        max-height: 720px;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            vertical-align: top
+        }
+    }
+    .swiper-controls {
+        left: 50%;
+        right: auto;
+        bottom: calc(32 / 720 * 100%);
+        width: auto;
+        transform: translate(-50%, 0);
+        &__inner {
+            background-color: $base-1;
+            padding-top: 1em;
+            padding-bottom: 1em;
+        }
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: $base-4
+    }
+    @include gap {
+        margin-top: 40px
+    }
+    @include phone {
+        &__slide {
+            height: 450px;
+            img {
+                height: 100%
+            }
+        }
+    }
+}
+
+.projects-slider {
+    position: relative;
+    .button {
+        pointer-events: none;
+        position: absolute;
+        top: calc(70 / 480 * 100%);
+        right: calc(538 / 1568 * 100%);
+        transition: all 0.2s ease 0s;
+        z-index: 1;
+        @media (min-width: 576px) and (max-width: 1608px) {
+            width: calc(80px + 70 * (100vw - 576px) / (1608 - 576));
+            height: calc(80px + 70 * (100vw - 576px) / (1608 - 576))
+        }
+        @include phone {
+            width: 80px;
+            height: 80px
+        }
+    }
+}
+@import "modules/footer.scss";

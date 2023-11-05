@@ -1,0 +1,207 @@
+@import "base/_vars.scss";
+@import "base/_fonts.scss";
+@import "base/_icons.scss";
+@import "mixins/breakpoints.scss";
+@import "mixins/media.scss";
+@import "mixins/fonts";
+@import "base.scss";
+
+@import "components/button.scss";
+@import "components/breadcrumbs.scss";
+@import "components/popup.scss";
+@import "components/project.scss";
+
+@import "blocks/projects.scss";
+
+.popup {
+    &__container {
+        height: 100%
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        max-width: 544px;
+        &:after {
+            background: linear-gradient(13deg, rgba(255, 255, 255, 0.80) 9.4%, rgba(255, 255, 255, 0.00) 231.73%);
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 106px;
+        }
+    }
+    &__title {
+        @include heading_h3
+    }
+    &__body {
+        margin-right: -24px;
+        padding-right: 24px;
+        overflow: auto;
+    }
+
+    @include min-container {
+        &__content {
+            width: calc(544 / 1632 * 100%);
+            max-width: none;
+        }
+    }
+    @include phone {
+        &__close {
+            padding: 8px;
+        }
+    }
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+caption {
+    @include text_t5;
+    text-align: left;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+}
+tbody tr {
+    border-top: 1px dashed rgba($color: $base-4, $alpha: 0.25);
+    @include text_t4;
+    line-height: 1.25;
+}
+tbody td {
+    padding: 14px 0;
+    &:first-child {
+        opacity: 0.6;
+    }
+    &:last-child {
+        text-align: right
+    }
+}
+
+@import "blocks/hero.scss";
+.hero-section {
+    &__breadcrumbs {
+        position: absolute;
+        top: 0;
+        left: 0;
+        .breadcrumbs__link {
+            color: $base-4
+        }
+        .breadcrumbs__item {
+            &:not(:last-child) {
+                &:after {
+                    color: $base-4;
+                }
+            }
+        }
+    }
+    &__etc {
+        @include text_t5;
+        opacity: 0.6;
+    }
+    @include phone {
+        &__etc {
+            top: 30px
+        }
+    }
+}
+@import "modules/header.scss";
+
+.product-section {
+    background-color: #F0F0F0;
+    color: $base-4;
+    margin-bottom: -15px;
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 90px;
+        padding-bottom: 90px;
+        min-height: 810px;
+    }
+    &__main-info, &__params {
+        flex-basis: calc(444 / 1568 * 100%);
+    }
+    &__title {
+        @include heading_h3;
+        text-transform: lowercase;
+        @media (min-width: 576px ) and (max-width: 1568px) {
+            font-size: calc(32px + 16 * (100vw - 576px)/(1568 - 576));
+        }
+        @include phone {
+            font-size: 32px
+        }
+    }
+    &__desc {
+        @include text_t3;
+        opacity: 0.6;
+        margin-top: 16px
+    }
+    &__doc {
+        display: inline-block;
+        @include text_t6;
+        margin-top: 2em;
+        text-transform: uppercase;
+    }
+    &__img {
+        flex-basis: calc(502 / 1568 * 100%);
+        mix-blend-mode: darken;
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+    &__certificate {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        div {
+            @include text_t5-2
+        }
+    }
+    .icon-certificate {
+        font-size: 60px;
+    }
+    &__certificate-icon {
+        padding: 7.5px
+    }
+    &__table {
+        margin: 24px 0 0;
+
+    }
+    &__all-params {
+        margin: 24px 0 0;
+        text-decoration: underline;
+        text-transform: uppercase
+    }
+
+    @include tablet {
+        &__container {
+            flex-direction: column;
+            row-gap: 24px;
+        }
+        &__img {
+            width: 50%;
+            order: -1
+        }
+        &__table {
+            margin-top: 16px
+        }
+        &__all-params {
+            margin-top: 16px
+        }
+    }
+    @include phone {
+        &__container {
+            padding-top: 45px;
+            padding-bottom: 45px;
+        }
+        &__desc {
+            font-size: 16px
+        }
+    }
+}
+@import "modules/footer.scss";

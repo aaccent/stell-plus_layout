@@ -1,0 +1,204 @@
+extends templates/layout
+
+block head
+    title  
+    link(rel="stylesheet", href="css/libs/swiper-bundle.min.css")
+    link(rel="stylesheet", href="css/single-case-page.min.css")
+block header
+    - var color = "white"
+block content 
+    .page
+        nav.breadcrumbs 
+            .container
+                ul.breadcrumbs__list 
+                    li.breadcrumbs__item 
+                        a.breadcrumbs__link(href="/") Главная
+                    li.breadcrumbs__item 
+                        a.breadcrumbs__link(href="/projects.html") Проекты   
+                    li.breadcrumbs__item 
+                        a.breadcrumbs__link(href="#") Азбука вкуса   
+        section.banner-section 
+            .container
+                .banner-section__content
+                    img.banner-section__img(src="./images/case/case-1.png", alt="banner")
+                    img.banner-section__logo(src="./images/logos/vkus-logo-white.svg", alt="")
+        section.section.section-one
+            .section__header 
+                .container 
+                    h2.section__title «Азбука вкуса» — российская частная розничная сеть супермаркетов
+            .section__body 
+                .container
+                    .section__info
+                        .section__param ( г. Одинцово, ул. Маршала Неделина, д.6 )
+                        p.section__desc Входит в перечень системообразующих компаний Минпромторга РФ. Основана в 1997 году и работает в формате высококачественной розницы, входит в число лидеров российского рынка по уровню товарооборота на площадь магазина
+                    .section__images.swiper
+                        .section__images-wrapper.swiper-wrapper
+                            .section__img.swiper-slide
+                                img(src="./images/case/case-2.png", alt="")
+                            .section__img.swiper-slide
+                                img(src="./images/case/case-3.png", alt="")
+                        //- .section__images-pagination.swiper-pagination
+        section.section.section-two
+            .section__header 
+                .container 
+                    h2.section__title Основной задачей проекта было создать оптимальное торговое пространство магазина
+            .section__body 
+                .container
+                    .section__info
+                        .section__param ( задача )
+                        p.section__desc Входит в перечень системообразующих компаний Минпромторга РФ. Основана в 1997 году и работает в формате высококачественной розницы, входит в число лидеров российского рынка по уровню товарооборота на площадь магазина
+                    .section__images 
+                        .section__img
+                            img(src="./images/case/case-4.png", alt="")
+        section.section.section-three
+            .section__header 
+                .container 
+                    h2.section__title Ключевой идеей было создать оптимальное торговое пространство магазина
+            .section__body 
+                .container
+                    .section__info
+                        .section__param ( идея )
+                        p.section__desc Входит в перечень системообразующих компаний Минпромторга РФ. Основана в 1997 году и работает в формате высококачественной розницы, входит в число лидеров российского рынка по уровню товарооборота на площадь магазина
+                    .section__images.swiper 
+                        .section__images-wrapper.swiper-wrapper 
+                            .section__img.swiper-slide
+                                img(src="./images/case/case-5.png", alt="")
+                            .section__img.swiper-slide
+                                img(src="./images/case/case-6.png", alt="")
+                        .section__images-pagination.swiper-pagination
+        section.equipments-section.section 
+            .equipments-section__header.section__header 
+                .container 
+                    h2.equipments-section__title.section__title Оборудование которое использовалось в проекте
+                    .swiper-buttons
+                        .swiper-button-prev.button.button_outlined.button_outline_black
+                            span.icon-arrow-right
+                            //- svg(xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none')
+                            //-     path(d='M22.4708 16.4714C22.7311 16.2111 22.7311 15.7889 22.4708 15.5286L18.2281 11.286C17.9678 11.0256 17.5457 11.0256 17.2853 11.286C17.025 11.5463 17.025 11.9684 17.2853 12.2288L21.0565 16L17.2853 19.7712C17.025 20.0316 17.025 20.4537 17.2853 20.714C17.5457 20.9744 17.9678 20.9744 18.2281 20.714L22.4708 16.4714ZM8.66602 16.6667L21.9993 16.6667L21.9993 15.3333L8.66602 15.3333L8.66602 16.6667Z' fill='currentColor')
+                        .swiper-button-next.button.button_outlined.button_outline_black
+                            span.icon-arrow-right
+                            //- svg(xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none')
+                            //-     path(d='M22.4708 16.4714C22.7311 16.2111 22.7311 15.7889 22.4708 15.5286L18.2281 11.286C17.9678 11.0256 17.5457 11.0256 17.2853 11.286C17.025 11.5463 17.025 11.9684 17.2853 12.2288L21.0565 16L17.2853 19.7712C17.025 20.0316 17.025 20.4537 17.2853 20.714C17.5457 20.9744 17.9678 20.9744 18.2281 20.714L22.4708 16.4714ZM8.66602 16.6667L21.9993 16.6667L21.9993 15.3333L8.66602 15.3333L8.66602 16.6667Z' fill='currentColor')
+            .section__body 
+                .container 
+                    .equipments-slider.swiper
+                        .swiper-wrapper
+                            article.equipment-item.swiper-slide
+                                .equipment-item__img 
+                                    img(src="./images/equipments/equipment-8.png", alt="")
+                                h4.equipment-item__name Мобильный стеллаж
+                            article.equipment-item.swiper-slide 
+                                .equipment-item__img 
+                                    img(src="./images/equipments/equipment-9.png", alt="")
+                                h4.equipment-item__name Глубинный стеллаж
+                            article.equipment-item.swiper-slide 
+                                .equipment-item__img 
+                                    img(src="./images/equipments/equipment-10.png", alt="")
+                                h4.equipment-item__name Въездной стеллаж
+                            article.equipment-item.swiper-slide 
+                                .equipment-item__img 
+                                    img(src="./images/equipments/equipment-11.png", alt="")
+                                h4.equipment-item__name Фронтальный стеллаж
+                            article.equipment-item.swiper-slide 
+                                .equipment-item__img 
+                                    img(src="./images/equipments/equipment-5.png", alt="")
+                                h4.equipment-item__name Фронтальный стеллаж
+                            article.equipment-item.swiper-slide 
+                                .equipment-item__img 
+                                    img(src="./images/equipments/equipment.png", alt="")
+                                h4.equipment-item__name Набивной стеллаж
+        section.results-section.section 
+            .section__header 
+                .container
+                    h2.results-section__title.section__title Финальным результатом являлось показать обновленный образ магазина
+            .section__body
+                .container
+                    .section__info 
+                        .section__param ( результат )
+                        .section__desc Входит в перечень системообразующих компаний Минпромторга РФ. Основана в 1997 году и работает в формате высококачественной розницы, входит в число лидеров российского рынка по уровню товарооборота на площадь магазина
+                    .results-section__slider.results-slider
+                        .swiper 
+                            .swiper-wrapper 
+                                .swiper-slide.results-slider__slide
+                                    img(src="./images/case/case-7.png", alt="")
+                                .swiper-slide.results-slider__slide
+                                    img(src="./images/case/case-7.png", alt="")
+                                .swiper-slide.results-slider__slide
+                                    img(src="./images/case/case-7.png", alt="")
+                                .swiper-slide.results-slider__slide
+                                    img(src="./images/case/case-7.png", alt="")
+                            .swiper-controls
+                                .swiper-controls__container.container 
+                                    .swiper-controls__inner
+                                        .swiper-button-prev
+                                            span.icon-arrow-right
+                                            //- svg(xmlns='http://www.w3.org/2000/svg' width='25' height='24' viewBox='0 0 25 24' fill='none')
+                                            //-     path(d='M6.64645 11.6464C6.45118 11.8417 6.45118 12.1583 6.64645 12.3536L9.82843 15.5355C10.0237 15.7308 10.3403 15.7308 10.5355 15.5355C10.7308 15.3403 10.7308 15.0237 10.5355 14.8284L7.70711 12L10.5355 9.17157C10.7308 8.97631 10.7308 8.65973 10.5355 8.46447C10.3403 8.2692 10.0237 8.2692 9.82843 8.46447L6.64645 11.6464ZM17 11.5L7 11.5L7 12.5L17 12.5L17 11.5Z' fill='currentColor')
+                                        .swiper-pagination
+                                        .swiper-button-next
+                                            span.icon-arrow-right
+                                            //- svg(xmlns='http://www.w3.org/2000/svg' width='25' height='24' viewBox='0 0 25 24' fill='none')
+                                            //-     path(d='M6.64645 11.6464C6.45118 11.8417 6.45118 12.1583 6.64645 12.3536L9.82843 15.5355C10.0237 15.7308 10.3403 15.7308 10.5355 15.5355C10.7308 15.3403 10.7308 15.0237 10.5355 14.8284L7.70711 12L10.5355 9.17157C10.7308 8.97631 10.7308 8.65973 10.5355 8.46447C10.3403 8.2692 10.0237 8.2692 9.82843 8.46447L6.64645 11.6464ZM17 11.5L7 11.5L7 12.5L17 12.5L17 11.5Z' fill='currentColor')
+        section.projects-section.section
+            .projects-section__header.section__header 
+                .container
+                    h2.projects-section__title.section__title наши другие реализованые проекты
+                    .swiper-buttons
+                        .swiper-button-prev.button.button_outlined.button_outline_black
+                            span.icon-arrow-right
+                            //- svg(xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none')
+                            //-     path(d='M22.4708 16.4714C22.7311 16.2111 22.7311 15.7889 22.4708 15.5286L18.2281 11.286C17.9678 11.0256 17.5457 11.0256 17.2853 11.286C17.025 11.5463 17.025 11.9684 17.2853 12.2288L21.0565 16L17.2853 19.7712C17.025 20.0316 17.025 20.4537 17.2853 20.714C17.5457 20.9744 17.9678 20.9744 18.2281 20.714L22.4708 16.4714ZM8.66602 16.6667L21.9993 16.6667L21.9993 15.3333L8.66602 15.3333L8.66602 16.6667Z' fill='currentColor')
+                        .swiper-button-next.button.button_outlined.button_outline_black
+                            span.icon-arrow-right
+                            //- svg(xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none')
+                            //-     path(d='M22.4708 16.4714C22.7311 16.2111 22.7311 15.7889 22.4708 15.5286L18.2281 11.286C17.9678 11.0256 17.5457 11.0256 17.2853 11.286C17.025 11.5463 17.025 11.9684 17.2853 12.2288L21.0565 16L17.2853 19.7712C17.025 20.0316 17.025 20.4537 17.2853 20.714C17.5457 20.9744 17.9678 20.9744 18.2281 20.714L22.4708 16.4714ZM8.66602 16.6667L21.9993 16.6667L21.9993 15.3333L8.66602 15.3333L8.66602 16.6667Z' fill='currentColor')
+            .section__body 
+                .container
+                    .projects-section__slider.projects-slider
+                        .swiper 
+                            .swiper-wrapper 
+                                .swiper-slide
+                                    article.projects-section__project.project 
+                                        .project__img
+                                            img(src="./images/projects/project-2.png", alt="")
+                                        .project__logo 
+                                            img(src="./images/logos/vkus-logo.svg" alt="")
+                                        .project__content 
+                                            .project__name Азбука вкуса
+                                            .project__address Московская область, г. Одинцово, ул. Маршала Неделина, 6,
+                                            span.icon-play
+                                .swiper-slide 
+                                    article.projects-section__project.project 
+                                        .project__img
+                                            img(src="./images/projects/project-1.png", alt="")
+                                        .project__logo 
+                                            img(src="./images/logos/perekrestok-logo.svg" alt="")
+                                        .project__content 
+                                            .project__name Перекресток
+                                            .project__address Московская область, г. Одинцово, ул. Маршала Неделина, 6,
+                                            span.icon-play
+                                .swiper-slide                                    
+                                    article.projects-section__project.project 
+                                        .project__img
+                                            img(src="./images/projects/project-3.png", alt="")
+                                        .project__logo 
+                                            img(src="./images/logos/5ka-logo.svg" alt="")
+                                        .project__content 
+                                            .project__name Пятерочка
+                                            .project__address Московская область, г. Одинцово, ул. Маршала Неделина, 6,
+                                            span.icon-play
+                                .swiper-slide
+                                    article.projects-section__project.project 
+                                        .project__img
+                                            img(src="./images/projects/project-4.png", alt="")
+                                        .project__logo 
+                                            img(src="./images/logos/fp-logo.svg" alt)
+                                        .project__content 
+                                            .project__name Fix Price
+                                            .project__address Московская область, г. Одинцово, ул. Маршала Неделина, 6,
+                                            span.icon-play
+                        button.button.button_big.button_primary.swiper-swipe Тяните
+block scripts 
+    script(src="js/libs/swiper-bundle.min.js")
+    script(src="js/script.min.js") 
+    script(src="js/case.min.js") 

@@ -57,8 +57,6 @@
         background-color: $base-4;
         border: 1px solid transparent;
         color: $base-1;
-        padding-top: 12px;
-        padding-bottom: 12px;
         @include ishover {
             background-color: transparent;
             border-color: $base-4;

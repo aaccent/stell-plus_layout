@@ -1,3 +1,4 @@
+// reset
 .swiper-pagination,
 .swiper-button-prev,
 .swiper-button-next {
@@ -9,7 +10,7 @@
 .swiper-button-next {
     color: $base-1;
     cursor: pointer;
-    font-size: 25px;
+    font-size: calc(25 / 12 * 1em);
     line-height: 1;
     flex-shrink: 0;
     width: auto;
@@ -17,9 +18,9 @@
     &:after {
         content: none
     }
-    @include min_container {
-        font-size: calc(25px + 25 * var(--screen-diff));
-    }
+    // @include min_container {
+    //     font-size: calc(25px + 25 * var(--screen-diff));
+    // }
     @include gap {
         display: none;
     }
@@ -29,6 +30,7 @@
     transform: rotate(-180deg);
 }
 
+// customize
 .swiper-pagination-divider,
 .swiper-pagination-total {
     opacity: 0.5;
@@ -51,13 +53,14 @@
         align-items: center;
         gap: 28px;
         @include text_t6;
-        padding: 7px 16px;
+        // padding: 8px 16px;
+        padding: 0.75em 1.25em;
     }
-    @include min_container {
-        &__inner {
-            gap: calc(28px + 28 * var(--screen-diff))
-        }
-    }
+    // @include min_container {
+    //     &__inner {
+    //         gap: calc(28px + 28 * var(--screen-diff))
+    //     }
+    // }
     @include gap {
         &__inner {
             font-size: 18px;

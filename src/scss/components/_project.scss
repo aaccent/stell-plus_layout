@@ -43,14 +43,13 @@
         // right: 3.1%;
         bottom: 5%;
         max-width: 366px;
-        width: calc(366 / 480 * 100%)
     }
     &__name {
         @include text_t1;
     }
     &__address {
         @include text_t6_2;
-        margin: 12px 0 0;
+        margin: 1em 0 0;
         opacity: 0.7;
     }
     &__arrow, .icon-play {
@@ -61,22 +60,29 @@
         position: absolute;
         top: 12.72%;
         right: 3.825%;
-        // width: 20px;
-        // height: 20px;
-        // &:before {
-        //     border: 5px solid $base-4;
-        //     border-top-color: transparent;
-        //     border-right-color: transparent;
-        //     border-bottom-color: transparent;
-        //     content: "";
-        //     display: block;
-        //     width: 0;
-        //     height: 0;
-        // }
     }
     @include ishover {
         .project__img img {
             transform: scale(1.05);
+        }
+    }
+    @include min_container {
+        &__logo {
+            padding-top: calc(62 / 776 * 100%);
+            width: calc(62 / 776 * 100%);
+            height: 0;
+            img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: calc(30 / 62 * 100%);
+                height: auto;
+                transform: translate(-50%, -50%);
+            }
+        }
+        &__content {
+            width: calc(366 / 776 * 100%);
+            max-width: none;
         }
     }
     @include phone {
