@@ -1,6 +1,9 @@
 new Swiper(".hero-section__slider .swiper", {
     slidesPerView: 1,
+    speed: 800,// (getComputedStyle(document.documentElement).getPropertyValue('--screen-diff') && 0),
     observer: true,
+    parallax: true,
+    preventInteractionOnTransition: true,
     pagination: {
         el: ".hero-section .swiper-pagination",
         type: "fraction",
@@ -20,6 +23,15 @@ new Swiper(".hero-section__slider .swiper", {
         nextEl: ".hero-section .swiper-button-next",
         prevEl: ".hero-section .swiper-button-prev",
     },
+    on: {
+        // setTranslate: function (swiper, translate) {
+        //     let swiperWidth = swiper.width;
+        //     console.log(swiper.activeIndex, swiper.realIndex)
+        //     let offsetX = translate % swiperWidth;
+        //     swiper.el.nextElementSibling.style.opacity = Math.abs(1 - 2 * Math.abs(offsetX / swiperWidth))
+        //     console.log(swiper, 1 - Math.abs(offsetX / swiperWidth))
+        // }
+    }
 })
 
 new Swiper(".equipment-section__slider .swiper", {

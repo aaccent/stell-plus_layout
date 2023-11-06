@@ -164,6 +164,11 @@
         top: 34%;
         left: 50%;
         transform: translate(-50%, 0);
+        // .swiper-slide-active & {
+        //     opacity: 1;
+        //     transform: translate(-50%, 0) scale(1);
+        //     transition-delay: 0.5s;
+        // }
     }
     @include min_container {
         &__logo {

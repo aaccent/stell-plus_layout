@@ -1,9 +1,14 @@
 const innerBannerSwiper = new Swiper(".banner-slider_inner .swiper", {
     slidesPerView: 1,
-    observer: true,
-    observeParents: true,
-    resizeObserver: true,
-    speed: 300,
+    // observer: true,
+    // observeParents: true,
+    // resizeObserver: true,
+    speed: 800,
+    effect: "fade",
+    fadeEffect: {
+        crossFade: true,
+    },
+    preventInteractionOnTransition: true,
     pagination: {
         el: ".banner-section .swiper-pagination",
         type: "fraction",
@@ -27,6 +32,7 @@ const innerBannerSwiper = new Swiper(".banner-slider_inner .swiper", {
 
 const outerBannerSwiper = new Swiper(".banner-slider_outer .swiper", {
     slidesPerView: 1,
+    speed: 800,
 })
 
 outerBannerSwiper.controller.control = innerBannerSwiper;
