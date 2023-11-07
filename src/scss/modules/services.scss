@@ -32,40 +32,19 @@
     $columns: 24;
     $column-width: 50px;
     $column-gap: 24px;
+    $col-1: calc((6 * $column-width + (6 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
+    $col-2: calc((15 * $column-width + (15 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
     padding: 25px 0;
-    @mixin cols($col) {
-        // доделать
-    }
     &__container {
-        $col-1: calc((6 * $column-width + (6 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
-        $col-2: calc((6 * $column-width + (6 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
-        $col-3: calc((8 * $column-width + (8 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
-        $col-4: auto; //(4 * $column-width + (4 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%;
-        display: grid;
-        grid-template-columns: $col-1 $col-2 $col-3 $col-4;
-        grid-template-rows: auto;
-        column-gap: 24px;
-        row-gap: 30px;
-        color: $base-1;
-    }
-    &__row {
         display: flex;
         align-items: flex-start;
-    }
-    &__col {
-        &:first-child {
-            margin-right: 30px;
-        }
-        &:nth-child(2) {
-            margin-right: calc(200 / 1568 * 100%)
-        }
-        &:nth-child(3) {
-            margin-right: calc(161 / 1568 * 100%);
-        }
+        gap: 24px;
     }
     &__head {
         display: flex;
-        gap: 32px
+        gap: 32px;
+        flex-basis: $col-1;
+        
     }
     &__num {
         border: 1px solid $base-1;
@@ -90,12 +69,97 @@
         font-size: 14px;
         line-height: 1;
         padding: 10px 28px;
-        // padding-left: 28px;
-        // padding-right: 28px;
-        justify-self: flex-end;
-        align-self: flex-start;
-        // width: 70px;
-        // height: 34px
+        margin-left: auto;
+        // width: 74px;
+        // height: 30px;
+        span {
+            display: inline-block;
+            font-size: inherit;
+            position: relative;
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+            &:before, &:after {
+                background-color: $base-1;
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 1em;
+                height: 1px;
+                transform-origin: center center;
+                transition: all 0.2s ease 0s;
+            }
+            &:before {
+                transform: rotate(-90deg);
+            }
+        }
+        @include ishover {
+            span {
+                &:before, &:after {
+                    background-color: $base-4;
+                }
+            }
+        }
+        &_open {
+            span {
+                &:before {
+                    transform: rotate(0deg);
+                }
+                &:after {
+                    transform: rotate(90deg);
+                    opacity: 0;
+                }
+            }
+        }
+        .icon-minus {
+            display: none;
+        }
+    }
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        flex: 0 1 $col-2;
+        $columns: 14;
+        // $column-width: 50px;
+        // $column-gap: 24px;
+        $col-1: calc((3 * $column-width + 3 * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
+        $col-2: calc((8 * $column-width + (8 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
+        transition: opacity 0.2s ease 0s, height 0.3s ease 0s;
+        overflow: hidden;
+    }
+    &__preview {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-basis: $col-2;
+        margin-left: auto;
+        max-height: 2.4em;
+    }
+    &__body {
+        display: grid;
+        grid-template-columns: auto $col-2;
+        grid-auto-flow: row dense;
+        justify-content: space-between;
+        column-gap: $column-gap;
+        row-gap: 30px;
+        flex-basis: 100%;
+        height: 0;
+        overflow: hidden
+        // height: 0;
+        // overflow: hidden
+        // & > *:not(._shown) {
+        //     height: 0;
+        //     overflow: hidden;
+        // }
+        // ._shown {
+        //     grid-row: 1;
+        //     grid-column: 2;
+        //     max-height: 2.4em;
+        //     overflow: hidden
+        // }
     }
     &__in {
         @include text_t2;
@@ -104,7 +168,6 @@
     }
     &__icon {
         border-radius: 16px;
-        grid-column: 3;
         width: 123px;
         height: 123px;
         overflow: hidden;
@@ -120,7 +183,6 @@
         align-items: flex-start;
         row-gap: 12px;
         column-gap: 15px;
-        grid-column: 2;
         justify-self: flex-start;
     }
     &__include {
@@ -133,14 +195,13 @@
         text-align: center;
         text-transform: lowercase;
     }
-    &__about {
-        grid-column: 3;
+    &__about, &__preview {
         @include text_t2;
         opacity: 0.6;
     }
     &__link {
-        grid-column: 3;
         justify-self: flex-start;
+        grid-column: 2;
         @include text_t5;
         text-transform: uppercase;
     }
@@ -169,22 +230,33 @@
             padding: var(--padding-y) var(--padding-x);
         }
     }
-    @include desktop {
+    @include tablet {
         &__container {
-            grid-template-columns: repeat(2, 1fr);
+            flex-wrap: wrap;
+            row-gap: 0;
+        }
+        &__content {
+            order: 1;
+        }
+        &__content {
+            flex-basis: 100%;
+            height: 0;
+        }
+        &__preview {
+            display: none;
+        }
+        &__body {
+            padding-top: 24px;
+            height: auto;
         }
         &__in {
             grid-column: 1;
         }
         &__includes {
-            // display: flex;
-            // gap: 5px;
+            flex-direction: row;
+            flex-wrap: wrap;
             grid-column: 2;
-            grid-row: 2;
-        }
-        &__button {
-            grid-row: 1;
-            grid-column: 2;
+            white-space: nowrap;
         }
         &__icon {
             grid-column: 1;
@@ -209,11 +281,7 @@
             grid-column: 1 / 3;
         }
         &__includes {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
             column-gap: 5px;
-            grid-row: auto;
         }
         &__icon {
              display: none;

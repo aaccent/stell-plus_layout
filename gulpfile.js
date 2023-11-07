@@ -37,4 +37,5 @@ const zipping = gulp.series(reset, mainTasks, zip)
 //регистрация задачи
 gulp.task('default', dev)
 gulp.task('build', build)
+gulp.task('clear', reset)
 gulp.task("zipping", zipping)
