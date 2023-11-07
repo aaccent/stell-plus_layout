@@ -5,7 +5,6 @@
         display: flex;
         align-items: flex-end;
         position: relative;
-        padding: 90px 0;
         height: 100vh
     }
     &__img {
@@ -30,6 +29,7 @@
 }
 
 .hero-slide {
+    padding: 90px 0;
     &__content {
         // width: 50%;
         max-width: 780px;
@@ -91,6 +91,7 @@
         }
     }
     @include phone {
+        padding-bottom: 105px;
         // height: 550px;
         &__desc {
             font-size: 16px;

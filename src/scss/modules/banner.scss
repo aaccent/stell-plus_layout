@@ -54,7 +54,7 @@
         padding: 0;
     }
     &_outer &__slide {
-        height: 810px;
+        height: 50.625rem; //810px;
     }
     &_inner {
         border-top: 1px dashed rgba($color: $base-1, $alpha: 0.25);
@@ -105,11 +105,11 @@
             }
         }
     }
-    @include min_container {
-        &_outer &__slide {
-            height: calc(810px + 810 * var(--screen-dif));
-        }
-    }
+    // @include min_container {
+    //     &_outer &__slide {
+    //         height: calc(810px + 810 * var(--screen-dif));
+    //     }
+    // }
     @include gap {
         &_inner {
             & > .container {
@@ -173,7 +173,7 @@
     @include min_container {
         &__logo {
             svg {
-                width: calc(252px + 252 * var(--screen-diff));
+                width: 15.75rem;
                 height: auto;
             }
         }

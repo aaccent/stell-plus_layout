@@ -3,14 +3,14 @@
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 40px;
+    min-height: 2.5rem;
     &__wrapper {
         border-bottom: 1px dashed rgba($color: $base-1, $alpha: 0.15);
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        padding: 32px 0;
+        padding: 2rem 0;
         transition: background-color 0.3s ease 0s, padding 0.3s ease 0s;
         z-index: 10;
     }
@@ -31,7 +31,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding: 2px
+        padding: 0.125rem
     }
     &__menu-item {
         position: relative;
@@ -125,7 +125,7 @@
         display: flex;
         align-items: center;
         row-gap: 10px;
-        column-gap: 30px;
+        column-gap: 1.875rem;
         flex-wrap: wrap;
     }
     &__dropdown {
@@ -277,7 +277,7 @@
             border-bottom: 1px solid rgba(51, 51, 51, 0.10);
             color: $base-4;
             @include min_tablet {
-                padding: 13px 0;
+                padding: 0.8125rem 0;
             }
         }
         .header__dropdown {
@@ -313,25 +313,6 @@
         }
     }
 
-    @media screen and (min-width: 1680px) {
-        min-height: calc(40px + 40 *var(--screen-diff));
-        &__wrapper {
-            --padding-y: calc(32px + 32 * var(--screen-diff));
-            padding: var(--padding-y) 0;
-        }
-        &__menu-list {
-            padding: calc(2px + 2 * var(--screen-diff));
-        }
-        &__actions {
-            column-gap: calc(30px + 30 * var(--screen-diff));
-        }
-        &_scroll {
-            .header__wrapper {
-                --padding-y: calc(13px + 13 * var(--screen-diff));
-                padding: var(--padding-y) + 0
-            }
-        }
-    }
     @include desktop {
         &__dropdown-head {
             .site-lang__text {
@@ -383,8 +364,12 @@
         &__menu-list {
             background-color: transparent;
             border-radius: 0;
+            justify-content: flex-start;
             flex-direction: column;
-            padding: 20px
+            flex-wrap: nowrap;
+            padding: 20px;
+            height: 100%;
+            overflow: auto;
         }
         &__menu-item {
             padding: 0;
@@ -392,7 +377,7 @@
                 content: none;
             }
             &:not(:last-child) {
-                margin: 0 0 20px
+                margin: 0 0 15px
             }
             &_open {
                 .header__submenu {
@@ -402,6 +387,8 @@
         }
         &__menu-link {
             @include text_t1;
+            padding-left: 0;
+            padding-right: 0
         }
         &__submenu {
             display: none;
@@ -419,14 +406,18 @@
     }
     @include gap {
         &__submenu-link {
-            padding-top: 12px;
-            padding-bottom: 12px;
+            padding: 1rem 1.5rem;
         }
     }
     @include phone {
         &__logo {
             .logo__text {
                 display: none;
+            }
+        }
+        &__menu-item {
+            &:not(:last-child) {
+                margin-bottom: 0;
             }
         }
         &__actions {
@@ -444,26 +435,19 @@
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 0.75rem;
     &__text {
         color: inherit;
         font-family: Inter;
-        font-size: 16px;
+        font-size: 1rem;
         line-height: normal;
         letter-spacing: 0.32px;
         text-transform: uppercase;
-        @media screen and (min-width: 1680px) {
-            font-size: calc(16px + 16 * var(--screen-diff));
-        }
     }
     @media screen and (min-width: 1680px) {
-        gap: calc(32px + 32 * var(--screen-diff));
         svg {
-            width: calc(35px + 35 * var(--screen-diff));
+            width: 2.25rem; //calc(35px + 35 * var(--screen-diff));
             height: auto;
-        }
-        &__text {
-            font-size: calc(16px + 16 * var(--screen-diff));
         }
     }
 }
@@ -471,11 +455,11 @@
 .site-lang {
     display: flex;
     align-items: center;
-    gap: 9px;
-    padding: 16px;
+    gap: 0.5625rem;
+    padding: 1rem;
     &__img {
-        width: 20px;
-        height: 20px;
+        width: 1.25rem;
+        height: 1.25rem;
     }
     &__text {
         color: $base-4;
@@ -484,19 +468,7 @@
         white-space: nowrap;
     }
     &_min {
-        gap: 6px;
-        padding: 9px;
+        gap: 0.375rem;
+        padding: 0.5625rem;
     }
-    // @include min_container{
-    //     gap: calc(9px + 9 * var(--screen-diff));
-    //     padding: calc(16px + 16 * var(--screen-diff));
-    //     &__img {
-    //         width: calc(20px + 20 * var(--screen-diff));
-    //         height: calc(20px + 20 * var(--screen-diff))
-    //     }
-    //     &_min {
-    //         gap: calc(6px + 6 * var(--screen-diff));
-    //         padding: calc(9px + 9 * var(--screen-diff));
-    //     }
-    // }
 }

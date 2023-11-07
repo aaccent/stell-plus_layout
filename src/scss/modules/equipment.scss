@@ -39,8 +39,8 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        width: 80px;
-        height: 80px;
+        width: 5rem;
+        height: 5rem;
         transition: transform 0.3s ease 0s;
         z-index: 1;
         &:not(:last-child) {
@@ -68,17 +68,17 @@
     }
     @include min_container {
         &__info {
-            max-width: calc(360px + 360 * var(--screen-diff));
+            width: calc(360 / 1568 * 100%);
+            max-width: none;
+            // max-width: calc(360px + 360 * var(--screen-diff));
         }
         &__shops-item {
-            width: calc(80px + 80 * var(--screen-diff));
-            height: calc(80px + 80 * var(--screen-diff));
             &:not(:last-child) {
                 margin-right: calc(-13px - 13 * var(--screen-diff))
             }
             svg {
-                width: calc(38px + 38 * var(--screen-diff));
-                height: calc(38px + 38 * var(--screen-diff))
+                width: 2.375rem;
+                height: 2.375rem;
             }
         }
     }

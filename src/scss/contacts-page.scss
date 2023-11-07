@@ -182,7 +182,7 @@ body {
     }
     &__info {
         display: flex;
-        gap: 32px;
+        gap: 2rem;
         flex-wrap: wrap;
     }
     &__info-col {
@@ -230,9 +230,9 @@ body {
         &__tab-panel {
             gap: calc(12 / 776 * 100%)
         }
-        &__info {
-            gap: calc(32px + 32 * var(--screen-diff))
-        }
+        // &__info {
+        //     gap: calc(32px + 32 * var(--screen-diff))
+        // }
         &__departments {
             margin-top: calc(64 / 1568 * 100%)
         }

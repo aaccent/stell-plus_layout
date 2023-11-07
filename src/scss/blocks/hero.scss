@@ -45,7 +45,7 @@
         justify-content: space-between;
         align-items: flex-start;
         flex-basis: 100%;
-        font-size: 90px;
+        font-size: 5.625rem;
         &_horizontal {
             margin-top: auto;
         }
@@ -116,7 +116,7 @@
         width: 86px;
         height: 86px;
         .icon-play {
-            font-size: 18px;
+            font-size: 1.125rem;
             transform: rotate(90deg);
         }
         @include ishover {
@@ -130,14 +130,14 @@
         padding-top: calc(135px + 135 * var(--screen-diff));
         padding-bottom: calc(70px + 70 * var(--screen-diff));
         min-height: 650px;
-        &__head {
-            font-size: calc(90px + 90 * var(--screen-diff));
-        }
-        &__button {
-            .icon-play {
-                font-size: calc(18px + 18 * var(--screen-diff));
-            }
-        }
+        // &__head {
+        //     font-size: calc(90px + 90 * var(--screen-diff));
+        // }
+        // &__button {
+        //     .icon-play {
+        //         font-size: calc(18px + 18 * var(--screen-diff));
+        //     }
+        // }
     }
 
     @include phone {

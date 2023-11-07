@@ -117,9 +117,9 @@
         background-color: $base-2;
         border-radius: 12px;
         flex-basis: calc(50% - 8px);
-        padding: 20px 24px;
+        padding: 1.25rem 1.5rem; //20px 24px;
         .icon {
-            font-size: 64px;
+            font-size: 4rem;
         }
         svg {
             width: 64px;
@@ -130,13 +130,6 @@
             margin-top: calc(90 / 332 * 100%);
             width: 85%;
             text-transform: uppercase;
-        }
-    }
-    @include min_container {
-        &__advantage-item {
-            .icon {
-                font-size: calc(64px + 64 * var(--screen-diff));
-            }
         }
     }
     @include tablet {

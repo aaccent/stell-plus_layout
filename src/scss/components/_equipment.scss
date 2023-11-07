@@ -1,14 +1,15 @@
 .equipment-item {
     background-color: $base-2;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     cursor: pointer;
-    padding: 50px 24px 20px 24px;
+    // padding: 50px 24px 20px 24px;
+    padding: 3.125rem 1.5rem 1.25rem;
     position: relative;
     &__amount {
         @include text_t2;
         position: absolute;
-        top: 24px;
-        right: 24px;
+        top: 1.5rem; //24px;
+        right: 1.5ren; //
     }
     &__img {
         position: relative;
@@ -42,15 +43,14 @@
         }
     }
     @include min_container {
-        border-radius: calc(12px + 12 * var(--screen-diff));
-        --padding-top: calc(50px + 50 * var(--screen-diff));
-        --padding-x: calc(24px + 24 * var(--screen-diff));
-        --padding-bottom: calc(20px + 20 * var(--screen-diff));
-        padding: var(--padding-top) var(--padding-x) var(--padding-bottom);
-        &__amount {
-            top: calc(24px + 24 * var(--screen-diff));
-            right: calc(24px + 24 * var(--screen-diff))
-        }
+        // --padding-top: calc(50px + 50 * var(--screen-diff));
+        // --padding-x: calc(24px + 24 * var(--screen-diff));
+        // --padding-bottom: calc(20px + 20 * var(--screen-diff));
+        // padding: var(--padding-top) var(--padding-x) var(--padding-bottom);
+        // &__amount {
+        //     top: calc(24px + 24 * var(--screen-diff));
+        //     right: calc(24px + 24 * var(--screen-diff))
+        // }
         &__name {
             width: 65%;
             max-width: none;

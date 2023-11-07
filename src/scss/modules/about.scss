@@ -19,9 +19,6 @@
     &__title {
         max-width: 900px;
     }
-    // &__link {
-    //     margin-left: 85px;
-    // }
     &__stats {
         background-image: url(../images/index/about.png);
         background-size: cover;
@@ -32,8 +29,8 @@
         justify-content: flex-end;
         align-items: flex-end;
         gap: 16px;
-        margin: 78px 0 0;
-        padding: 240px 32px 32px;
+        margin: 4.875rem 0 0;
+        padding: 15rem 2rem 2rem
     }
     &__stat-card {
         flex-basis: 364px;
@@ -44,15 +41,12 @@
             width: calc(900 / 1568 * 100%);
             max-width: none;
         }
-        &__link {
-            margin-left: calc(85px + 85 *  var(--screen-diff));
-        }
-        &__stats {
-            --padding-top: calc(240px + 240 *  var(--screen-diff));
-            --padding-x: calc(32px + 32 *  var(--screen-diff));
-            margin-top: calc(78px + 78 *  var(--screen-diff));
-            padding: var(--padding-top) var(--padding-x) var(--padding-x)
-        }
+        // &__stats {
+        //     --padding-top: calc(240px + 240 *  var(--screen-diff));
+        //     --padding-x: calc(32px + 32 *  var(--screen-diff));
+        //     margin-top: calc(78px + 78 *  var(--screen-diff));
+        //     padding: var(--padding-top) var(--padding-x) var(--padding-x)
+        // }
         &__stat-card {
             flex-basis: calc(364px + 364 *  var(--screen-diff));
             height: calc(448px + 448 *  var(--screen-diff));
@@ -118,7 +112,7 @@
     &__inner-wrapper {
         background-color: $base-1;
         border-radius: 12px;
-        padding: 16px 24px;
+        padding: 1rem 1.5rem; // 16px 24px;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -127,10 +121,10 @@
         width: 100%;
     }
     .icon-play {
-        font-size: 24px;
+        font-size: 1.5rem;
         position: absolute;
-        top: 24px;
-        left: 24px;
+        top: 1.5rem; //24px;
+        left: 1.5rem //24px;
     }
     &__icon {
         color: inherit;
@@ -175,24 +169,25 @@
         }
     }
     @include min_container {
-        --padding-x: calc(24px + 24 * var(--screen-diff));
-        --padding-y: calc(16px + 16 * var(--screen-diff));
+        // --padding-x: calc(24px + 24 * var(--screen-diff));
+        // --padding-y: calc(16px + 16 * var(--screen-diff));
         &__bg {
             .container {
                 background-size: calc(635 / 1680 * 100%);
             }
         }
-        &__inner-wrapper {
-            padding: var(--padding-y) var(--padding-x);
-        }
-        .icon-play {
-            font-size: calc(24px + 24 * var(--screen-diff));
-        }
-        &__icon {
-            font-size: calc(64px + 64 * var(--screen-diff));
-        }
+        // &__inner-wrapper {
+        //     padding: var(--padding-y) var(--padding-x);
+        // }
+        // .icon-play {
+        //     font-size: calc(24px + 24 * var(--screen-diff));
+        // }
+        // &__icon {
+        //     font-size: calc(64px + 64 * var(--screen-diff));
+        // }
         &__name {
-            max-width: calc(220px + 220 * var(--screen-diff));
+            width: calc(220 / 364 * 100%);
+            max-width: none;
         }
     }
     @include phone {

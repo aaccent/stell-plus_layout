@@ -33,7 +33,7 @@
 
 .equipment {
     &__header {
-        padding-bottom: 32px;
+        padding-bottom: 2rem;
     }
     &__grid {
         display: grid;
@@ -59,7 +59,7 @@
     }
     @include gap {
         &__header {
-            padding-bottom: 32px;
+            padding-bottom: 2rem;
         }
     }
 }

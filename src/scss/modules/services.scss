@@ -4,7 +4,7 @@
     border-top-right-radius: 16px;
     color: $base-1;
     margin-bottom: 0;
-    padding-bottom: 90px;
+    padding-bottom: 5.625rem;
     &__header {
         border-color: rgba($color: $base-1, $alpha: 0.26);
     }
@@ -21,9 +21,13 @@
     }
     @include min_container {
         margin-bottom: 0;
-        padding-bottom: calc(90px + 90 * var(--screen-diff));
+        padding-bottom: 5.625rem;
         &__title {
-            max-width: calc(821px + 821 * var(--screen-diff));
+            width: calc(821 / 1568 * 100%);
+            max-width: none;
+        }
+        &__body {
+            padding-top: 0;
         }
     }
 }
@@ -42,21 +46,21 @@
     }
     &__head {
         display: flex;
-        gap: 32px;
+        gap: 2rem;
         flex-basis: $col-1;
         
     }
     &__num {
         border: 1px solid $base-1;
-        border-radius: 12px;
+        border-radius: 0.75rem;
         color: $base-1;
         display: flex;
         flex: 0 0 auto;
         align-items: center;
         justify-content: center;
         @include text_t2;
-        width: 54px;
-        height: 54px
+        width: 3.375rem;
+        height: 3.375rem
     }
     &__name {
         @include text_t1;
@@ -68,7 +72,7 @@
         justify-content: center;
         font-size: 14px;
         line-height: 1;
-        padding: 10px 28px;
+        padding: 0.625rem 1.75rem; //28px;
         margin-left: auto;
         // width: 74px;
         // height: 30px;
@@ -167,9 +171,9 @@
         opacity: 0.6;
     }
     &__icon {
-        border-radius: 16px;
-        width: 123px;
-        height: 123px;
+        border-radius: 1rem;
+        width: 7.75rem; //123px;
+        height: 7.75rem; //123px;
         overflow: hidden;
         img {
             width: 100%;
@@ -181,7 +185,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        row-gap: 12px;
+        row-gap: 0.75rem;
         column-gap: 15px;
         justify-self: flex-start;
     }
@@ -208,27 +212,24 @@
     @include min_container {
         --padding-y: calc(25 / 1680 * 100%);
         padding: var(--padding-y) 0;
-        &__head {
-            gap: calc(32px + 32 * var(--screen-diff));
-        }
-        &__num {
-            width: calc(54px + 54 * var(--screen-diff));
-            height: calc(54px + 54 * var(--screen-diff));
-        }
-        &__icon {
-            border-radius: calc(16px + 16 * var(--screen-diff));
-            width: calc(123px + 123 * var(--screen-diff));
-            height: calc(123px + 123 * var(--screen-diff));
-        }
-        &__includes {
-            row-gap: calc(12px + 12 * var(--screen-diff));
-        }
-        &__button {
-            font-size: calc(14px + 14 * var(--screen-diff));
-            --padding-y: calc(10px + 10 * var(--screen-diff));
-            --padding-x: calc(28px + 28 * var(--screen-diff));
-            padding: var(--padding-y) var(--padding-x);
-        }
+        // &__num {
+        //     width: calc(54px + 54 * var(--screen-diff));
+        //     height: calc(54px + 54 * var(--screen-diff));
+        // }
+        // &__icon {
+        //     border-radius: calc(16px + 16 * var(--screen-diff));
+        //     width: calc(123px + 123 * var(--screen-diff));
+        //     height: calc(123px + 123 * var(--screen-diff));
+        // }
+        // &__includes {
+        //     row-gap: calc(12px + 12 * var(--screen-diff));
+        // }
+        // &__button {
+        //     // font-size: calc(14px + 14 * var(--screen-diff));
+        //     --padding-y: calc(10px + 10 * var(--screen-diff));
+        //     --padding-x: calc(28px + 28 * var(--screen-diff));
+        //     padding: var(--padding-y) var(--padding-x);
+        // }
     }
     @include tablet {
         &__container {

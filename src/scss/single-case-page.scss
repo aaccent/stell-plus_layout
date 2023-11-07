@@ -157,10 +157,10 @@
     .swiper-button-prev,
     .swiper-button-next {
         border: 1px solid rgba($color: $base-4, $alpha: 0.2);
-        border-radius: 50px;
+        border-radius: 3.125rem;
         display: block;
         color: $base-4;
-        font-size: 32px;
+        font-size: 2rem;
         line-height: 1;
         padding: 24px 74px;
         width: auto;
@@ -169,8 +169,8 @@
             font-size: inherit;
         }
         @include min_container {
-            border-radius: calc(50px + 50 * var(--screen-diff));
-            font-size: calc(32px + 32 * var(--screen-diff));
+            // border-radius: calc(50px + 50 * var(--screen-diff));
+            // font-size: calc(32px + 32 * var(--screen-diff));
             padding: 0.75em 2.3125em
         }
         @media (min-width: 576px) and (max-width: 1608px) {
