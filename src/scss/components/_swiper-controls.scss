@@ -10,11 +10,11 @@
 .swiper-button-next {
     color: $base-1;
     cursor: pointer;
-    font-size: calc(25 / 12 * 1em);
-    line-height: 1;
+    // font-size: calc(25 / 12 * 1em);
+    // line-height: 1;
     flex-shrink: 0;
     width: auto;
-    height: auto;
+    height: 1.5rem;
     &:after {
         content: none
     }
@@ -26,9 +26,9 @@
     }
 }
 
-.swiper-button-prev {
-    transform: rotate(-180deg);
-}
+// .swiper-button-prev {
+//     transform: rotate(-180deg);
+// }
 
 // customize
 .swiper-pagination-divider,

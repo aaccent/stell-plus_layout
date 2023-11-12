@@ -34,14 +34,17 @@
             padding-right: 0;
         }
         &__link {
-            background-color: rgba($color: $base-1, $alpha: 0.17);
-            @include text_t6;
+            display: flex;
+            align-items: center;
             text-align: center;
             text-transform: uppercase;
-            @include ishover {
-                background-color: $base-1;
-                color: #3D3D3D;
+            & > div {
+                flex-basis: 100%;
             }
+            // @include ishover {
+            //     background-color: $base-1;
+            //     color: #3D3D3D;
+            // }
         }
         @include gap {
             margin-left: 20px;
@@ -58,8 +61,8 @@
     }
     &_inner {
         border-top: 1px dashed rgba($color: $base-1, $alpha: 0.25);
-        padding-top: 32px;
-        padding-bottom: 40px;
+        padding-top: 2rem;
+        padding-bottom: 2.5rem;
         position: absolute;
         left: 0;
         bottom: 0;
@@ -86,7 +89,7 @@
             display: flex;
             align-items: center;
             row-gap: 16px;
-            column-gap: calc(144 / 1070 * 100%);
+            column-gap: 12%;
             height: auto;
             @include tablet {
                 flex-direction: column;
@@ -129,6 +132,12 @@
             }
         }
     }
+    @include phone {
+        &__inner {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+    }
 }
 
 .banner-slide {
@@ -159,7 +168,6 @@
         }
     }
     &__btn {
-        @include text_t6;
         position: absolute;
         top: 34%;
         left: 50%;
@@ -176,6 +184,26 @@
                 width: 15.75rem;
                 height: auto;
             }
+        }
+    }
+    @include phone {
+        &_inner {
+            & > .container {
+                gap: 1.5rem;
+            }
+        }
+        &__logo {
+            svg {
+                width: 220px;
+                height: auto;
+            }
+        }
+        &__text {
+            font-size: 1.125rem;
+        }
+        &__btn {
+            width: 120px;
+            height: 120px;
         }
     }
 }

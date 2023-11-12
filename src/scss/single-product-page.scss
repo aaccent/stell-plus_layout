@@ -11,6 +11,58 @@
 @import "components/popup.scss";
 @import "components/project.scss";
 
+.wrapper {
+    position: relative;
+    .model {
+        pointer-events: none;
+        mix-blend-mode: darken;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+
+    }
+    .model-observer {
+        position: absolute;
+        top: 135px;
+        left: 0;
+        width: 100%;
+        min-height: 70px;
+    }
+    .model-wrapper {
+        position: sticky;
+        top: calc(100vh - 50.625rem);
+        left: 0;
+        width: 100%;
+        height: 50.625rem;
+        img {
+            position: absolute;
+            left: calc(535 / 1680 * 100%);
+            bottom: 4.375rem;
+            width: 30%;
+            min-width: 500px;
+            transition: transform 0.3s ease 0s;
+            &._squeeze {
+                transform: translate(-110px) scale(0.8);
+            }
+        }
+    }
+    @include desktop {
+        .model-wrapper {
+            img {
+                width: 46%;
+                transform: translate(-110px, -0)
+            }
+        }
+    }
+    @include tablet {
+        .model {
+            display: none;
+        }
+    }
+}
 @import "blocks/projects.scss";
 
 .popup {
@@ -21,10 +73,11 @@
         display: flex;
         flex-direction: column;
         position: relative;
+        padding-bottom: 0;
         max-width: 544px;
         &:after {
             background: linear-gradient(13deg, rgba(255, 255, 255, 0.80) 9.4%, rgba(255, 255, 255, 0.00) 231.73%);
-            content: "";
+            // content: "";
             position: absolute;
             left: 0;
             right: 0;
@@ -32,15 +85,48 @@
             height: 106px;
         }
     }
+    &__close {
+        font-size: 0.75rem;
+        line-height: 1;
+        padding: 1.1875rem;
+        span {
+            vertical-align: bottom;
+        }
+    }
     &__title {
         @include heading_h3
     }
     &__body {
-        margin-right: -24px;
-        padding-right: 24px;
+        margin-right: -1.5rem;
+        padding-right: 1.5rem;
+        padding-bottom: -2.5rem;
         overflow: auto;
+        &::-webkit-scrollbar {
+            width: 0.125rem;
+        }
+        &::-webkit-scrollbar-button {
+            display: none;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba($color: $base-4, $alpha: 0.2);
+            border-radius: 0.125rem;
+            opacity: 0.2;
+        }
+        &::-webkit-scrollbar-track-piece {
+        }
+        // scrollbar-width: none; // auto, thin
+        scrollbar-color: rgba($color: $base-4, $alpha: 0.2) transparent;
+        // @supports (scrollbar-gutter: stable) {
+        //     overflow: auto;
+        //     scrollbar-gutter: stable;
+        // }
+        // @media (pointer: fine) {
+        //     // custom scroll styles
+        // }
     }
-
     @include min-container {
         &__content {
             width: calc(544 / 1632 * 100%);
@@ -49,7 +135,7 @@
     }
     @include phone {
         &__close {
-            padding: 8px;
+            padding: 0.5rem;
         }
     }
 }
@@ -62,13 +148,16 @@ table {
 caption {
     @include text_t5;
     text-align: left;
-    margin: 0 0 20px;
+    margin: 0 0 1.25rem;
     text-transform: uppercase;
 }
 tbody tr {
     border-top: 1px dashed rgba($color: $base-4, $alpha: 0.25);
     @include text_t4;
     line-height: 1.25;
+    &:last-child {
+        border-bottom: 1px dashed rgba($color: $base-4, $alpha: 0.25);
+    }
 }
 tbody td {
     padding: 14px 0;
@@ -101,9 +190,42 @@ tbody td {
         @include text_t5;
         opacity: 0.6;
     }
+    &__call-button{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+    @include min_tablet {
+        &__img {
+            display: none;
+        }
+    }
+    @include gap {
+        &__call-button {
+            width: 120px;
+            height: 120px;
+        }
+    }
     @include phone {
+        &__content {
+            flex-direction: column;
+        }
+        &__head {
+            flex-basis: auto;
+        }
         &__etc {
-            top: 30px
+            top: 42px
+        }
+        &__img {
+            top: 50%;
+            width: 90%;
+            transform: translate(-55%, -50%);
+        }
+        &__call-button {
+            align-self: flex-end;
+            position: relative;
+            width: 90px;
+            height: 90px
         }
     }
 }
@@ -112,20 +234,21 @@ tbody td {
 .product-section {
     background-color: #F0F0F0;
     color: $base-4;
-    margin-bottom: -15px;
+    position: relative;
+    margin-bottom: -0.9375rem;
     &__container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-top: 90px;
-        padding-bottom: 90px;
-        min-height: 810px;
+        padding-top: 5.625rem;
+        padding-bottom: 5.625rem;
     }
     &__main-info, &__params {
         flex-basis: calc(444 / 1568 * 100%);
     }
     &__title {
         @include heading_h3;
+        max-width: 390px;
         text-transform: lowercase;
         @media (min-width: 576px ) and (max-width: 1568px) {
             font-size: calc(32px + 16 * (100vw - 576px)/(1568 - 576));
@@ -163,24 +286,35 @@ tbody td {
         }
     }
     .icon-certificate {
-        font-size: 60px;
+        font-size: 3.75rem;
     }
     &__certificate-icon {
         padding: 7.5px
     }
     &__table {
-        margin: 24px 0 0;
+        margin: 1.5rem 0 0;
 
     }
     &__all-params {
-        margin: 24px 0 0;
-        text-decoration: underline;
+        margin: 1.5rem 0 0;
+        @include text_t5;
         text-transform: uppercase
     }
-
+    @include min-container {
+        &__title {
+            width: calc(390 / 444 * 100%);
+            max-width: none;
+        }
+    }
+    @include min_tablet {
+        &__container {
+            min-height: 50.625rem;
+        }
+    }
     @include tablet {
         &__container {
             flex-direction: column;
+            padding-top: 40px;
             row-gap: 24px;
         }
         &__img {

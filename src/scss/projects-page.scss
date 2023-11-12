@@ -33,10 +33,10 @@
         text-transform: lowercase;
     }
     &__projects {
-        margin-top: 64px;
+        margin-top: 5.125rem;
     }
     &__more {
-        margin: 60px auto 0;
+        margin: 3.75rem auto 0;
         @media (min-width: 576px) and (max-width: 1608px) {
             width: calc(100px + 50 * (100vw - 576px) / (1608 - 576));
             height: calc(100px + 50 * (100vw - 576px) / (1608 - 576));

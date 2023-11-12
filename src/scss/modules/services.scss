@@ -38,6 +38,7 @@
     $column-gap: 24px;
     $col-1: calc((6 * $column-width + (6 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
     $col-2: calc((15 * $column-width + (15 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
+    cursor: pointer;
     padding: 25px 0;
     &__container {
         display: flex;
@@ -48,7 +49,6 @@
         display: flex;
         gap: 2rem;
         flex-basis: $col-1;
-        
     }
     &__num {
         border: 1px solid $base-1;
@@ -67,15 +67,14 @@
         text-transform: lowercase
     }
     &__button {
+        background-color: rgba($color: $base-1, $alpha: 0.17);
+        border-radius: 3.125rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 14px;
-        line-height: 1;
         padding: 0.625rem 1.75rem; //28px;
         margin-left: auto;
-        // width: 74px;
-        // height: 30px;
+        transition: all 0.2s ease 0s;
         span {
             display: inline-block;
             font-size: inherit;
@@ -99,6 +98,7 @@
             }
         }
         @include ishover {
+            background-color: $base-1;
             span {
                 &:before, &:after {
                     background-color: $base-4;
@@ -208,6 +208,13 @@
         grid-column: 2;
         @include text_t5;
         text-transform: uppercase;
+        &:after {
+            background-color: $base-1;
+            bottom: 0;
+        }
+    }
+    &_open &__content {
+        cursor: auto;
     }
     @include min_container {
         --padding-y: calc(25 / 1680 * 100%);
@@ -285,7 +292,7 @@
             column-gap: 5px;
         }
         &__icon {
-             display: none;
+            grid-row: 3;
         }
         &__about {
             font-size: 20px;

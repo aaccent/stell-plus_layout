@@ -1,0 +1,46 @@
+#youtube-container {
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    padding: 30px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease 0s;
+    .youtube-body {
+        width: 100%;
+        transform: scale(0.4);
+        transition: transform 0.5s ease 0s;
+        @include min_gap {
+            margin: 0 auto;
+            width: 80%;
+        }
+    }
+    .youtube-wrapper {
+        background-color: $base-4;
+        position: relative;
+        padding-top: 56.25%;
+        height: 0;
+        width: 100%;
+
+    }
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    &._open {
+        opacity: 1;
+        visibility: visible;
+        .youtube-body {
+            transform: scale(1)
+        }
+    }
+}

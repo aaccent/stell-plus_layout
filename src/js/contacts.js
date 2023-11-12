@@ -105,10 +105,11 @@ function init() {
     })
 
     // Создадим пользовательский макет ползунка масштаба.
-    let ZoomLayout = ymaps.templateLayoutFactory.createClass("<div id='zoom-controls'>" +
-        "<button id='zoom-out' type='button' disabled><span class='icon-minus'></span></button>" +
-        "<button id='zoom-in' type='button'><span class='icon-plus'></span></button>" +
-        "</div>", {
+    let ZoomLayout = ymaps.templateLayoutFactory.createClass(`
+        <div id="zoom-controls">
+            <button id='zoom-out' type='button' disabled><img src='./images/icons/minus-scale.svg'></button>
+            <button id='zoom-in' type='button'><img src='./images/icons/plus-scale.svg'></button>
+        </div>`, {
 
         // Переопределяем методы макета, чтобы выполнять дополнительные действия
         // при построении и очистке макета.

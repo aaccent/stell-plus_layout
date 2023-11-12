@@ -106,7 +106,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        width: calc(450 / 1608 * 100%);
+        width: 49.5%;
         height: auto;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -115,6 +115,11 @@
         }
         @include phone {
             width: 75%
+        }
+    }
+    @include min_container {
+        &__content {
+            min-height: 45rem
         }
     }
     @include phone {
@@ -165,8 +170,13 @@
         padding: 24px 74px;
         width: auto;
         height: auto;
+        transition: all 0.3s ease 0s;
         span {
             font-size: inherit;
+        }
+        @include ishover {
+            background-color: $base-4;
+            color: $base-1;
         }
         @include min_container {
             // border-radius: calc(50px + 50 * var(--screen-diff));
@@ -195,6 +205,9 @@
 .equipments-section {
     .swiper-slide {
         height: auto
+    }
+    .swiper-button-prev {
+        transform: rotate(-180deg);
     }
     @media screen and (max-width: 480px) {
         .swiper {
@@ -248,15 +261,15 @@
     }
 }
 
+.projects-section {
+    .swiper-button-prev {
+        transform: rotate(-180deg);
+    }
+}
+
 .projects-slider {
     position: relative;
     .button {
-        pointer-events: none;
-        position: absolute;
-        top: calc(70 / 480 * 100%);
-        right: calc(538 / 1568 * 100%);
-        transition: all 0.2s ease 0s;
-        z-index: 1;
         @media (min-width: 576px) and (max-width: 1608px) {
             width: calc(80px + 70 * (100vw - 576px) / (1608 - 576));
             height: calc(80px + 70 * (100vw - 576px) / (1608 - 576))

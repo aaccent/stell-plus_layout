@@ -1,21 +1,21 @@
 .about-section {
     border-radius: 0;
-    &__bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        .container {
-            --positionX: calc(234 / 1680 * 100%);
-            background-image: url(../images/logos/logo-bg.svg);
-            background-position: var(--positionX) 15%;
-            background-repeat: no-repeat;
-            height: 100%;
-            opacity: 0.04;
-        }
-    }
+    // &__bg {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     z-index: -1;
+    //     .container {
+    //         --positionX: calc(234 / 1680 * 100%);
+    //         background-image: url(../images/logos/logo-bg.svg);
+    //         background-position: var(--positionX) 15%;
+    //         background-repeat: no-repeat;
+    //         height: 100%;
+    //         opacity: 0.04;
+    //     }
+    // }
     &__title {
         max-width: 900px;
     }
@@ -128,10 +128,16 @@
     }
     &__icon {
         color: inherit;
-        font-size: 64px;
         position: absolute;
-        top: 16px;
-        right: 16px;
+        top: 1rem;
+        right: 1rem;
+        width: 4rem;
+        height: 4rem;
+        img {
+            object-fit: contain;
+            width: 100%;
+            height: 100%
+        }
     }
     &__name {
         @include text_t3;
@@ -144,8 +150,8 @@
         justify-content: space-between;
         align-items: flex-start;
         gap: 10px;
-        margin: 24px 0 0;
-        padding: 24px 0 0;
+        margin: 1.5rem 0 0;
+        padding: 1.5rem 0 0;
         @include gap {
             margin-top: 18px;
             padding-top: 18px
@@ -163,19 +169,16 @@
     &__unit {
         flex-shrink: 0;
         @include text_t3;
+        position: relative;
+        top: 0.25rem;
         text-transform: uppercase;
         @include gap {
-            font-size: 16px;
+            font-size: 1rem;
         }
     }
     @include min_container {
         // --padding-x: calc(24px + 24 * var(--screen-diff));
         // --padding-y: calc(16px + 16 * var(--screen-diff));
-        &__bg {
-            .container {
-                background-size: calc(635 / 1680 * 100%);
-            }
-        }
         // &__inner-wrapper {
         //     padding: var(--padding-y) var(--padding-x);
         // }

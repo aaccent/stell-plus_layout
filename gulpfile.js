@@ -17,6 +17,7 @@ import { js, js_libs } from "./gulp/tasks/js.js"
 import { fonts } from "./gulp/tasks/fonts.js"
 import { json } from "./gulp/tasks/json.js"
 import { zip } from "./gulp/tasks/zip.js"
+import { copy } from "./gulp/tasks/copy.js"
 
 // наблюдение за изменениями в файлах
 // 1ый аргумент - путь, 2ой - задача
@@ -27,7 +28,10 @@ function watcher() {
     gulp.watch(path.watch.js, js)
 }
 
-const mainTasks = gulp.parallel(html, images, css_libs, scss, js_libs, js, fonts, json)
+const copy_videos = () => copy("/videos/*", "/videos/")
+const copy_json = () => copy("/json/*", "/json/")
+
+const mainTasks = gulp.parallel(html, images, css_libs, scss, js_libs, js, fonts, copy_json, copy_videos)
 
 // последовательное выполнение задач
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server))
@@ -38,4 +42,4 @@ const zipping = gulp.series(reset, mainTasks, zip)
 gulp.task('default', dev)
 gulp.task('build', build)
 gulp.task('clear', reset)
-gulp.task("zipping", zipping)
+gulp.task("zip", zipping)

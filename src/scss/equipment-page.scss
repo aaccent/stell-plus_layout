@@ -27,6 +27,28 @@
             }
         }
     }
+    &__head {
+        align-items: flex-end
+    }
+    &__etc {
+        svg {
+            width: auto;
+            height: 1.5rem
+        }
+    }
+    &__stat-value {
+        @include number_n2;
+        @media (min-width: 576px) and (max-width: 1608px) {
+            font-size: calc(70px + 20 * (100vw - 576px) / (1608 - 576));
+        }
+        @include phone {
+            font-size: 70px
+        }
+    }
+    &__stat-unit {
+        position: relative;
+        top: 0.5rem
+    }
 }
 @import "modules/header.scss";
 @import "modules/equipment.scss";
@@ -103,17 +125,22 @@
 
 .tag {
     border: 1px solid rgba($color: $base-4, $alpha: 0.2);
+    border-radius: 3.125rem;
+    cursor: pointer;
+    @include text_t6;
     display: flex;
     align-items: center;
+    padding: 0.8125rem 1.5rem 0.625rem;
     position: relative;
     text-transform: uppercase;
+    transition: background-color 0.2s ease 0s, border-color 0.2s ease 0s, padding 0.2s ease 0s;
     &__text {
         user-select: none;
     }
     &__icon {
         position: absolute;
         top: 50%;
-        right: 12px;
+        right: 0.8125rem;
         transform: translate(0, -50%);
         width: 13px;
         height: 13px;
@@ -162,6 +189,12 @@
     &_disabled {
         pointer-events: none;
         opacity: 0.6;
+    }
+    @include ishover {
+        &:not(.tag_selected) {
+            background-color: $base-2;
+            border-color: $base-2
+        }
     }
 }
 

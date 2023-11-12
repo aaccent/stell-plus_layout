@@ -1,111 +1,305 @@
+// .button {
+//     border-radius: 50px;
+//     cursor: pointer;
+//     @include text_t6;
+//     // padding: 1em 2em;
+//     padding: 0.8125rem 1.5rem 0.625rem;
+//     // padding: 13px 24px;
+//     text-transform: uppercase;
+//     transition: all 0.2s ease 0s;
+//     &_big {
+//         border-radius: 50%;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         padding: 0;
+//         height: 9.375rem;
+//         width: 9.375rem;
+//     }
+//     &_primary {
+//         background-color: $base-1;
+//         color: $base-4;
+//         @include ishover {
+//             background-color: $base-4;
+//             color: $base-1;
+//         }
+//     }
+//     &_second {
+//         background-color: rgba($color: $base-1, $alpha: 0.17);
+//         color: $base-1;
+//         @include ishover {
+//             background-color: $base-1;
+//             color: $base-4;
+//         }
+//     }
+//     &_outline {
+//         &_white {
+//             border: 1px solid $base-1;
+//             color: $base-1;
+//             @include ishover {
+//                 background-color: $base-1;
+//                 color: $base-4
+//             }
+//         }
+//         &_black {
+//             border: 1px solid $base-4;
+//             color: $base-4;
+//             @include ishover {
+//                 background-color: $base-4;
+//                 color: $base-1
+//             }
+//         }
+//     }
+//     &_third {
+//         background-color: $base-4;
+//         border: 1px solid transparent;
+//         color: $base-1;
+//         @include ishover {
+//             background-color: transparent;
+//             border-color: $base-4;
+//             color: $base-4;
+//         }
+//     }
+//     &_disabled, &:disabled {
+//         background-color: $base-3;
+//         color: rgba($color: $base-4, $alpha: 0.6);
+//         cursor: auto;
+//         @include ishover {
+//             background-color: $base-3;
+//             border-color: transparent;
+//             color: rgba($color: $base-4, $alpha: 0.6);
+//         }
+//     }
+//     &__bullets {
+//         display: none;
+//     }
+//     &__bullet {
+//         border-radius: 50%;
+//         display: inline-flex;
+//         height: 4px;
+//         width: 4px;
+//         animation: bullet-bounce 1s ease-in-out infinite;
+//         .button_primary, .button_outline & {
+//             background-color: $base-4
+//         }
+//         .button_second, .button_third & {
+//             background-color: $base-1;
+//         }
+//         &:not(:last-child) {
+//             margin-right: 3px;
+//         }
+//         &:nth-child(2) {
+//             animation-delay: -0.85s;
+//         }
+//         &:nth-child(3) {
+//             animation-delay: -0.75s;
+//         }
+//     }
+// }
+
+
+// @keyframes bullet-bounce {
+//     0%, 60%, 100% {
+//         transform: translate(0, 0);
+//     }
+//     30% {
+//         transform: translate(0, -100%);
+//     }
+// }
+
 .button {
     border-radius: 50px;
     cursor: pointer;
     @include text_t6;
-    padding: 1em 2em;
-    // padding: 13px 24px;
+    position: relative;
+    padding: 0.3125rem 1.5rem 0.625rem;
     text-transform: uppercase;
-    transition: all 0.2s ease 0s;
+    overflow: hidden;
+    &__bg {
+        background-color: $base-1;
+        border-radius: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: all 0.3s ease 0s;
+        z-index: -1;
+    }
+    &__text-wrapper {
+        height: 1.25rem;
+        padding-top: 0.5rem;
+        overflow: hidden;
+    }
+    &__text {
+        height: 1.25rem;
+        transition: all 0.8s cubic-bezier(0.22,1,0.36,1) 0s;
+        &_hidden {
+            position: relative;
+            z-index: 3;
+        }
+    }
+    &:before {
+        border-radius: 50px;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+    &:after {
+        border-radius: 50px;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: translate(0, 110%);
+        transition: all 0.8s cubic-bezier(0.22,1,0.36,1) 0s;
+        z-index: 1;
+    }
+    @include ishover {
+        .button__bg {
+            transform: translate(0, -100%);
+        }
+        .button__text {
+            transform: translate(0, -100%);
+        }
+        &:after {
+            transform: translate(0, 0);
+
+        }
+    }
     &_big {
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 0;
-        height: 150px;
-        width: 150px;
-        @include min_container {
-            width: calc(150px + 150 * var(--screen-diff)) ;
-            height: calc(150px + 150 * var(--screen-diff)) ;
+        height: 9.375rem;
+        width: 9.375rem;
+        &:before {
+            border-radius: 50%;
+        }
+        .button__text-wrapper {
+            padding-top: 0.75rem;
+            height: 2.25rem;
+        }
+        .button__text {
+            height: 2.25rem;
         }
     }
     &_primary {
         background-color: $base-1;
-        color: $base-4;
-        @include ishover {
-            background-color: $base-4;
-            color: $base-1;
+        .button__text {
+            &_show {
+                color: $base-4;
+            }
+            &_hidden {
+                color: $base-1;
+            }
+        }
+        &:after {
+            background-color: $base-4; 
         }
     }
     &_second {
         background-color: rgba($color: $base-1, $alpha: 0.17);
-        color: $base-1;
-        @include ishover {
-            background-color: $base-1;
-            color: $base-4;
+        .button__text {
+            &_show {
+                color: $base-1;
+            }
+            &_hidden {
+                color: $base-4;
+            }
+        }
+        &:after {
+            background-color: $base-1; 
         }
     }
     &_outline {
         &_white {
-            border: 1px solid $base-1;
-            color: $base-1;
-            @include ishover {
-                background-color: $base-1;
-                color: $base-4
+            &:before {
+                border: 1px solid $base-1;
+            }
+            .button__text {
+                &_show {
+                    color: $base-1;
+                }
+                &_hidden {
+                    color: $base-4;
+                }
+            }
+            &:after {
+                background-color: $base-1; 
             }
         }
         &_black {
-            border: 1px solid $base-4;
-            color: $base-4;
-            @include ishover {
-                background-color: $base-4;
-                color: $base-1
+            &:before {
+                border: 1px solid $base-4
+            }
+            .button__text {
+                &_show {
+                    color: $base-4;
+                }
+                &_hidden {
+                    color: $base-1;
+                }
+            }
+            &:after {
+                background-color: $base-4; 
             }
         }
     }
     &_third {
         background-color: $base-4;
-        border: 1px solid transparent;
-        color: $base-1;
-        @include ishover {
-            background-color: transparent;
-            border-color: $base-4;
-            color: $base-4;
+        &:before {
+            border: 1px solid $base-4;
+        }
+        .button__text {
+            &_show {
+                color: $base-1;
+            }
+            &_hidden {
+                color: $base-4;
+            }
+        }
+        &:after {
+            background-color: $base-1; 
         }
     }
     &_disabled, &:disabled {
         background-color: $base-3;
-        color: rgba($color: $base-4, $alpha: 0.6);
         cursor: auto;
-        @include ishover {
-            background-color: $base-3;
-            border-color: transparent;
+        // pointer-events: none;
+        .button__text {
             color: rgba($color: $base-4, $alpha: 0.6);
+            transition: none;
         }
-    }
-    &__bullets {
-        display: none;
-    }
-    &__bullet {
-        border-radius: 50%;
-        display: inline-flex;
-        height: 4px;
-        width: 4px;
-        animation: bullet-bounce 1s ease-in-out infinite;
-        .button_primary, .button_outline & {
-            background-color: $base-4
+        &:after, &::before {
+            content: none;
+            transition: none;
         }
-        .button_second, .button_third & {
-            background-color: $base-1;
+        @include ishover {
+            .button__text {
+                color: rgba($color: $base-4, $alpha: 0.6);
+                &_show {
+                    transform: none;
+                }
+                &_hidden {
+                    transform: translate(0, 100%);
+                }
+            }
+            &:before {
+                border-color: transparent;
+            }
+            &:after {
+                background-color: $base-3;
+                transform: translate(0, -100%);
+            }
         }
-        &:not(:last-child) {
-            margin-right: 3px;
-        }
-        &:nth-child(2) {
-            animation-delay: -0.85s;
-        }
-        &:nth-child(3) {
-            animation-delay: -0.75s;
-        }
-    }
-}
-
-
-@keyframes bullet-bounce {
-    0%, 60%, 100% {
-        transform: translate(0, 0);
-    }
-    30% {
-        transform: translate(0, -100%);
     }
 }

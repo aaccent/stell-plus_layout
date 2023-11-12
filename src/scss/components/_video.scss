@@ -1,0 +1,45 @@
+.video {
+    background-color: $base-4;
+    position: relative;
+    overflow: hidden;
+    &__el {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &__timeline {
+        color: $base-1;
+        @include text_t6;
+        position: absolute;
+        right: 2rem;
+        bottom: 2rem;
+    }
+    &__play-icon {
+        background-color: $base-1;
+        border-radius: 50%;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, -50%) scale(1.4);
+        transition: all 0.2s ease 0s;
+        z-index: 2;
+        &_show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .icon-play {
+            font-size: 5.25rem;
+            @include phone {
+                font-size: 4rem;
+            }
+        }
+    }
+}

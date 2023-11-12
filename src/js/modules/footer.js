@@ -75,28 +75,37 @@ function documentActions(e) {
 
 document.addEventListener("click", documentActions)
 
+let lock = false;
 selectEl.addEventListener("click", e => {
     // клик по заголовку
-    if (e.target.closest(".select__head")) {
+    if (e.target.closest(".select__head") && !lock) {
+        lock = true
         if (selectEl.classList.contains("select_open")) {
-            let activeOptionEl = selectEl.querySelector(".select__option_selected")
-            if (activeOptionEl) {
-                selectEl.querySelector("input").value = activeOptionEl.dataset.value
-                selectLabel.innerHTML = activeOptionEl.querySelector(".select__option-label").innerHTML
-                selectEl.classList.add("select_selected")
-            }
             selectEl.classList.remove("select_open")
             selectMenu.style.height = ""
         } else {
             selectEl.classList.add("select_open")
             selectMenu.style.height = selectMenu.scrollHeight + "px"
         }
+        selectMenu.addEventListener("transitionend", () => lock = false)
     }
     // клик по вариантам
     if (e.target.closest(".select__option")) {
         let activeOptionEl = selectEl.querySelector(".select__option_selected")
+        let curOptionEl = e.target.closest(".select__option");
+
         activeOptionEl && activeOptionEl.classList.remove("select__option_selected")
-        e.target.closest(".select__option").classList.add("select__option_selected")
+        curOptionEl.classList.add("select__option_selected")
+
+        selectEl.querySelector("input").value = curOptionEl.dataset.value
+        selectLabel.innerHTML = curOptionEl.querySelector(".select__option-label").innerHTML
+        selectEl.classList.add("select_selected")
+
+        setTimeout(() => {
+            selectEl.classList.remove("select_open")
+            selectMenu.style.height = ""
+        }, 200);
+        
     }
 })
 

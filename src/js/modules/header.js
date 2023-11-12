@@ -36,49 +36,45 @@ function unlockBody () {
     document.body.classList.remove("body_lock")
 }
 
-// ---------------------------------------- //
-function documentActions(event) {
-    const targetEl = event.target;
-    // submenu
-    if (window.innerWidth > 992 && isMobile.any()) {
-        const activeMenuItems = document.querySelectorAll(".header__menu-item_hover");
-        if (targetEl.classList.contains("header__menu-link")) {
-            event.preventDefault();
+const menuEl = document.querySelector(".header__menu")
+const menuLinkEls = document.querySelectorAll(".header__menu-link");
+const dropdownEl = document.querySelector(".header__dropdown");
+const burgerEl = document.querySelector(".header__burger")
+
+menuLinkEls.forEach(menuLinkEl => {
+    menuLinkEl.addEventListener("click", e => {
+        let hasSubmenu = menuLinkEl.nextElementSibling;
+        if (window.innerWidth > 992 && isMobile.any()) {
+            const activeMenuItems = document.querySelectorAll(".header__menu-item_hover");
+            if (!hasSubmenu) {
+                return
+            }
+            e.preventDefault();
             activeMenuItems.forEach(activeMenuItem => activeMenuItem.classList.remove("header__menu-item_hover"))
-            if (targetEl.closest(".header__menu-item").querySelector(".header__submenu")) {
-                targetEl.closest(".header__menu-item").classList.add("header__menu-item_hover")
+            if (hasSubmenu) {
+                menuLinkEl.closest(".header__menu-item").classList.add("header__menu-item_hover")
             }
         }
-        if (!targetEl.closest(".header__menu-item")) {
-            activeMenuItems.forEach(activeMenuItem => activeMenuItem.classList.remove("header__menu-item_hover"))
+        
+        if (window.innerWidth <= 992) {
+            if (hasSubmenu) {
+                menuLinkEl.closest(".header__menu-item").classList.toggle("header__menu-item_open")
+            }
         }
-    }
-    
-    if (window.innerWidth <= 992) {
-        if (targetEl.classList.contains("header__menu-link")) {
-            targetEl.closest(".header__menu-item").classList.toggle("header__menu-item_open")
-        }
-    }
+    })
+})
 
-    // menu 
-    if (targetEl.classList.contains("header__burger")) {
-        targetEl.classList.toggle("header__burger_open")
-        document.querySelector(".header__menu").classList.toggle("header__menu_open")
-        document.body.classList.toggle("body_lock")
-    }
-
-    // lang
+dropdownEl.addEventListener("click", (e) => {
+    const targetEl = e.target;
     if (targetEl.closest(".header__dropdown-head")) {
         targetEl.closest(".header__dropdown").classList.toggle("header__dropdown_open")
-    } else {
-        document.querySelector(".header__dropdown").classList.remove("header__dropdown_open")
     }
 
     if (targetEl.closest(".header__dropdown-item")) {
         const newLang = targetEl.closest(".header__dropdown-item");
         const lang = {
             img: newLang.querySelector("img").getAttribute("src"),
-            label: newLang.querySelector("div").dataset.value
+            label: newLang.querySelector("span").dataset.value
         }
 
         document.querySelector(".header__dropdown-item_active").classList.remove("header__dropdown-item_active")
@@ -86,25 +82,76 @@ function documentActions(event) {
 
         const dropdownHeadEl = document.querySelector(".header__dropdown-head")
         dropdownHeadEl.querySelector("img").setAttribute("src", lang.img)
-        dropdownHeadEl.querySelector("div").innerHTML = lang.label
+        dropdownHeadEl.querySelector("span").innerHTML = lang.label
         targetEl.closest(".header__dropdown").classList.remove("header__dropdown_open")
     }
+})
+
+burgerEl.addEventListener("click", (e) => {
+    if (burgerEl.classList.contains("header__burger_open")) {
+        document.querySelectorAll(".header__menu-item_open").forEach(menuItemEl => menuItemEl.classList.remove("header__menu-item_open"))
+        unlockBody()
+    } else {
+        lockBody()
+    }
+    
+    burgerEl.classList.toggle("header__burger_open")
+    menuEl.classList.toggle("header__menu_open")
+})
+
+function documentActions(event) {
+    const targetEl = event.target;
+
+    if (!targetEl.closest(".header__menu-item")) {
+        document.querySelectorAll(".header__menu-item_hover").forEach(activeMenuItem => activeMenuItem.classList.remove("header__menu-item_hover"))
+    }
+
+    if (!targetEl.closest(".header__dropdown")) {
+        document.querySelector(".header__dropdown").classList.remove("header__dropdown_open")
+    }
+}
+
+const headerEl = document.querySelector(".header");
+const minYOffset = 70;
+let lastPageY = 0
+
+function handleScroll() {
+    let pageY = window.pageYOffset;
+    if (headerEl.querySelector(".header__burger").classList.contains("header__burger_open"))
+        return
+    if (lastPageY < pageY && pageY > minYOffset) {
+        if (!headerEl.classList.contains("header_hide")) {
+            headerEl.classList.add("header_hide")
+            headerEl.classList.remove("header_show")
+        }
+    } else if (lastPageY > pageY) {
+        if (!headerEl.classList.contains("header_show")) {
+            headerEl.classList.remove("header_hide")
+            headerEl.classList.add("header_show")
+        }
+        if (pageY < minYOffset && headerEl.classList.contains("header_show")) {
+            headerEl.classList.remove("header_show")
+        }
+    }
+
+    lastPageY = pageY
+}
+window.addEventListener("scroll", handleScroll)
+
+if (window.pageYOffset > minYOffset) {
+    headerEl.classList.add("header_hide")
 }
 
 document.addEventListener("click", documentActions);
 
-const headerEl = document.querySelector(".header");
+let tabMediaQuery = window.matchMedia("(max-width: 992px)")
 
-const callback = function(entries, observer) {
-    // элемент в видимой части экрана
-    // в данном случае это headerEl
-    if (entries[0].isIntersecting) {
-        headerEl.classList.remove("header_scroll")
-    } else {
-        // элемент пропал с видимой части экрана
-        headerEl.classList.add("header_scroll")
+tabMediaQuery.addEventListener("change", e => {
+    if (!e.matches) {
+        if (burgerEl.classList.contains("header__burger_open")) {
+            burgerEl.classList.remove("header__burger_open");
+            menuEl.classList.remove("header__menu_open");
+            document.querySelectorAll(".header__menu-item_open").forEach(menuItemEl => menuItemEl.classList.remove("header__menu-item_open"))
+        }
     }
-}
-
-const headerObserver = new IntersectionObserver(callback)
-headerObserver.observe(headerEl)
+})

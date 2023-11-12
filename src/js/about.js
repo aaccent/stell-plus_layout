@@ -1,29 +1,17 @@
 import "./components/banner-slider.js"
+import { handleSwipe } from "./modules/swipe-hint.js"
 
-new Swiper(".timeline-slider .swiper", {
+let timelineSwiper = new Swiper(".timeline-slider .swiper", {
     slidesPerView: 1,
     spaceBetween: 55,
     pagination: {
         el: ".timeline-slider .swiper-pagination",
         type: "progressbar",
     },
-    on: {
-        touchMove: function(swiper, event) {
-            let swipeHint = swiper.el.querySelector(".swiper-swipe")
-
-            if (swipeHint) {
-                swipeHint.style.cssText = `
-                    opacity: 0;
-                    visibility: hidden;
-                    transform: scale(0.65);
-                `
-                swipeHint.addEventListener("transitionend", (e) => {
-                    e.target.remove()
-                }, { once: true })
-            }
-        },
-    }
 })
+
+handleSwipe(timelineSwiper)
+
 
 new Swiper(".equipment-section__slider .swiper", {
     slidesPerView: 1,
@@ -38,10 +26,18 @@ new Swiper(".equipment-section__slider .swiper", {
         1024: {
             slidesPerView: 4
         }
+    },
+    on: {
+        touchMove: function(swiper, event) {
+            const swiperHintEl = swiper.el.querySelector(".swiper-hint")
+            if (swiperHintEl) {
+                swiperHintEl.addEventListener("animationiteration", () =>  swiperHintEl.remove())
+            }
+        }
     }
 })
 
-new Swiper(".certificates-section__slider .swiper", {
+let certificateSwiper = new Swiper(".certificates-section__slider .swiper", {
     slidesPerView: 1,
     spaceBetween: 16,
     breakpoints: {
@@ -53,23 +49,6 @@ new Swiper(".certificates-section__slider .swiper", {
         el: ".swiper-pagination",
         type: "progressbar",
     },
-    on: {
-        touchMove: function(swiper, event) {
-            let swipeHint = swiper.el.querySelector(".swiper-swipe")
-
-            if (swipeHint) {
-                swipeHint.style.cssText = `
-                    opacity: 0;
-                    visibility: hidden;
-                    transform: scale(0.65);
-                `
-                swipeHint.addEventListener("transitionend", (e) => {
-                    e.target.remove()
-                }, { once: true })
-            }
-        },
-        lock: function(swiper, event) {
-            swiper.el.querySelector(".swiper-swipe").remove()
-        }
-    }
 })
+
+handleSwipe(certificateSwiper)

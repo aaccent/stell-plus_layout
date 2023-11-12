@@ -1,3 +1,5 @@
+import { handleSwipe } from "./modules/swipe-hint.js"
+
 new Swiper (".section__images.swiper", {
     slidesPerView: 1.1,
     spaceBetween: 16,
@@ -54,7 +56,7 @@ new Swiper(".results-slider .swiper", {
     },
 })
 
-new Swiper(".projects-slider .swiper", {
+let projectsSwiper = new Swiper(".projects-slider .swiper", {
     slidesPerView: 1,
     spaceBetween: 16,
     breakpoints: {
@@ -66,20 +68,70 @@ new Swiper(".projects-slider .swiper", {
         nextEl: ".projects-section .swiper-button-next",
         prevEl: ".projects-section .swiper-button-prev",
     },
-    on: {
-        touchMove: function(swiper, event) {
-            let swipeHint = swiper.el.querySelector(".swiper-swipe")
+    // on: {
+    //     touchStart: function(swiper) {
+    //         if (isMobile.any()) {
+    //             return
+    //         }
+    //         swiper.el.querySelector(".swiper-swipe").classList.add("swiper-swipe_grab")
+    //     },
+    //     touchMove: function(swiper, event) {
+    //         if (isMobile.any()) {
+    //             return
+    //         }
 
-            if (swipeHint) {
-                swipeHint.style.cssText = `
-                    opacity: 0;
-                    visibility: hidden;
-                    transform: scale(0.65);
-                `
-                swipeHint.addEventListener("transitionend", (e) => {
-                    e.target.remove()
-                }, { once: true })
-            }
-        },
-    }
+    //         let swipeHint = swiper.el.querySelector(".swiper-swipe")
+
+    //         let coordX = event.screenX - swipeHint.offsetWidth * 0.4;
+    //         let coordY = event.clientY - swipeHint.offsetHeight * 0.4;
+
+    //         if (!swipeHint.classList.contains("swiper-swipe_show")) {
+    //             swipeHint.classList.add("swiper-swipe_show")
+    //         }
+    //         swipeHint.style.cssText = `
+    //             position: fixed;
+    //             top: ${coordY}px;
+    //             left: ${coordX}px;
+    //         `            
+    //     },
+    //     touchEnd: function(swiper) {
+    //         if (isMobile.any()) {
+    //             return
+    //         }
+    //         swiper.el.querySelector(".swiper-swipe").classList.remove("swiper-swipe_grab")
+    //     }
+    // }
 })
+
+handleSwipe(projectsSwiper)
+
+// let projectsHint = projectsSwiper.el.querySelector(".swiper-swipe")
+
+// projectsSwiper.wrapperEl.addEventListener("mouseenter", () => {
+//     if (isMobile.any()) {
+//         return
+//     }
+//     projectsHint.classList.add("swiper-swipe_show")
+// })
+
+// projectsSwiper.wrapperEl.addEventListener("mousemove", e => {
+//     if (isMobile.any()) {
+//         return
+//     }
+//     let coordX = e.clientX - projectsHint.offsetWidth * 0.4;
+//     let coordY = e.clientY - projectsHint.offsetHeight * 0.4;
+
+//     projectsHint.style.cssText = `
+//         position: fixed;
+//         top: ${coordY}px;
+//         left: ${coordX}px;
+//     `
+// })
+
+// projectsSwiper.wrapperEl.addEventListener("mouseleave", () => {
+//     if (isMobile.any()) {
+//         return
+//     }
+//     projectsHint.classList.remove("swiper-swipe_show")
+// })
+

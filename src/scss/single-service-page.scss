@@ -9,6 +9,9 @@
 @import "components/button.scss";
 @import "components/breadcrumbs.scss";
 @import "components/project.scss";
+@import "components/person-info.scss";
+@import "components/video.scss";
+@import "components/youtube-modal.scss";
 
 @import "blocks/hero.scss";
 @import "blocks/projects.scss";
@@ -19,7 +22,6 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-bottom: -15px;
     &__head {
         color: $base-1;
         flex-basis: 50%
@@ -28,34 +30,42 @@
         color: inherit
     }
     &__desc {
-        width: 70%;
         max-width: 364px;
     }
     &__button {
+        border: 1px solid $base-1;
+        position: absolute;
         left: 50%;
         bottom: 0;
         transform: translate(-50%, 0);
+        transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+        @include ishover {
+            background-color: $base-1;
+            color: $base-4;
+        }
     }
     &__projects {
         background-color: rgba($color: $base-1, $alpha: 0.17);
         border-radius: 50px;
+        cursor: pointer;
         display: flex;
         align-items: center;
         align-self: flex-end;
         margin-left: auto;
-        gap: 18px;
-        padding: 8px 24px 8px 8px;
-    }
-    &__projects-logos {
-        display: flex;
+        gap: 1.125rem;
+        padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+        transition: background-color 0.2s ease 0s;
         @include ishover {
-            .hero-section__projects-logo {
-                margin-right: 0
+            background-color: $base-1;
+            .hero-section__projects-label {
+                color: $base-4
             }
         }
     }
+    &__projects-logos {
+        display: flex;
+    }
     &__projects-logo {
-        background-color: $base-1;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -63,26 +73,48 @@
         width: 66px;
         height: 66px;
         &:not(:last-child) {
-            margin-right: -34px;
+            margin-right: -2.125rem;
             transition: margin-right 0.2s ease 0s
+        }
+        &_pk {
+            background-color: #005A27;
+            color: $base-1;
+            svg {
+                width: 2rem;
+            }
+        }
+        &_pyat {
+            background-color: $base-1;
+            svg {
+                width: 40px;
+            }
+
+        }
+        &_vkus {
+            background-color: #52B623;
+            color: $base-1;
+            svg {
+                width: auto;
+                height: 1.875rem
+            }
         }
     }
     &__projects-label {
         @include text_t5-3;
         text-transform: uppercase;
+        transition: color 0.2s ease 0s;
 
     }
     @include min_container {
-        margin-bottom: calc(-15px - 15 * var(--screen-diff));
         &__desc {
             width: calc(364 / 784 * 100%);
             max-width: none;
         }
     }
-    @include gap {
+    @media screen and (max-width: 900px) {
         &__content {
             flex-direction: column;
-            gap: 20px;
+            row-gap: 20px;
         }
         &__head {
             flex-grow: 1;
@@ -122,43 +154,22 @@
     &__title {
         flex-basis: calc(824 / 1608 * 100%);
     }
-    &__more {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-        img {
-            border-radius: 50%;
-            width: 146px;
-            height: 146px;
-        }
-        h4 {
-            align-self: flex-end;
-            @include text_t1;
-        }
-        p {
-            align-self: flex-start;
-            @include text_t3;
-            margin: 12px 0 0;
-            text-transform: lowercase;
-            opacity: 0.6;
-        }
-    }
     &__advantages {
         display: flex;
-        gap: 16px;
+        gap: 1rem;
     }
     &__advantage {
         flex-basis: 25%;
         &_big {
             .advantage__name {
-                max-width: 77px;
+                max-width: 277px;
                 @include min_container {
-                    width: calc(77 / 776 * 100%);
+                    width: calc(277 / 776 * 100%);
                     max-width: none;
                 }
             }
             flex-shrink: 0;
-            flex-basis: calc(50% - 8px)
+            flex-basis: calc(50% - 0.5rem)
         }
     }
     @media screen and (max-width: 1240px) {
@@ -169,14 +180,6 @@
             flex-basis: calc(50% - 8px);
             &_big {
                 flex-basis: 100%;
-            }
-        }
-    }
-    @include tablet {
-        &__more {
-            img {
-                width: 120px;
-                height: 120px;
             }
         }
     }
@@ -191,33 +194,17 @@
         &__title {
             flex-basis: 100%;
         }
-        &__more {
-            gap: 24px;
-            img {
-                width: 90px;
-                height: 90px;
-            }
-        }
     }
     @include phone {
         &__advantage {
             flex-basis: 100%;
-        }
-        &__more {
-
-            h4 {
-                font-size: 20px;
-            }
-            p {
-                font-size: 16px;
-            }
         }
     }
 }
 
 .advantage {
     background-color: #3D3D3D;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -251,9 +238,12 @@
     }
     &__icon {
         align-self: flex-end;
-        margin-top: calc(106 / 316 * 100%);
-        font-size: 100px;
         color: inherit;
+        font-size: 6.25rem;
+        position: relative;
+        top: 0.75rem;
+        left: 0.75rem;
+        margin-top: calc(106 / 316 * 100%);
         width: calc(100 / 316 * 100%);
         height: auto;
         max-width: 100px;
@@ -265,15 +255,18 @@
         }
     }
     .icon-play {
-        font-size: 24px;
+        color: rgba($color: $base-1, $alpha: 0.2);
+        font-size: 10px;
         position: absolute;
-        top: 16px;
-        right: 16px;
+        top: 2rem;
+        right: 2rem;
     }
     &__stat {
         display: flex;
         align-self: flex-end;
         margin-top: calc(216 / 928 * 100%);
+        position: relative;
+        z-index: 1;
         &-prefix, &-unit {
             @include text_t3;
             text-transform: uppercase;
@@ -390,21 +383,9 @@
         }
     }
     &__video {
-        border-radius: 16px;
         padding-top: calc(500 / 1568 * 100%);
         flex-basis: 50%;
-        position: relative;
-        height: 0;
         overflow: hidden;
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-
-        }
     }
     @include min_container {
         &__title {
@@ -444,6 +425,27 @@
 }
 
 @import "modules/services.scss";
+.service-section {}
+
+.service {
+    $columns: 24;
+    $column-width: 50px;
+    $column-gap: 24px;
+    $col: calc((7 * $column-width + (7 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
+    &__head {
+        flex-basis: $col;
+    }
+    @include min_tablet {
+        &__icon, &__about {
+            grid-column: 2;
+        }
+    }
+    @include phone {
+        &__icon {
+            grid-row: 1;
+        }
+    }
+}
 // @import "modules/projects.scss";
 .projects-section {
     background-color: $base-1

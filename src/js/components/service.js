@@ -14,22 +14,29 @@ class ServiceAccordion {
     }
 }
 
-let closeButtonEls = document.querySelectorAll(".service__button")
+let serviceEls = document.querySelectorAll(".service")
 
-closeButtonEls.forEach(closeButtonEl => {
+serviceEls.forEach(serviceEl => {
     let lock = false
-    closeButtonEl.addEventListener("click", () => {
+    serviceEl.addEventListener("click", (e) => {
         if (lock) {
             return
         }
-        let serviceEl = closeButtonEl.closest(".service")
-        let contentEl = closeButtonEl.previousElementSibling;
+        
+        let closeButtonEl = serviceEl.querySelector(".service__button")
+        let contentEl = serviceEl.querySelector(".service__content");
         let bodyEl = contentEl.querySelector(".service__body");
         let previewEl = contentEl.querySelector(".service__preview");
-
+        
         let isOpen = serviceEl.classList.contains("service_open")
+        if (e.target.closest(".service__content") && isOpen) {
+            return
+        }
+        
         lock = true
         closeButtonEl.classList.toggle("service__button_open")
+
+
         if (window.innerWidth > 992) {
             contentEl.style.cssText = `
                 height: ${contentEl.offsetHeight}px;

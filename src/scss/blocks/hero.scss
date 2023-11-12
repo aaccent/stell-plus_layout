@@ -1,9 +1,9 @@
 .hero-section {
     background-color: #F0F0F0;
     display: flex;
-    margin-bottom: -15px;
-    padding-top: 135px;
-    padding-bottom: 70px;
+    margin-bottom: -0.9375rem;
+    padding-top: 8.4375rem;
+    padding-bottom: 4.375rem;
     height: 100vh;
     position: relative;
     overflow: hidden;
@@ -19,58 +19,66 @@
     &__breadcrumbs {
         margin-bottom: 20px;
     }
-    &__img {
-        // background: lightgray -68.546px 0px / 144.103% 105.128% no-repeat;
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        height: 100%;
-        transform: translate(-50%, 0);
-        mix-blend-mode: darken;
-        img {
-            width: auto;
-            height: 100%;
-            object-fit: contain;
-        }
-        @include phone {
-            width: 90%;
-            img {
-                width: 100%;
-            }
-        }
-    }
     &__head {
         color: $base-4;
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        flex-basis: 100%;
-        font-size: 5.625rem;
+        // font-size: 5.625rem;
         &_horizontal {
+            flex-basis: 100%;
             margin-top: auto;
+            .hero-section__title {
+                flex-basis: calc(500 / 1568 * 100%);
+            }
         }
         &_vertical {
             flex-direction: column;
         }
-        @media (min-width: 576px) and (max-width: 1608px) {
-            font-size: calc(70px + 20 * (100vw - 576px) / (1608 - 576));
-        }
-        @include phone {
-            font-size: 70px
-        }
+        // @media (min-width: 576px) and (max-width: 1608px) {
+        //     font-size: calc(70px + 20 * (100vw - 576px) / (1608 - 576));
+        // }
+        // @include phone {
+        //     font-size: 70px
+        // }
     }
     &__title {
-        font-size: calc(62 / 90 * 1em);
-        font-style: normal;
-        font-weight: 400;
-        line-height: 0.9;
-        letter-spacing: 0.62px;
-        flex-basis: calc(500 / 1568 * 100%);
+        &_small {
+            font-size: 3.875rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 0.9;
+            letter-spacing: 0.62px;
+            @media (min-width: 576px) and (max-width: 1608px) {
+                font-size: calc(48px +  14 * (100vw - 576px) / (1608 - 576));
+            }
+            @include phone {
+                font-size: 3rem
+            }
+        }
+        &_big {
+            @include heading_h1;
+        }
         text-transform: lowercase;
     }
     &__desc {
         @include text_t2;
         opacity: 0.6
+    }
+    &__img {
+        // background: lightgray -68.546px 0px / 144.103% 105.128% no-repeat;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 75%;
+        height: 90%;
+        transform: translate(-50%, 0);
+        mix-blend-mode: darken;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     }
     &__running-line {
         position: absolute;
@@ -100,7 +108,7 @@
         }
     }
     &__stat-value {
-        font-size: 1em;
+        // font-size: 1em;
         font-style: normal;
         font-weight: 400;
         line-height: 0.9
@@ -109,12 +117,12 @@
         @include text_t5-3
     }
     &__button {
+        border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: absolute;
-        width: 86px;
-        height: 86px;
+        width: 5.375rem;
+        height: 5.375rem;
         .icon-play {
             font-size: 1.125rem;
             transform: rotate(90deg);
@@ -126,24 +134,26 @@
         }
     }
     @include min_container {
-        margin-bottom: calc(-15px - 15 * var(--screen-diff));
-        padding-top: calc(135px + 135 * var(--screen-diff));
-        padding-bottom: calc(70px + 70 * var(--screen-diff));
         min-height: 650px;
         // &__head {
         //     font-size: calc(90px + 90 * var(--screen-diff));
         // }
-        // &__button {
-        //     .icon-play {
-        //         font-size: calc(18px + 18 * var(--screen-diff));
-        //     }
-        // }
+        &__button {
+            .icon-play {
+                font-size: calc(18px + 18 * var(--screen-diff));
+            }
+        }
+    }
+    @include tablet {
+        padding-top: 125px
     }
 
     @include phone {
+        padding-top: 90px;
+        padding-bottom: 45px;
         &__button {
             margin: 0 auto;
-            position: static;
+            position: relative;
             transform: none;
             width: 66px;
             height: 66px;

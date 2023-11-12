@@ -1,0 +1,123 @@
+extends templates/layout
+
+block head
+    title Типовая страница
+    link(rel="stylesheet", href="css/typical-page.min.css")
+block header 
+    - var color = "grey"
+block content 
+    .page
+        nav.breadcrumbs 
+            .container
+                ul.breadcrumbs__list 
+                    li.breadcrumbs__item 
+                        a.breadcrumbs__link(href="/") Главная
+                    li.breadcrumbs__item 
+                        a.breadcrumbs__link(href="#") Типовая страница   
+        section.banner-section 
+            .banner-section__container.container
+                .banner-section__content
+                    img.banner-section__img(src="./images/typical/banner.png", alt="banner")
+                    h1.banner-section__title антикоррупционная политика
+        .page__body 
+            .page__container.container
+                nav.page__nav 
+                    ul.page__menu 
+                        li.page__menu-item.page__menu-item_active
+                            a.page__menu-link(href="#corruption") Антикорупционная политика
+                        li.page__menu-item 
+                            a.page__menu-link(href="#invests") Информация для инвесторов
+                        li.page__menu-item 
+                            a.page__menu-link(href="#clients") Информация для клиентов
+                        li.page__menu-item 
+                            a.page__menu-link(href="#partners") Информация для партнеров
+                .page__content
+                    p.page__text Континентально-европейский тип политической культуры верифицирует идеологический доиндустриальный тип политической культуры. Н.А. Бердяев отмечает, что политическая система очевидна не для всех.
+                    section.page-section#corruption 
+                        h2.page-section__title Понятие, цели и задачи антикоррупционной политики
+                        .page-section__body 
+                            p.page-section__text Крупнейший производитель торговых и складских систем за Уралом. Сегодня продукция под нашим брендом представлена более чем в 50 000 #[a.link(href="#") торговых предприятиях] на территории 45 регионов России
+                            p.page-section__text Крупнейший производитель торговых и складских систем за Уралом. Сегодня продукция под нашим брендом представлена более чем в 50 000 #[a.link(href="#") торговых предприятиях] на территории 45 регионов России
+                            ul.page-section__menu.page-section__menu_marker 
+                                li.page-section__menu-item
+                                    span.icon-play 
+                                    span Маркированный пункт 1
+                                li.page-section__menu-item 
+                                    span.icon-play 
+                                    span Маркированный пункт 2
+                                li.page-section__menu-item 
+                                    span.icon-play 
+                                    span Маркированный пункт 3
+                    .page-section__image
+                        picture
+                            source(srcset="./images/typical/image.png" type="image/png")
+                            img(src="./images/typical/image.png" alt="")
+                    section.page-section#invests
+                        h2.page-section__title Основные принципы работы по предупреждению коррупции в организации
+                        p.page-section__text Крупнейший производитель торговых и складских систем за Уралом. Сегодня продукция под нашим брендом представлена более чем в 50 000 #[a.link(href="#") торговых предприятиях] на территории 45 регионов России
+                        ol.page-section__menu.page-section__menu_number
+                            li.page-section__menu-item
+                                span.number 1
+                                span.label Нумерованный пункт 1
+                            li.page-section__menu-item
+                                span.number 2
+                                span.label Нумерованный пункт 2
+                            li.page-section__menu-item
+                                span.number 3 
+                                span.label Нумерованный пункт 3
+                    .page__video.video 
+                        video#video.video__el(autoplay loop muted preload="metadata" data-src="https://www.youtube.com/embed/-euDGRWywc0?si=3PdQPswbC2ljhnSB") 
+                            source(src="./videos/stellplus.mp4", type="video/mp4")
+                        //- iframe(width='560' height='315' src='https://www.youtube.com/embed/jNQXAC9IVRw?si=bOJ6ZlMJ-f9e4J1Y&controls=0' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen='')
+                        .video__timeline 
+                            span.video__current-time 0:00
+                            span &nbsp;/&nbsp;
+                            span.video__duration 0:00
+                        .video__play-icon
+                            span.icon-play
+                    section.page-section#clients 
+                        h2.page-section__title Вопрос-ответ
+                        .accordion
+                            .accordion__header 
+                                h3.accordion__title Почему в стеклах метро хорошо видно отражение, а в электричке нет?
+                                button.accordion__button(type="button")
+                                    span
+                            .accordion__body
+                                p.accordion__text В данной ситуации политическое учение Локка интегрирует современный коллапс Советского Союза. Референдум, несмотря на внешние воздействия, верифицирует элемент политического процесса. Идеология очевидна не для всех. Либерализм, согласно традиционным представлениям, предсказуем
+                        .accordion
+                            .accordion__header 
+                                h3.accordion__title Когда в культуре появился образ вампира?
+                                button.accordion__button(type="button")
+                                    span
+                            .accordion__body
+                                p.accordion__text В данной ситуации политическое учение Локка интегрирует современный коллапс Советского Союза. Референдум, несмотря на внешние воздействия, верифицирует элемент политического процесса. Идеология очевидна не для всех. Либерализм, согласно традиционным представлениям, предсказуем
+                        .accordion
+                            .accordion__header 
+                                h3.accordion__title Почему в стеклах метро хорошо видно отражение, а в электричке нет?
+                                button.accordion__button(type="button")
+                                    span
+                            .accordion__body
+                                p.accordion__text В данной ситуации политическое учение Локка интегрирует современный коллапс Советского Союза. Референдум, несмотря на внешние воздействия, верифицирует элемент политического процесса. Идеология очевидна не для всех. Либерализм, согласно традиционным представлениям, предсказуем
+                        .page-section__observer
+                    section.page-section#partners 
+                        h2.page-section__title Документы
+                        .documents 
+                            a.document-card(href="#" download target="_blank") 
+                                h4.document-card__title Мероприятия по предупреждению коррупции
+                                .document-card__footer PDF / 15 МБ
+                            a.document-card(href="#" download target="_blank") 
+                                h4.document-card__title Мероприятия по предупреждению коррупции
+                                .document-card__footer PDF / 15 МБ
+                            a.document-card(href="#" download target="_blank") 
+                                h4.document-card__title Мероприятия по предупреждению коррупции
+                                .document-card__footer PDF / 15 МБ
+                            a.document-card(href="#" download target="_blank") 
+                                h4.document-card__title Мероприятия по предупреждению коррупции
+                                .document-card__footer PDF / 15 МБ
+                            a.document-card(href="#" download target="_blank") 
+                                h4.document-card__title Мероприятия по предупреждению коррупции
+                                .document-card__footer PDF / 15 МБ
+    include ./includes/youtube-modal.pug
+block scripts 
+    script(src="js/script.min.js") 
+    script(src="js/typical.min.js") 

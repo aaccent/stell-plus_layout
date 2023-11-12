@@ -1,19 +1,17 @@
 .header {
-    position: absolute;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // width: 100%;
+    // min-height: 2.5rem;
+    border-bottom: 1px dashed rgba($color: $base-1, $alpha: 0.15);
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 2.5rem;
-    &__wrapper {
-        border-bottom: 1px dashed rgba($color: $base-1, $alpha: 0.15);
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 2rem 0;
-        transition: background-color 0.3s ease 0s, padding 0.3s ease 0s;
-        z-index: 10;
-    }
+    padding: 2rem 0;
+    transition: background-color 0.3s ease 0s, padding-top 0.3s ease 0s, padding-bottom 0.3s ease 0s, transform 0.3s cubic-bezier(.3,.86,.36,.95) 0s;
+    z-index: 10;
     &__container {
         display: flex;
         justify-content: space-between;
@@ -23,13 +21,16 @@
         flex-shrink: 0;
     }
     &__menu {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         margin: 0 20px;
     }
     &__menu-list {
         background-color: rgba($color: $base-1, $alpha: 0.17);
         border-radius: 50px;
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
         padding: 0.125rem
     }
@@ -78,14 +79,14 @@
     }
     &__menu-link {
         display: inline-block;
-        padding: 0.75em 1.67em;
         @include text_t6;
+        padding: 0.75rem 1.25rem 0.625rem;
         position: relative;
         text-transform: uppercase;
         transition: color 0.3s ease 0s;
     }
     &__submenu {
-        padding: 14px 0 0;
+        padding: 0.875rem 0 0;
         @include min_tablet {
             pointer-events: none;
             position: absolute;
@@ -205,7 +206,7 @@
         cursor: pointer;
         flex-shrink: 0;
         position: relative;
-        padding: 18px 12px;
+        padding: 16px 12px;
         width: 42px;
         height: 28px;
         &:before, &:after {
@@ -222,10 +223,10 @@
             height: 4px
         }
         &:before { 
-            top: 18px
+            top: 16px
         }
         &:after {
-            bottom: 18px;
+            bottom: 16px;
         }
         span {
             top: calc(50% - 2px);
@@ -245,10 +246,8 @@
         }
     }
     &_white {
+        border-bottom: 1px dashed rgba($color: $base-4, $alpha: 0.1);
         color: $base-4;
-        .header__wrapper {
-            border-bottom: 1px dashed rgba($color: $base-4, $alpha: 0.1);
-        }
         .header__menu-list {
             background-color: $base-1;
         }
@@ -260,6 +259,28 @@
             }
         }
         .header__dropdown {
+            background-color: $base-1;
+        }
+        .header__burger {
+            &::before, &::after, span {
+                background-color: $base-4;
+            }
+        }
+    }
+    &_grey {
+        color: $base-4;
+        .header__menu-list {
+            background-color: $base-2;
+        }
+        .header__menu-item {
+            @include ishover {
+                &::before {
+                    background-color: $base-1;
+                }
+            }
+        }
+        .header__dropdown {
+            background-color: $base-2;
             @include ishover {
                 background-color: $base-2;
             }
@@ -269,18 +290,20 @@
                 background-color: $base-4;
             }
         }
-
     }
-    &_scroll {
-        .header__wrapper {
-            background-color: $base-1;
-            border-bottom: 1px solid rgba(51, 51, 51, 0.10);
-            color: $base-4;
-            @include min_tablet {
-                padding: 0.8125rem 0;
-            }
+    &_scroll, &_show {
+        background-color: $base-1;
+        border-bottom: 1px solid rgba(51, 51, 51, 0.10);
+        color: $base-4;
+        transition-duration: 0.5s;
+        @include min_tablet {
+            padding: 0.8125rem 0;
+        }
+        .header__menu-list {
+            background-color: transparent;
         }
         .header__dropdown {
+            background-color: transparent;
             &_open {
                 background-color: $base-2;
             }
@@ -312,6 +335,9 @@
             }
         }
     }
+    &_hide {
+        transform: translate(0, -100%);
+    }
 
     @include desktop {
         &__dropdown-head {
@@ -327,13 +353,11 @@
         }
     }
     @include tablet {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
         &__container {
             justify-content: space-between;
             position: relative
-        }
-        &__wrapper {
-            padding-top: 16px;
-            padding-bottom: 16px;
         }
         &__logo, &__actions {
             position: relative;
@@ -356,13 +380,13 @@
             &_open {
                 transform: translate(0, 0);
             }
-            .header_scroll &, .header_white & {
+            .header_scroll &, .header_show &, .header_white &, .header_grey & {
                 background-color: $base-1;
                 color: $base-4
             }
         }
         &__menu-list {
-            background-color: transparent;
+            background-color: transparent !important;
             border-radius: 0;
             justify-content: flex-start;
             flex-direction: column;
@@ -377,7 +401,7 @@
                 content: none;
             }
             &:not(:last-child) {
-                margin: 0 0 15px
+                margin: 0 0 24px
             }
             &_open {
                 .header__submenu {
@@ -406,7 +430,7 @@
     }
     @include gap {
         &__submenu-link {
-            padding: 1rem 1.5rem;
+            padding: 1.5rem;
         }
     }
     @include phone {
@@ -415,17 +439,37 @@
                 display: none;
             }
         }
+        &__menu {
+            padding-top: 71px
+        }
         &__menu-item {
             &:not(:last-child) {
-                margin-bottom: 0;
+                margin-bottom: 20px;
             }
         }
+        &__menu-link {
+            font-size: 22px;
+        }
         &__actions {
-            gap: 20px;
+            column-gap: 20px;
+            margin-right: 20px;
         }
         &__dropdown-head {
             div {
                 display: none;
+            }
+        }
+        &__burger {
+            padding: 0;
+            &:before, span, &:after {
+                left: 0;
+                width: 100%;
+            }
+            &:before {
+                top: 0;
+            }
+            &:after {
+                bottom: 0;
             }
         }
     }
@@ -436,13 +480,22 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    svg {
+        width: 2.1875rem;
+        height: 2.1875rem;
+    }
     &__text {
         color: inherit;
-        font-family: Inter;
+        font-family: "Inter";
+        font-weight: 600;
         font-size: 1rem;
         line-height: normal;
         letter-spacing: 0.32px;
         text-transform: uppercase;
+        .plus {
+            position: relative;
+            top: -1.5px;
+        }
     }
     @media screen and (min-width: 1680px) {
         svg {

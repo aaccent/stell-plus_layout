@@ -7,11 +7,13 @@
 @import "base.scss";
 
 @import "components/button.scss";
-@import "components/swiper-controls";
+@import "components/swiper-controls.scss";
 @import "components/breadcrumbs.scss";
 @import "components/equipment.scss";
+@import "components/person-info.scss";
 
 @import "blocks/hero.scss";
+
 .hero-section {
     background-image: url(../images/about/about-hero.png);
     background-position: center center;
@@ -20,15 +22,21 @@
     position: relative;
     &__head {
         color: $base-1;
-        flex-basis: 50%
+        max-width: 776px;
     }
     &__desc {
-        width: 70%;
         max-width: 384px;
+        opacity: 0.8;
     }
     &__button {
+        border: 1px solid $base-1;
+        position: absolute;
         right: 0;
         bottom: 0;
+        @include ishover {
+            background-color: $base-1;
+            color: $base-4
+        }
     }
     &:before {
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 1.23%, rgba(0, 0, 0, 0.00) 25.31%);
@@ -38,6 +46,16 @@
         left: 0;
         width: 100%;
         height: 100%;
+    }
+    @include min_container {
+        &__head {
+            width: 50%;
+            max-width: none;
+        }
+        &__desc {
+            width: 70%;
+            max-width: none;
+        }
     }
     @include gap {
         &__head {
@@ -56,9 +74,12 @@
 }
 
 .section_one {
+    background-color: $base-1;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
     .section__title {
         @include min_gap {
-            width: calc(901 / 1580 * 100%);
+            width: calc(910 / 1580 * 100%);
         }
     }
 }
@@ -80,27 +101,6 @@
             }
         }
     }
-    &__person {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-        img {
-            border-radius: 50%;
-            width: 146px;
-            height: 146px;
-        }
-        h4 {
-            align-self: flex-end;
-            @include text_t1;
-        }
-        p {
-            align-self: flex-start;
-            @include text_t3;
-            margin: 12px 0 0;
-            text-transform: lowercase;
-            opacity: 0.6;
-        }
-    }
     &__desc {
         @include text_t2;
         margin-top: calc(30 / 22 * 1em);
@@ -111,25 +111,34 @@
         flex-wrap: wrap;
         flex-shrink: 0;
         flex-basis: calc(776 / 1568 * 100%);
-        gap: 16px;
+        gap: 1rem;
     }
     &__advantage-item {
         background-color: $base-2;
         border-radius: 12px;
-        flex-basis: calc(50% - 8px);
-        padding: 1.25rem 1.5rem; //20px 24px;
+        flex-basis: calc(50% - 0.5rem);
+        padding: 1.5rem 1.5rem 1.1875rem; //20px 24px;
         .icon {
-            font-size: 4rem;
-        }
-        svg {
-            width: 64px;
-            height: 64px
+            display: block;
+            &_small {
+                margin-bottom: calc(99 / 332 * 100%);
+                width: 3rem;
+                height: 3rem;
+            }
+            &_big {
+                margin-bottom: calc(91 / 332 * 100%);
+                width: 4rem;
+                height: 4rem;
+                transform: translate(-0.5rem, 0)
+            }
         }
         h4 {
             @include text_t5-2;
-            margin-top: calc(90 / 332 * 100%);
             width: 85%;
             text-transform: uppercase;
+        }
+        &:first-child, &:last-child {
+            padding-top: 1rem
         }
     }
     @include tablet {
@@ -161,7 +170,8 @@
         border-color: rgba($color: $base-1, $alpha: 0.25)
     }
     &__title {
-        max-width: 800px;
+        width: 70%;
+        max-width: 810px;
     }
     &__body {
         .container {
@@ -182,6 +192,12 @@
             object-fit: cover;
         }
     }
+    @include min_container {
+        &__title {
+            max-width: none;
+            width: calc(810 / 1568 * 100%);
+        }
+    }
     @include gap {
         &__body {
             .container {
@@ -193,6 +209,9 @@
         }
     }
     @include phone {
+        &__title {
+            width: auto;
+        }
         &__img {
             height: 450px;
         }
@@ -207,21 +226,16 @@
         max-width: 345px;
         overflow: visible;
         &-swipe {
-            right: calc(-27 / 345 * 100%);
-            bottom: 0;
-            transform: translate(0, 50%);
-            @include gap {
-                top: 3.5%;
-                right: 3.5%;
-                bottom: 0;
-                transform: none
-            }
+            color: $base-4
         }
     }
     .swiper-slide-active {
         .timeline__year, .timeline__desc { 
             opacity: 1;
             transition-delay: 0.15s
+        }
+        .timeline__desc {
+            opacity: 0.6;
         }
     }
     &__pagination {
@@ -250,9 +264,6 @@
         .swiper {
             max-width: none;
         }
-        &__pagination {
-            margin-top: 50px;
-        }
     }
 }
 .timeline {
@@ -267,10 +278,10 @@
             border-radius: 50%;
             content: "";
             position: absolute;
-            top: -39px;
-            left: calc(50% - 7px);
-            width: 14px;
-            height: 14px;
+            top: -2.4375rem;
+            left: calc(50% - 0.4375rem);
+            width: 0.875rem;
+            height: 0.875rem;
         }
         transition: opacity 0.2s ease 0s;
         @media (min-width: 576px) and (max-width: 1608px) {
@@ -282,9 +293,14 @@
     }
     &__desc {
         @include text_t2;
-        margin-top: 20px;
+        margin-top: 2.8125rem;
         opacity: 0;
         transition: opacity 0.2s ease 0s;
+    }
+    @include gap {
+        &__desc {
+            margin-top: 1.25rem;
+        }
     }
     @include phone {
         text-align: center
@@ -301,12 +317,10 @@
     &__title {
         max-width: 675px
     }
-
     .swiper {
-        &-swipe {
-            top: calc(83 / 510 * 100%);
-            right: calc(314 / 1588 * 100%);
-        }
+        &-wrapper {
+            // cursor: grab;
+        }        
         &-slide {
             width: 314px;
             height: 446px;

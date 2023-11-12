@@ -8,7 +8,7 @@ class RunningLine {
     }
 
     needInsert() {
-        console.log(this.elem.offsetWidth, this.elem.parentElement.offsetWidth)
+        // console.log(this.elem.offsetWidth, this.elem.parentElement.offsetWidth)
         let r = Math.floor(this.elem.offsetWidth / (this.elem.parentElement.offsetWidth + this.paddingValue))
         return r < 2 // r == 1 
     }
@@ -19,13 +19,13 @@ class RunningLine {
             this.elem.append(items[i].cloneNode(true))
         }
         this.elem.style.animationDuration = parseInt(getComputedStyle(this.elem).animationDuration) * 2 + "s"
-        console.log("insetred")
+        // console.log("insetred")
     }
 
     updateValues() {
         this.breakpoint = this.elem.offsetWidth / 2 + 0.5;
         this.mediaQuery = window.matchMedia(`(min-width: ${this.breakpoint}px)`);
-        console.log("breakpoint", this.breakpoint)
+        // console.log("breakpoint", this.breakpoint)
     }
 
     handleChangeMediaQuery = (e) => {
