@@ -115,58 +115,54 @@ let tween = gsap.to(swiperWrapperEl, {
 	ease: "none",
 });
 
-let mm = gsap.matchMedia();
 let scrollTriggerInstance;
 
-mm.add("(min-width: 577px)", () => {
-    if (scrollTriggerInstance) scrollTriggerInstance.kill()
-    scrollTriggerInstance = ScrollTrigger.create({
-        trigger: ".equipment-section",
-        start: "top -10%",
-        end: () => `+=${getScrollAmount() * -1}`,
-        ease: "none",
-        pin: true,
-        animation: tween,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        markers: false,
-    })
+scrollTriggerInstance = ScrollTrigger.create({
+    trigger: ".equipment-section",
+    start: "bottom bottom",
+    end: () => `+=${getScrollAmount() * -1}`,
+    ease: "none",
+    pin: true,
+    animation: tween,
+    scrub: 1,
+    invalidateOnRefresh: true,
+    markers: false,
 })
 
-mm.add("(max-width: 576px)", () => {
-    if (scrollTriggerInstance) scrollTriggerInstance.kill()
-    scrollTriggerInstance = ScrollTrigger.create({
-        trigger: ".equipment-section",
-        start: "top -25%",
-        end: () => `+=${getScrollAmount() * -1}`,
-        ease: "none",
-        pin: true,
-        animation: tween,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        markers: false,
-    })
-})
+// let mm = gsap.matchMedia();
+// let scrollTriggerInstance;
+
+// mm.add("(min-width: 577px)", () => {
+//     if (scrollTriggerInstance) scrollTriggerInstance.kill()
+//     scrollTriggerInstance = ScrollTrigger.create({
+//         trigger: ".equipment-section",
+//         start: () => `end ${parseInt(getComputedStyle(document.documentElement).fontSize) * -5.625}px`,
+//         end: () => `+=${getScrollAmount() * -1}`,
+//         ease: "none",
+//         pin: true,
+//         animation: tween,
+//         scrub: 1,
+//         invalidateOnRefresh: true,
+//         markers: false,
+//     })
+// })
+
+// mm.add("(max-width: 576px)", () => {
+//     if (scrollTriggerInstance) scrollTriggerInstance.kill()
+//     scrollTriggerInstance = ScrollTrigger.create({
+//         trigger: ".equipment-section",
+//         start: "end -45px",
+//         end: () => `+=${getScrollAmount() * -1}`,
+//         ease: "none",
+//         pin: true,
+//         animation: tween,
+//         scrub: 1,
+//         invalidateOnRefresh: true,
+//         markers: false,
+//     })
+// })
 
 window.addEventListener("resize", () => scrollTriggerInstance.refresh())
-// window.addEventListener("scroll", () => {
-//     let start = scrollContainerEl.offsetTop;
-//     let end = start - amountToScroll;
-//     let scrollOffset;
-
-//     console.log(amountToScroll )
-//     if (window.pageYOffset < start) {
-//         scrollOffset = 0
-//     }
-//     if (window.pageYOffset >= start && window.pageYOffset < end) {
-//         scrollOffset = window.pageYOffset - start
-//     } 
-//     if (window.pageYOffset > end) {
-//         scrollOffset = -amountToScroll
-//     }
-
-//     document.querySelector(".equipment-section__slider .swiper-wrapper").style.transform = `translate3d(${-scrollOffset}px, 0px, 0px)`
-// })
 
 import "./components/service.js"
 import "./components/banner-slider.js"

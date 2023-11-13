@@ -49,39 +49,52 @@ let tween = gsap.to(swiperWrapperEl, {
 	ease: "none",
 });
 
-let mm = gsap.matchMedia();
+// let mm = gsap.matchMedia();
 let scrollTriggerInstance;
 
-mm.add("(min-width: 577px)", () => {
-    if (scrollTriggerInstance) scrollTriggerInstance.kill()
-    scrollTriggerInstance = ScrollTrigger.create({
-        trigger: ".equipment-section",
-        start: "top -10%",
-        end: () => `+=${getScrollAmount() * -1}`,
-        ease: "none",
-        pin: true,
-        animation: tween,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        markers: false,
-    })
+scrollTriggerInstance = ScrollTrigger.create({
+    trigger: ".equipment-section",
+    start: "bottom bottom",
+    end: () => `+=${getScrollAmount() * -1}`,
+    ease: "none",
+    pin: true,
+    animation: tween,
+    scrub: 1,
+    invalidateOnRefresh: true,
+    markers: false,
 })
 
-mm.add("(max-width: 576px)", () => {
-    if (scrollTriggerInstance) scrollTriggerInstance.kill()
-    scrollTriggerInstance = ScrollTrigger.create({
-        trigger: ".equipment-section",
-        start: "top -25%",
-        end: () => `+=${getScrollAmount() * -1}`,
-        ease: "none",
-        pin: true,
-        animation: tween,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        markers: false,
-    })
-})
+// mm.add("(min-width: 577px)", () => {
+//     if (scrollTriggerInstance) scrollTriggerInstance.kill()
+//     scrollTriggerInstance = ScrollTrigger.create({
+//         trigger: ".equipment-section",
+//         start: () => `end ${parseInt(getComputedStyle(document.documentElement).fontSize) * -5.625}px`,
+//         end: () => `+=${getScrollAmount() * -1}`,
+//         ease: "none",
+//         pin: true,
+//         animation: tween,
+//         scrub: 1,
+//         invalidateOnRefresh: true,
+//         markers: false,
+//     })
+// })
 
+// mm.add("(max-width: 576px)", () => {
+//     if (scrollTriggerInstance) scrollTriggerInstance.kill()
+//     scrollTriggerInstance = ScrollTrigger.create({
+//         trigger: ".equipment-section",
+//         start: "end -90px",
+//         end: () => `+=${getScrollAmount() * -1}`,
+//         ease: "none",
+//         pin: true,
+//         animation: tween,
+//         scrub: 1,
+//         invalidateOnRefresh: true,
+//         markers: false,
+//     })
+// })
+
+window.addEventListener("resize", () => scrollTriggerInstance.refresh())
 
 let certificateSwiper = new Swiper(".certificates-section__slider .swiper", {
     slidesPerView: 1,

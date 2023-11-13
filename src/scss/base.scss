@@ -117,9 +117,9 @@ input {
     border-top-right-radius: 16px;
     color: $base-4;
     position: relative;
-    margin-bottom: -15px;
-    padding-top: 90px;
-    padding-bottom: 105px;
+    margin-bottom: -0,9375rem;
+    padding-top: 5.625rem;
+    padding-bottom: 6.5625rem;
     z-index: 1;
     &__bg {
         position: absolute;
@@ -173,7 +173,7 @@ input {
         white-space: nowrap;
     }
     &__images {
-        margin: 50px 0 0
+        margin: 3.125rem 0 0
     }
     &__img {
         border-radius: 16px;
@@ -187,9 +187,9 @@ input {
         }
     }
     @include min_container {
-        margin-bottom: calc(-15px - 15 * var(--screen-diff));
-        padding-top: calc(90px + 90 * var(--screen-diff));
-        padding-bottom: calc(105px + 105 * var(--screen-diff));
+        // margin-bottom: calc(-15px - 15 * var(--screen-diff));
+        // padding-top: calc(90px + 90 * var(--screen-diff));
+        // padding-bottom: calc(105px + 105 * var(--screen-diff));
         &__bg {
             .container {
                 background-size: calc(635 / 1680 * 100%);
@@ -201,9 +201,9 @@ input {
         // &__body {
         //     padding-top: calc(32px + 32 * var(--screen-diff))
         // }
-        &__images {
-            margin-top: calc(50px + 50 * var(--screen-diff))
-        }
+        // &__images {
+        //     margin-top: calc(50px + 50 * var(--screen-diff))
+        // }
     }
     @include gap {
         padding-top: 45px;
@@ -248,13 +248,13 @@ input {
         bottom: -1px;
         left: 0;
         height: 1px;
-        width: 0px;
+        width: 100%;
         transition: width 0.3s cubic-bezier(0.32,0.94,0.6,1) 0s;
 
     }
     @include ishover {
         &:after {
-            width: 100%;
+            width: 0%;
         }
     }
 }
