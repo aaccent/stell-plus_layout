@@ -228,6 +228,16 @@
         &-swipe {
             color: $base-4
         }
+        &-scrollbar {
+            background-color: rgba($color: $base-1, $alpha: 0.15);
+            position: static;
+            margin-top: calc(224 / 776 * 100%);
+            max-width: 974px;
+            transform: none;
+            .swiper-scrollbar-drag {
+                background-color: $base-1;
+            }
+        }
     }
     .swiper-slide-active {
         .timeline__year, .timeline__desc { 
@@ -238,26 +248,26 @@
             opacity: 0.6;
         }
     }
-    &__pagination {
-        background: rgba($color: $base-1, $alpha: 0.15);
-        border-radius: 50px;
-        margin-top: calc(224 / 776 * 100%);
-        overflow: hidden;
-        .swiper-pagination-progressbar-fill {
-            background-color: $base-1;
-        }
-    }
+    // &__pagination {
+    //     background: rgba($color: $base-1, $alpha: 0.15);
+    //     border-radius: 50px;
+    //     margin-top: calc(224 / 776 * 100%);
+    //     overflow: hidden;
+    //     .swiper-pagination-progressbar-fill {
+    //         background-color: $base-1;
+    //     }
+    // }
     @include min_container {
         .swiper {
             max-width: 45%;
         }
     }
     @include gap {
-        &__pagination {
-            margin-top: 70px;
-        }
         .swiper {
             max-width: none;
+            &-scrollbar {
+                margin-top: 70px;
+            }
         }
     }
     @include phone {
@@ -330,18 +340,27 @@
                 object-fit: contain
             }
         }
-    }
-
-    &__pagination {
-        background: rgba($color: $base-4, $alpha: 0.15);
-        border-radius: 50px;
-        margin: 64px auto 0;
-        max-width: 974px;
-        overflow: hidden;
-        .swiper-pagination-progressbar-fill {
-            background-color: $base-4;
+        &-scrollbar {
+            background-color: rgba($color: $base-4, $alpha: 0.15);
+            position: static;
+            margin: 4rem auto 0;
+            max-width: 974px;
+            transform: none;
+            .swiper-scrollbar-drag {
+                background-color: $base-4;
+            }
         }
     }
+
+    // &__pagination {
+    //     background: rgba($color: $base-4, $alpha: 0.15);
+    //     border-radius: 50px;
+    //     max-width: 974px;
+    //     overflow: hidden;
+    //     .swiper-pagination-progressbar-fill {
+    //         background-color: $base-4;
+    //     }
+    // }
     @include min_container {
         &__title {
             width: calc(676 / 1568 * 100%);

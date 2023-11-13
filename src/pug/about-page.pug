@@ -112,7 +112,7 @@ block content
                                 .timeline__year 2024
                                 p.timeline__desc Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки. 
                         .swiper-swipe Тяните
-                    .timeline-slider__pagination.swiper-pagination
+                    .timeline-slider__scrollbar.swiper-scrollbar
     include ./includes/equipment.pug
     include ./includes/banner.pug
     section.certificates-section.section 
@@ -138,9 +138,12 @@ block content
                                 img(src="./images/about/certificate.png", alt="")
                             .swiper-slide
                                 img(src="./images/about/certificate.png", alt="")
-                        .certificates-section__pagination.swiper-pagination
+                        //- .certificates-section__pagination.swiper-pagination
                         .swiper-swipe Тяните
+                        .certificates-section__scrollbar.swiper-scrollbar
 block scripts
     script(src="js/libs/swiper-bundle.min.js")
+    script(src="js/libs/gsap.min.js")
+    script(src="js/libs/ScrollTrigger.min.js")
     script(src="js/script.min.js") 
     script(src="js/about.min.js") 

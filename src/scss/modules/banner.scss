@@ -78,6 +78,7 @@
         .swiper {
             flex-basis: calc(1070 / 1608 * 100%);
             margin: 0;
+            min-width: 0;
         }
         .swiper-slide {
             transition: all 0.3s ease 0s;

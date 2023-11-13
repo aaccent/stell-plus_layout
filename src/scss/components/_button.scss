@@ -193,7 +193,6 @@
         }
     }
     &_primary {
-        background-color: $base-1;
         .button__text {
             &_show {
                 color: $base-4;
@@ -201,6 +200,11 @@
             &_hidden {
                 color: $base-1;
             }
+        }
+        &:before {
+            background-color: $base-1;
+            transform: scale(0.98);
+            z-index: -1;
         }
         &:after {
             background-color: $base-4; 

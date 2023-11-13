@@ -4,14 +4,12 @@ import { handleSwipe } from "./modules/swipe-hint.js"
 let timelineSwiper = new Swiper(".timeline-slider .swiper", {
     slidesPerView: 1,
     spaceBetween: 55,
-    pagination: {
-        el: ".timeline-slider .swiper-pagination",
-        type: "progressbar",
-    },
+    scrollbar: {
+        el: ".timeline-slider .swiper-scrollbar",
+    }
 })
 
 handleSwipe(timelineSwiper)
-
 
 new Swiper(".equipment-section__slider .swiper", {
     slidesPerView: 1,
@@ -27,15 +25,63 @@ new Swiper(".equipment-section__slider .swiper", {
             slidesPerView: 4
         }
     },
-    on: {
-        touchMove: function(swiper, event) {
-            const swiperHintEl = swiper.el.querySelector(".swiper-hint")
-            if (swiperHintEl) {
-                swiperHintEl.addEventListener("animationiteration", () =>  swiperHintEl.remove())
-            }
-        }
-    }
 })
+
+let swiperWrapperEl = document.querySelector(".equipment-section__slider .swiper-wrapper")
+let equipmentEls = document.querySelectorAll(".equipment-section__slider .swiper-slide")
+
+function getScrollAmount() {
+	let swiperWidth = document.querySelector(".equipment-section__slider .swiper").offsetWidth;
+    let wrapperWidth = 0
+
+    for (let i = 0; i < equipmentEls.length; i++) {
+        wrapperWidth += equipmentEls[i].offsetWidth
+    }
+    
+    wrapperWidth += 16 * (equipmentEls.length - 1)
+
+	return swiperWidth - wrapperWidth
+}
+
+let tween = gsap.to(swiperWrapperEl, {
+	x: getScrollAmount,
+	duration: 3,
+	ease: "none",
+});
+
+let mm = gsap.matchMedia();
+let scrollTriggerInstance;
+
+mm.add("(min-width: 577px)", () => {
+    if (scrollTriggerInstance) scrollTriggerInstance.kill()
+    scrollTriggerInstance = ScrollTrigger.create({
+        trigger: ".equipment-section",
+        start: "top -10%",
+        end: () => `+=${getScrollAmount() * -1}`,
+        ease: "none",
+        pin: true,
+        animation: tween,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        markers: false,
+    })
+})
+
+mm.add("(max-width: 576px)", () => {
+    if (scrollTriggerInstance) scrollTriggerInstance.kill()
+    scrollTriggerInstance = ScrollTrigger.create({
+        trigger: ".equipment-section",
+        start: "top -25%",
+        end: () => `+=${getScrollAmount() * -1}`,
+        ease: "none",
+        pin: true,
+        animation: tween,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        markers: false,
+    })
+})
+
 
 let certificateSwiper = new Swiper(".certificates-section__slider .swiper", {
     slidesPerView: 1,
@@ -45,10 +91,23 @@ let certificateSwiper = new Swiper(".certificates-section__slider .swiper", {
             slidesPerView: "auto"
         },
     },
-    pagination: {
-        el: ".swiper-pagination",
-        type: "progressbar",
+    on: {
+        // lock: function(swiper, event) {
+        //     const swiperHintEl = swiper.el.querySelector(".swiper-swipe")
+        //     if (swiperHintEl) {
+        //         console.log("!!!")
+        //         swiperHintEl.remove()
+        //     }
+        // }
     },
+    // pagination: {
+    //     el: ".swiper-pagination",
+    //     // type: "progressbar",
+    // },
+    scrollbar: {
+        el: ".swiper-scrollbar"
+    }
 })
 
 handleSwipe(certificateSwiper)
+

@@ -66,32 +66,6 @@
             width: 100%;
         }
     }
-    .swiper-hint {
-        background-color: $base-1;
-        border-radius: 50%;
-        color: $base-4;
-        @include text_t6;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        pointer-events: none;
-        position: absolute;
-        top: 10%;
-        right: 10%;
-        width: 9.375rem;
-        height: 9.375rem;
-        transition: transform 0.2s ease 0s, opacity 0.2s ease 0s, visibility 0.2s ease 0s;
-        animation: swipe 1.5s ease-in-out infinite 0.3s;
-        z-index: 1;
-        @include gap {
-            width: 7.5rem;
-            height: 7.5rem;
-        }
-        @include phone {
-            width: 6.25rem;
-            height: 6.25rem;
-        }
-    }
     @include min_container {
         &__info {
             width: calc(360 / 1568 * 100%);
@@ -117,24 +91,10 @@
         p {
             @include text_t3
         }
-    }
-}
-
-@keyframes swipe {
-    0% { opacity: 0; }
-
-    15% { opacity: 1; }
-
-    30% {
-        transform: scale(0.75);
-    }
-    55% { opacity: 1;}
-    75% {
-        opacity: 0;
-        transform: scale(0.75) translate(-100%, 0);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0.75) translate(-100%, 0);
+        // &__slider {
+        //     height: 100vh !important;
+        //     display: flex;
+        //     align-items: centerw;
+        // }
     }
 }
