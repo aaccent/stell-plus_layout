@@ -16,7 +16,7 @@ function handleSwipe(swiper) {
             left: ${coordX}px;
         `
     }
-    
+
     swiper.wrapperEl.addEventListener("mouseenter", () => {
         if (isMobile.any()) {
             return
@@ -26,7 +26,7 @@ function handleSwipe(swiper) {
     
     swiper.wrapperEl.addEventListener("mousemove", handleTouchMove)
     
-    swiper.wrapperEl.addEventListener("mouseleave", () => {
+    swiper.wrapperEl.addEventListener("mouseleave", (e) => {
         if (isMobile.any()) {
             return
         }

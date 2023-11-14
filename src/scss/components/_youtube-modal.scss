@@ -2,7 +2,6 @@
     background-color: rgba(0, 0, 0, 0.75);
     display: flex;
     align-items: center;
-    padding: 30px 20px;
     position: fixed;
     top: 0;
     left: 0;
@@ -12,22 +11,32 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s ease 0s;
-    .youtube-body {
-        width: 100%;
-        transform: scale(0.4);
-        transition: transform 0.5s ease 0s;
-        @include min_gap {
-            margin: 0 auto;
-            width: 80%;
+    .youtube-close {
+        background-color: rgba(255,255,255, 0.17);
+        border-radius: 50%;
+        color: white;
+        cursor: pointer;
+        font-size: 2.25rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 10%;
+        right: 3%;
+        width: 3.125rem;
+        height: 3.125rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease 0s;
+        z-index: 3;
+        span:before {
+            color: inherit
         }
     }
-    .youtube-wrapper {
-        background-color: $base-4;
+    .youtube-body {
         position: relative;
-        padding-top: 56.25%;
-        height: 0;
+        height: 100%;
         width: 100%;
-
     }
     iframe {
         position: absolute;

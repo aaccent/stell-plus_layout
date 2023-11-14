@@ -6,6 +6,7 @@ let timelineSwiper = new Swiper(".timeline-slider .swiper", {
     spaceBetween: 55,
     scrollbar: {
         el: ".timeline-slider .swiper-scrollbar",
+        draggable: true
     }
 })
 
@@ -118,7 +119,8 @@ let certificateSwiper = new Swiper(".certificates-section__slider .swiper", {
     //     // type: "progressbar",
     // },
     scrollbar: {
-        el: ".swiper-scrollbar"
+        el: ".swiper-scrollbar",
+        draggable: true
     }
 })
 

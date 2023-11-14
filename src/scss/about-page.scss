@@ -192,6 +192,16 @@
             object-fit: cover;
         }
     }
+    .swiper-scrollbar {
+        background-color: rgba($color: $base-1, $alpha: 0.15);
+        position: static;
+        margin-top: calc(224 / 776 * 100%);
+        max-width: 974px;
+        transform: none;
+        .swiper-scrollbar-drag {
+            background-color: $base-1;
+        }
+    }
     @include min_container {
         &__title {
             max-width: none;
@@ -228,16 +238,9 @@
         &-swipe {
             color: $base-4
         }
-        &-scrollbar {
-            background-color: rgba($color: $base-1, $alpha: 0.15);
-            position: static;
-            margin-top: calc(224 / 776 * 100%);
-            max-width: 974px;
-            transform: none;
-            .swiper-scrollbar-drag {
-                background-color: $base-1;
-            }
-        }
+    }
+    .swiper-wrapper {
+        cursor: pointer;
     }
     .swiper-slide-active {
         .timeline__year, .timeline__desc { 
@@ -276,6 +279,7 @@
         }
     }
 }
+
 .timeline {
     &__year {
         display: inline-block;
@@ -329,7 +333,7 @@
     }
     .swiper {
         &-wrapper {
-            // cursor: grab;
+            cursor: pointer;
         }        
         &-slide {
             width: 314px;

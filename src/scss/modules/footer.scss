@@ -27,6 +27,18 @@
         svg {
             vertical-align: top;
         }
+        &:first-child {
+            svg {
+                width: 15.0625rem;
+                height: auto;
+            }
+        }
+        &:last-child {
+            svg {
+                width: 11.375rem;
+                height: auto;
+            }
+        }
     }
     &__contact-us {
         background-image: url(../images/form-bg.png);
@@ -113,30 +125,16 @@
         }
     }
     &__contacts {
-        margin-top: 34px;
+        margin-top: 2.125rem;
         & > * {
             display: block;
             @include text_t2;
             &:not(:first-child) {
-                margin-top: 12px;
+                margin-top: 0.75rem;
             }
         }
     }
     @include min_container {
-        &__shop-logo {
-            &:first-child {
-                svg {
-                    width: calc(241px + 241 * var(--screen-diff));
-                    height: auto;
-                }
-            }
-            &:last-child {
-                svg {
-                    width: calc(182px + 182 * var(--screen-diff));
-                    height: auto;
-                }
-            }
-        }
         &__footer {
             &-bottom {
                 $cols: 24;
@@ -158,12 +156,6 @@
                 }
             }
         }
-        // &__contact-us-desc {
-        //     max-width: calc(650px + 650 * var(--screen-diff));
-        // }
-        // &__contact-us-form {
-        //     max-width: calc(780px + 780 * var(--screen-diff));
-        // }
     }
     @include desktop {
         &__footer {
@@ -226,6 +218,7 @@
             padding: 35px 0;
         }
         &__footer-bottom {
+            padding: 25px 0;
             .container {
                 row-gap: 15px
             }
@@ -395,22 +388,23 @@
         }
     }
 }
+
 .contact-us-form {
     background-color: $base-1;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     display: flex;
     flex-wrap: wrap;
-    column-gap: 24px;
-    row-gap: 40px;
-    padding: 40px;
+    column-gap: 1.5rem;
+    row-gap: 2.5rem;
+    padding: 2.5rem;
     &__control {
         border-bottom: 1px solid rgba($color: $base-4, $alpha: 0.2);
         color: $base-4;
         cursor: text;
         display: flex;
-        flex: 1 0 270px;
+        flex: 1 0 16.875rem;
         align-items: flex-end;
-        gap: 15px;
+        gap: 0.9375rem;
         position: relative;
         &:after {
             background-color: $base-4;
@@ -499,9 +493,8 @@
         }
         .icon-close {
             color: $base-4;
-            font-size: 18px;
+            font-size: 1rem;
             display: block;
-            font-size: inherit;
             transform: translate(0, -0.875em);
         }
     }
@@ -535,7 +528,7 @@
         line-height: 1;
         letter-spacing: 0.1px;
         position: absolute;
-        top: calc(100% + 8px);
+        top: calc(100% + 0.5rem);
         left: 0;
         text-transform: uppercase;
         opacity: 0;
@@ -552,15 +545,20 @@
         }
     }
     &__actions {
-        margin: -16px 0 0;
+        margin: -1rem 0 0;
         flex-basis: 100%;
     }
     &__actions-wrapper {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 1rem;
         & > div {
             position: relative;
+        }
+    }
+    &__button {
+        .button__text-wrapper {
+            padding-top: 0.45rem
         }
     }
     &__file {
@@ -593,13 +591,14 @@
     }
     &__file-doc {
         background-color: #F0F0F0;
+        border-radius: 3.125rem;
         color: $base-4;
         cursor: auto;
         display: none;
         align-items: center;
         gap: 1.25rem;
         @include text_t6;
-        padding-right: 0.8125rem;
+        padding: 0.7125rem 0.8125rem 0.625rem 1.5rem;
         text-transform: uppercase;
         button {
             font-size: 0.8125rem;

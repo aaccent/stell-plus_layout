@@ -1,6 +1,5 @@
 .banner-section {
     position: relative;
-
     &__slide {
         padding: 0;
         p {
@@ -36,6 +35,8 @@
         &__link {
             display: flex;
             align-items: center;
+            padding-left: 2.8125rem;
+            padding-right: 2.8125rem;
             text-align: center;
             text-transform: uppercase;
             & > div {
@@ -48,6 +49,17 @@
         }
         @include gap {
             margin-left: 20px;
+            .swiper-controls {
+                &__link {
+                    .button__text-wrapper {
+                        height: 1.625rem;
+                    }
+                    .button__text {
+                        font-size: 18px;
+                        height: 1.625rem;
+                    }
+                }
+            }
         }
     }
 }

@@ -1,15 +1,50 @@
 function init() {
     const getCoords = async () => {
-        let response = await fetch("../json/coords.json", {
-            method: "GET"
-        });
+        // let response = await fetch("../json/coords.json", {
+        //     method: "GET"
+        // });
 
-        if (response.ok) {
-            let mapPins = await response.json()
+        setTimeout(() => {
+            let mapPins = JSON.parse(`
+                [
+                    {
+                        "title": "Центральный офис",
+                        "image": "./images/contacts/balloon-image.png",
+                        "address": "Москва, ул. Палехская, д. 131, пом. 1, ком. 10",
+                        "time": "Пн-Пт: c 09:00 до 18:00",
+                        "email": "info@stellplus.com",
+                        "phone": "+74959970687",
+                        "coord": [55.75, 37.50]
+                    },
+                    {
+                        "title": "Восточный офис",
+                        "image": "./images/contacts/balloon-image.png",
+                        "address": "Москва, ул. Палехская, д. 131, пом. 1, ком. 10",
+                        "time": "Пн-Пт: c 09:00 до 18:00",
+                        "email": "info@stellplus.com",
+                        "phone": "+74959970687",
+                        "coord": [55.75, 37.71]
+                    },
+                    {
+                        "title": "Южный офис",
+                        "image": "./images/contacts/balloon-image.png",
+                        "address": "Москва, ул. Палехская, д. 131, пом. 1, ком. 10",
+                        "time": "Пн-Пт: c 09:00 до 18:00",
+                        "email": "info@stellplus.com",
+                        "phone": "+74959970687",
+                        "coord": [55.70, 37.70]
+                    }
+                ]            
+            `)
             setMapPins(mapPins)
-        } else {
-            console.log("Error!!!")
-        }
+        }, 2000)
+
+        // if (response.ok) {
+        //     let mapPins = await response.json()
+        //     setMapPins(mapPins)
+        // } else {
+        //     console.log("Error!!!")
+        // }
     }
 
     function setMapPins(pins) {
@@ -165,6 +200,24 @@ function init() {
     map.controls.add(zoomControl);
     getCoords()
     map.events.add("click", () => document.getElementById("balloon").classList.remove("balloon_open"))
+
+    let ctrlKey = false
+    map.behaviors.disable(['scrollZoom']);
+    let body = document.getElementsByTagName('body')[0];
+    body.onkeydown = callbackDown;
+    body.onkeyup = callbackUp;
+    function callbackDown(e){
+        if(e.keyCode === 17 && !ctrlKey){
+            ctrlKey = true
+            map.behaviors.enable(['scrollZoom']);
+        }
+    }
+    function callbackUp(e){
+        if(e.keyCode === 17){
+            ctrlKey = false
+            map.behaviors.disable(['scrollZoom']);
+        }
+    }
 }
 
 document.querySelectorAll(".departments-section__tab-button").forEach(tabButtonEl => {

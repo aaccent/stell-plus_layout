@@ -1,4 +1,6 @@
 let lock = false
+
+
 function openYouTubeVideo(videoEl) {
     if (lock) {
         return 
@@ -10,6 +12,13 @@ function openYouTubeVideo(videoEl) {
 
     lock = true
     document.body.classList.add("body_lock")
+
+    iframe.addEventListener("load", () => {
+        document.querySelector(".youtube-close").style.cssText = `
+            opacity: 1;
+            visibility: visible
+        `
+    }, { once: true })
 
     videoContainer.classList.add("_open")
     videoContainer.addEventListener("transitionend", () => {
@@ -61,10 +70,9 @@ document.querySelectorAll(".hero-slide__video").forEach(videoEl => {
         const videoContainer = document.getElementById("youtube-container")
 
         openYouTubeVideo(videoEl)
-        videoContainer.addEventListener("click", e => {
-            if (!e.target.closest(".youtube-wrapper")) {
-                closeYouTubeVideo(videoContainer)
-            }
+        videoContainer.querySelector(".youtube-close").addEventListener("click", e => {
+            closeYouTubeVideo(videoContainer)
+            e.currentTarget.style.cssText = ""
         })
     })
 })

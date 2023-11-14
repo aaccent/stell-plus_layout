@@ -1,3 +1,5 @@
+import LocomotiveScroll from "locomotive-scroll";
+
 const allParamsEl = document.querySelector(".product-section__all-params")
 const popupEl = document.querySelector(".product-section__popup")
 const lockPaddingElements = document.querySelectorAll(".header__container, .model, .hero-section, .product-section");
@@ -78,4 +80,41 @@ mediaQuery.addEventListener("change", e => {
         modelObserver.unobserve(modelObserverEl)
         modelEl.classList.contains("_squeeze") && modelEl.classList.remove("_squeeze")
     }
+})
+
+const scroll = new LocomotiveScroll();
+
+const footerForm = document.querySelector(".contact-us-form")
+const callButton = document.querySelector(".hero-section__call-button")
+
+callButton.addEventListener("click", (e) => {
+    e.preventDefault()
+    scroll.scrollTo(footerForm, {
+            duration: 3000,
+            callback: () => console.log("get it")
+        }
+    )
+})
+
+let timerId = null
+let gradientEl = document.querySelector(".popup__gradient")
+
+const popupBodyEl = document.querySelector(".popup__body")
+
+document.querySelector(".popup__body").addEventListener("scroll", e => {
+    if (timerId) {
+        e.preventDefault();
+        clearTimeout(timerId)
+    }
+
+    if (popupBodyEl.scrollTop >= popupBodyEl.scrollHeight - popupBodyEl.offsetHeight) {
+        timerId = setTimeout(() => gradientEl.style = "", 100)
+        return
+    }
+
+    gradientEl.style.cssText = `
+        opacity: 0;
+        transform: translate(0, 100%)
+    `
+    timerId = setTimeout(() => gradientEl.style = "", 100)
 })

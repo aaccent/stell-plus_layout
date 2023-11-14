@@ -75,15 +75,16 @@
         position: relative;
         padding-bottom: 0;
         max-width: 544px;
-        &:after {
-            background: linear-gradient(13deg, rgba(255, 255, 255, 0.80) 9.4%, rgba(255, 255, 255, 0.00) 231.73%);
-            // content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 106px;
-        }
+        overflow: hidden;
+    }
+    &__gradient {
+        background: linear-gradient(13deg, rgba(255, 255, 255, 0.80) 9.4%, rgba(255, 255, 255, 0.00) 231.73%);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 6.625rem;
+        transition: all 0.2s ease-in-out 0s;
     }
     &__close {
         font-size: 0.75rem;
@@ -99,7 +100,7 @@
     &__body {
         margin-right: -1.5rem;
         padding-right: 1.5rem;
-        padding-bottom: -2.5rem;
+        padding-bottom: 2.5rem;
         overflow: auto;
         &::-webkit-scrollbar {
             width: 0.125rem;
@@ -324,9 +325,9 @@ tbody td {
         &__table {
             margin-top: 16px
         }
-        &__all-params {
-            margin-top: 16px
-        }
+        // &__all-params {
+        //     margin-top: 16px
+        // }
     }
     @include phone {
         &__container {

@@ -149,6 +149,14 @@ for (let i = 0; i < inputEls.length; i++) {
         focusedControl && focusedControl.classList.remove(inputControlClass + "_focused")
         inputControlEl.classList.add("contact-us-form__control_focused")
     })
+    if (inputEls[i].getAttribute("name") === "email") {
+        inputEls[i].addEventListener("blur", e => {
+            const target = e.target
+            if (target.value.trim() !== "" && !validateEmail(target.value)) {
+                target.closest(".contact-us-form__control").classList.add("contact-us-form__control_error");
+            }
+        })
+    }
 }
 
 document.querySelectorAll("input[name='phone']").forEach(inputElement => {

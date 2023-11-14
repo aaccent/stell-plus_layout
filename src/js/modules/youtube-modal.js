@@ -41,6 +41,13 @@ function openYouTubeVideo(videoEl) {
     lock = true
     document.body.classList.add("body_lock")
 
+    iframe.addEventListener("load", () => {
+        document.querySelector(".youtube-close").style.cssText = `
+            opacity: 1;
+            visibility: visible
+        `
+    }, { once: true })
+    
     videoContainer.classList.add("_open")
     videoContainer.addEventListener("transitionend", () => {
         lock = false
@@ -73,12 +80,11 @@ function handleVideo(videoEl) {
         openYouTubeVideo(video)
     })
     
-    document.getElementById("youtube-container").addEventListener("click", (e) => {
-        if (!e.target.closest(".youtube-wrapper")) {
-            closeYouTubeVideo(document.getElementById("youtube-container"))
-            videoEl.play()
-            videoPlayIconEl.classList.remove("video__play-icon_show")
-        }
+    document.querySelector(".youtube-close").addEventListener("click", (e) => {
+        closeYouTubeVideo(document.getElementById("youtube-container"))
+        videoPlayIconEl.classList.remove("video__play-icon_show")
+        videoEl.play()
+        e.currentTarget.style.cssText = ""
     })
     
     document.addEventListener("keydown", (e) => {

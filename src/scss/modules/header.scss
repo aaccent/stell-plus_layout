@@ -19,6 +19,11 @@
     }
     &__logo {
         flex-shrink: 0;
+        gap: 0.75rem;
+        svg {
+            width: 2.1875rem;
+            height: 2.1875rem;
+        }
     }
     &__menu {
         position: absolute;
@@ -479,11 +484,6 @@
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    svg {
-        width: 2.1875rem;
-        height: 2.1875rem;
-    }
     &__text {
         color: inherit;
         font-family: "Inter";
@@ -495,12 +495,6 @@
         .plus {
             position: relative;
             top: -1.5px;
-        }
-    }
-    @media screen and (min-width: 1680px) {
-        svg {
-            width: 2.25rem; //calc(35px + 35 * var(--screen-diff));
-            height: auto;
         }
     }
 }

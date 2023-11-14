@@ -24,17 +24,19 @@
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        border-radius: 16px;
+        border-radius: 1rem;
         display: flex;
         justify-content: flex-end;
         align-items: flex-end;
-        gap: 16px;
+        gap: 1rem;
         margin: 4.875rem 0 0;
         padding: 15rem 2rem 2rem
     }
     &__stat-card {
-        flex-basis: 364px;
-        height: 448px;
+        // flex-basis: 364px;
+        flex-basis: 22.75rem;
+        height: 28rem;
+        // height: 448px;
     }
     @include min_container {
         &__title {
@@ -47,10 +49,10 @@
         //     margin-top: calc(78px + 78 *  var(--screen-diff));
         //     padding: var(--padding-top) var(--padding-x) var(--padding-x)
         // }
-        &__stat-card {
-            flex-basis: calc(364px + 364 *  var(--screen-diff));
-            height: calc(448px + 448 *  var(--screen-diff));
-        }
+        // &__stat-card {
+        //     flex-basis: calc(364px + 364 *  var(--screen-diff));
+        //     height: calc(448px + 448 *  var(--screen-diff));
+        // }
     }
 
     @include desktop {
@@ -111,8 +113,8 @@
     position: relative;    
     &__inner-wrapper {
         background-color: $base-1;
-        border-radius: 12px;
-        padding: 1rem 1.5rem; // 16px 24px;
+        border-radius: 0.75rem;
+        padding: 1rem 1.5rem 2.5rem; // 16px 24px;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
