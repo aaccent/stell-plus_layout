@@ -44,11 +44,15 @@ const burgerEl = document.querySelector(".header__burger")
 menuLinkEls.forEach(menuLinkEl => {
     menuLinkEl.addEventListener("click", e => {
         let hasSubmenu = menuLinkEl.nextElementSibling;
+        if (!hasSubmenu) {
+            return 
+        }
+
         if (window.innerWidth > 992 && isMobile.any()) {
             const activeMenuItems = document.querySelectorAll(".header__menu-item_hover");
-            if (!hasSubmenu) {
-                return
-            }
+            // if (!hasSubmenu) {
+            //     return
+            // }
             e.preventDefault();
             activeMenuItems.forEach(activeMenuItem => activeMenuItem.classList.remove("header__menu-item_hover"))
             if (hasSubmenu) {
@@ -57,9 +61,9 @@ menuLinkEls.forEach(menuLinkEl => {
         }
         
         if (window.innerWidth <= 992) {
-            if (hasSubmenu) {
-                menuLinkEl.closest(".header__menu-item").classList.toggle("header__menu-item_open")
-            }
+            menuLinkEl.closest(".header__menu-item").classList.toggle("header__menu-item_open")
+            // if (hasSubmenu) {
+            // }
         }
     })
 })

@@ -49,30 +49,32 @@ function init() {
 
     function setMapPins(pins) {
         let myCollection = new ymaps.GeoObjectCollection();
-                
+        
+        
         for (var i = 0; i < pins.length; i++) {
             myCollection.add(new ymaps.Placemark(pins[i].coord, {
                 pinData: pins[i]
             }, {
                 iconLayout: "default#image",
-                iconImageHref: "../images/map-mark.svg",
+                iconImageHref: imagesSrc.pinImage,
                 iconImageSize: [60, 60],
             }));
         }
         
         map.geoObjects.add(myCollection);
+
         myCollection.events.add("click", e => {
             let query = ymaps.geoQuery(map.geoObjects);
 
             for (let i = 0; i < query.getLength(); i++) {
                 let el = query.get(i);
-                el.options.set('iconImageHref', '../images/map-mark.svg')                
+                el.options.set('iconImageHref', imagesSrc.pinImage)                
             }
     
             let pinData = e.get("target").properties.get("pinData");
             map.panTo(pinData.coord, { duration: 300 })
             
-            e.get('target').options.set('iconImageHref', '../images/map-mark-active.svg')  
+            e.get('target').options.set('iconImageHref', imagesSrc.pinActiveImage)  
 
             const balloonEl = document.querySelector(".balloon_open")
             if (balloonEl) {
@@ -139,11 +141,13 @@ function init() {
         minZoom: 12
     })
 
+    let imagesSrc = document.getElementById("map").dataset
+
     // Создадим пользовательский макет ползунка масштаба.
     let ZoomLayout = ymaps.templateLayoutFactory.createClass(`
         <div id="zoom-controls">
-            <button id='zoom-out' type='button' disabled><img src='./images/icons/minus-scale.svg'></button>
-            <button id='zoom-in' type='button'><img src='./images/icons/plus-scale.svg'></button>
+            <button id='zoom-out' type='button' disabled><img src='${imagesSrc.zoomOutImage}'></button>
+            <button id='zoom-in' type='button'><img src='${imagesSrc.zoomInImage}'></button>
         </div>`, {
 
         // Переопределяем методы макета, чтобы выполнять дополнительные действия
@@ -187,6 +191,7 @@ function init() {
             }
         }
     }),
+
     zoomControl = new ymaps.control.ZoomControl({
         options: {
             layout: ZoomLayout,

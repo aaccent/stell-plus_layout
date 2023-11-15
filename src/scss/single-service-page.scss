@@ -351,7 +351,7 @@
             @include text_t2;
             opacity: 0.6;
             &:not(:last-child) {
-                margin: 0 0 16px
+                margin: 0 0 1rem
             }
         }
     }
@@ -385,6 +385,7 @@
         }
     }
     &__video {
+        border-radius: 1rem;
         padding-top: calc(500 / 1568 * 100%);
         flex-basis: 50%;
         overflow: hidden;

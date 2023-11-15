@@ -11,45 +11,44 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s ease 0s;
-    .youtube-close {
-        background-color: rgba(255,255,255, 0.17);
-        border-radius: 50%;
-        color: white;
-        cursor: pointer;
-        font-size: 2.25rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 10%;
-        right: 3%;
-        width: 3.125rem;
-        height: 3.125rem;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.2s ease 0s;
-        z-index: 3;
-        span:before {
-            color: inherit
-        }
-    }
-    .youtube-body {
-        position: relative;
-        height: 100%;
-        width: 100%;
-    }
+    // .youtube-close {
+    //     background-color: rgba(255,255,255, 0.17);
+    //     border-radius: 50%;
+    //     color: white;
+    //     cursor: pointer;
+    //     font-size: 2.25rem;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     position: absolute;
+    //     top: 10%;
+    //     right: 3%;
+    //     width: 3.125rem;
+    //     height: 3.125rem;
+    //     opacity: 0;
+    //     visibility: hidden;
+    //     transition: all 0.2s ease 0s;
+    //     z-index: 3;
+    //     span:before {
+    //         color: inherit
+    //     }
+    // }
+    // .youtube-body {
+    //     position: relative;
+    //     // height: 100%;
+    //     // width: 100%;
+    // }
     iframe {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: 50%;
+        left: 50%;
+        max-width: calc(100% - 40px);
+        transform: translate(-50%, -50%);
+        // width: 100%;
+        // height: 100%;
     }
     &._open {
         opacity: 1;
         visibility: visible;
-        .youtube-body {
-            transform: scale(1)
-        }
     }
 }

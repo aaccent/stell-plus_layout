@@ -14,7 +14,6 @@ function init() {
 
     function setMapPins(pins) {
         let myCollection = new ymaps.GeoObjectCollection();
-                
         for (var i = 0; i < pins.length; i++) {
             myCollection.add(new ymaps.Placemark(pins[i].coord, {
                 pinData: pins[i]

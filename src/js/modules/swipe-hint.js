@@ -7,8 +7,8 @@ function handleSwipe(swiper) {
         if (isMobile.any()) {
             return
         }
-        let coordX = e.clientX - swiperHintEl.offsetWidth * 0.4;
-        let coordY = e.clientY - swiperHintEl.offsetHeight * 0.4;
+        let coordX = e.clientX - swiperHintEl.offsetWidth * 0.3;
+        let coordY = e.clientY - swiperHintEl.offsetHeight * 0.15;
     
         swiperHintEl.style.cssText = `
             position: fixed;

@@ -96,25 +96,9 @@ callButton.addEventListener("click", (e) => {
     )
 })
 
-let timerId = null
-let gradientEl = document.querySelector(".popup__gradient")
-
-const popupBodyEl = document.querySelector(".popup__body")
-
 document.querySelector(".popup__body").addEventListener("scroll", e => {
-    if (timerId) {
-        e.preventDefault();
-        clearTimeout(timerId)
-    }
-
-    if (popupBodyEl.scrollTop >= popupBodyEl.scrollHeight - popupBodyEl.offsetHeight) {
-        timerId = setTimeout(() => gradientEl.style = "", 100)
-        return
-    }
-
-    gradientEl.style.cssText = `
+    document.querySelector(".popup__gradient").style.cssText = `
         opacity: 0;
         transform: translate(0, 100%)
     `
-    timerId = setTimeout(() => gradientEl.style = "", 100)
-})
+}, { once: true })

@@ -208,6 +208,7 @@
         grid-column: 2;
         @include text_t5;
         text-transform: uppercase;
+        white-space: nowrap;
         &:after {
             background-color: $base-1;
             bottom: 0;
@@ -293,9 +294,11 @@
         }
         &__icon {
             grid-row: 3;
+            width: 100px;
+            height: 100px;
         }
         &__about {
-            font-size: 20px;
+            font-size: 18px;
         }
         &__link {
             grid-column: 1;
