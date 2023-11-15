@@ -7,13 +7,12 @@ handleVideo(videoEl)
 
 const scroll = new LocomotiveScroll();
 
-const projects = document.querySelector(".projects-section__projects")
+const projects = document.querySelector(".projects-section")
 const projectsButton = document.querySelector(".hero-section__projects")
 
 projectsButton.addEventListener("click", (e) => {
     e.preventDefault()
     scroll.scrollTo(projects, {
-            offset: -100,
             duration: 1500,
         }
     )

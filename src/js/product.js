@@ -84,7 +84,7 @@ mediaQuery.addEventListener("change", e => {
 
 const scroll = new LocomotiveScroll();
 
-const footerForm = document.querySelector(".contact-us-form")
+const footerForm = document.querySelector(".footer__contact-us")
 const callButton = document.querySelector(".hero-section__call-button")
 
 callButton.addEventListener("click", (e) => {
