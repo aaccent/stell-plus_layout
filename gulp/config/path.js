@@ -25,7 +25,8 @@ const path = {
         js: `${srcFolder}/js/*.js`,
         js_libs: `${srcFolder}/js/libs/*.js`,
         fonts: `${srcFolder}/fonts`,
-        images: `${srcFolder}/images/**/*`,
+        images: `${srcFolder}/images/**/*.{jpg,jpeg,png,gif,webp}`,
+        svg: `${srcFolder}/images/**/*.svg`,
         json: `${srcFolder}/json/*`
     },
     watch: {
@@ -34,7 +35,7 @@ const path = {
         pug: `${srcFolder}/pug/**/*.pug`,
         scss: `${srcFolder}/scss/**/*.scss`,
         js: `${srcFolder}/js/**/*.js`,
-        images: `${srcFolder}/images/**/*`
+        images: `${srcFolder}/images/**/*.{jpg,jpeg,png,gif,svg,ico,webp}`
     },
     clean: buildFolder,
     buildFolder: buildFolder,

@@ -1,4 +1,5 @@
 import fileinclude from "gulp-file-include"
+import webpHTML from "gulp-webp-html"
 import pug from "gulp-pug"
 
 const html = () => {
@@ -8,6 +9,7 @@ const html = () => {
             pretty: true,
             verbose: true
         }))
+        .pipe(webpHTML())
         .pipe(app.gulp.dest(app.path.build.html))
         .pipe(app.plugins.browserSync.stream())
 }

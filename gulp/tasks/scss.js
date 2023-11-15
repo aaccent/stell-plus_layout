@@ -1,6 +1,7 @@
 import dartSass from "sass" // препроцессор
 import gulpSass from "gulp-sass" // плагин для запуска препроцессора
 import rename from "gulp-rename"
+import webpCss from "gulp-webp-css"
 
 import cleanCss from "gulp-clean-css"
 import autoprefixer from "gulp-autoprefixer"
@@ -23,6 +24,7 @@ const scss = () => {
         .pipe(rename({
             extname: ".min.css"
         }))
+        .pipe(webpCss())
         .pipe(app.gulp.dest(app.path.build.css))
         .pipe(app.plugins.browserSync.stream())
 }
