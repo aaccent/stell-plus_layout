@@ -195,8 +195,14 @@ document.querySelector(".contact-us-form__file-input").addEventListener("change"
     const parentEl = e.target.closest(".contact-us-form__file");
     parentEl.querySelector(".contact-us-form__file-doc span").innerHTML = e.target.files[0].name
     parentEl.classList.add("contact-us-form__file_attached")
+    parentEl.querySelector(".contact-us-form__file-doc button").addEventListener("click", () => {
+        e.target.value = "";
+        parentEl.classList.remove("contact-us-form__file_attached")
+    }, { once: true })
 })
 
+// сброс документа
+document.forms["contact-us-form"].querySelector(".contact-us-form__file-doc button").addУмуте
 document.forms["contact-us-form"].addEventListener("submit", e => {
     e.preventDefault();
     validateForm(e.target)

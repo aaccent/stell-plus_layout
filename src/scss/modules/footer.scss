@@ -603,7 +603,10 @@
         button {
             font-size: 0.8125rem;
             position: relative;
-            bottom: 1px;
+            bottom: 0.0625rem;
+            &:before {
+                display: block;
+            }
         }
     }
     &__success-label {
