@@ -18,6 +18,11 @@
 @import "modules/hero.scss";
 @import "modules/equipment.scss";
 @import "modules/services.scss";
+.services-section {
+    @include gap {
+        padding-bottom: 45px
+    }
+}
 @import "modules/banner.scss";
 @import "modules/about.scss";
 @import "modules/footer.scss";

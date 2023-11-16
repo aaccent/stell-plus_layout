@@ -147,7 +147,7 @@ body {
         }
     }
     @include phone {
-        padding: 18px 24px;
+        padding: 24px 16px;
         min-width: 280px;
         &__title {
             font-size: 22px;
@@ -255,9 +255,9 @@ body {
     @include gap {
         &__tab-panel {
             flex-wrap: nowrap;
-            margin-left: -20px;
-            margin-right: -20px;
-            padding: 0 20px;
+            margin-left: -16px;
+            margin-right: -16px;
+            padding: 0 16px;
             overflow-x: auto;
             /* Скрываем scrollbar для IE, Edge и Firefox */
             -ms-overflow-style: none;  // IE и Edge

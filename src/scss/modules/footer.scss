@@ -120,7 +120,7 @@
         &-text {
             font-size: 1.75rem;
             .icon {
-                top: -2px
+                top: -0.125rem
             }
         }
     }
@@ -221,6 +221,27 @@
             padding: 25px 0;
             .container {
                 row-gap: 15px
+            }
+        }
+    }
+    @include phone {
+        &__footer-top {
+            .container {
+                row-gap: 30px;
+            }
+        }
+        &__logo {
+            svg {
+                width: 3rem;
+                height: 3rem;
+            }
+            &-text {
+                font-size: 1.375rem;
+            }
+        }
+        &__contacts {
+            & > * {
+                font-size: 1.125rem
             }
         }
     }
@@ -678,6 +699,13 @@
         }
         &__button {
             align-self: stretch;
+            .button__text-wrapper {
+                height: 1.625rem;
+            }
+            .button__text {
+                font-size: 1.125rem;
+                height: 1.625rem;
+            }
         }
     }
 }

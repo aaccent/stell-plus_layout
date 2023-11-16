@@ -13,7 +13,7 @@
 @import "components/project.scss";
 
 .breadcrumbs {
-    margin: 32px 0 0;
+    margin: 2rem 0 0;
     &__item:not(:last-child) {
         &:after {
             color: $base-4
@@ -77,9 +77,9 @@
 @import "modules/header.scss";
 
 .banner-section {
-    margin: 35px 0 0;
+    margin: 2.1875rem 0 0;
     &__content {
-        border-radius: 16px;
+        border-radius: 1rem;
         position: relative;
         height: 100vh;
         overflow: hidden;
@@ -124,6 +124,9 @@
     }
     @include phone {
         &__content {
+            border-radius: 0;
+            margin-left: -16px;
+            margin-right: -16px;
             height: 620px;
         }
     }
@@ -157,7 +160,7 @@
     }
     .swiper-buttons {
         display: flex;
-        gap: 16px;
+        gap: 1rem;
     }
     .swiper-button-prev,
     .swiper-button-next {
@@ -165,12 +168,15 @@
         border-radius: 3.125rem;
         display: block;
         color: $base-4;
-        font-size: 2rem;
-        line-height: 1;
-        padding: 24px 74px;
+        padding: 2rem 4.625rem;
         width: auto;
         height: auto;
         transition: all 0.3s ease 0s;
+        svg {
+            width: 2rem;
+            height: 2rem;
+            vertical-align: top;
+        }
         span {
             font-size: inherit;
         }
@@ -206,24 +212,21 @@
     .swiper-slide {
         height: auto
     }
-    .swiper-button-prev {
-        transform: rotate(-180deg);
-    }
     @media screen and (max-width: 480px) {
         .swiper {
-            padding: 0 20px;
-            margin-left: -20px;
-            margin-right: -20px;
+            padding: 0 16px;
+            margin-left: -16px;
+            margin-right: -16px;
         }
     }
 }
 .results-slider {
-    border-radius: 16px;
-    margin: 75px 0 0;
+    border-radius: 1rem;
+    margin: 4.6875rem 0 0;
     overflow: hidden;
     &__slide {
-        border-radius: 16px;
-        max-height: 720px;
+        border-radius: 1rem;
+        max-height: 45rem;
         overflow: hidden;
         img {
             width: 100%;
@@ -262,9 +265,7 @@
 }
 
 .projects-section {
-    .swiper-button-prev {
-        transform: rotate(-180deg);
-    }
+
 }
 
 .projects-slider {

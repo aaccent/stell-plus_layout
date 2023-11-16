@@ -53,6 +53,11 @@
             width: 47.5%;
             height: 47.5%;
         }
+        &_vkus {
+            svg {
+                width: auto;
+            }
+        }
     }
     .section__desc {
         margin: 1.1em 0 0;
@@ -99,5 +104,11 @@
         //     display: flex;
         //     align-items: centerw;
         // }
+    }
+    @include phone {
+        &__shops-item {
+            width: 4.5rem;
+            height: 4.5rem;
+        }
     }
 }

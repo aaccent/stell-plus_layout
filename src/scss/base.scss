@@ -104,6 +104,10 @@ input {
     padding: 0 1.25rem; //20px;
     width: 100%;
     max-width: 100.5rem; //1608px;
+    @include phone {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
     // @include min_container {
     //     --padding-x: calc(20px + 20 * var(--screen-diff));
     //     padding: 0 var(--padding-x);
@@ -207,7 +211,7 @@ input {
     }
     @include gap {
         padding-top: 45px;
-        padding-bottom: 45px;
+        padding-bottom: 60px;
         &__header {
             padding-bottom: 3rem;
         }
@@ -226,9 +230,9 @@ input {
         &__images {
             margin-top: 30px;
             &.swiper {
-                margin-left: -20px;
-                margin-right: -20px;
-                padding: 0 20px;
+                margin-left: -16px;
+                margin-right: -16px;
+                padding: 0 16px;
             }
         }
         &__img {

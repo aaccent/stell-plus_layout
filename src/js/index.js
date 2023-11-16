@@ -177,6 +177,7 @@ document.getElementById("youtube-container").addEventListener("click", e => {
 new Swiper(".equipment-section__slider .swiper", {
     slidesPerView: 1,
     spaceBetween: 16,
+    allowTouchMove: false,
     breakpoints: {
         480: {
             slidesPerView: "2"

@@ -132,7 +132,7 @@
             }
         }
         &:not(:first-child) {
-            margin: 1.875rem
+            margin: 1.875rem 0
         }
     }
     &__menu-item {
@@ -323,6 +323,9 @@
     }
     @include phone {
         &__content {
+            border-radius: 0;
+            margin-right: -16px;
+            margin-left: -16px;
             height: 550px;
         }
     }

@@ -35,8 +35,6 @@
         &__link {
             display: flex;
             align-items: center;
-            padding-left: 2.8125rem;
-            padding-right: 2.8125rem;
             text-align: center;
             text-transform: uppercase;
             & > div {
@@ -46,6 +44,10 @@
             //     background-color: $base-1;
             //     color: #3D3D3D;
             // }
+            @include min_phone {
+                padding-left: 2.8125rem;
+                padding-right: 2.8125rem;
+            }
         }
         @include gap {
             margin-left: 20px;
@@ -61,6 +63,15 @@
                 }
             }
         }
+        @include phone {
+            .swiper-controls {
+                &__link {
+                    .button__text {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -70,6 +81,8 @@
     }
     &_outer &__slide {
         height: 50.625rem; //810px;
+        max-height: 100vh;
+        max-height: calc(var(--vh, 1vh) * 100);
     }
     &_inner {
         border-top: 1px dashed rgba($color: $base-1, $alpha: 0.25);
@@ -101,7 +114,7 @@
         .banner-slide {
             display: flex;
             align-items: center;
-            row-gap: 16px;
+            row-gap: 1rem;
             column-gap: 12%;
             height: auto;
             @include tablet {
@@ -140,13 +153,14 @@
                 flex: 1 0 100%;
             }
             .banner-slider__slide {
-                padding-left: 20px;
-                padding-right: 20px;
+                gap: 12px;
+                padding-left: 16px;
+                padding-right: 16px;
             }
         }
     }
     @include phone {
-        &__inner {
+        &_inner {
             padding-top: 1.5rem;
             padding-bottom: 1.5rem;
         }
@@ -212,7 +226,7 @@
             }
         }
         &__text {
-            font-size: 1.125rem;
+            font-size: 1rem;
         }
         &__btn {
             width: 120px;
