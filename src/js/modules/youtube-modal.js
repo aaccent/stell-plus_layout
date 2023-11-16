@@ -152,12 +152,12 @@ function handleVideo(videoEl) {
         openYouTubeVideo(video)
     })
     
-    document.querySelector(".youtube-close").addEventListener("click", (e) => {
-        closeYouTubeVideo(document.getElementById("youtube-container"))
-        videoPlayIconEl.classList.remove("video__play-icon_show")
-        videoEl.play()
-        e.currentTarget.style.cssText = ""
-    })
+    // document.querySelector(".youtube-close").addEventListener("click", (e) => {
+    //     closeYouTubeVideo(document.getElementById("youtube-container"))
+    //     videoPlayIconEl.classList.remove("video__play-icon_show")
+    //     videoEl.play()
+    //     e.currentTarget.style.cssText = ""
+    // })
     
     document.addEventListener("keydown", (e) => {
         const openVideoEl = document.querySelector("#youtube-container._open")

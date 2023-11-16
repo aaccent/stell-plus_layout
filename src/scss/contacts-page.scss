@@ -20,6 +20,9 @@ body {
 @import "modules/header.scss";
 
 .map-section {
+    &__title {
+        @include heading_h1;
+    }
     padding: 0 0 6.5625rem;
     #map {
         height: 45rem;
