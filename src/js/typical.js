@@ -1,4 +1,4 @@
-import { handleVideo } from "./modules/youtube-modal.js"
+import { handleVideo } from "./modules/fullscreen-video.js"
 import LocomotiveScroll from "locomotive-scroll";
 
 const accordionHeaderEls = document.querySelectorAll(".accordion__header");
@@ -77,6 +77,7 @@ window.addEventListener("scroll", () => {
 })
 
 const videoEl = document.getElementById("video")
+
 handleVideo(videoEl)
   
 // const pageSectionObserverEl = document.querySelector(".page-section__observer");

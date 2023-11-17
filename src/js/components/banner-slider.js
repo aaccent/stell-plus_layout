@@ -1,3 +1,5 @@
+import { handleSwipe } from "../modules/swipe-hint.js"
+
 const innerBannerSwiper = new Swiper(".banner-slider_inner .swiper", {
     slidesPerView: 1,
     // observer: true,
@@ -37,3 +39,5 @@ const outerBannerSwiper = new Swiper(".banner-slider_outer .swiper", {
 
 outerBannerSwiper.controller.control = innerBannerSwiper;
 innerBannerSwiper.controller.control = outerBannerSwiper;
+
+handleSwipe(outerBannerSwiper, { x: 0.5, y: 0.5 })

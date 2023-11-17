@@ -31,9 +31,14 @@
         transition: all 0.2s ease 0s;
         z-index: 2;
         &_show {
+            cursor: pointer;
+            pointer-events: auto;
             opacity: 1;
             visibility: visible;
             transform: translate(-50%, -50%) scale(1);
+            @include ishover {
+                transform: translate(-50%, -50%) scale(1.08);
+            }
         }
         .icon-play {
             font-size: 5.25rem;

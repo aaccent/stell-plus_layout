@@ -5,9 +5,10 @@ function init() {
         // });
 
         setTimeout(() => {
-            let mapPins = JSON.parse(`
+            mapPins = JSON.parse(`
                 [
                     {
+                        "id": "1",
                         "title": "Центральный офис",
                         "image": "./images/contacts/balloon-image.png",
                         "address": "Москва, ул. Палехская, д. 131, пом. 1, ком. 10",
@@ -17,6 +18,7 @@ function init() {
                         "coord": [55.75, 37.50]
                     },
                     {
+                        "id": "2",
                         "title": "Восточный офис",
                         "image": "./images/contacts/balloon-image.png",
                         "address": "Москва, ул. Палехская, д. 131, пом. 1, ком. 10",
@@ -26,6 +28,7 @@ function init() {
                         "coord": [55.75, 37.71]
                     },
                     {
+                        "id": "3",
                         "title": "Южный офис",
                         "image": "./images/contacts/balloon-image.png",
                         "address": "Москва, ул. Палехская, д. 131, пом. 1, ком. 10",
@@ -50,34 +53,40 @@ function init() {
     function setMapPins(pins) {
         let myCollection = new ymaps.GeoObjectCollection();
         
-        
+        // создание и установка пинов
         for (var i = 0; i < pins.length; i++) {
             myCollection.add(new ymaps.Placemark(pins[i].coord, {
                 pinData: pins[i]
             }, {
                 iconLayout: "default#image",
-                iconImageHref: imagesSrc.pinImage,
+                iconImageHref: i === 0 ? imagesSrc.pinActiveImage : imagesSrc.pinImage,
                 iconImageSize: [60, 60],
             }));
         }
-        
+        // добавление пинов на карту
         map.geoObjects.add(myCollection);
 
+        // обработки кликов по пинам на карте
+        let activePinId;
         myCollection.events.add("click", e => {
+            let pinData = e.get("target").properties.get("pinData");
+            if (activePinId === pinData.id) {
+                return
+            }
             let query = ymaps.geoQuery(map.geoObjects);
 
             for (let i = 0; i < query.getLength(); i++) {
                 let el = query.get(i);
                 el.options.set('iconImageHref', imagesSrc.pinImage)                
             }
-    
-            let pinData = e.get("target").properties.get("pinData");
+
+            // установка пина по центру карты
             map.panTo(pinData.coord, { duration: 300 })
             
             e.get('target').options.set('iconImageHref', imagesSrc.pinActiveImage)  
 
-            const balloonEl = document.querySelector(".balloon_open")
-            if (balloonEl) {
+            const balloonEl = document.querySelector(".balloon")
+            if (balloonEl.classList.contains("balloon_open")) {
                 let balloonContentEl = balloonEl.querySelector(".balloon__content")
                 balloonContentEl.style.opacity = "0"
                 balloonContentEl.addEventListener("transitionend", (e) => {
@@ -85,9 +94,14 @@ function init() {
                     e.target.style.opacity = ""
                 })
             } else {
-                document.querySelector(".balloon").classList.add("balloon_open")            
+                balloonEl.classList.add("balloon_open")            
             }
+            activePinId = pinData.id
         })
+        // первоначальная инициализация карты
+        loadBalloon(mapPins[0])
+        document.querySelector(".balloon").classList.add("balloon_open")
+        map.panTo(mapPins[0].coord, { duration: 150 })
     }
 
     function loadBalloon(data) {
@@ -133,6 +147,8 @@ function init() {
         document.getElementById("balloon").innerHTML = balloonContentTemplate
     }
 
+    let mapPins;
+    // создание карты
     let map = new ymaps.Map("map", {
         center: [55.75,37.60],
         controls: [],
@@ -190,9 +206,9 @@ function init() {
                 document.getElementById("zoom-out").disabled = true
             }
         }
-    }),
+    });
 
-    zoomControl = new ymaps.control.ZoomControl({
+    let zoomControl = new ymaps.control.ZoomControl({
         options: {
             layout: ZoomLayout,
             position: {
@@ -204,11 +220,14 @@ function init() {
 
     map.controls.add(zoomControl);
     getCoords()
+    
     map.events.add("click", () => document.getElementById("balloon").classList.remove("balloon_open"))
-
+    
+    
+    // zoom ctrl + mouse wheel
     let ctrlKey = false
-    map.behaviors.disable(['scrollZoom']);
     let body = document.getElementsByTagName('body')[0];
+    map.behaviors.disable(['scrollZoom']);
     body.onkeydown = callbackDown;
     body.onkeyup = callbackUp;
     function callbackDown(e){
@@ -247,4 +266,4 @@ document.querySelectorAll(".departments-section__tab-button").forEach(tabButtonE
 })
 
 
-ymaps.ready(init)
+ymaps.ready(init);

@@ -1,5 +1,5 @@
 import "./components/service.js"
-import { handleVideo } from "./modules/youtube-modal.js"
+import { handleVideo } from "./modules/fullscreen-video.js"
 import LocomotiveScroll from "locomotive-scroll"
 
 const videoEl = document.getElementById("video")

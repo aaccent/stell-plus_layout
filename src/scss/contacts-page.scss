@@ -85,6 +85,12 @@ body {
     filter: grayscale(1) invert(0.83);
 }
 
+[class*="image"] {
+    background-size: 3.75rem 3.75rem !important;
+    width: 3.75rem !important;
+    height: 3.75rem !important;
+}
+
 .balloon {
     background-color: $base-1;
     border-radius: 0.75rem;
@@ -107,7 +113,7 @@ body {
     &__img {
         border-radius: 0.375rem;
         margin: 0 0 2rem;
-        height: 15rem;
+        height: 15.0625rem;
         overflow: hidden;
         img {
             width: 100%;
@@ -121,6 +127,7 @@ body {
         gap: 1rem;
         margin: 0 0 3.5rem;
         @include text_t3;
+        max-width: 20.375rem
     }
     &__address, &__time, &__phone, &__email {
         @include text_t3;

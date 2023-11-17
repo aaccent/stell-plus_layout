@@ -84,6 +84,12 @@
         max-height: 100vh;
         max-height: calc(var(--vh, 1vh) * 100);
     }
+    &_outer {
+        cursor: none;
+        .swiper-slide {
+            cursor: none;
+        }
+    }
     &_inner {
         border-top: 1px dashed rgba($color: $base-1, $alpha: 0.25);
         padding-top: 2rem;

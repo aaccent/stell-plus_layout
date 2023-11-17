@@ -156,11 +156,11 @@ input {
     &__info {
         display: flex;
         align-items: flex-start;   
-        gap: 16px;
+        gap: 1rem;
     }
     &__param {
         flex-shrink: 0;
-        flex-basis: calc(50% - 8px);
+        flex-basis: calc(50% - 0.5rem);
         @include text_t3;
         white-space: nowrap
     }
@@ -295,6 +295,7 @@ input {
         background-color: $base-1;
         border-radius: 50%;
         @include text_t6;
+        color: $base-4;
         display: flex;
         justify-content: center;
         align-items: center;

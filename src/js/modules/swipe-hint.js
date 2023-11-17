@@ -1,20 +1,22 @@
 import { isMobile } from "./detect-device.js"
 
-function handleSwipe(swiper) {
+function handleSwipe(swiper, pos = { x: 0.3, y: 0.2 } ) {
     let swiperHintEl = swiper.el.querySelector(".swiper-swipe");
 
     function handleTouchMove(e) {
         if (isMobile.any()) {
             return
         }
-        let coordX = e.clientX - swiperHintEl.offsetWidth * 0.3;
-        let coordY = e.clientY - swiperHintEl.offsetHeight * 0.15;
+
+        let coordX = e.clientX - swiperHintEl.offsetWidth * pos.x;
+        let coordY = e.clientY - swiperHintEl.offsetHeight * pos.y;
     
         swiperHintEl.style.cssText = `
             position: fixed;
             top: ${coordY}px;
             left: ${coordX}px;
         `
+        swiperHintEl.dataset.pageY = e.pageY
     }
 
     swiper.wrapperEl.addEventListener("mouseenter", () => {
@@ -64,6 +66,7 @@ function handleSwipe(swiper) {
         }
         swiperHintEl.classList.remove("swiper-swipe_grab")
     })
+
 }
 
 export { handleSwipe }
