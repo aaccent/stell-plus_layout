@@ -36,10 +36,10 @@
     $columns: 24;
     $column-width: 50px;
     $column-gap: 24px;
-    $col-1: calc((6 * $column-width + (6 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
+    $col-1: calc((7 * $column-width + (7 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
     $col-2: calc((15 * $column-width + (15 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
     cursor: pointer;
-    padding: 25px 0;
+    padding: 1.5625rem 0;
     &__container {
         display: flex;
         align-items: flex-start;

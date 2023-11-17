@@ -1,4 +1,4 @@
-function loadVideo() {
+function loadVideo(videoId) {
   
     (function loadYoutubeIFrameApiScript() {
       const tag = document.createElement("script");
@@ -12,7 +12,7 @@ function loadVideo() {
   
     let player = null;
   
-    function setupPlayer(videoId) {
+    function setupPlayer() {
       /**
        * THIS FAILS!!!!!
        */
@@ -33,48 +33,56 @@ function loadVideo() {
        * but found from https://codesandbox.io/s/youtube-iframe-api-tpjwj
        */
         window.YT.ready(function() {
-            player = new window.YT.Player("player", {
+            player = new window.YT.Player("yt-player", {
                 height: "390",
                 width: "640",
                 videoId,
+                allowfullscreen: true,
+                playerVars: { "controls": 1, "allowfullscreen": "allowfullscreen", "rel": 0, "color": "white" },
                 events: {
                     onReady: onPlayerReady,
-                    onStateChange: onPlayerStateChange
+                    // onStateChange: onPlayerStateChange,
+                    onPlaybackQualityChange: () => {},
+                    onError: (e) => {}
                 }
             });
         });
     }
   
+    function onPlayerReady(event) {
+        playFullscreen(); 
+    }
+
     function playFullscreen () {
-        player.playVideo();//won't work on mobile
         let iframe = document.querySelector("iframe")
 
+        // iframe.addEventListener("keydown", (e) => {
+        //     const openVideoEl = document.querySelector("#youtube-container._open")
+        //     if (e.which === 27 && openVideoEl) {
+        //         closeYouTubeVideo(openVideoEl)
+        //     }
+        // })
         
-        iframe.addEventListener("keydown", (e) => {
-            const openVideoEl = document.querySelector("#youtube-container._open")
-            if (e.which === 27 && openVideoEl) {
-                closeYouTubeVideo(openVideoEl)
-            }
-        })
-
-        var requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen || iframe.msRequestFullscreen;
-        if (requestFullScreen) {
-          requestFullScreen.bind(iframe)();
+        if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+        } else if (iframe.webkitRequestFullscreen) {
+            iframe.webkitRequestFullscreen();
+        } else if (iframe.mozRequestFullScreen) {
+            iframe.mozRequestFullScreen();
+        } else if (iframe.msRequestFullscreen) {
+            iframe.msRequestFullscreen();
         }
-    }
-
-    function onPlayerReady(event) {
-        console.log("ready")
-        playFullscreen(); 
-        event.target.playVideo()
+        
+        player.playVideo();//won't work on mobile
     }
   
-    function onPlayerStateChange(event) {
-      var videoStatuses = Object.entries(window.YT.PlayerState);
-      console.log(videoStatuses.find(status => status[1] === event.data)[0]);
-    }
+    // function onPlayerStateChange(event) {
+    //   let videoStatuses = Object.entries(window.YT.PlayerState);
+    //   console.log(videoStatuses.find(status => status[1] === event.data)[0]);
+    // }
+
     return setupPlayer
-  }
+}
 
 function secondsToTime(time) {
     let h = Math.floor(time / (60 * 60)),
@@ -107,37 +115,48 @@ function secondsToTime(time) {
     return fulltime;
 }
 
-function openYouTubeVideo(videoEl) {
+function openYouTubeVideo(ytVideoEl) {
     if (lock) {
         return 
     }
 
-    const videoContainer = document.getElementById("youtube-container")
-    const videoId = videoEl.dataset.youtubeId
+    const videoId = ytVideoEl.dataset.youtubeId
 
     lock = true
     document.body.classList.add("body_lock")
     
-    videoContainer.classList.add("_open")
-    videoContainer.addEventListener("transitionend", () => {
+    ytVideoEl.classList.add("_open")
+    ytVideoEl.addEventListener("transitionend", () => {
         lock = false
-    const videoId = videoEl.dataset.youtubeId
         setupPlayer(videoId)
     }, { once: true })
 }
 
-function closeYouTubeVideo(videoEl) {
+function closeYouTubeVideo(ytVideoEl) {
     if (lock) {
         return 
     }
-    videoEl.querySelector("iframe").remove("src", "")
-    videoEl.innerHTML = "<div id='player'></div>"
-    videoEl.classList.remove("_open")
+    ytVideoEl.querySelector("iframe").remove()
+    ytVideoEl.innerHTML = "<div id='yt-player'></div>"
+    ytVideoEl.classList.remove("_open")
     document.body.classList.remove("body_lock")
 }
 
 function handleVideo(videoEl) {
+    const videoId = videoEl.dataset.youtubeId
     const videoPlayIconEl = videoEl.parentElement.querySelector(".video__play-icon")
+    const ytVideoEl = document.getElementById("youtube-container")
+
+    if (document.readyState !== "loading") {
+        // console.info(`document.readyState ==>`, document.readyState);
+        setupPlayer = loadVideo(videoId);
+    } else {
+        document.addEventListener("DOMContentLoaded", function() {
+            // console.info(`DOMContentLoaded ==>`, document.readyState);
+            setupPlayer = loadVideo(videoId);
+        });
+    }
+    
     videoEl.addEventListener("loadedmetadata", e => {
         videoEl.parentElement.querySelector(".video__duration").innerHTML = secondsToTime(e.srcElement.duration)
     })
@@ -147,9 +166,12 @@ function handleVideo(videoEl) {
     })
     
     videoEl.addEventListener("click", () => {
+        if (!ytScriptLoaded)
+            return
+        
         videoEl.pause()
         videoPlayIconEl.classList.add("video__play-icon_show")
-        openYouTubeVideo(video)
+        openYouTubeVideo(ytVideoEl)
     })
     
     // document.querySelector(".youtube-close").addEventListener("click", (e) => {
@@ -160,34 +182,41 @@ function handleVideo(videoEl) {
     // })
     
     document.addEventListener("keydown", (e) => {
-        const openVideoEl = document.querySelector("#youtube-container._open")
-        if (e.which === 27 && openVideoEl) {
-            closeYouTubeVideo(openVideoEl)
+        if (e.which === 27 && ytVideoEl.classList.contains("_open")) {
+            videoPlayIconEl.classList.remove("video__play-icon_show")
+            videoEl.play()
+            closeYouTubeVideo(ytVideoEl)
+        }
+    })
+
+    document.addEventListener("fullscreenchange", (e) => {
+        if (!document.fullscreenElement) {
+            videoPlayIconEl.classList.remove("video__play-icon_show")
+            videoEl.play()
+            closeYouTubeVideo(ytVideoEl);
         }
     })
 }
 
+// document.addEventListener("fullscreenchange", e => {
+//     if (document.fullscreenElement) {
+//         console.log(`Element entered fullscreen mode.`);
+//       } else {
+//         console.log("Leaving fullscreen mode.");
+//       }
+// })
 
 let lock = false;
-let player;
 let ytScriptLoaded = false;
 let setupPlayer;
 
-if (document.readyState !== "loading") {
-    console.info(`document.readyState ==>`, document.readyState);
-    setupPlayer = loadVideo();
-} else {
-    document.addEventListener("DOMContentLoaded", function() {
-        console.info(`DOMContentLoaded ==>`, document.readyState);
-        setupPlayer = loadVideo();
-    });
-}
+// document.getElementById("youtube-container").addEventListener("click", (e) => {
+//     if (e.target === e.currentTarget) {
+//         closeYouTubeVideo(e.currentTarget)
+//     }
+// })
 
-document.getElementById("youtube-container").addEventListener("click", (e) => {
-    if (e.target === e.currentTarget);
 
-    closeYouTubeVideo(e.currentTarget)
-})
 // videoEl.addEventListener("loadedmetadata", e => {
 //     videoEl.parentElement.querySelector(".video__duration").innerHTML = secondsToTime(e.srcElement.duration)
 // })
