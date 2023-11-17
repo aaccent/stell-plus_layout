@@ -221,7 +221,15 @@ function init() {
     map.controls.add(zoomControl);
     getCoords()
     
-    map.events.add("click", () => document.getElementById("balloon").classList.remove("balloon_open"))
+    map.events.add("click", () =>  {
+        let query = ymaps.geoQuery(map.geoObjects);
+
+        for (let i = 0; i < query.getLength(); i++) {
+            let el = query.get(i);
+            el.options.set('iconImageHref', imagesSrc.pinImage)                
+        }
+        document.getElementById("balloon").classList.remove("balloon_open")
+    })
     
     
     // zoom ctrl + mouse wheel

@@ -431,6 +431,13 @@
 .service-section {}
 
 .service {
+    $columns: 24;
+    $column-width: 50px;
+    $column-gap: 16px;
+    $col: calc((7 * $column-width + (7 - 1) * $column-gap) / ($columns * $column-width + ($columns - 1) * $column-gap) * 100%);
+    &__head {
+        flex-basis: $col
+    }
     @include min_tablet {
         &__icon, &__about {
             grid-column: 2;
