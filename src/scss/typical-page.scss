@@ -265,8 +265,8 @@
 }
 
 .document-card {
-    background: url(../images/typical/card-bg.svg);
-    background-size: 100%;
+    background-image: url(../images/typical/card-bg.svg);
+    background-size: 100% 100%;
     padding: 1.5rem 2rem 1.5rem 1.5rem;
     width: 15.5rem;
     // height: 267px;
@@ -274,7 +274,7 @@
         @include text_t3;
     }
     &__footer {
-        margin-top: 9rem;
+        margin-top: 8.8125rem;
         @include text_t6;
         opacity: 0.6;
     }
