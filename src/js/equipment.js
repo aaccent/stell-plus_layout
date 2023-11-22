@@ -21,6 +21,130 @@ document.querySelectorAll(".tag").forEach(tagEl => {
     })
 })
 
+// animations
+
+let heroTitleSplit = new SplitType(".hero-section__title",{
+    types: "lines",
+    tagName: "div"
+});
+
+
+let tl = gsap.timeline()
+
+tl.from(".hero-section__img", {
+    opacity: 0,
+    duration: 0.4,
+    ease: "power1.out",
+    stagger: {
+        amount: 0.3
+    },
+    onStart: () => { 
+        // let duration = getComputedStyle(document.querySelector(".hero-section__running-line .running-line__wrapper")).animationDuration
+        // duration = parseInt(duration) * document.querySelector(".hero-section__running-line").offsetWidth / document.querySelector(".hero-section__running-line .running-line__wrapper").offsetWidth
+        document.querySelector(".hero-section__content").style.opacity = 1;
+        // document.querySelector(".hero-section__running-line").style = `
+        //     transform: translate(-50%, -50%);
+        //     transition-property: transform;
+        //     transition-timing-function: linear;
+        //     transition-duration: ${duration}s;
+        // `
+        // document.querySelector(".hero-section__running-line .running-line__wrapper").style = `
+        //     animation-delay: ${duration}s;
+        //     animation-play-state: running
+        // `
+    }
+})
+
+tl.from(".hero-section__title .line", {
+    yPercent: 100,
+    opacity: 0,
+    duration: 0.4,
+    ease: "power1.out",
+    stagger: {
+        amount: 0.3
+    },
+})
+
+tl.from(".hero-section__stat-value", {
+    yPercent: 50,
+    opacity: 0,
+    duration: 0.4,
+    ease: "power1.out",
+    stagger: {
+        amount: 0.3
+    }
+})
+
+tl.from(".hero-section__stat-unit", {
+    yPercent: 100,
+    opacity: 0,
+    duration: 0.4,
+    ease: "power1.out",
+    stagger: {
+        amount: 0.3
+    }
+})
+
+gsap.from(".filter-panel", {
+    scrollTrigger: {
+        trigger: ".equipment__header",
+        start: "top 80%"
+    },
+    yPercent: 50,
+    opacity: 0,
+    duration: 0.5,
+})
+
+let equipmentEls = gsap.utils.toArray(".equipment-item")
+let mm = gsap.matchMedia()
+let paddingValue = window.innerWidth - document.documentElement.clientWidth;
+
+mm.add({
+    oneColumn: `(max-width: ${675 + paddingValue}px)`,
+    twoColumn: `(max-width: ${1002 + paddingValue}px)`,
+    threeColum: `(max-width: ${1327 + paddingValue}px)`,
+    fourColumn: `(min-width: ${1328 + paddingValue}px)`
+}, context => {
+    let { oneColumn, twoColumn, threeColum } = context.conditions
+    equipmentEls.forEach((equipmentEl, i) => {
+        gsap.from(equipmentEl, {
+            scrollTrigger: {
+                trigger: equipmentEl,
+                start: "top 80%"
+            },
+            y: 100,
+            opacity: 0,
+            duration: 0.5,
+            delay: () => {
+                if (oneColumn) {
+                    return 0
+                }
+                if (twoColumn) {
+                    return 0.2 * (i % 2)
+                }
+                if (threeColum) {
+                    return 0.2 * (i % 3)
+                }
+                return 0.2 * (i % 4)
+            },
+            // stagger: {
+            //     amount: 0.4
+            // }
+        })
+    })
+})
+
+gsap.from(".equipment__more", {
+    scrollTrigger: {
+        trigger: ".equipment__grid",
+        start: "bottom 80%"
+    },
+    scale: 0.65,
+    opacity: 0.5,
+    duration: 1,
+    ease: "back.out(2)",
+})
+
 // if (targetEl.closest(".tag")) {
 //     let currentTagrEl = targetEl.closest(".tag")
 //     let clearTagEl = document.querySelector(".tag_clear");

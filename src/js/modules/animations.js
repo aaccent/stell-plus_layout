@@ -61,3 +61,52 @@ sectionTitleEls.forEach(sectionTitleEl => {
         }
     })
 })
+
+let footerTitleSplit = new SplitType(".footer__contact-us-title",{
+    types: "words, chars",
+    tagName: "span"
+});
+  
+let footerDescSplit = new SplitType(".footer__contact-us-desc",{
+    types: "lines",
+    tagName: "div"
+});
+  
+let footerTimeline = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".footer__contact-us",
+        start: "top 80%"
+    }
+})
+
+footerTimeline 
+    .from(".footer__contact-us-title .char", {
+        yPercent: 100,
+        duration: 0.5,
+        ease: "power1.out",
+        stagger: {
+            amount: 0.4
+        }
+    })
+    .from(".footer__contact-us-desc .line", {
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.5,
+        ease: "power1.out",
+        stagger: {
+            amount: 0.4
+        }
+    })
+gsap.from(".contact-us-form", {
+    scrollTrigger: {
+        trigger: ".footer__contact-us-content",
+        start: "bottom 70%"
+    },
+    yPercent: 20,
+    opacity: 0,
+    duration: 0.5,
+    ease: "power1.out",
+    stagger: {
+        amount: 0.4
+    }
+})

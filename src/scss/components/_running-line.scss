@@ -1,8 +1,10 @@
 .running-line {
     display: flex;
+    // transform: translate(100%, 0);
     &__wrapper {
         display: flex;
         animation: run 5s linear infinite;
+        // animation-play-state: paused;
     }
     &__item {
         flex-shrink: 0;

@@ -46,6 +46,7 @@
     padding: 90px 0;
     &__content {
         // width: 50%;
+        opacity: 0;
         max-width: 780px;
         @media screen and (min-width: 1680px) {
             max-width: calc(780px + 780 * var(--screen-diff));

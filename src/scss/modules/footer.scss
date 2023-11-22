@@ -59,6 +59,9 @@
     }
     &__contact-us-title {
         @include heading_h1;
+        margin: -0.1em;
+        padding: 0.1em;
+        overflow: hidden;
         text-transform: lowercase;
     }
     &__contact-us-desc {

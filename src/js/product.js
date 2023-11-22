@@ -102,3 +102,158 @@ document.querySelector(".popup__body").addEventListener("scroll", e => {
         transform: translate(0, 100%)
     `
 }, { once: true })
+
+
+// animations
+let heroTitleSplit = new SplitType(".hero-section__title",{
+    types: "lines",
+    tagName: "div"
+});
+
+
+let heroTimeline = gsap.timeline()
+
+heroTimeline
+    .from(".hero-section__img", {
+        opacity: 0,
+        duration: 0.4,
+        ease: "power1.out",
+        stagger: {
+            amount: 0.3
+        },
+        onStart: () => { 
+            document.querySelector(".hero-section__content").style.opacity = 1;
+        }
+    })
+    .from(".hero-section__title .line", {
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power1.out",
+        stagger: {
+            amount: 0.3
+        },
+    })
+    .from(".hero-section__call-button", {
+        scale: 0.8,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power1.out",
+    })
+
+
+let productTitleSplit = new SplitType(".product-section__title",{
+    types: "lines",
+    tagName: "div"
+});
+
+let productDescSplit = new SplitType(".product-section__desc",{
+    types: "lines",
+    tagName: "div"
+});
+
+let productTimeline = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".product-section__main-info",
+        start: "top 80%"
+    }
+})
+
+productTimeline
+    .from(".product-section__title .line", {
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power1.out",
+        stagger: {
+            amount: 0.3
+        },
+    })
+    .from(".product-section__desc .line", {
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
+        stagger: {
+            amount: 0.3
+        },
+    })
+    .from(".product-section__doc", {
+        yPercent: 50,
+        opacity: 0,
+        duration: 0.4,
+    })
+
+let productPraramsTimeline = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".product-section__params",
+        start: "top 80%"
+    }
+})
+
+productPraramsTimeline
+    .from(".product-section__certificate", {
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
+    })
+
+    .from(".product-section__params table", {
+        yPercent: 50,
+        opacity: 0,
+        duration: 0.4,
+    })
+    .from(".product-section__all-params", {
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
+    })
+
+gsap.from(".section__info", {
+    scrollTrigger: {
+        trigger: ".section__info",
+        start: "top 80%"
+    },
+    yPercent: 50,
+    opacity: 0,
+    duration: 0.4,
+})
+
+let mm = gsap.matchMedia()
+let projectEls = gsap.utils.toArray(".project")
+
+mm.add({
+    oneColumn: `(max-width: 920px)`,
+    twoColumn: "(min-width: 921px)"
+}, context => {
+    let { oneColumn } = context.conditions
+    projectEls.forEach((projectEl, i) => {
+        let timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: projectEl,
+                start: "top 80%"
+            },
+            delay: oneColumn ? 0 : i % 2 * 0.2
+        })
+        timeline
+            .from(projectEl.querySelector(".project__img"), {
+                scale: 1.3,
+                duration: 2.25,
+                ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+            })
+            .from(projectEl.querySelector(".project__img"), {
+                opacity: 0,
+                duration: 0.9,
+                ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+            }, "<")
+            .from(projectEl.querySelector(".project__content"), {
+                opacity: 0,
+                duration: 0.5
+            }, 0.5)
+            .from(projectEl.querySelector(".project__logo"), {
+                scale: 0.7,
+                opacity: 0,
+                duration: 0.5,
+                ease: "back.out"
+            }, "<")
+    })
+})

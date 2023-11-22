@@ -10,8 +10,10 @@
 @import "components/breadcrumbs.scss";
 @import "components/equipment.scss";
 
-@import "blocks/hero.scss";
 .hero-section {
+    &__content {
+        opacity: 0;
+    }
     &__breadcrumbs {
         position: absolute;
         top: 0;
@@ -28,7 +30,7 @@
         }
     }
     &__head {
-        align-items: flex-end
+        align-items: flex-end;
     }
     &__etc {
         svg {
@@ -199,3 +201,4 @@
 }
 
 @import "modules/footer.scss";
+@import "blocks/hero.scss";

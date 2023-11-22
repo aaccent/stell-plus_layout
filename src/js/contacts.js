@@ -273,5 +273,94 @@ document.querySelectorAll(".departments-section__tab-button").forEach(tabButtonE
     })
 })
 
+// if (ymaps !== undefined) {
+//     ymaps.ready(init);
+// }
 
-ymaps.ready(init);
+
+// animations
+
+gsap.from(".section__info button, .section__info > div", {
+    scrollTrigger: {
+        trigger: ".section__info",
+        start: "top 80%"
+    },
+    yPercent: 30,
+    opacity: 0,
+    duration: 0.5,
+    stagger: {
+        amount: 0.4
+    }
+})
+
+let employeeMatchMedia = gsap.matchMedia()
+let employeeEls = gsap.utils.toArray(".departments-section__department_active .employee")
+let paddingValue = window.innerWidth - document.documentElement.clientWidth;
+
+employeeMatchMedia.add({
+    oneColumn: `(max-width: 615px)`,
+    twoColumn: `(max-width: ${987 + paddingValue}px)`,
+    threeColum: `(max-width: ${1307 + paddingValue}px)`,
+    fourColumn: `(min-width: ${1308 + paddingValue}px)`
+}, context => {
+    let { oneColumn, twoColumn, threeColum } = context.conditions
+    employeeEls.forEach((employeeEl, i) => {
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: employeeEl,
+                start: "top 90%"
+            },
+            delay: () => {
+                if (oneColumn) {
+                    return 0
+                }
+                if (twoColumn) {
+                    return 0.2 * (i % 2)
+                }
+                if (threeColum) {
+                    return 0.2 * (i % 3)
+                }
+                return 0.2 * (i % 4)
+            },
+        })
+        tl.from(employeeEl.querySelector("img"), {
+            scale: 1.3,
+            duration: 2.25,
+            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+        })
+        tl.from(employeeEl.querySelector("img"), {
+            opacity: 0,
+            duration: 0.9,
+            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+        }, "<")
+        tl.from(employeeEl.querySelectorAll(".employee__position, .employee__name, .employee__email"), {
+            yPercent: 100,
+            opacity: 0,
+            duration: 0.5,
+        }, ">") 
+        // gsap.from(employeeEl, {
+        //     scrollTrigger: {
+        //         trigger: employeeEl,
+        //         start: "top 80%"
+        //     },
+        //     y: 100,
+        //     opacity: 0,
+        //     duration: 0.5,
+        //     delay: () => {
+        //         if (oneColumn) {
+        //             return 0
+        //         }
+        //         if (twoColumn) {
+        //             return 0.2 * (i % 2)
+        //         }
+        //         if (threeColum) {
+        //             return 0.2 * (i % 3)
+        //         }
+        //         return 0.2 * (i % 4)
+        //     },
+        //     // stagger: {
+        //     //     amount: 0.4
+        //     // }
+        // })
+    })
+})

@@ -11,7 +11,7 @@ const js = () => {
                 product: "./src/js/product.js",
                 service: "./src/js/service.js",
                 case: "./src/js/case.js",
-                // projects: "./src/js/projects.js",
+                projects: "./src/js/projects.js",
                 contacts: "./src/js/contacts.js",
                 about: "./src/js/about.js",
                 typical: "./src/js/typical.js"

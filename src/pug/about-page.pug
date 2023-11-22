@@ -42,7 +42,8 @@ block content
             .container
                 .suggest-section__info
                     .person-info
-                        img.person-info__avatar(src="./images/about/avatar.png", alt="")
+                        .person-info__avatar
+                            img(src="./images/about/avatar.png", alt="")
                         .person-info__content
                             h4.person-info__name Георгий Маценко
                             p.person-info__position генеральный директор#[br]"Стеллаж Плюс"
@@ -143,7 +144,4 @@ block content
                         .certificates-section__scrollbar.swiper-scrollbar
 block append scripts
     script(src="js/libs/swiper-bundle.min.js")
-    //- script(src="js/libs/gsap.min.js")
-    //- script(src="js/libs/ScrollTrigger.min.js")
-    //- script(src="js/script.min.js") 
     script(src="js/about.min.js") 

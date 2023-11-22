@@ -97,6 +97,13 @@
     &__title {
         @include heading_h3;
         margin: 0 0 1.75rem;
+        opacity: 0;
+        transform: translate(0, 60px);
+        transition: opacity .6s cubic-bezier(.215,.61,.355,1), transform .6s cubic-bezier(.215,.61,.355,1);
+        &.is-inview {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
     }
     &__text {
         color: $base-3;
