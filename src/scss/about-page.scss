@@ -77,6 +77,9 @@
     background-color: $base-1;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
+    .section__img {
+        // background-color: #D0CDCB;
+    }
     .section__title {
         @include min_gap {
             width: calc(910 / 1580 * 100%);

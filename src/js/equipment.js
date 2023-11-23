@@ -29,61 +29,56 @@ let heroTitleSplit = new SplitType(".hero-section__title",{
 });
 
 
-let tl = gsap.timeline()
+let heroTimeline = gsap.timeline()
 
-tl.from(".hero-section__img", {
-    opacity: 0,
-    duration: 0.4,
-    ease: "power1.out",
-    stagger: {
-        amount: 0.3
-    },
-    onStart: () => { 
-        // let duration = getComputedStyle(document.querySelector(".hero-section__running-line .running-line__wrapper")).animationDuration
-        // duration = parseInt(duration) * document.querySelector(".hero-section__running-line").offsetWidth / document.querySelector(".hero-section__running-line .running-line__wrapper").offsetWidth
-        document.querySelector(".hero-section__content").style.opacity = 1;
-        // document.querySelector(".hero-section__running-line").style = `
-        //     transform: translate(-50%, -50%);
-        //     transition-property: transform;
-        //     transition-timing-function: linear;
-        //     transition-duration: ${duration}s;
-        // `
-        // document.querySelector(".hero-section__running-line .running-line__wrapper").style = `
-        //     animation-delay: ${duration}s;
-        //     animation-play-state: running
-        // `
-    }
-})
-
-tl.from(".hero-section__title .line", {
-    yPercent: 100,
-    opacity: 0,
-    duration: 0.4,
-    ease: "power1.out",
-    stagger: {
-        amount: 0.3
-    },
-})
-
-tl.from(".hero-section__stat-value", {
-    yPercent: 50,
-    opacity: 0,
-    duration: 0.4,
-    ease: "power1.out",
-    stagger: {
-        amount: 0.3
-    }
-})
-
-tl.from(".hero-section__stat-unit", {
-    yPercent: 100,
-    opacity: 0,
-    duration: 0.4,
-    ease: "power1.out",
-    stagger: {
-        amount: 0.3
-    }
-})
+heroTimeline
+    .from(".hero-section__img", {
+        opacity: 0,
+        duration: 0.6,
+        ease: "power1.out",
+        onStart: () => { 
+            // let duration = getComputedStyle(document.querySelector(".hero-section__running-line .running-line__wrapper")).animationDuration
+            // duration = parseInt(duration) * document.querySelector(".hero-section__running-line").offsetWidth / document.querySelector(".hero-section__running-line .running-line__wrapper").offsetWidth
+            document.querySelector(".hero-section__content").style.opacity = 1;
+            // document.querySelector(".hero-section__running-line").style = `
+            //     transform: translate(-50%, -50%);
+            //     transition-property: transform;
+            //     transition-timing-function: linear;
+            //     transition-duration: ${duration}s;
+            // `
+            // document.querySelector(".hero-section__running-line .running-line__wrapper").style = `
+            //     animation-delay: ${duration}s;
+            //     animation-play-state: running
+            // `
+        }
+    })
+    .from(".hero-section__title .line", {
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power1.out",
+        stagger: {
+            amount: 0.3
+        },
+    }, "<0.3")
+    .from(".hero-section__stat-value", {
+        yPercent: 50,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power1.out",
+        stagger: {
+            amount: 0.3
+        }
+    })
+    .from(".hero-section__stat-unit", {
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power1.out",
+        stagger: {
+            amount: 0.3
+        }
+    }, "<0.2")
 
 gsap.from(".filter-panel", {
     scrollTrigger: {

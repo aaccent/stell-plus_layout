@@ -4,6 +4,8 @@ import LocomotiveScroll from "locomotive-scroll"
 
 const videoEl = document.getElementById("video")
 handleVideo(videoEl)
+videoEl.pause()
+videoEl.currentTime = 0
 
 const scroll = new LocomotiveScroll();
 
@@ -29,9 +31,9 @@ let heroDescSplit = new SplitType(".hero-section__desc",{
     tagName: "div"
 });
 
-let heroTl = gsap.timeline()
+let heroTimeline = gsap.timeline()
 
-heroTl
+heroTimeline
     .from(".hero-section__title .line", {
         yPercent: 100,
         opacity: 0,
@@ -66,14 +68,14 @@ heroTl
         ease: "power1.out",
     })
 
-let profileTl = gsap.timeline({
+let profileTmeline = gsap.timeline({
     scrollTrigger: {
         trigger: ".person-info",
         start: "top 85%"
     }
 })
 
-profileTl
+profileTmeline
     .from(".person-info__content", {
         yPercent: 35,
         opacity: 0,
@@ -86,6 +88,18 @@ profileTl
         duration: 0.4,
         ease: "power1.out",
     })
+
+gsap.from(videoEl.parentElement, {
+    scrollTrigger: {
+        trigger: videoEl.parentElement,
+        start: "top 80%"
+    },
+    opacity: 0,
+    duration: 0.9,
+    ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+    onStart: () => videoEl.play()
+})
+
 
 let advantageMatchMedia = gsap.matchMedia()
 let advantageEls = gsap.utils.toArray(".advantage")

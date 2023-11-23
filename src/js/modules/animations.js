@@ -102,7 +102,7 @@ gsap.from(".contact-us-form", {
         trigger: ".footer__contact-us-content",
         start: "bottom 70%"
     },
-    yPercent: 20,
+    yPercent: 10,
     opacity: 0,
     duration: 0.5,
     ease: "power1.out",

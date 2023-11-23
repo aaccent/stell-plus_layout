@@ -116,14 +116,32 @@ sectionInfoEls.forEach(sectionInfoEl => {
     })
 })
 
-let profileTl = gsap.timeline({
+let imageTimeline = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".section_one .section__images",
+        start: "top 80%"
+    }
+})
+imageTimeline
+    .from(".section_one img", {
+        scale: 1.3,
+        duration: 2.25,
+        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+    })
+    .from(".section_one .section__img", {
+        opacity: 0,
+        duration: 0.9,
+        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+    }, "<")
+
+let profileTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: ".person-info",
         start: "top 85%"
     }
 })
 
-profileTl
+profileTimeline
     .from(".person-info__content", {
         yPercent: 35,
         opacity: 0,
@@ -203,6 +221,24 @@ gsap.from(".timeline-slider .swiper-wrapper", {
     duration: 0.5,
 })
 
+let timelime = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".timeline-section__img",
+        start: "top 80%"
+    }
+})
+timelime
+    .from(".timeline-section__img img", {
+        scale: 1.3,
+        duration: 2.25,
+        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+    })
+    .from(".timeline-section__img", {
+        opacity: 0,
+        duration: 0.9,
+        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+    }, "<")
+
 gsap.from(".equipment-section__info", {
     scrollTrigger: {
         trigger: ".equipment-section__info",
@@ -219,6 +255,36 @@ gsap.from(".equipment-section__slider", {
     },
     opacity: 0,
     duration: 0.6
+})
+
+let bannerSlideEls = gsap.utils.toArray(".banner-slide")
+
+bannerSlideEls.forEach((bannerSlideEl, i) => {
+    let tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: bannerSlideEl,
+            start: "top 90%"
+        },
+        onStart: () => {
+            if (i === 0) {
+                gsap.from(".banner-slider_inner", {
+                    opacity: 0,
+                    duration: 0.9,
+                    delay: 0.5
+                })
+            }
+        }
+    })
+    tl.from(bannerSlideEl.querySelector("img"), {
+        scale: 1.3,
+        duration: 2.25,
+        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+    })
+    tl.from(bannerSlideEl.querySelector("img"), {
+        opacity: 0,
+        duration: 0.9,
+        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+    }, "<")
 })
 
 gsap.from(".certificates-section__slider .swiper", {

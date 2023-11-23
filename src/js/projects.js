@@ -8,6 +8,7 @@ gsap.from(".projects-section__title .char", {
     opacity: 0,
     duration: 0.4,
     ease: "power1.out",
+    onStart: () => document.querySelector(".projects-section").style.opacity = 1,
     stagger: {
         amount: 0.3
     },

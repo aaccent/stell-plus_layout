@@ -273,9 +273,8 @@ document.querySelectorAll(".departments-section__tab-button").forEach(tabButtonE
     })
 })
 
-// if (ymaps !== undefined) {
-//     ymaps.ready(init);
-// }
+ymaps.ready(init);
+
 
 
 // animations

@@ -22,6 +22,9 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    &__content {
+        opacity: 0;
+    }
     &__head {
         color: $base-1;
         flex-basis: 50%
@@ -389,6 +392,9 @@
         padding-top: calc(500 / 1568 * 100%);
         flex-basis: 50%;
         overflow: hidden;
+        video {
+            will-change: transform;
+        }
     }
     @include min_container {
         &__title {

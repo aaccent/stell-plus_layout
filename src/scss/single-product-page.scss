@@ -97,6 +97,9 @@
     &__title {
         @include heading_h3
     }
+    &__image {
+        overflow: hidden;
+    }
     &__body {
         margin-right: -1.5rem;
         padding-right: 1.5rem;

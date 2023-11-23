@@ -190,6 +190,7 @@ let aboutBgTimeline = gsap.timeline({
         start: "top 80%"
     },
 })
+
 aboutBgTimeline.from(".about-section__bg", {
     scale: 1.3,
     duration: 2.25,

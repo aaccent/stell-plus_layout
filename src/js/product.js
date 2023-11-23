@@ -33,6 +33,21 @@ function openPopup(popup = undefined) {
     lockBody()
     if (popup) {
         popup.classList.add("popup_open")
+        // animate image
+        let imageTimeline = gsap.timeline({ paused: true})
+        let imgEl = popup.querySelector("img")
+        imageTimeline
+            .from(imgEl, {
+                scale: 1.3,
+                duration: 2.25,
+                ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+            })
+            .from(imgEl, {
+                opacity: 0,
+                duration: 0.9,
+                ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+            }, "<")
+        popup.addEventListener("transitionend", () => imageTimeline.play(), { once: true })
     } else {
         console.log("Give me a popup")
     }
@@ -82,6 +97,7 @@ mediaQuery.addEventListener("change", e => {
     }
 })
 
+// scroll to footee
 const scroll = new LocomotiveScroll();
 
 const footerForm = document.querySelector(".footer__contact-us")
@@ -218,10 +234,10 @@ gsap.from(".section__info", {
     duration: 0.4,
 })
 
-let mm = gsap.matchMedia()
+let projectsMatchMedia = gsap.matchMedia()
 let projectEls = gsap.utils.toArray(".project")
 
-mm.add({
+projectsMatchMedia.add({
     oneColumn: `(max-width: 920px)`,
     twoColumn: "(min-width: 921px)"
 }, context => {

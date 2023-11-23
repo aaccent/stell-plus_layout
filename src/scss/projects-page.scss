@@ -28,6 +28,7 @@
 
 .projects-section {
     padding-top: 0 !important;
+    opacity: 0;
     &__title {
         @include heading_h1;
         padding: 0.1em;

@@ -135,3 +135,114 @@ handleSwipe(projectsSwiper)
 //     projectsHint.classList.remove("swiper-swipe_show")
 // })
 
+// animations
+
+let sectionImgEls = gsap.utils.toArray(".section__img")
+
+sectionImgEls.forEach(sectionImgEl => {
+    let imgTimeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: sectionImgEl,
+            start: "top 90%"
+        }
+    })
+
+    let img = sectionImgEl.querySelector("img")
+
+    imgTimeline
+        .from(img, {
+            scale: 1.3,
+            duration: 2.25,
+            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+        })
+        .from(sectionImgEl, {
+            opacity: 0,
+            duration: 0.9,
+            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+        }, "<")
+})
+
+let sectionInfoEls = gsap.utils.toArray(".section__info")
+
+sectionInfoEls.forEach(sectionInfoEl => {
+    let children = sectionInfoEl.children;
+    gsap.from(children, {
+        scrollTrigger: {
+            trigger: sectionInfoEl,
+            start: "top 80%"
+        },
+        yPercent: 30,
+        opacity: 0,
+        stagger: {
+            amount: 0.4
+        }
+    })
+})
+
+gsap.from(".equipments-slider", {
+    scrollTrigger: {
+        trigger: ".equipments-slider",
+        start: "top 80%"
+    },
+    yPercent: 10,
+    opacity: 0,
+    duration: 0.6
+})
+
+let resultImgEls = gsap.utils.toArray(".results-slider .swiper-slide")
+
+resultImgEls.forEach(resultImgEl => {
+    let imgTimeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".results-slider",
+            start: "top 90%"
+        }
+    })
+
+    let img = resultImgEl.querySelector("img")
+
+    imgTimeline
+        .from(img, {
+            scale: 1.3,
+            duration: 2.25,
+            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+        })
+        .from(resultImgEl, {
+            opacity: 0,
+            duration: 0.9,
+            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+        }, "<")
+})
+
+let projectEls = gsap.utils.toArray(".project")
+
+
+projectEls.forEach((projectEl, i) => {
+    let timeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".projects-slider",
+            start: "top 80%"
+        },
+    })
+    timeline
+        .from(projectEl.querySelector(".project__img"), {
+            scale: 1.3,
+            duration: 2.25,
+            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+        })
+        .from(projectEl.querySelector(".project__img"), {
+            opacity: 0,
+            duration: 0.9,
+            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+        }, "<")
+        .from(projectEl.querySelector(".project__content"), {
+            opacity: 0,
+            duration: 0.5
+        }, 0.5)
+        .from(projectEl.querySelector(".project__logo"), {
+            scale: 0.7,
+            opacity: 0,
+            duration: 0.5,
+            ease: "back.out"
+        }, "<")
+})
