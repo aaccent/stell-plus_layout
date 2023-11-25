@@ -119,7 +119,18 @@ sectionInfoEls.forEach(sectionInfoEl => {
     })
 })
 
-let roundedSectionEls = gsap.utils.toArray(".suggest-section")
+gsap.to("[data-speed]", {
+    y: (i, el) => parseFloat(el.getAttribute("data-speed")) * ScrollTrigger.maxScroll(window) ,
+    ease: "none",
+    scrollTrigger: {
+        start: 0,
+        end: "max",
+        invalidateOnRefresh: true,
+        scrub: 0
+    }
+});
+
+let roundedSectionEls = gsap.utils.toArray(".hero-section, .suggest-section")
 
 roundedSectionEls.forEach(sectionEl => {
     ScrollTrigger.create({

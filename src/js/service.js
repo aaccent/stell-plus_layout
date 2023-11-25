@@ -68,6 +68,17 @@ heroTimeline
         ease: "power1.out",
     })
 
+gsap.to("[data-speed]", {
+    y: (i, el) => parseFloat(el.getAttribute("data-speed")) * ScrollTrigger.maxScroll(window) ,
+    ease: "none",
+    scrollTrigger: {
+        start: 0,
+        end: "top top",
+        invalidateOnRefresh: true,
+        scrub: 1
+    }
+});
+
 let profileTmeline = gsap.timeline({
     scrollTrigger: {
         trigger: ".person-info",
@@ -251,7 +262,7 @@ projectsMatchMedia.add({
     // })
 })
 
-let roundedSectionEls = gsap.utils.toArray("section:not(.prosects)")
+let roundedSectionEls = gsap.utils.toArray("section:not(.projects)")
 
 roundedSectionEls.forEach(sectionEl => {
     ScrollTrigger.create({

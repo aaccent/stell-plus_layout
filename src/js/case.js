@@ -1,4 +1,5 @@
 import { handleSwipe } from "./modules/swipe-hint.js"
+import { handleEquipmentCard } from "./modules/equipment-item.js"
 
 new Swiper (".section__images.swiper", {
     slidesPerView: 1.1,
@@ -104,7 +105,7 @@ let projectsSwiper = new Swiper(".projects-slider .swiper", {
 })
 
 handleSwipe(projectsSwiper)
-
+handleEquipmentCard("equipments-slider__swiper")
 // let projectsHint = projectsSwiper.el.querySelector(".swiper-swipe")
 
 // projectsSwiper.wrapperEl.addEventListener("mouseenter", () => {

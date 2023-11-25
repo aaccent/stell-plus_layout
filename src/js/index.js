@@ -79,10 +79,12 @@ let heroDescSplit = new SplitType(".hero-slide__desc",{
 });
   
 
-gsap.from(".hero-section__video ", {
+gsap.from(".hero-section__video video ", {
     opacity: 0,
     duration: 0.9,
     ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+    onStart: () => document.querySelector(".hero-section__video").style.opacity = 1,
+    onComplete: () => document.querySelector(".hero-section__blur").style.opacity = 1
 })
 
 const heroSlideEls = document.querySelectorAll(".hero-slide")

@@ -7,7 +7,7 @@ block head
 block content 
     section.hero-section
         .hero-section__container.container
-            nav.hero-section__breadcrumbs.breadcrumbs 
+            nav.hero-section__breadcrumbs.breadcrumbs(data-speed="-0.25")  
                 ol.breadcrumbs__list 
                     li.breadcrumbs__item 
                         a.breadcrumbs__link(href="/") Главная
@@ -15,9 +15,9 @@ block content
                         a.breadcrumbs__link(href="#") Сладское оборудование
             .hero-section__content
                 .hero-section__head.hero-section__head_vertical
-                    h1.hero-section__title.hero-section__title_big О компании#[br]стеллаж плюс
-                    p.hero-section__desc Лидер в производстве стелажных систем для эффективного хранения и организации
-                .hero-section__button
+                    h1.hero-section__title.hero-section__title_big(data-speed="-0.25") О компании#[br]стеллаж плюс
+                    p.hero-section__desc(data-speed="-0.25")  Лидер в производстве стелажных систем для эффективного хранения и организации
+                .hero-section__button(data-speed="-0.25") 
                     span.icon-play
     section.section.section_one 
         .section__bg 
