@@ -80,7 +80,7 @@ const callback = function(entries, observer) {
 
 const modelObserver = new IntersectionObserver(callback)
 const modelObserverEl = document.querySelector(".model-observer")
-const modelEl = document.querySelector(".model img")
+const modelEl = document.querySelector(".model video")
 
 if (window.innerWidth > 992 && window.innerWidth <= 1280) {
     modelObserver.observe(modelObserverEl)
@@ -97,7 +97,7 @@ mediaQuery.addEventListener("change", e => {
     }
 })
 
-// scroll to footee
+// scroll to footer
 const scroll = new LocomotiveScroll();
 
 const footerForm = document.querySelector(".footer__contact-us")
@@ -107,7 +107,6 @@ callButton.addEventListener("click", (e) => {
     e.preventDefault()
     scroll.scrollTo(footerForm, {
             duration: 3000,
-            callback: () => console.log("get it")
         }
     )
 })

@@ -4,6 +4,9 @@ const js = () => {
     return app.gulp.src(app.path.src.js, { sourcemaps: true })
         .pipe(webpack({
             mode: "development",
+            optimization: {
+                minimize: false
+            },
             entry: {
                 script: "./src/js/script.js",
                 index: "./src/js/index.js",

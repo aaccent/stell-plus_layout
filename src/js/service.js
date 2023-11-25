@@ -250,3 +250,18 @@ projectsMatchMedia.add({
     //     })
     // })
 })
+
+let roundedSectionEls = gsap.utils.toArray("section:not(.prosects)")
+
+roundedSectionEls.forEach(sectionEl => {
+    ScrollTrigger.create({
+        trigger: sectionEl,
+        start: () => {
+            let remValue = getComputedStyle(document.documentElement).fontSize;
+            return sectionEl.offsetHeight < window.innerHeight ? `${remValue}  top` : "bottom bottom"
+        },
+        // end: "+= ",
+        pin: true,
+        pinSpacing: false,
+    })
+})

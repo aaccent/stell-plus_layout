@@ -79,25 +79,163 @@ window.addEventListener("scroll", () => {
 const videoEl = document.getElementById("video")
 
 handleVideo(videoEl)
+videoEl.pause()
+videoEl.currentTime = 0
+
   
-// const pageSectionObserverEl = document.querySelector(".page-section__observer");
+// animations 
 
-// const callback = function(entries, observer) {
-//     // элемент в видимой части экрана
-//     if (entries[0].isIntersecting) {
-//         pageNavEl.style.cssText = `
-//         `
-//     } else {
-//         if (window.pageYOffset >= pageSectionObserverEl.parentElement.offsetTop + pageSectionObserverEl.parentElement.offsetHeight) {
-//             // элемент пропал с видимой части экрана
-//             console.log(pageNavEl.offsetTop, pageNavEl.offsetHeight)
-//             pageNavEl.style.cssText = `
-//                 position: relative;
-//                 bottom: ${pageNavEl.offsetTop}px
-//             `
-//         }
-//     }
-// }
+let bannerTitleSplit = new SplitType(".banner-section__title", {
+    types: "words, chars",
+    tagName: "span"
+});
 
-// const pageNavObserver = new IntersectionObserver(callback)
-// pageNavObserver.observe(pageSectionObserverEl)
+let pageTitleSplit = new SplitType(".page-section__title", {
+    types: "words, chars",
+    tagName: "span"
+});
+
+let textSplit = new SplitType(".page-section__text, .page__text", {
+    types: "lines",
+    tagName: "div"
+})
+
+let pageTitleEls = document.querySelectorAll(".page-section__title")
+let textEls = document.querySelectorAll(".page-section__text, .page__text")
+
+pageTitleEls.forEach(pageTitleEl => {
+    gsap.from(pageTitleEl.querySelectorAll(".char"), {
+        scrollTrigger: {
+            trigger: pageTitleEl,
+            start: "top 80%"
+        },
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
+        stagger: {
+            amount: 0.3
+        }
+    })
+})
+
+textEls.forEach(textEl => {
+    gsap.from(textEl.querySelectorAll(".line"), {
+        scrollTrigger: {
+            trigger: textEl,
+            start: "top 80%"
+        },
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
+        stagger: {
+            amount: 0.3
+        },
+    })
+})
+
+let bannerTimeline = gsap.timeline()
+
+bannerTimeline
+    .from(".banner-section__content", {
+        opacity: 0,
+        duration: 0.9,
+        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+        onStart: () => document.querySelector(".banner-section").style.opacity = 1,
+
+    })
+    .from(".banner-section__content img", {
+        scale: 1.3,
+        duration: 2.25,
+        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+    }, "<")
+    .from(".banner-section__title .char", {
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
+        stagger: {
+            amount: 0.3
+        }
+    }, 0.5)
+
+gsap.from(".page__nav", {
+    scrollTrigger: {
+        trigger: ".page__body",
+        start: "top 80%"
+    },
+    yPercent: 25,
+    opacity: 0,
+    duration: 0.6,
+})
+
+let imgContainerEls = gsap.utils.toArray(".page-section__image")
+imgContainerEls.forEach((imgContainer, i) => {
+    let tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: imgContainer,
+            start: "top 90%"
+        }
+    })
+    tl.from(imgContainer.querySelector("img"), {
+        scale: 1.3,
+        duration: 2.25,
+        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+    })
+    tl.from(imgContainer, {
+        opacity: 0,
+        duration: 0.9,
+        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+    }, "<")
+})
+
+let menuEls = gsap.utils.toArray(".page-section__menu")
+menuEls.forEach(menuEl => {
+    gsap.from(menuEl.querySelectorAll(".page-section__menu-item"), {
+        scrollTrigger: {
+            trigger: menuEl,
+            start: "top 80%"
+        },
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
+        stagger: {
+            amount: 0.3
+        },
+    })
+})
+
+gsap.from(videoEl.parentElement, {
+    scrollTrigger: {
+        trigger: videoEl.parentElement,
+        start: "top 70%"
+    },
+    opacity: 0,
+    duration: 0.9,
+    ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+    onStart: () => videoEl.play()
+})
+
+let accordionEls = gsap.utils.toArray(".accordion")
+accordionEls.forEach(accordionEl => {
+    gsap.from(accordionEl, {
+        scrollTrigger: {
+            trigger: accordionEl,
+            start: "top 80%"
+        },
+        yPercent: 20,
+        opacity: 0,
+        duration: 0.4,
+    })
+})
+
+let documentCardEls = gsap.utils.toArray(".document-card")
+documentCardEls.forEach(documentCardEl => {
+    gsap.from(documentCardEl, {
+        scrollTrigger: {
+            trigger: documentCardEl,
+            start: "top 80%"
+        },
+        scale: 0.75,
+        opacity: 0,
+        duration: 0.4,
+    })
+})

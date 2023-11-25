@@ -6,8 +6,7 @@ const html = () => {
     return app.gulp.src(app.path.src.pug)
         // .pipe(fileinclude())
         .pipe(pug({
-            pretty: true,
-            verbose: true
+            // pretty: true,
         }))
         .pipe(webpHTML())
         .pipe(app.gulp.dest(app.path.build.html))

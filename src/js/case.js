@@ -137,6 +137,27 @@ handleSwipe(projectsSwiper)
 
 // animations
 
+let bannerTimeline = gsap.timeline()
+
+bannerTimeline
+    .from(".banner-section__content", {
+        opacity: 0,
+        duration: 0.9,
+        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+        onStart: () => document.querySelector(".banner-section").style.opacity = 1,
+
+    })
+    .from(".banner-section__img", {
+        scale: 1.3,
+        duration: 2.25,
+        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
+    }, "<")
+    .from(".banner-section__logo", {
+        opacity: 0,
+        scale: 0.75,
+        duration: 0.6,
+    }, 0.5)
+
 let sectionImgEls = gsap.utils.toArray(".section__img")
 
 sectionImgEls.forEach(sectionImgEl => {

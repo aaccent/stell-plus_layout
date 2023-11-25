@@ -1,162 +1,169 @@
-extends templates/layout
-
-block head
-    title Контакты
-    link(rel="stylesheet", href="css/contacts-page.min.css")
-block content 
-    .page
-        nav.breadcrumbs 
-            .container
-                ol.breadcrumbs__list 
-                    li.breadcrumbs__item 
-                        a.breadcrumbs__link(href="/") Главная
-                    li.breadcrumbs__item 
-                        a.breadcrumbs__link(href="#") Контакты
-        section.map-section
-            .container
-                .section__header 
-                    h2.map-section__title.section__title Контакты
-                .map-section__body.section__body
-                    div#map(data-pin-image="images/map-mark.svg" data-pin-active-image="images/map-mark-active.svg" data-zoom-in-image="images/icons/plus-scale.svg" data-zoom-out-image="images/icons/minus-scale.svg")
-                    .balloon#balloon
-                        .balloon__content
-                            .balloon__title Центральный офис
-                            .balloon__img 
-                                img(src="./images/contacts/balloon-image.png", alt="")
-                            .balloon__info 
-                                .balloon__address 
-                                    span.icon-map-pin
-                                    span Москва, ул. Палехская, д. 131, пом. 1, ком. 10
-                                .balloon__time 
-                                    span.icon-clock 
-                                    span Пн-Пт: c 09:00 до 18:00
-                                .balloon__phone
-                                    span.icon-phone 
-                                    a(href="tel:+74959970687") +7 (495) 997-06-87 
-                                .balloon__email
-                                    span.icon-email
-                                    a(href="mailto:info@stellplus.com") info@stellplus.com
-                            a.balloon__link(href="#").link Проложить маршрут
-        section.departments-section.section 
-            .section__header 
-                .container 
-                    h2.departments-section__title.section__title Контактные данные отделов компании
-            .section__body 
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Контакты
+        link(rel="stylesheet", href="css/contacts-page.min.css")
+    body 
+        include ./includes/header
+        .page
+            nav.breadcrumbs 
                 .container
-                    .section__info
-                        nav.departments-section__tab-panel 
-                            button.departments-section__tab-button.departments-section__tab-button_active(type="button" data-department="sales") Департамент продаж
-                            button.departments-section__tab-button(type="button" data-department="logistic") Отдел логистики
-                            button.departments-section__tab-button(type="button" data-department="buy") Отдел закупок
-                        .departments-section__info 
-                            .departments-section__info-col
-                                .departments-section__info-title Контакты 
-                                a(href="tel:+74959970687") +7 (495) 997-06-87
-                                a(href="mailto: info@stellplus.com") info@stellplus.com
-                            .departments-section__info-col
-                                .departments-section__info-title График работы
-                                .departments-section__info-desc Пн-Пт: c 09:00 до 18:00
-                                .departments-section__info-desc Сб-Вск: выходной    
-                    .departments-section__departments 
-                        .departments-section__department.departments-section__department_sales.departments-section__department_active
-                            article.employee 
-                                .employee__img
-                                    img(src="./images/contacts/contact-1.png", alt="")
-                                .employee__position управляющая
-                                h4.employee__name Ольга Новоселова
-                                a.employee__email(href="mailto:o.novoselova@mail.ru") 
-                                    span.icon-email 
-                                    span o.novoselova@mail.ru
-                            article.employee 
-                                .employee__img
-                                    img(src="./images/contacts/contact-2.png", alt="")
-                                .employee__position Помощник управляющего
-                                h4.employee__name Александр Иванов
-                                a.employee__email(href="mailto:ivanov.alex@mail.ru") 
-                                    span.icon-email 
-                                    span ivanov.alex@mail.ru
-                            article.employee 
-                                .employee__img
-                                    img(src="./images/contacts/contact-3.png", alt="")
-                                .employee__position Главный менеджер
-                                h4.employee__name Егор Кондрашов
-                                a.employee__email(href="mailto:kondrashov.stellplus@mail.ru") 
-                                    span.icon-email 
-                                    span kondrashov.stellplus@mail.ru
-                            article.employee 
-                                .employee__img
-                                    img(src="./images/contacts/contact-4.png", alt="")
-                                .employee__position Менеджер продаж
-                                h4.employee__name Максим Дементьев
-                                a.employee__email(href="mailto:dementyev.max@mail.ru") 
-                                    span.icon-email 
-                                    span dementyev.max@mail.ru
-                        .departments-section__department.departments-section__department_logistic
-                            article.employee 
-                                .employee__img
-                                    img(src="./images/contacts/contact-2.png", alt="")
-                                .employee__position Помощник управляющего
-                                h4.employee__name Александр Иванов
-                                a.employee__email(href="mailto:ivanov.alex@mail.ru") 
-                                    span.icon-email 
-                                    span ivanov.alex@mail.ru
-                            article.employee 
-                                .employee__img
-                                    img(src="./images/contacts/contact-3.png", alt="")
-                                .employee__position Главный менеджер
-                                h4.employee__name Егор Кондрашов
-                                a.employee__email(href="mailto:kondrashov.stellplus@mail.ru") 
-                                    span.icon-email 
-                                    span kondrashov.stellplus@mail.ru
-                            article.employee 
-                                .employee__img
-                                    img(src="./images/contacts/contact-1.png", alt="")
-                                .employee__position управляющая
-                                h4.employee__name Ольга Новоселова
-                                a.employee__email(href="mailto:o.novoselova@mail.ru") 
-                                    span.icon-email 
-                                    span o.novoselova@mail.ru
-                            article.employee 
-                                .employee__img
-                                    img(src="./images/contacts/contact-4.png", alt="")
-                                .employee__position Менеджер продаж
-                                h4.employee__name Максим Дементьев
-                                a.employee__email(href="mailto:dementyev.max@mail.ru") 
-                                    span.icon-email 
-                                    span dementyev.max@mail.ru
-                        .departments-section__department.departments-section__department_buy
-                            article.employee 
-                                .employee__img
-                                    img(src="./images/contacts/contact-1.png", alt="")
-                                .employee__position управляющая
-                                h4.employee__name Ольга Новоселова
-                                a.employee__email(href="mailto:o.novoselova@mail.ru") 
-                                    span.icon-email 
-                                    span o.novoselova@mail.ru
-                            article.employee 
-                                .employee__img
-                                    img(src="./images/contacts/contact-4.png", alt="")
-                                .employee__position Менеджер продаж
-                                h4.employee__name Максим Дементьев
-                                a.employee__email(href="mailto:dementyev.max@mail.ru") 
-                                    span.icon-email 
-                                    span dementyev.max@mail.ru
-                            article.employee 
-                                .employee__img
-                                    img(src="./images/contacts/contact-2.png", alt="")
-                                .employee__position Помощник управляющего
-                                h4.employee__name Александр Иванов
-                                a.employee__email(href="mailto:ivanov.alex@mail.ru") 
-                                    span.icon-email 
-                                    span ivanov.alex@mail.ru
-                            article.employee 
-                                .employee__img
-                                    img(src="./images/contacts/contact-3.png", alt="")
-                                .employee__position Главный менеджер
-                                h4.employee__name Егор Кондрашов
-                                a.employee__email(href="mailto:kondrashov.stellplus@mail.ru") 
-                                    span.icon-email 
-                                    span kondrashov.stellplus@mail.ru
-block append scripts
+                    ol.breadcrumbs__list 
+                        li.breadcrumbs__item 
+                            a.breadcrumbs__link(href="/") Главная
+                        li.breadcrumbs__item 
+                            a.breadcrumbs__link(href="#") Контакты
+            section.map-section
+                .container
+                    .section__header 
+                        h2.map-section__title.section__title Контакты
+                    .map-section__body.section__body
+                        div#map(data-pin-image="images/map-mark.svg" data-pin-active-image="images/map-mark-active.svg" data-zoom-in-image="images/icons/plus-scale.svg" data-zoom-out-image="images/icons/minus-scale.svg")
+                        .balloon#balloon
+                            .balloon__content
+                                .balloon__title Центральный офис
+                                .balloon__img 
+                                    img(src="./images/contacts/balloon-image.png", alt="")
+                                .balloon__info 
+                                    .balloon__address 
+                                        span.icon-map-pin
+                                        span Москва, ул. Палехская, д. 131, пом. 1, ком. 10
+                                    .balloon__time 
+                                        span.icon-clock 
+                                        span Пн-Пт: c 09:00 до 18:00
+                                    .balloon__phone
+                                        span.icon-phone 
+                                        a(href="tel:+74959970687") +7 (495) 997-06-87 
+                                    .balloon__email
+                                        span.icon-email
+                                        a(href="mailto:info@stellplus.com") info@stellplus.com
+                                a.balloon__link(href="#").link Проложить маршрут
+            section.departments-section.section 
+                .section__header 
+                    .container 
+                        h2.departments-section__title.section__title Контактные данные отделов компании
+                .section__body 
+                    .container
+                        .section__info
+                            nav.departments-section__tab-panel 
+                                button.departments-section__tab-button.departments-section__tab-button_active(type="button" data-department="sales") Департамент продаж
+                                button.departments-section__tab-button(type="button" data-department="logistic") Отдел логистики
+                                button.departments-section__tab-button(type="button" data-department="buy") Отдел закупок
+                            .departments-section__info 
+                                .departments-section__info-col
+                                    .departments-section__info-title Контакты 
+                                    a(href="tel:+74959970687") +7 (495) 997-06-87
+                                    a(href="mailto: info@stellplus.com") info@stellplus.com
+                                .departments-section__info-col
+                                    .departments-section__info-title График работы
+                                    .departments-section__info-desc Пн-Пт: c 09:00 до 18:00
+                                    .departments-section__info-desc Сб-Вск: выходной    
+                        .departments-section__departments 
+                            .departments-section__department.departments-section__department_sales.departments-section__department_active
+                                article.employee 
+                                    .employee__img
+                                        img(src="./images/contacts/contact-1.png", alt="")
+                                    .employee__position управляющая
+                                    h4.employee__name Ольга Новоселова
+                                    a.employee__email(href="mailto:o.novoselova@mail.ru") 
+                                        span.icon-email 
+                                        span o.novoselova@mail.ru
+                                article.employee 
+                                    .employee__img
+                                        img(src="./images/contacts/contact-2.png", alt="")
+                                    .employee__position Помощник управляющего
+                                    h4.employee__name Александр Иванов
+                                    a.employee__email(href="mailto:ivanov.alex@mail.ru") 
+                                        span.icon-email 
+                                        span ivanov.alex@mail.ru
+                                article.employee 
+                                    .employee__img
+                                        img(src="./images/contacts/contact-3.png", alt="")
+                                    .employee__position Главный менеджер
+                                    h4.employee__name Егор Кондрашов
+                                    a.employee__email(href="mailto:kondrashov.stellplus@mail.ru") 
+                                        span.icon-email 
+                                        span kondrashov.stellplus@mail.ru
+                                article.employee 
+                                    .employee__img
+                                        img(src="./images/contacts/contact-4.png", alt="")
+                                    .employee__position Менеджер продаж
+                                    h4.employee__name Максим Дементьев
+                                    a.employee__email(href="mailto:dementyev.max@mail.ru") 
+                                        span.icon-email 
+                                        span dementyev.max@mail.ru
+                            .departments-section__department.departments-section__department_logistic
+                                article.employee 
+                                    .employee__img
+                                        img(src="./images/contacts/contact-2.png", alt="")
+                                    .employee__position Помощник управляющего
+                                    h4.employee__name Александр Иванов
+                                    a.employee__email(href="mailto:ivanov.alex@mail.ru") 
+                                        span.icon-email 
+                                        span ivanov.alex@mail.ru
+                                article.employee 
+                                    .employee__img
+                                        img(src="./images/contacts/contact-3.png", alt="")
+                                    .employee__position Главный менеджер
+                                    h4.employee__name Егор Кондрашов
+                                    a.employee__email(href="mailto:kondrashov.stellplus@mail.ru") 
+                                        span.icon-email 
+                                        span kondrashov.stellplus@mail.ru
+                                article.employee 
+                                    .employee__img
+                                        img(src="./images/contacts/contact-1.png", alt="")
+                                    .employee__position управляющая
+                                    h4.employee__name Ольга Новоселова
+                                    a.employee__email(href="mailto:o.novoselova@mail.ru") 
+                                        span.icon-email 
+                                        span o.novoselova@mail.ru
+                                article.employee 
+                                    .employee__img
+                                        img(src="./images/contacts/contact-4.png", alt="")
+                                    .employee__position Менеджер продаж
+                                    h4.employee__name Максим Дементьев
+                                    a.employee__email(href="mailto:dementyev.max@mail.ru") 
+                                        span.icon-email 
+                                        span dementyev.max@mail.ru
+                            .departments-section__department.departments-section__department_buy
+                                article.employee 
+                                    .employee__img
+                                        img(src="./images/contacts/contact-1.png", alt="")
+                                    .employee__position управляющая
+                                    h4.employee__name Ольга Новоселова
+                                    a.employee__email(href="mailto:o.novoselova@mail.ru") 
+                                        span.icon-email 
+                                        span o.novoselova@mail.ru
+                                article.employee 
+                                    .employee__img
+                                        img(src="./images/contacts/contact-4.png", alt="")
+                                    .employee__position Менеджер продаж
+                                    h4.employee__name Максим Дементьев
+                                    a.employee__email(href="mailto:dementyev.max@mail.ru") 
+                                        span.icon-email 
+                                        span dementyev.max@mail.ru
+                                article.employee 
+                                    .employee__img
+                                        img(src="./images/contacts/contact-2.png", alt="")
+                                    .employee__position Помощник управляющего
+                                    h4.employee__name Александр Иванов
+                                    a.employee__email(href="mailto:ivanov.alex@mail.ru") 
+                                        span.icon-email 
+                                        span ivanov.alex@mail.ru
+                                article.employee 
+                                    .employee__img
+                                        img(src="./images/contacts/contact-3.png", alt="")
+                                    .employee__position Главный менеджер
+                                    h4.employee__name Егор Кондрашов
+                                    a.employee__email(href="mailto:kondrashov.stellplus@mail.ru") 
+                                        span.icon-email 
+                                        span kondrashov.stellplus@mail.ru
+            include ./includes/footer
     script(src='https://api-maps.yandex.ru/2.1/?apikey=4f70d3b1-f6e2-4ee2-bf65-83f325f91da4&load=package.standard&lang=en-UA' type='text/javascript')
+    script(src="js/libs/gsap.min.js")
+    script(src="js/libs/ScrollTrigger.min.js")
+    script(src="js/libs/split-type.min.js") 
+    script(src="js/script.min.js") 
     script(src="js/contacts.min.js") 

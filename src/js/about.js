@@ -1,5 +1,6 @@
 import "./components/banner-slider.js"
 import { handleSwipe } from "./modules/swipe-hint.js"
+import { handleEquipmentCard } from "./modules/equipment-item.js"
 
 let timelineSwiper = new Swiper(".timeline-slider .swiper", {
     slidesPerView: 1,
@@ -27,6 +28,8 @@ new Swiper(".equipment-section__slider .swiper", {
         }
     },
 })
+
+handleEquipmentCard("equipment-section__slider-wrapper")
 
 let certificateSwiper = new Swiper(".certificates-section__slider .swiper", {
     slidesPerView: 1,
@@ -116,12 +119,27 @@ sectionInfoEls.forEach(sectionInfoEl => {
     })
 })
 
+let roundedSectionEls = gsap.utils.toArray(".suggest-section")
+
+roundedSectionEls.forEach(sectionEl => {
+    ScrollTrigger.create({
+        trigger: sectionEl,
+        start: () => {
+            let remValue = getComputedStyle(document.documentElement).fontSize;
+            return sectionEl.offsetHeight < window.innerHeight ? `${remValue}  top` : "bottom bottom"
+        },
+        pin: true,
+        pinSpacing: false,
+    })
+})
+
 let imageTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: ".section_one .section__images",
         start: "top 80%"
     }
 })
+
 imageTimeline
     .from(".section_one img", {
         scale: 1.3,

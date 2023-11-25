@@ -11,7 +11,8 @@ block content
         .model 
             .model-observer
             .model-wrapper
-                img(src="./images/product/product.png", alt="3d model")
+                video(autoplay loop muted preload="metadata") 
+                    source(src="./videos/stellazh.webm", type="video/webm")
         section.hero-section
             .hero-section__running-line.running-line 
                 .running-line__wrapper 
@@ -27,8 +28,6 @@ block content
                                 a.breadcrumbs__link(href="/equipment-page.html") Сладское оборудование
                             li.breadcrumbs__item 
                                 a.breadcrumbs__link(href="#") Фронтальный стеллаж
-                    .hero-section__img 
-                        img(src="./images/product/product.png", alt="3d model")
                     .hero-section__etc Артикул: 1232323
                     .hero-section__head.hero-section__head_horizontal
                         h1.hero-section__title.hero-section__title_small Фронтальный стеллаж

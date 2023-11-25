@@ -13,21 +13,23 @@
         top: 1.5rem; //24px;
         right: 1.5rem; //
     }
-    &__img {
+    &__video {
         position: relative;
         padding-bottom: calc(316/332 * 100%);
         margin: 0 0 2.125rem;
         width: 100%;
         height: 0;
-        img {
+        overflow: hidden;
+        video {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            transform: translate(-50%, -50%);
             object-fit: contain;
-            mix-blend-mode: darken;
-            transition: transform 0.2s ease 0s
+            // mix-blend-mode: darken;
+            // transition: transform 0.2s ease 0s
         }
     }
     &__name {
@@ -38,13 +40,13 @@
             max-width: 246px;
         }
     }
-    @include ishover {
-        .equipment-item__img {
-            img {
-                transform: scale(1.05);
-            }
-        }
-    }
+    // @include ishover {
+    //     .equipment-item__img {
+    //         img {
+    //             transform: scale(1.05);
+    //         }
+    //     }
+    // }
     @include min_container {
         // --padding-top: calc(50px + 50 * var(--screen-diff));
         // --padding-x: calc(24px + 24 * var(--screen-diff));

@@ -2,6 +2,8 @@ let equipmentSection = document.querySelector(".equipment-section");
 let swiperWrapperEl = document.querySelector(".equipment-section__slider .swiper-wrapper")
 let equipmentEls = document.querySelectorAll(".equipment-section__slider .swiper-slide")
 
+gsap.registerPlugin(ScrollTrigger)
+
 function getScrollAmount() {
 	let swiperWidth = document.querySelector(".equipment-section__slider .swiper").offsetWidth;
     let wrapperWidth = 0
@@ -21,21 +23,20 @@ if (equipmentSection) {
         duration: 3,
         ease: "none",
     });
-    
-    let scrollTriggerInstance;
-    
-    scrollTriggerInstance = ScrollTrigger.create({
+        
+    ScrollTrigger.create({
         trigger: ".equipment-section",
-        start: "bottom bottom",
-        end: () => `+=${getScrollAmount() * -1}`,
+        start: () => {
+            let remValue = getComputedStyle(document.documentElement).fontSize;
+            return document.querySelector(".equipment-section").offsetHeight < window.innerHeight ? `top+=${parseFloat(remValue)}  top` : "bottom bottom"
+        },
         ease: "none",
         pin: true,
         animation: tween,
         scrub: 1,
         invalidateOnRefresh: true,
-        markers: false,
     })
-    window.addEventListener("resize", () => scrollTriggerInstance.refresh())
+    window.addEventListener("resize", () => ScrollTrigger.refresh())
 }
 
 let typeSplit = new SplitType(".section__title",{
@@ -71,6 +72,25 @@ let footerDescSplit = new SplitType(".footer__contact-us-desc",{
     types: "lines",
     tagName: "div"
 });
+
+ScrollTrigger.create({
+    trigger: document.querySelector(".footer").previousElementSibling,
+    start:  document.querySelector(".footer").previousElementSibling.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
+    pin: true,
+    pinSpacing: false
+})
+
+let footerTween = gsap.to(".footer__commercial", {
+    marginBottom: () => -document.querySelector(".footer__commercial").offsetHeight,
+});
+
+ScrollTrigger.create({
+    trigger: ".footer__commercial",
+    start: "top center",
+    end: "top 10%",
+    animation: footerTween,
+    scrub: 1,
+})
   
 let footerTimeline = gsap.timeline({
     scrollTrigger: {

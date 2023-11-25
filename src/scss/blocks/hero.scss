@@ -74,11 +74,23 @@
         width: 75%;
         height: 90%;
         transform: translate(-50%, 0);
-        mix-blend-mode: darken;
-        img {
+        img, video {
             width: 100%;
             height: 100%;
             object-fit: contain;
+        }
+    }
+    &__model {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 75%;
+        height: 130%;
+        transform: translate(-50%, 7%);
+        min-width: 800px;
+        @include gap {
+            width: 90%;
+            min-width: 580px;
         }
     }
     &__running-line {

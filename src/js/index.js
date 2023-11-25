@@ -1,4 +1,6 @@
 
+import { handleEquipmentCard } from "./modules/equipment-item.js"
+
 let videoEl = document.querySelector(".hero-section__video")
 
 document.querySelectorAll(".hero-slide__video").forEach(videoButton => {
@@ -63,6 +65,8 @@ new Swiper(".equipment-section__slider .swiper", {
     allowTouchMove: false
 })
 
+handleEquipmentCard("equipment-section__slider-wrapper")
+
 // animations
 let heroTitleSplit = new SplitType(".hero-slide__title",{
     types: "lines",
@@ -74,6 +78,13 @@ let heroDescSplit = new SplitType(".hero-slide__desc",{
     tagName: "div"
 });
   
+
+gsap.from(".hero-section__video ", {
+    opacity: 0,
+    duration: 0.9,
+    ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+})
+
 const heroSlideEls = document.querySelectorAll(".hero-slide")
 
 
@@ -106,6 +117,7 @@ heroSlideEls.forEach(heroSlideEl => {
         })
 })
 
+
 gsap.from(".equipment-section__info", {
     scrollTrigger: {
         trigger: ".equipment-section__info",
@@ -124,8 +136,8 @@ gsap.from(".equipment-section__slider", {
     duration: 0.6
 })
 
-let serviceEls = gsap.utils.toArray(".service")
 
+let serviceEls = gsap.utils.toArray(".service")
 serviceEls.forEach(serviceEl => {
     gsap.from(serviceEl, {
         scrollTrigger: {
@@ -137,8 +149,8 @@ serviceEls.forEach(serviceEl => {
     })
 })
 
-let sectionInfoEls = gsap.utils.toArray(".section__info")
 
+let sectionInfoEls = gsap.utils.toArray(".section__info")
 sectionInfoEls.forEach(sectionInfoEl => {
     let children = sectionInfoEl.children;
     gsap.from(children, {
@@ -154,8 +166,8 @@ sectionInfoEls.forEach(sectionInfoEl => {
     })
 })
 
-let bannerSlideEls = gsap.utils.toArray(".banner-slide")
 
+let bannerSlideEls = gsap.utils.toArray(".banner-slide")
 bannerSlideEls.forEach((bannerSlideEl, i) => {
     let tl = gsap.timeline({
         scrollTrigger: {
@@ -184,13 +196,13 @@ bannerSlideEls.forEach((bannerSlideEl, i) => {
     }, "<")
 })
 
+
 let aboutBgTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: ".about-section__stats",
         start: "top 80%"
     },
 })
-
 aboutBgTimeline.from(".about-section__bg", {
     scale: 1.3,
     duration: 2.25,
@@ -202,8 +214,8 @@ aboutBgTimeline.from(".about-section__bg", {
     ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
 }, "<")
 
-let mm = gsap.matchMedia()
 
+let mm = gsap.matchMedia()
 mm.add({
     isPhone: "(max-width: 576px)",
     isTablet: "(max-width: 768px)",
@@ -243,40 +255,24 @@ mm.add({
   })
 
 
-// let mm = gsap.matchMedia();
-// let scrollTriggerInstance;
+// let roundedSectionEls = gsap.utils.toArray(".hero-section")
 
-// mm.add("(min-width: 577px)", () => {
-//     if (scrollTriggerInstance) scrollTriggerInstance.kill()
-//     scrollTriggerInstance = ScrollTrigger.create({
-//         trigger: ".equipment-section",
-//         start: () => `end ${parseInt(getComputedStyle(document.documentElement).fontSize) * -5.625}px`,
-//         end: () => `+=${getScrollAmount() * -1}`,
-//         ease: "none",
-//         pin: true,
-//         animation: tween,
-//         scrub: 1,
-//         invalidateOnRefresh: true,
-//         markers: false,
-//     })
+// ScrollTrigger.create({
+//     trigger: ".equipment-section",
+//     start: "bottom bottom",
+//     pin: true,
+//     scrub: 1,
+//     markers: true,
 // })
 
-// mm.add("(max-width: 576px)", () => {
-//     if (scrollTriggerInstance) scrollTriggerInstance.kill()
-//     scrollTriggerInstance = ScrollTrigger.create({
-//         trigger: ".equipment-section",
-//         start: "end -45px",
-//         end: () => `+=${getScrollAmount() * -1}`,
-//         ease: "none",
-//         pin: true,
-//         animation: tween,
-//         scrub: 1,
-//         invalidateOnRefresh: true,
-//         markers: false,
-//     })
-// })
+ScrollTrigger.create({
+    trigger: document.querySelector("aside"),
+    start: "top top",
+    pin: true,
+    pinSpacing: false,
+})
 
 import "./components/service.js"
-import "./components/banner-slider.js"
+import "./components/banner-slider.js" 
 
 

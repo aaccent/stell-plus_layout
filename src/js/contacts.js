@@ -363,3 +363,19 @@ employeeMatchMedia.add({
         // })
     })
 })
+
+let roundedSectionEls = gsap.utils.toArray(".map-section__body")
+
+roundedSectionEls.forEach(sectionEl => {
+    ScrollTrigger.create({
+        trigger: sectionEl,
+        start: () => {
+            let remValue = getComputedStyle(document.documentElement).fontSize;
+            return sectionEl.offsetHeight < window.innerHeight ? `-5% top` : "bottom bottom"
+        },
+        // end: "+= ",
+        pin: true,
+        pinSpacing: false,
+        pinContainer: ".page"
+    })
+})

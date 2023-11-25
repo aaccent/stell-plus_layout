@@ -48,6 +48,8 @@
         // padding: 90px 0 56px;
         padding-top: calc(90 / 1680 * 100%);
         padding-bottom: calc(56 / 1680 * 100%);
+        position: relative;
+        z-index: 2;
     }
     &__contact-us-container {
         display: flex;

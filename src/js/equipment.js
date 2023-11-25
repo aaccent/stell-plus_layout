@@ -1,3 +1,8 @@
+import LocomotiveScroll from "locomotive-scroll";
+import { handleEquipmentCard } from "./modules/equipment-item.js";
+
+const scroll = new LocomotiveScroll();
+
 const clearTagEl = document.querySelector(".tag_clear")
 
 document.querySelectorAll(".tag").forEach(tagEl => {
@@ -20,6 +25,28 @@ document.querySelectorAll(".tag").forEach(tagEl => {
         }
     })
 })
+
+handleEquipmentCard("equipment__grid")
+const equipmentGridEl = document.querySelector(".equipment__grid")
+
+// let currentVideoEl;
+// equipmentGridEl.addEventListener("mouseover", e => {
+//     const targteEl = e.target;
+//     if (targteEl.closest(".equipment-item")) {
+//         currentVideoEl = targteEl.closest(".equipment-item").querySelector("video")
+//         currentVideoEl.play()
+//     } else if (e.relatedTarget !== null || e.relatedTarget.closest(".equipment-item")) {
+//         currentVideoEl.pause()
+//         currentVideoEl.currentTime = 0;
+//     }
+// })
+// equipmentGridEl.addEventListener("mouseleave", e => {
+//     if (currentVideoEl) {
+//         currentVideoEl.pause();
+//         currentVideoEl.currentTime = 0;
+//         currentVideoEl = null
+//     }
+// })
 
 // animations
 
@@ -138,6 +165,18 @@ gsap.from(".equipment__more", {
     opacity: 0.5,
     duration: 1,
     ease: "back.out(2)",
+})
+
+
+let tween = gsap.to(".footer__commercial", {
+    marginBottom: () => -document.querySelector(".footer__commercial").offsetHeight,
+});
+
+ScrollTrigger.create({
+    trigger: ".commercial",
+    start: "top 40%",
+    animation: tween,
+    scrub: true,
 })
 
 // if (targetEl.closest(".tag")) {
