@@ -27,26 +27,6 @@ document.querySelectorAll(".tag").forEach(tagEl => {
 })
 
 handleEquipmentCard("equipment__grid")
-const equipmentGridEl = document.querySelector(".equipment__grid")
-
-// let currentVideoEl;
-// equipmentGridEl.addEventListener("mouseover", e => {
-//     const targteEl = e.target;
-//     if (targteEl.closest(".equipment-item")) {
-//         currentVideoEl = targteEl.closest(".equipment-item").querySelector("video")
-//         currentVideoEl.play()
-//     } else if (e.relatedTarget !== null || e.relatedTarget.closest(".equipment-item")) {
-//         currentVideoEl.pause()
-//         currentVideoEl.currentTime = 0;
-//     }
-// })
-// equipmentGridEl.addEventListener("mouseleave", e => {
-//     if (currentVideoEl) {
-//         currentVideoEl.pause();
-//         currentVideoEl.currentTime = 0;
-//         currentVideoEl = null
-//     }
-// })
 
 // animations
 
@@ -57,7 +37,6 @@ let heroTitleSplit = new SplitType(".hero-section__title",{
 
 
 let heroTimeline = gsap.timeline()
-
 heroTimeline
     .from(".hero-section__img", {
         opacity: 0,
@@ -107,6 +86,7 @@ heroTimeline
         }
     }, "<0.2")
 
+
 gsap.from(".filter-panel", {
     scrollTrigger: {
         trigger: ".equipment__header",
@@ -116,6 +96,7 @@ gsap.from(".filter-panel", {
     opacity: 0,
     duration: 0.5,
 })
+
 
 let equipmentEls = gsap.utils.toArray(".equipment-item")
 let mm = gsap.matchMedia()

@@ -102,23 +102,6 @@ heroTimeline
         ease: "back.out",
     })
 
-let sectionInfoEls = gsap.utils.toArray(".section__info")
-
-sectionInfoEls.forEach(sectionInfoEl => {
-    let children = sectionInfoEl.children;
-    gsap.from(children, {
-        scrollTrigger: {
-            trigger: sectionInfoEl,
-            start: "top 80%"
-        },
-        yPercent: 30,
-        opacity: 0,
-        stagger: {
-            amount: 0.4
-        }
-    })
-})
-
 gsap.to("[data-speed]", {
     y: (i, el) => parseFloat(el.getAttribute("data-speed")) * ScrollTrigger.maxScroll(window) ,
     ease: "none",
@@ -130,7 +113,7 @@ gsap.to("[data-speed]", {
     }
 });
 
-let roundedSectionEls = gsap.utils.toArray(".hero-section, .suggest-section")
+let roundedSectionEls = gsap.utils.toArray(".hero-section, .suggest-section, .timeline-section")
 
 roundedSectionEls.forEach(sectionEl => {
     ScrollTrigger.create({

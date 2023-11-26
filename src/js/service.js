@@ -79,13 +79,13 @@ gsap.to("[data-speed]", {
     }
 });
 
+
 let profileTmeline = gsap.timeline({
     scrollTrigger: {
         trigger: ".person-info",
         start: "top 85%"
     }
 })
-
 profileTmeline
     .from(".person-info__content", {
         yPercent: 35,
@@ -178,8 +178,8 @@ gsap.from(".approach-section__stats", {
     },
 })
 
-let serviceEls = gsap.utils.toArray(".service")
 
+let serviceEls = gsap.utils.toArray(".service")
 serviceEls.forEach(serviceEl => {
     gsap.from(serviceEl, {
         scrollTrigger: {
@@ -191,23 +191,6 @@ serviceEls.forEach(serviceEl => {
     })
 })
 
-
-let sectionInfoEls = gsap.utils.toArray(".section__info")
-
-sectionInfoEls.forEach(sectionInfoEl => {
-    let children = sectionInfoEl.children;
-    gsap.from(children, {
-        scrollTrigger: {
-            trigger: sectionInfoEl,
-            start: "top 80%"
-        },
-        yPercent: 30,
-        opacity: 0,
-        stagger: {
-            amount: 0.4
-        }
-    })
-})
 
 let projectsMatchMedia = gsap.matchMedia()
 let projectEls = gsap.utils.toArray(".project")

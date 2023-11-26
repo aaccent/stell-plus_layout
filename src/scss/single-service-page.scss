@@ -136,6 +136,11 @@
             margin-left: 0
         }
     }
+    @include min_phone {
+        &__title {
+            white-space: nowrap;
+        }
+    }
     @include phone {
         &__projects-label {
             display: none

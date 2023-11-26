@@ -1,7 +1,7 @@
 
 import { handleEquipmentCard } from "./modules/equipment-item.js"
 
-let videoEl = document.querySelector(".hero-section__video")
+let videoEl = document.querySelector(".hero-section__video video")
 
 document.querySelectorAll(".hero-slide__video").forEach(videoButton => {
     videoButton.addEventListener("click", e => {
@@ -103,7 +103,7 @@ heroSlideEls.forEach(heroSlideEl => {
             stagger: {
                 amount: 0.3
             }
-        }, )
+        })
         .from(heroSlideEl.querySelectorAll(".hero-slide__desc .line"), {
             yPercent: 100,
             opacity: 0,
@@ -148,23 +148,6 @@ serviceEls.forEach(serviceEl => {
         },
         yPercent: 20,
         opacity: 0,
-    })
-})
-
-
-let sectionInfoEls = gsap.utils.toArray(".section__info")
-sectionInfoEls.forEach(sectionInfoEl => {
-    let children = sectionInfoEl.children;
-    gsap.from(children, {
-        scrollTrigger: {
-            trigger: sectionInfoEl,
-            start: "top 80%"
-        },
-        yPercent: 30,
-        opacity: 0,
-        stagger: {
-            amount: 0.4
-        }
     })
 })
 

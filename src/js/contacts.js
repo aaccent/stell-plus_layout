@@ -154,7 +154,7 @@ function init() {
         controls: [],
         zoom: 12,
     }, {
-        minZoom: 12
+        minZoom: 10
     })
 
     let imagesSrc = document.getElementById("map").dataset
@@ -162,7 +162,7 @@ function init() {
     // Создадим пользовательский макет ползунка масштаба.
     let ZoomLayout = ymaps.templateLayoutFactory.createClass(`
         <div id="zoom-controls">
-            <button id='zoom-out' type='button' disabled><img src='${imagesSrc.zoomOutImage}'></button>
+            <button id='zoom-out' type='button'><img src='${imagesSrc.zoomOutImage}'></button>
             <button id='zoom-in' type='button'><img src='${imagesSrc.zoomInImage}'></button>
         </div>`, {
 
@@ -194,7 +194,7 @@ function init() {
         zoomIn: function () {
             let map = this.getData().control.getMap();
             map.setZoom(map.getZoom() + 1, {checkZoomRange: true, duration: 300});
-            if (map.getZoom() >= 12) {
+            if (map.getZoom() >= 10) {
                 document.getElementById("zoom-out").disabled = false
             }
         },
@@ -202,7 +202,7 @@ function init() {
         zoomOut: function () {
             let map = this.getData().control.getMap();
             map.setZoom(map.getZoom() - 1, {checkZoomRange: true, duration: 300});
-            if (map.getZoom() <= 13) {
+            if (map.getZoom() <= 11) {
                 document.getElementById("zoom-out").disabled = true
             }
         }
@@ -278,7 +278,6 @@ ymaps.ready(init);
 
 
 // animations
-
 gsap.from(".section__info button, .section__info > div", {
     scrollTrigger: {
         trigger: ".section__info",
@@ -364,8 +363,8 @@ employeeMatchMedia.add({
     })
 })
 
-let roundedSectionEls = gsap.utils.toArray(".map-section__body")
 
+let roundedSectionEls = gsap.utils.toArray(".map-section__body")
 roundedSectionEls.forEach(sectionEl => {
     ScrollTrigger.create({
         trigger: sectionEl,

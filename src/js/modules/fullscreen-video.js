@@ -62,6 +62,7 @@ function handleVideo(videoEl) {
         } else if (e.target.msRequestFullscreen) {
             e.target.msRequestFullscreen();
         }
+        // e.target.controls = true
     })
 }
 

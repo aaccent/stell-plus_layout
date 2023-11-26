@@ -127,7 +127,6 @@ let heroTitleSplit = new SplitType(".hero-section__title",{
 
 
 let heroTimeline = gsap.timeline()
-
 heroTimeline
     .from(".hero-section__img", {
         opacity: 0,
@@ -173,7 +172,6 @@ let productTimeline = gsap.timeline({
         start: "top 80%"
     }
 })
-
 productTimeline
     .from(".product-section__title .line", {
         yPercent: 100,
@@ -198,13 +196,13 @@ productTimeline
         duration: 0.4,
     })
 
+
 let productPraramsTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: ".product-section__params",
         start: "top 80%"
     }
 })
-
 productPraramsTimeline
     .from(".product-section__certificate", {
         yPercent: 100,
@@ -223,14 +221,13 @@ productPraramsTimeline
         duration: 0.4,
     })
 
-gsap.from(".section__info", {
-    scrollTrigger: {
-        trigger: ".section__info",
-        start: "top 80%"
-    },
-    yPercent: 50,
-    opacity: 0,
-    duration: 0.4,
+
+
+ScrollTrigger.create({
+    trigger: ".wrapper",
+    start: "bottom center",
+    pin: true,
+    pinSpacing: false
 })
 
 let projectsMatchMedia = gsap.matchMedia()

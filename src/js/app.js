@@ -4,12 +4,6 @@ import "./modules/footer.js";
 
 window.onload = function() {
 
-        // filters equipment page
-
-        // ----------- single product page ----------------
-
-        // ----------- contacts page ----------------
-
         if (targetEl.classList.contains("departments-section__tab-button")) {
             let departmentName = targetEl.dataset.department;
             let departmentsContainer = document.querySelector(".departments-section__departments");
@@ -39,24 +33,9 @@ window.onload = function() {
         // }
     }
     document.addEventListener("click", documentActions)
-    // ---------------------------------------- //
-    //Header
-
-
-
-
 
     // running line 
     const runningLineEls = document.querySelectorAll(".running-line__wrapper")
     for (let i = 0; i < runningLineEls.length; i++) {
         new RunningLine(runningLineEls[i]).init()
     }
-
-
-
-
-
-
-
-    // -----------contacts page----------
-

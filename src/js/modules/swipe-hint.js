@@ -8,6 +8,10 @@ function handleSwipe(swiper, pos = { x: 0.3, y: 0.2 } ) {
             return
         }
 
+        // if (!swiperHintEl.classList.contains("swiper-swipe_show")) {
+        //     swiperHintEl.classList.add("swiper-swipe_show")
+        // }
+
         let coordX = e.clientX - swiperHintEl.offsetWidth * pos.x;
         let coordY = e.clientY - swiperHintEl.offsetHeight * pos.y;
     
@@ -19,11 +23,21 @@ function handleSwipe(swiper, pos = { x: 0.3, y: 0.2 } ) {
         swiperHintEl.dataset.pageY = e.pageY
     }
 
+    function handleScroll() {
+        const { top, bottom } = swiper.wrapperEl.getBoundingClientRect()
+        const yPosition = parseInt(getComputedStyle(swiperHintEl).top)
+
+        if (bottom < yPosition) {
+            swiperHintEl.classList.remove("swiper-swipe_show")
+        }
+    }
+
     swiper.wrapperEl.addEventListener("mouseenter", () => {
         if (isMobile.any()) {
             return
         }
         swiperHintEl.classList.add("swiper-swipe_show")
+        // window.addEventListener("scroll", handleScroll)
     })
     
     swiper.wrapperEl.addEventListener("mousemove", handleTouchMove)
@@ -33,6 +47,8 @@ function handleSwipe(swiper, pos = { x: 0.3, y: 0.2 } ) {
             return
         }
         swiperHintEl.classList.remove("swiper-swipe_show")
+        // window.removeEventListener("scroll", handleScroll)
+
     })
 
     swiper.on("touchStart", () => {
@@ -66,7 +82,6 @@ function handleSwipe(swiper, pos = { x: 0.3, y: 0.2 } ) {
         }
         swiperHintEl.classList.remove("swiper-swipe_grab")
     })
-
 }
 
 export { handleSwipe }

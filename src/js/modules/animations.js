@@ -44,8 +44,8 @@ let typeSplit = new SplitType(".section__title",{
     tagName: "span"
 });
   
-const sectionTitleEls = gsap.utils.toArray(".section__title")
-  
+
+let sectionTitleEls = gsap.utils.toArray(".section__title")
 sectionTitleEls.forEach(sectionTitleEl => {
     let chars = sectionTitleEl.querySelectorAll(".char")
   
@@ -62,6 +62,24 @@ sectionTitleEls.forEach(sectionTitleEl => {
         }
     })
 })
+
+
+let sectionInfoEls = gsap.utils.toArray(".section__info")
+sectionInfoEls.forEach(sectionInfoEl => {
+    let children = sectionInfoEl.children;
+    gsap.from(children, {
+        scrollTrigger: {
+            trigger: sectionInfoEl,
+            start: "top 80%"
+        },
+        yPercent: 30,
+        opacity: 0,
+        stagger: {
+            amount: 0.4
+        }
+    })
+})
+
 
 let footerTitleSplit = new SplitType(".footer__contact-us-title",{
     types: "words, chars",
@@ -117,16 +135,12 @@ footerTimeline
             amount: 0.4
         }
     })
-gsap.from(".contact-us-form", {
-    scrollTrigger: {
-        trigger: ".footer__contact-us-content",
-        start: "bottom 70%"
-    },
-    yPercent: 10,
-    opacity: 0,
-    duration: 0.5,
-    ease: "power1.out",
-    stagger: {
-        amount: 0.4
-    }
-})
+    .from(".contact-us-form", {
+        yPercent: 10,
+        opacity: 0,
+        duration: 0.5,
+        ease: "power1.out",
+        stagger: {
+            amount: 0.4
+        }
+    }, "<+0.3")

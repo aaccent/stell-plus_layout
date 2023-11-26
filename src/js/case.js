@@ -159,8 +159,8 @@ bannerTimeline
         duration: 0.6,
     }, 0.5)
 
+    
 let sectionImgEls = gsap.utils.toArray(".section__img")
-
 sectionImgEls.forEach(sectionImgEl => {
     let imgTimeline = gsap.timeline({
         scrollTrigger: {
@@ -184,23 +184,6 @@ sectionImgEls.forEach(sectionImgEl => {
         }, "<")
 })
 
-let sectionInfoEls = gsap.utils.toArray(".section__info")
-
-sectionInfoEls.forEach(sectionInfoEl => {
-    let children = sectionInfoEl.children;
-    gsap.from(children, {
-        scrollTrigger: {
-            trigger: sectionInfoEl,
-            start: "top 80%"
-        },
-        yPercent: 30,
-        opacity: 0,
-        stagger: {
-            amount: 0.4
-        }
-    })
-})
-
 gsap.from(".equipments-slider", {
     scrollTrigger: {
         trigger: ".equipments-slider",
@@ -211,8 +194,8 @@ gsap.from(".equipments-slider", {
     duration: 0.6
 })
 
-let resultImgEls = gsap.utils.toArray(".results-slider .swiper-slide")
 
+let resultImgEls = gsap.utils.toArray(".results-slider .swiper-slide")
 resultImgEls.forEach(resultImgEl => {
     let imgTimeline = gsap.timeline({
         scrollTrigger: {
@@ -236,9 +219,8 @@ resultImgEls.forEach(resultImgEl => {
         }, "<")
 })
 
+
 let projectEls = gsap.utils.toArray(".project")
-
-
 projectEls.forEach((projectEl, i) => {
     let timeline = gsap.timeline({
         scrollTrigger: {
