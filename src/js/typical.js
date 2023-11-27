@@ -1,5 +1,6 @@
 import { handleVideo } from "./modules/fullscreen-video.js"
 import LocomotiveScroll from "locomotive-scroll";
+import { imgOpacityAnimation, imgScaleAnimation, linesAnimation } from "./modules/animation-templates.js";
 
 const accordionHeaderEls = document.querySelectorAll(".accordion__header");
 
@@ -109,7 +110,7 @@ pageTitleEls.forEach(pageTitleEl => {
             trigger: pageTitleEl,
             start: "top 80%"
         },
-        yPercent: 100,
+        yPercent: 115,
         opacity: 0,
         duration: 0.4,
         stagger: {
@@ -124,12 +125,7 @@ textEls.forEach(textEl => {
             trigger: textEl,
             start: "top 80%"
         },
-        yPercent: 100,
-        opacity: 0,
-        duration: 0.4,
-        stagger: {
-            amount: 0.3
-        },
+        ...linesAnimation
     })
 })
 
@@ -137,19 +133,13 @@ let bannerTimeline = gsap.timeline()
 
 bannerTimeline
     .from(".banner-section__content", {
-        opacity: 0,
-        duration: 0.9,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
+        ...imgOpacityAnimation,
         onStart: () => document.querySelector(".banner-section").style.opacity = 1,
 
     })
-    .from(".banner-section__content img", {
-        scale: 1.3,
-        duration: 2.25,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-    }, "<")
+    .from(".banner-section__content img", imgScaleAnimation, "<")
     .from(".banner-section__title .char", {
-        yPercent: 100,
+        yPercent: 115,
         opacity: 0,
         duration: 0.4,
         stagger: {
@@ -175,16 +165,8 @@ imgContainerEls.forEach((imgContainer, i) => {
             start: "top 90%"
         }
     })
-    tl.from(imgContainer.querySelector("img"), {
-        scale: 1.3,
-        duration: 2.25,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-    })
-    tl.from(imgContainer, {
-        opacity: 0,
-        duration: 0.9,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
-    }, "<")
+    tl.from(imgContainer.querySelector("img"), imgScaleAnimation)
+    tl.from(imgContainer, imgOpacityAnimation, "<")
 })
 
 let menuEls = gsap.utils.toArray(".page-section__menu")

@@ -1,5 +1,6 @@
 
 import { handleEquipmentCard } from "./modules/equipment-item.js"
+import { linesAnimation, imgScaleAnimation, imgOpacityAnimation } from "./modules/animation-templates.js"
 
 let videoEl = document.querySelector(".hero-section__video video")
 
@@ -88,30 +89,14 @@ gsap.from(".hero-section__video video ", {
 })
 
 const heroSlideEls = document.querySelectorAll(".hero-slide")
-
-
 heroSlideEls.forEach(heroSlideEl => {
     let tl = gsap.timeline({
         onStart: () => heroSlideEl.querySelector(".hero-slide__content").style.opacity = 1
     })
 
     tl
-        .from(heroSlideEl.querySelectorAll(".hero-slide__title .line"), {
-            yPercent: 100,
-            opacity: 0,
-            duration: 0.4,
-            stagger: {
-                amount: 0.3
-            }
-        })
-        .from(heroSlideEl.querySelectorAll(".hero-slide__desc .line"), {
-            yPercent: 100,
-            opacity: 0,
-            duration: 0.4,
-            stagger: {
-                amount: 0.3
-            }
-        })
+        .from(heroSlideEl.querySelectorAll(".hero-slide__title .line"), linesAnimation)
+        .from(heroSlideEl.querySelectorAll(".hero-slide__desc .line"), linesAnimation)
         .from(heroSlideEl.querySelector(".hero-slide__actions"), {
             yPercent: 50,
             opacity: 0,
@@ -143,8 +128,7 @@ gsap.to(".equipment-section__header, .equipment-section__body", {
     ease: "none",
     scrollTrigger: {
         trigger: ".services-section",
-        start: "top bottom",
-        end: "top top",
+        start: "top 80%",
         end: "max",
         invalidateOnRefresh: true,
         scrub: 0
@@ -182,16 +166,8 @@ bannerSlideEls.forEach((bannerSlideEl, i) => {
             }
         }
     })
-    tl.from(bannerSlideEl.querySelector("img"), {
-        scale: 1.3,
-        duration: 2.25,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-    })
-    tl.from(bannerSlideEl.querySelector("img"), {
-        opacity: 0,
-        duration: 0.9,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-    }, "<")
+    tl.from(bannerSlideEl.querySelector("img"), imgScaleAnimation)
+    tl.from(bannerSlideEl.querySelector("img"), imgOpacityAnimation, "<")
 })
 
 
@@ -201,16 +177,8 @@ let aboutBgTimeline = gsap.timeline({
         start: "top 80%"
     },
 })
-aboutBgTimeline.from(".about-section__bg", {
-    scale: 1.3,
-    duration: 2.25,
-    ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-})
-aboutBgTimeline.from(".about-section__bg", {
-    opacity: 0,
-    duration: 0.9,
-    ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-}, "<")
+aboutBgTimeline.from(".about-section__bg", imgScaleAnimation)
+aboutBgTimeline.from(".about-section__bg", imgOpacityAnimation, "<")
 
 
 let mm = gsap.matchMedia()
@@ -265,7 +233,10 @@ mm.add({
 
 ScrollTrigger.create({
     trigger: document.querySelector("aside"),
-    start: "top top",
+    start: () => {
+        let remValue = parseInt(getComputedStyle(document.documentElement).fontSize)
+        return `top+=${remValue} top`
+    },
     pin: true,
     pinSpacing: false,
 })

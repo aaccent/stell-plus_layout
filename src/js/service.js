@@ -1,6 +1,7 @@
 import "./components/service.js"
 import { handleVideo } from "./modules/fullscreen-video.js"
 import LocomotiveScroll from "locomotive-scroll"
+import { linesAnimation } from "./modules/animation-templates.js"
 
 const videoEl = document.getElementById("video")
 handleVideo(videoEl)
@@ -35,26 +36,12 @@ let heroTimeline = gsap.timeline()
 
 heroTimeline
     .from(".hero-section__title .line", {
-        yPercent: 100,
-        opacity: 0,
-        duration: 0.4,
-        ease: "power1.out",
-        stagger: {
-            amount: 0.3
-        },
+        ...linesAnimation,
         onStart: () => { 
             document.querySelector(".hero-section__content").style.opacity = 1;
         }
     })
-    .from(".hero-section__desc .line", {
-        yPercent: 100,
-        opacity: 0,
-        duration: 0.4,
-        ease: "power1.out",
-        stagger: {
-            amount: 0.3
-        },
-    })
+    .from(".hero-section__desc .line", linesAnimation)
     .from(".hero-section__projects", {
         xPercent: 20,
         opacity: 0,
@@ -73,7 +60,7 @@ gsap.to("[data-speed]", {
     ease: "none",
     scrollTrigger: {
         start: 0,
-        end: "top top",
+        end: "max",
         invalidateOnRefresh: true,
         scrub: 1
     }
@@ -155,13 +142,7 @@ gsap.from(".approach-section__desc .line", {
         trigger: ".approach-section__content",
         start: "top 80%"
     },
-    yPercent: 100,
-    opacity: 0,
-    duration: 0.4,
-    ease: "power1.out",
-    stagger: {
-        amount: 0.3
-    },
+    ...linesAnimation
 })
 
 gsap.from(".approach-section__stats", {

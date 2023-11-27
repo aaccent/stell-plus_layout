@@ -1,6 +1,7 @@
 import "./components/banner-slider.js"
 import { handleSwipe } from "./modules/swipe-hint.js"
 import { handleEquipmentCard } from "./modules/equipment-item.js"
+import { imgOpacityAnimation, imgScaleAnimation, linesAnimation } from "./modules/animation-templates.js"
 
 let timelineSwiper = new Swiper(".timeline-slider .swiper", {
     slidesPerView: 1,
@@ -39,19 +40,6 @@ let certificateSwiper = new Swiper(".certificates-section__slider .swiper", {
             slidesPerView: "auto"
         },
     },
-    on: {
-        // lock: function(swiper, event) {
-        //     const swiperHintEl = swiper.el.querySelector(".swiper-swipe")
-        //     if (swiperHintEl) {
-        //         console.log("!!!")
-        //         swiperHintEl.remove()
-        //     }
-        // }
-    },
-    // pagination: {
-    //     el: ".swiper-pagination",
-    //     // type: "progressbar",
-    // },
     scrollbar: {
         el: ".swiper-scrollbar",
         draggable: true
@@ -75,26 +63,12 @@ let heroTimeline = gsap.timeline()
 
 heroTimeline
     .from(".hero-section__title .line", {
-        yPercent: 100,
-        opacity: 0,
-        duration: 0.4,
-        ease: "power1.out",
-        stagger: {
-            amount: 0.3
-        },
+        ...linesAnimation,
         onStart: () => { 
             document.querySelector(".hero-section__content").style.opacity = 1;
         }
     })
-    .from(".hero-section__desc .line", {
-        yPercent: 100,
-        opacity: 0,
-        duration: 0.4,
-        ease: "power1.out",
-        stagger: {
-            amount: 0.3
-        },
-    })
+    .from(".hero-section__desc .line", linesAnimation)
     .from(".hero-section__button", {
         scale: 0.65,
         opacity: 0,
@@ -136,16 +110,8 @@ let imageTimeline = gsap.timeline({
 })
 
 imageTimeline
-    .from(".section_one img", {
-        scale: 1.3,
-        duration: 2.25,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-    })
-    .from(".section_one .section__img", {
-        opacity: 0,
-        duration: 0.9,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-    }, "<")
+    .from(".section_one img", imgScaleAnimation)
+    .from(".section_one .section__img", imgOpacityAnimation, "<")
 
 let profileTimeline = gsap.timeline({
     scrollTrigger: {
@@ -178,13 +144,7 @@ gsap.from(".suggest-section__desc .line", {
         trigger: ".suggest-section__desc",
         start: "top 80%"
     },
-    yPercent: 100,
-    opacity: 0,
-    duration: 0.4,
-    ease: "power1.out",
-    stagger: {
-        amount: 0.3
-    },
+    ...linesAnimation,
 })
 
 let advantageMatchMedia = gsap.matchMedia();
@@ -241,16 +201,8 @@ let timelime = gsap.timeline({
     }
 })
 timelime
-    .from(".timeline-section__img img", {
-        scale: 1.3,
-        duration: 2.25,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-    })
-    .from(".timeline-section__img", {
-        opacity: 0,
-        duration: 0.9,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-    }, "<")
+    .from(".timeline-section__img img", imgScaleAnimation)
+    .from(".timeline-section__img", imgOpacityAnimation, "<")
 
 gsap.from(".equipment-section__info", {
     scrollTrigger: {
@@ -288,16 +240,8 @@ bannerSlideEls.forEach((bannerSlideEl, i) => {
             }
         }
     })
-    tl.from(bannerSlideEl.querySelector("img"), {
-        scale: 1.3,
-        duration: 2.25,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-    })
-    tl.from(bannerSlideEl.querySelector("img"), {
-        opacity: 0,
-        duration: 0.9,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-    }, "<")
+    tl.from(bannerSlideEl.querySelector("img"), imgScaleAnimation)
+    tl.from(bannerSlideEl.querySelector("img"), imgOpacityAnimation, "<")
 })
 
 gsap.from(".certificates-section__slider .swiper", {

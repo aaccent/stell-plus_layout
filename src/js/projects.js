@@ -4,7 +4,7 @@ let titleSplit = new SplitType(".projects-section__title",{
 });
 
 gsap.from(".projects-section__title .char", {
-    yPercent: 100,
+    yPercent: 115,
     opacity: 0,
     duration: 0.4,
     ease: "power1.out",

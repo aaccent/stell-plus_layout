@@ -48,13 +48,12 @@ let typeSplit = new SplitType(".section__title",{
 let sectionTitleEls = gsap.utils.toArray(".section__title")
 sectionTitleEls.forEach(sectionTitleEl => {
     let chars = sectionTitleEl.querySelectorAll(".char")
-  
     gsap.from(chars, {
         scrollTrigger: {
             trigger: sectionTitleEl,
             start: "top 80%"
         },
-        yPercent: 100,
+        yPercent: 115,
         duration: 0.5,
         ease: "power1.out",
         stagger: {

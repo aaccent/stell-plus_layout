@@ -1,4 +1,5 @@
 import LocomotiveScroll from "locomotive-scroll";
+import { imgOpacityAnimation, imgScaleAnimation, linesAnimation } from "./modules/animation-templates.js";
 
 const allParamsEl = document.querySelector(".product-section__all-params")
 const popupEl = document.querySelector(".product-section__popup")
@@ -80,7 +81,7 @@ const callback = function(entries, observer) {
 
 const modelObserver = new IntersectionObserver(callback)
 const modelObserverEl = document.querySelector(".model-observer")
-const modelEl = document.querySelector(".model video")
+const modelEl = document.querySelector(".model img")
 
 if (window.innerWidth > 992 && window.innerWidth <= 1280) {
     modelObserver.observe(modelObserverEl)
@@ -132,22 +133,11 @@ heroTimeline
         opacity: 0,
         duration: 0.4,
         ease: "power1.out",
-        stagger: {
-            amount: 0.3
-        },
         onStart: () => { 
             document.querySelector(".hero-section__content").style.opacity = 1;
         }
     })
-    .from(".hero-section__title .line", {
-        yPercent: 100,
-        opacity: 0,
-        duration: 0.4,
-        ease: "power1.out",
-        stagger: {
-            amount: 0.3
-        },
-    })
+    .from(".hero-section__title .line", linesAnimation)
     .from(".hero-section__call-button", {
         scale: 0.8,
         opacity: 0,
@@ -173,23 +163,8 @@ let productTimeline = gsap.timeline({
     }
 })
 productTimeline
-    .from(".product-section__title .line", {
-        yPercent: 100,
-        opacity: 0,
-        duration: 0.4,
-        ease: "power1.out",
-        stagger: {
-            amount: 0.3
-        },
-    })
-    .from(".product-section__desc .line", {
-        yPercent: 100,
-        opacity: 0,
-        duration: 0.4,
-        stagger: {
-            amount: 0.3
-        },
-    })
+    .from(".product-section__title .line", linesAnimation)
+    .from(".product-section__desc .line", linesAnimation)
     .from(".product-section__doc", {
         yPercent: 50,
         opacity: 0,
@@ -222,7 +197,6 @@ productPraramsTimeline
     })
 
 
-
 ScrollTrigger.create({
     trigger: ".wrapper",
     start: "bottom center",
@@ -247,16 +221,8 @@ projectsMatchMedia.add({
             delay: oneColumn ? 0 : i % 2 * 0.2
         })
         timeline
-            .from(projectEl.querySelector(".project__img"), {
-                scale: 1.3,
-                duration: 2.25,
-                ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-            })
-            .from(projectEl.querySelector(".project__img"), {
-                opacity: 0,
-                duration: 0.9,
-                ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-            }, "<")
+            .from(projectEl.querySelector(".project__img"), imgScaleAnimation)
+            .from(projectEl.querySelector(".project__img"), imgOpacityAnimation, "<")
             .from(projectEl.querySelector(".project__content"), {
                 opacity: 0,
                 duration: 0.5

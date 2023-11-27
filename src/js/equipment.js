@@ -1,5 +1,5 @@
 import LocomotiveScroll from "locomotive-scroll";
-import { handleEquipmentCard } from "./modules/equipment-item.js";
+import { linesAnimation } from "./modules/animation-templates.js";
 
 const scroll = new LocomotiveScroll();
 
@@ -26,7 +26,6 @@ document.querySelectorAll(".tag").forEach(tagEl => {
     })
 })
 
-handleEquipmentCard("equipment__grid")
 
 // animations
 
@@ -38,7 +37,7 @@ let heroTitleSplit = new SplitType(".hero-section__title",{
 
 let heroTimeline = gsap.timeline()
 heroTimeline
-    .from(".hero-section__img", {
+    .from(".hero-section__model video", {
         opacity: 0,
         duration: 0.6,
         ease: "power1.out",
@@ -58,15 +57,7 @@ heroTimeline
             // `
         }
     })
-    .from(".hero-section__title .line", {
-        yPercent: 100,
-        opacity: 0,
-        duration: 0.4,
-        ease: "power1.out",
-        stagger: {
-            amount: 0.3
-        },
-    }, "<0.3")
+    .from(".hero-section__title .line", linesAnimation, "<0.3")
     .from(".hero-section__stat-value", {
         yPercent: 50,
         opacity: 0,
@@ -86,6 +77,17 @@ heroTimeline
         }
     }, "<0.2")
 
+
+gsap.to("[data-speed]", {
+    y: (i, el) => parseFloat(el.getAttribute("data-speed")) * ScrollTrigger.maxScroll(window) ,
+    ease: "none",
+    scrollTrigger: {
+        start: 0,
+        end: "max",
+        invalidateOnRefresh: true,
+        scrub: 0
+    }
+})
 
 gsap.from(".filter-panel", {
     scrollTrigger: {
@@ -149,17 +151,12 @@ gsap.from(".equipment__more", {
 })
 
 
-let tween = gsap.to(".footer__commercial", {
-    marginBottom: () => -document.querySelector(".footer__commercial").offsetHeight,
-});
-
 ScrollTrigger.create({
-    trigger: ".commercial",
-    start: "top 40%",
-    animation: tween,
-    scrub: true,
+    trigger: ".hero-section",
+    start: "top top",
+    pin: true,
+    pinSpacing: false,
 })
-
 // if (targetEl.closest(".tag")) {
 //     let currentTagrEl = targetEl.closest(".tag")
 //     let clearTagEl = document.querySelector(".tag_clear");

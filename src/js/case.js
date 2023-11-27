@@ -1,5 +1,5 @@
 import { handleSwipe } from "./modules/swipe-hint.js"
-import { handleEquipmentCard } from "./modules/equipment-item.js"
+import { imgOpacityAnimation, imgScaleAnimation } from "./modules/animation-templates.js"
 
 new Swiper (".section__images.swiper", {
     slidesPerView: 1.1,
@@ -105,36 +105,6 @@ let projectsSwiper = new Swiper(".projects-slider .swiper", {
 })
 
 handleSwipe(projectsSwiper)
-handleEquipmentCard("equipments-slider__swiper")
-// let projectsHint = projectsSwiper.el.querySelector(".swiper-swipe")
-
-// projectsSwiper.wrapperEl.addEventListener("mouseenter", () => {
-//     if (isMobile.any()) {
-//         return
-//     }
-//     projectsHint.classList.add("swiper-swipe_show")
-// })
-
-// projectsSwiper.wrapperEl.addEventListener("mousemove", e => {
-//     if (isMobile.any()) {
-//         return
-//     }
-//     let coordX = e.clientX - projectsHint.offsetWidth * 0.4;
-//     let coordY = e.clientY - projectsHint.offsetHeight * 0.4;
-
-//     projectsHint.style.cssText = `
-//         position: fixed;
-//         top: ${coordY}px;
-//         left: ${coordX}px;
-//     `
-// })
-
-// projectsSwiper.wrapperEl.addEventListener("mouseleave", () => {
-//     if (isMobile.any()) {
-//         return
-//     }
-//     projectsHint.classList.remove("swiper-swipe_show")
-// })
 
 // animations
 
@@ -146,18 +116,9 @@ bannerTimeline
         duration: 0.9,
         ease: "cubic-bezier(0.38, 0.005, 0.215, 1)",
         onStart: () => document.querySelector(".banner-section").style.opacity = 1,
-
     })
-    .from(".banner-section__img", {
-        scale: 1.3,
-        duration: 2.25,
-        ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-    }, "<")
-    .from(".banner-section__logo", {
-        opacity: 0,
-        scale: 0.75,
-        duration: 0.6,
-    }, 0.5)
+    .from(".banner-section__img", imgScaleAnimation, "<")
+    .from(".banner-section__logo", imgOpacityAnimation, 0.5)
 
     
 let sectionImgEls = gsap.utils.toArray(".section__img")
@@ -172,16 +133,8 @@ sectionImgEls.forEach(sectionImgEl => {
     let img = sectionImgEl.querySelector("img")
 
     imgTimeline
-        .from(img, {
-            scale: 1.3,
-            duration: 2.25,
-            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-        })
-        .from(sectionImgEl, {
-            opacity: 0,
-            duration: 0.9,
-            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-        }, "<")
+        .from(img, imgScaleAnimation)
+        .from(sectionImgEl, imgOpacityAnimation, "<")
 })
 
 gsap.from(".equipments-slider", {
@@ -207,16 +160,8 @@ resultImgEls.forEach(resultImgEl => {
     let img = resultImgEl.querySelector("img")
 
     imgTimeline
-        .from(img, {
-            scale: 1.3,
-            duration: 2.25,
-            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-        })
-        .from(resultImgEl, {
-            opacity: 0,
-            duration: 0.9,
-            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-        }, "<")
+        .from(img, imgScaleAnimation)
+        .from(resultImgEl, imgOpacityAnimation, "<")
 })
 
 
@@ -229,16 +174,8 @@ projectEls.forEach((projectEl, i) => {
         },
     })
     timeline
-        .from(projectEl.querySelector(".project__img"), {
-            scale: 1.3,
-            duration: 2.25,
-            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-        })
-        .from(projectEl.querySelector(".project__img"), {
-            opacity: 0,
-            duration: 0.9,
-            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-        }, "<")
+        .from(projectEl.querySelector(".project__img"), imgScaleAnimation)
+        .from(projectEl.querySelector(".project__img"), imgOpacityAnimation, "<")
         .from(projectEl.querySelector(".project__content"), {
             opacity: 0,
             duration: 0.5

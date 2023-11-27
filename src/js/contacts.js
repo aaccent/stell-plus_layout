@@ -1,3 +1,5 @@
+import { imgOpacityAnimation, imgScaleAnimation } from "./modules/animation-templates.js";
+
 function init() {
     const getCoords = async () => {
         // let response = await fetch("../json/coords.json", {
@@ -15,6 +17,7 @@ function init() {
                         "time": "Пн-Пт: c 09:00 до 18:00",
                         "email": "info@stellplus.com",
                         "phone": "+74959970687",
+                        "phone-mask": "+7 (495) 997-06-87",
                         "coord": [55.75, 37.50]
                     },
                     {
@@ -25,6 +28,7 @@ function init() {
                         "time": "Пн-Пт: c 09:00 до 18:00",
                         "email": "info@stellplus.com",
                         "phone": "+74959970687",
+                        "phone-mask": "+7 (495) 997-06-87",
                         "coord": [55.75, 37.71]
                     },
                     {
@@ -35,6 +39,7 @@ function init() {
                         "time": "Пн-Пт: c 09:00 до 18:00",
                         "email": "info@stellplus.com",
                         "phone": "+74959970687",
+                        "phone-mask": "+7 (495) 997-06-87",
                         "coord": [55.70, 37.70]
                     }
                 ]            
@@ -81,7 +86,7 @@ function init() {
             }
 
             // установка пина по центру карты
-            map.panTo(pinData.coord, { duration: 300 })
+            // map.panTo(pinData.coord, { duration: 300 })
             
             e.get('target').options.set('iconImageHref', imagesSrc.pinActiveImage)  
 
@@ -122,7 +127,7 @@ function init() {
                 </div>
                 <div class="balloon__phone">
                     <span class="icon-phone"> </span>
-                    <a href="tel:${data.phone}">${data.phone} </a>
+                    <a href="tel:${data.phone}">${data["phone-mask"]} </a>
                 </div>
                 <div class="balloon__email">
                     <span class="icon-email"></span>
@@ -154,7 +159,7 @@ function init() {
         controls: [],
         zoom: 12,
     }, {
-        minZoom: 10
+        minZoom: 12
     })
 
     let imagesSrc = document.getElementById("map").dataset
@@ -162,7 +167,7 @@ function init() {
     // Создадим пользовательский макет ползунка масштаба.
     let ZoomLayout = ymaps.templateLayoutFactory.createClass(`
         <div id="zoom-controls">
-            <button id='zoom-out' type='button'><img src='${imagesSrc.zoomOutImage}'></button>
+            <button id='zoom-out' type='button' disabled><img src='${imagesSrc.zoomOutImage}'></button>
             <button id='zoom-in' type='button'><img src='${imagesSrc.zoomInImage}'></button>
         </div>`, {
 
@@ -194,7 +199,7 @@ function init() {
         zoomIn: function () {
             let map = this.getData().control.getMap();
             map.setZoom(map.getZoom() + 1, {checkZoomRange: true, duration: 300});
-            if (map.getZoom() >= 10) {
+            if (map.getZoom() >= 12) {
                 document.getElementById("zoom-out").disabled = false
             }
         },
@@ -202,7 +207,7 @@ function init() {
         zoomOut: function () {
             let map = this.getData().control.getMap();
             map.setZoom(map.getZoom() - 1, {checkZoomRange: true, duration: 300});
-            if (map.getZoom() <= 11) {
+            if (map.getZoom() <= 13) {
                 document.getElementById("zoom-out").disabled = true
             }
         }
@@ -278,18 +283,6 @@ ymaps.ready(init);
 
 
 // animations
-gsap.from(".section__info button, .section__info > div", {
-    scrollTrigger: {
-        trigger: ".section__info",
-        start: "top 80%"
-    },
-    yPercent: 30,
-    opacity: 0,
-    duration: 0.5,
-    stagger: {
-        amount: 0.4
-    }
-})
 
 let employeeMatchMedia = gsap.matchMedia()
 let employeeEls = gsap.utils.toArray(".departments-section__department_active .employee")
@@ -321,16 +314,8 @@ employeeMatchMedia.add({
                 return 0.2 * (i % 4)
             },
         })
-        tl.from(employeeEl.querySelector("img"), {
-            scale: 1.3,
-            duration: 2.25,
-            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-        })
-        tl.from(employeeEl.querySelector("img"), {
-            opacity: 0,
-            duration: 0.9,
-            ease: "cubic-bezier(0.38, 0.005, 0.215, 1)"
-        }, "<")
+        tl.from(employeeEl.querySelector("img"), imgScaleAnimation)
+        tl.from(employeeEl.querySelector("img"), imgOpacityAnimation, "<")
         tl.from(employeeEl.querySelectorAll(".employee__position, .employee__name, .employee__email"), {
             yPercent: 100,
             opacity: 0,
