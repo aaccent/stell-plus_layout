@@ -3,7 +3,6 @@
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     color: $base-1;
-    margin-bottom: 0;
     padding-bottom: 5.625rem;
     &__header {
         border-color: rgba($color: $base-1, $alpha: 0.26);
@@ -20,7 +19,6 @@
         }
     }
     @include min_container {
-        margin-bottom: 0;
         padding-bottom: 5.625rem;
         &__title {
             width: calc(821 / 1568 * 100%);

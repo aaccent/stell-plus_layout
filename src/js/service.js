@@ -1,7 +1,7 @@
 import "./components/service.js"
 import { handleVideo } from "./modules/fullscreen-video.js"
 import LocomotiveScroll from "locomotive-scroll"
-import { linesAnimation } from "./modules/animation-templates.js"
+import { linesAnimation, textAnimation } from "./modules/animation-templates.js"
 
 const videoEl = document.getElementById("video")
 handleVideo(videoEl)
@@ -27,21 +27,16 @@ let heroTitleSplit = new SplitType(".hero-section__title",{
     tagName: "div"
 });
 
-let heroDescSplit = new SplitType(".hero-section__desc",{
-    types: "lines",
-    tagName: "div"
-});
-
 let heroTimeline = gsap.timeline()
 
 heroTimeline
-    .from(".hero-section__title .line", {
+    .from(heroTitleSplit.lines, {
         ...linesAnimation,
         onStart: () => { 
             document.querySelector(".hero-section__content").style.opacity = 1;
         }
     })
-    .from(".hero-section__desc .line", linesAnimation)
+    .from(".hero-section__desc", textAnimation)
     .from(".hero-section__projects", {
         xPercent: 20,
         opacity: 0,
@@ -132,17 +127,13 @@ advantageMatchMedia.add({
     })
 })
 
-let approachDescSplit = new SplitType(".approach-section__desc p",{
-    types: "lines",
-    tagName: "div"
-});
 
-gsap.from(".approach-section__desc .line", {
+gsap.from(".approach-section__desc", {
     scrollTrigger: {
         trigger: ".approach-section__content",
         start: "top 80%"
     },
-    ...linesAnimation
+    ...textAnimation
 })
 
 gsap.from(".approach-section__stats", {
@@ -226,17 +217,29 @@ projectsMatchMedia.add({
     // })
 })
 
-let roundedSectionEls = gsap.utils.toArray("section:not(.projects)")
+let roundedSectionEls = gsap.utils.toArray(".hero-section, .about-section, .approach-section")
 
 roundedSectionEls.forEach(sectionEl => {
     ScrollTrigger.create({
         trigger: sectionEl,
         start: () => {
-            let remValue = getComputedStyle(document.documentElement).fontSize;
+            let remValue = parseFloat(getComputedStyle(document.documentElement).fontSize);
             return sectionEl.offsetHeight < window.innerHeight ? `${remValue}  top` : "bottom bottom"
         },
         // end: "+= ",
         pin: true,
         pinSpacing: false,
     })
+})
+
+gsap.to(".services-section__header, .services-section__list", {
+    y: 0.15 * ScrollTrigger.maxScroll(window),
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".services-section + .pin-spacer",
+        start: "top 60%",
+        end: "max",
+        invalidateOnRefresh: true,
+        scrub: 0
+    }
 })

@@ -1,8 +1,8 @@
 import LocomotiveScroll from "locomotive-scroll";
-import { imgOpacityAnimation, imgScaleAnimation, linesAnimation } from "./modules/animation-templates.js";
+import { imgOpacityAnimation, imgScaleAnimation, linesAnimation, textAnimation } from "./modules/animation-templates.js";
 
 const allParamsEl = document.querySelector(".product-section__all-params")
-const popupEl = document.querySelector(".product-section__popup")
+const popupEl = document.querySelector(".popup_product")
 const lockPaddingElements = document.querySelectorAll(".header__container, .model, .hero-section, .product-section");
 
 function lockBody() {
@@ -137,7 +137,7 @@ heroTimeline
             document.querySelector(".hero-section__content").style.opacity = 1;
         }
     })
-    .from(".hero-section__title .line", linesAnimation)
+    .from(heroTitleSplit.lines, linesAnimation)
     .from(".hero-section__call-button", {
         scale: 0.8,
         opacity: 0,
@@ -151,10 +151,6 @@ let productTitleSplit = new SplitType(".product-section__title",{
     tagName: "div"
 });
 
-let productDescSplit = new SplitType(".product-section__desc",{
-    types: "lines",
-    tagName: "div"
-});
 
 let productTimeline = gsap.timeline({
     scrollTrigger: {
@@ -163,8 +159,8 @@ let productTimeline = gsap.timeline({
     }
 })
 productTimeline
-    .from(".product-section__title .line", linesAnimation)
-    .from(".product-section__desc .line", linesAnimation)
+    .from(productTitleSplit.lines, linesAnimation)
+    .from(".product-section__desc", textAnimation)
     .from(".product-section__doc", {
         yPercent: 50,
         opacity: 0,

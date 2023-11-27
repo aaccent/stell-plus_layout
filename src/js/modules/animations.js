@@ -85,11 +85,6 @@ let footerTitleSplit = new SplitType(".footer__contact-us-title",{
     tagName: "span"
 });
   
-let footerDescSplit = new SplitType(".footer__contact-us-desc",{
-    types: "lines",
-    tagName: "div"
-});
-
 ScrollTrigger.create({
     trigger: document.querySelector(".footer").previousElementSibling,
     start:  document.querySelector(".footer").previousElementSibling.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
@@ -109,13 +104,13 @@ ScrollTrigger.create({
     scrub: 1,
 })
   
+
 let footerTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: ".footer__contact-us",
         start: "top 80%"
     }
 })
-
 footerTimeline 
     .from(".footer__contact-us-title .char", {
         yPercent: 100,
@@ -125,15 +120,12 @@ footerTimeline
             amount: 0.4
         }
     })
-    .from(".footer__contact-us-desc .line", {
-        yPercent: 100,
+    .from(".footer__contact-us-desc", {
+        yPercent: 25,
         opacity: 0,
         duration: 0.5,
         ease: "power1.out",
-        stagger: {
-            amount: 0.4
-        }
-    })
+    }, "<+0.25")
     .from(".contact-us-form", {
         yPercent: 10,
         opacity: 0,

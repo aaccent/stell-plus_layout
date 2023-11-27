@@ -70,60 +70,7 @@ block content
                                     td Размеры, мм
                                     td 807x602x925
                     button.product-section__all-params.link(type="button") Все характеристики
-            .product-section__popup.popup 
-                .popup__container 
-                    .popup__content
-                        .popup__header
-                            button.popup__close(type="button")
-                                span.icon-close
-                            h4.popup__title Характеристики
-                        .popup__body 
-                            .popup__image 
-                                img(src="./images/product/product.png", alt="")
-                            .popup__tables
-                                table 
-                                    caption Общая информация
-                                    tbody 
-                                        tr 
-                                            td Тип
-                                            td Фронтальный стеллаж
-                                        tr 
-                                            td Модель
-                                            td б-35
-                                        tr 
-                                            td Артикул
-                                            td 19823823
-                                table 
-                                    caption Основные характеристики
-                                    tbody 
-                                        tr 
-                                            td Материал
-                                            td Металл
-                                        tr 
-                                            td Нагрузка, кг
-                                            td до 30 000
-                                        tr 
-                                            td Размеры, мм
-                                            td 807x602x925
-                                        tr 
-                                            td Используемая площадь, м#[sup 2]
-                                            td 858
-                                        tr 
-                                            td Количество поддономест, шт
-                                            td 552
-                                table 
-                                    caption Дополнительно
-                                    tbody 
-                                        tr 
-                                            td Цвет
-                                            td Желтый, синий
-                                        tr 
-                                            td Модель
-                                            td б-35
-                                        tr 
-                                            td Артикул
-                                            td 19823823
-                        .popup__gradient
+            
     section.projects-section.section 
         .section__header
             .container
@@ -135,6 +82,61 @@ block content
                     p.section__desc Наши менеджеры всегда помогут подобрать стеллажи, подготовят коммерческое предложение, рассчитают стоимость и сроки. Наши менеджеры всегда помогут подобрать стеллажи, подготовят
                     a.section__link.link(href="/projects-page.html") Смотреть все
                 include includes/projects-grid.pug
+block popup
+    .popup.popup_product 
+        .popup__container 
+            .popup__content
+                .popup__header
+                    button.popup__close(type="button")
+                        span.icon-close
+                    h4.popup__title Характеристики
+                .popup__body 
+                    .popup__image 
+                        img(src="./images/product/product.png", alt="")
+                    .popup__tables
+                        table 
+                            caption Общая информация
+                            tbody 
+                                tr 
+                                    td Тип
+                                    td Фронтальный стеллаж
+                                tr 
+                                    td Модель
+                                    td б-35
+                                tr 
+                                    td Артикул
+                                    td 19823823
+                        table 
+                            caption Основные характеристики
+                            tbody 
+                                tr 
+                                    td Материал
+                                    td Металл
+                                tr 
+                                    td Нагрузка, кг
+                                    td до 30 000
+                                tr 
+                                    td Размеры, мм
+                                    td 807x602x925
+                                tr 
+                                    td Используемая площадь, м#[sup 2]
+                                    td 858
+                                tr 
+                                    td Количество поддономест, шт
+                                    td 552
+                        table 
+                            caption Дополнительно
+                            tbody 
+                                tr 
+                                    td Цвет
+                                    td Желтый, синий
+                                tr 
+                                    td Модель
+                                    td б-35
+                                tr 
+                                    td Артикул
+                                    td 19823823
+                .popup__gradient
 block append scripts 
     script(src="js/libs/swiper-bundle.min.js")
     script(src="js/product.min.js") 

@@ -1,6 +1,6 @@
 
 import { handleEquipmentCard } from "./modules/equipment-item.js"
-import { linesAnimation, imgScaleAnimation, imgOpacityAnimation } from "./modules/animation-templates.js"
+import { linesAnimation, imgScaleAnimation, imgOpacityAnimation, textAnimation } from "./modules/animation-templates.js"
 
 let videoEl = document.querySelector(".hero-section__video video")
 
@@ -73,11 +73,6 @@ let heroTitleSplit = new SplitType(".hero-slide__title",{
     types: "lines",
     tagName: "div"
 });
-
-let heroDescSplit = new SplitType(".hero-slide__desc",{
-    types: "lines",
-    tagName: "div"
-});
   
 
 gsap.from(".hero-section__video video ", {
@@ -96,7 +91,7 @@ heroSlideEls.forEach(heroSlideEl => {
 
     tl
         .from(heroSlideEl.querySelectorAll(".hero-slide__title .line"), linesAnimation)
-        .from(heroSlideEl.querySelectorAll(".hero-slide__desc .line"), linesAnimation)
+        .from(heroSlideEl.querySelectorAll(".hero-slide__desc"), textAnimation)
         .from(heroSlideEl.querySelector(".hero-slide__actions"), {
             yPercent: 50,
             opacity: 0,

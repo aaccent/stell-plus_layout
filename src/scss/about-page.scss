@@ -20,6 +20,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+    &__content {
+        opacity: 0;
+    }
     &__head {
         color: $base-1;
         max-width: 776px;
@@ -137,7 +140,7 @@
         }
         h4 {
             @include text_t5-2;
-            width: 85%;
+            width: 72%;
             text-transform: uppercase;
         }
         &:first-child, &:last-child {

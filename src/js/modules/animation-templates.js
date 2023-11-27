@@ -8,6 +8,13 @@ const linesAnimation = {
     }
 }
 
+const textAnimation = {
+    yPercent: 50,
+    opacity: 0,
+    duration: 0.4,
+    ease: "power1.out",
+}
+
 const imgScaleAnimation = {
     scale: 1.3,
     duration: 2.25,
@@ -36,8 +43,9 @@ const func = startCallback => {
 }
 
 export {
+    textAnimation,
     linesAnimation,
     imgScaleAnimation,
     imgOpacityAnimation,
-    parallaxAnimation
+    parallaxAnimation,
 }

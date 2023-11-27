@@ -3,7 +3,7 @@ let titleSplit = new SplitType(".projects-section__title",{
     tagName: "span"
 });
 
-gsap.from(".projects-section__title .char", {
+gsap.from(titleSplit.chars, {
     yPercent: 115,
     opacity: 0,
     duration: 0.4,

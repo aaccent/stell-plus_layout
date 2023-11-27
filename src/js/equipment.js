@@ -33,8 +33,6 @@ let heroTitleSplit = new SplitType(".hero-section__title",{
     types: "lines",
     tagName: "div"
 });
-
-
 let heroTimeline = gsap.timeline()
 heroTimeline
     .from(".hero-section__model video", {
@@ -57,7 +55,7 @@ heroTimeline
             // `
         }
     })
-    .from(".hero-section__title .line", linesAnimation, "<0.3")
+    .from(heroTitleSplit.lines, linesAnimation, "<0.3")
     .from(".hero-section__stat-value", {
         yPercent: 50,
         opacity: 0,
@@ -157,22 +155,3 @@ ScrollTrigger.create({
     pin: true,
     pinSpacing: false,
 })
-// if (targetEl.closest(".tag")) {
-//     let currentTagrEl = targetEl.closest(".tag")
-//     let clearTagEl = document.querySelector(".tag_clear");
-//     // клик по сбросу
-//     if (currentTagrEl === clearTagEl) {
-//         let activeTagEls = document.querySelectorAll(".tag_selected")
-//         for (let i = 0; i < activeTagEls.length; i++) {
-//             activeTagEls[i].classList.remove("tag_selected")
-//         }
-//         clearTagEl.classList.add("tag_disabled")
-//     // клик по фильтру
-//     } else {
-//         targetEl.closest(".tag").classList.toggle("tag_selected")
-//         if (!document.querySelectorAll(".tag_selected").length) {
-//             clearTagEl.classList.add("tag_disabled")
-//         } else if (clearTagEl.classList.contains("tag_disabled")) {
-//             clearTagEl.classList.remove("tag_disabled")
-//         }
-//     }

@@ -19,6 +19,7 @@
 @import "modules/equipment.scss";
 @import "modules/services.scss";
 .services-section {
+    margin-bottom: 0;
     @include gap {
         padding-bottom: 45px
     }

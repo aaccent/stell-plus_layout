@@ -1,19 +1,3 @@
-class ServiceAccordion {
-    lock = false;
-
-    constructor(elem) {
-        this.elem = elem
-    }
-
-    open() {
-
-    }
-
-    close() {
-
-    }
-}
-
 let serviceEls = document.querySelectorAll(".service")
 
 serviceEls.forEach(serviceEl => {
@@ -62,7 +46,7 @@ serviceEls.forEach(serviceEl => {
                     // !isOpen && (contentEl.style.height = "auto");
                     // contentEl.style.opacity = ""
                     serviceEl.classList.toggle("service_open")
-                    contentEl.addEventListener("transitionend", () => lock = false, { once: true })
+                    contentEl.addEventListener("transitionend", () => lock = false, { once: true }) 
                 }, { once: true })
 
             }, { once: true })

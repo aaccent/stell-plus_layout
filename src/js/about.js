@@ -1,7 +1,7 @@
 import "./components/banner-slider.js"
 import { handleSwipe } from "./modules/swipe-hint.js"
 import { handleEquipmentCard } from "./modules/equipment-item.js"
-import { imgOpacityAnimation, imgScaleAnimation, linesAnimation } from "./modules/animation-templates.js"
+import { imgOpacityAnimation, imgScaleAnimation, linesAnimation, textAnimation } from "./modules/animation-templates.js"
 
 let timelineSwiper = new Swiper(".timeline-slider .swiper", {
     slidesPerView: 1,
@@ -53,22 +53,15 @@ let heroTitleSplit = new SplitType(".hero-section__title",{
     types: "lines",
     tagName: "div"
 });
-
-let heroDescSplit = new SplitType(".hero-section__desc",{
-    types: "lines",
-    tagName: "div"
-});
-
 let heroTimeline = gsap.timeline()
-
 heroTimeline
-    .from(".hero-section__title .line", {
+    .from(heroTitleSplit.lines, {
         ...linesAnimation,
         onStart: () => { 
             document.querySelector(".hero-section__content").style.opacity = 1;
         }
     })
-    .from(".hero-section__desc .line", linesAnimation)
+    .from(".hero-section__desc", textAnimation)
     .from(".hero-section__button", {
         scale: 0.65,
         opacity: 0,
@@ -108,10 +101,11 @@ let imageTimeline = gsap.timeline({
         start: "top 80%"
     }
 })
-
 imageTimeline
     .from(".section_one img", imgScaleAnimation)
     .from(".section_one .section__img", imgOpacityAnimation, "<")
+
+
 
 let profileTimeline = gsap.timeline({
     scrollTrigger: {
@@ -119,7 +113,6 @@ let profileTimeline = gsap.timeline({
         start: "top 85%"
     }
 })
-
 profileTimeline
     .from(".person-info__content", {
         yPercent: 35,
@@ -134,17 +127,13 @@ profileTimeline
         ease: "power1.out",
     })
 
-let suggestDescSplit = new SplitType(".suggest-section__desc",{
-    types: "lines",
-    tagName: "div"
-});
 
-gsap.from(".suggest-section__desc .line", {
+gsap.from(".suggest-section__desc", {
     scrollTrigger: {
         trigger: ".suggest-section__desc",
         start: "top 80%"
     },
-    ...linesAnimation,
+    ...textAnimation,
 })
 
 let advantageMatchMedia = gsap.matchMedia();
