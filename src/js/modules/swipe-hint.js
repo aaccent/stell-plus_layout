@@ -8,9 +8,9 @@ function handleSwipe(swiper, pos = { x: 0.3, y: 0.2 } ) {
             return
         }
 
-        // if (!swiperHintEl.classList.contains("swiper-swipe_show")) {
-        //     swiperHintEl.classList.add("swiper-swipe_show")
-        // }
+        if (!swiperHintEl.classList.contains("swiper-swipe_show")) {
+            swiperHintEl.classList.add("swiper-swipe_show")
+        }
 
         let coordX = e.clientX - swiperHintEl.offsetWidth * pos.x;
         let coordY = e.clientY - swiperHintEl.offsetHeight * pos.y;
@@ -24,10 +24,13 @@ function handleSwipe(swiper, pos = { x: 0.3, y: 0.2 } ) {
     }
 
     function handleScroll() {
-        const { top, bottom } = swiper.wrapperEl.getBoundingClientRect()
-        const yPosition = parseInt(getComputedStyle(swiperHintEl).top)
-
-        if (bottom < yPosition) {
+        let { top, bottom } = swiper.wrapperEl.getBoundingClientRect()
+        let yPosition = parseInt(getComputedStyle(swiperHintEl).top)
+         
+        if (swiper.wrapperEl.closest(".banner-slider_outer")) {
+            bottom -= document.querySelector(".banner-slider_inner").offsetHeight
+        }
+        if (bottom < yPosition || top > yPosition) {
             swiperHintEl.classList.remove("swiper-swipe_show")
         }
     }
@@ -37,7 +40,7 @@ function handleSwipe(swiper, pos = { x: 0.3, y: 0.2 } ) {
             return
         }
         swiperHintEl.classList.add("swiper-swipe_show")
-        // window.addEventListener("scroll", handleScroll)
+        window.addEventListener("scroll", handleScroll)
     })
     
     swiper.wrapperEl.addEventListener("mousemove", handleTouchMove)
@@ -47,8 +50,7 @@ function handleSwipe(swiper, pos = { x: 0.3, y: 0.2 } ) {
             return
         }
         swiperHintEl.classList.remove("swiper-swipe_show")
-        // window.removeEventListener("scroll", handleScroll)
-
+        window.removeEventListener("scroll", handleScroll)
     })
 
     swiper.on("touchStart", () => {

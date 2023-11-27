@@ -124,6 +124,7 @@ roundedSectionEls.forEach(sectionEl => {
         },
         pin: true,
         pinSpacing: false,
+        onLeave: (self) => self.trigger.classList.contains("._notransform") && self.trigger.classList.remove("_notransform")
     })
 })
 

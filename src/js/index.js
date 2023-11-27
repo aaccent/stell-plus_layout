@@ -138,6 +138,18 @@ gsap.from(".equipment-section__slider", {
     duration: 0.6
 })
 
+gsap.to(".equipment-section__header, .equipment-section__body", {
+    y: 0.15 * ScrollTrigger.maxScroll(window) ,
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".services-section",
+        start: "top bottom",
+        end: "top top",
+        end: "max",
+        invalidateOnRefresh: true,
+        scrub: 0
+    }
+});
 
 let serviceEls = gsap.utils.toArray(".service")
 serviceEls.forEach(serviceEl => {
@@ -150,6 +162,7 @@ serviceEls.forEach(serviceEl => {
         opacity: 0,
     })
 })
+
 
 
 let bannerSlideEls = gsap.utils.toArray(".banner-slide")
