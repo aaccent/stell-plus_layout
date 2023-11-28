@@ -1,6 +1,6 @@
 import { handleVideo } from "./modules/fullscreen-video.js"
 import LocomotiveScroll from "locomotive-scroll";
-import { imgOpacityAnimation, imgScaleAnimation, linesAnimation } from "./modules/animation-templates.js";
+import { imgOpacityAnimation, imgScaleAnimation, linesAnimation, textAnimation } from "./modules/animation-templates.js";
 
 const accordionHeaderEls = document.querySelectorAll(".accordion__header");
 
@@ -96,10 +96,6 @@ let pageTitleSplit = new SplitType(".page-section__title", {
     tagName: "span"
 });
 
-let textSplit = new SplitType(".page-section__text, .page__text", {
-    types: "lines",
-    tagName: "div"
-})
 
 let pageTitleEls = document.querySelectorAll(".page-section__title")
 let textEls = document.querySelectorAll(".page-section__text, .page__text")
@@ -120,12 +116,12 @@ pageTitleEls.forEach(pageTitleEl => {
 })
 
 textEls.forEach(textEl => {
-    gsap.from(textEl.querySelectorAll(".line"), {
+    gsap.from(textEl, {
         scrollTrigger: {
             trigger: textEl,
             start: "top 80%"
         },
-        ...linesAnimation
+        ...textAnimation
     })
 })
 

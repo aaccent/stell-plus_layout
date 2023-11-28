@@ -87,6 +87,9 @@
         }
     }
     @include gap {
+        &__bg {
+            display: none;
+        }
         &__content {
             flex-direction: column;
             gap: 20px;
@@ -96,10 +99,12 @@
         // }
         &__stats {
             background-image: none !important;
+            background: transparent;
             flex-wrap: wrap;
             justify-content: center;
             margin-top: 50px;
             padding: 0;
+            overflow: visible;
         }
         &__stat-card {
             flex-basis: calc(50% - 8px);
