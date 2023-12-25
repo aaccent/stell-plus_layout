@@ -1,29 +1,13 @@
 @import "base/_vars.scss";
 @import "base/_fonts.scss";
 @import "base/_icons.scss";
-@import "mixins/_breakpoints.scss";
-@import "mixins/_media.scss";
-@import "mixins/_fonts";
+@import "mixins/breakpoints.scss";
+@import "mixins/media.scss";
+@import "mixins/fonts";
 @import "base.scss";
 
 @import "components/button.scss";
-@import "components/swiper-controls.scss";
-@import "components/equipment.scss";
-@import "components/youtube-modal.scss";
+@import "components/breadcrumbs.scss";
 
 @import "modules/header.scss";
-.header__wrapper {
-    border-bottom: none
-}
-@import "modules/hero.scss";
-@import "modules/equipment.scss";
-@import "modules/services.scss";
-.services-section {
-    margin-bottom: 0;
-    @include gap {
-        padding-bottom: 45px
-    }
-}
-@import "modules/banner.scss";
-@import "modules/about.scss";
 @import "modules/footer.scss";

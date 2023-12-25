@@ -3,11 +3,12 @@ extends templates/layout
 block head
     title О компании
     link(rel="stylesheet", href="css/libs/swiper-bundle.min.css")
+    link(rel="stylesheet", href="css/style.min.css")
     link(rel="stylesheet", href="css/about-page.min.css")
 block content 
     section.hero-section
         .hero-section__container.container
-            nav.hero-section__breadcrumbs.breadcrumbs(data-speed="-0.25")  
+            nav.hero-section__breadcrumbs.breadcrumbs.breadcrumbs_white(data-speed="-0.25")  
                 ol.breadcrumbs__list 
                     li.breadcrumbs__item 
                         a.breadcrumbs__link(href="/") Главная
@@ -72,7 +73,6 @@ block content
                         //-     path(d='M5.51083 14.7025H7.30995C7.90613 14.7025 8.38943 14.2192 8.38943 13.623V10.7444C8.38943 10.1482 7.90613 9.66492 7.30995 9.66492H5.51083' stroke='white' stroke-linecap='round' stroke-linejoin='round')
                         //-     path(d='M15.8782 9.97287L13.6494 8.99173C13.2485 8.81531 12.7857 8.85247 12.4182 9.0906L10.7206 10.1904C10.4655 10.3558 10.3016 10.6302 10.277 10.9332C10.2525 11.2362 10.37 11.5334 10.5951 11.7377V11.7377C10.8873 12.0024 11.3096 12.0662 11.6669 11.8997L12.679 11.4269L13.3904 12.0725C13.5983 12.2612 13.7227 12.5248 13.7363 12.8052C13.7498 13.0856 13.6515 13.36 13.4628 13.5679C13.4408 13.5921 13.4177 13.6152 13.3936 13.6374L11.8861 15.0171C11.3906 15.4706 10.6314 15.4723 10.1339 15.0211L9.22768 14.1991C9.00459 14.0011 8.72413 13.8794 8.42711 13.8518' stroke='white' stroke-linecap='round' stroke-linejoin='round')
                         //-     path(d='M8.40369 10.4231L9.97509 9.85673C10.3365 9.73002 10.7355 9.77004 11.0645 9.966' stroke='white' stroke-linecap='round' stroke-linejoin='round')
-
                         h4 Доверие крупнейших игроков рынка
                     article.suggest-section__advantage-item 
                         img.icon.icon_small(src="./images/icons/certificate.svg", alt="")           
@@ -93,10 +93,28 @@ block content
         .timeline-section__header.section__header 
             .container 
                 h2.timeline-section__title.section__title Длительное время держим планку качества
+                .swiper-buttons
+                    .swiper-button-prev.swiper-button_big.swiper-button_white
+                        svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 24' fill='none')
+                            path(d='M6.64645 11.6464C6.45118 11.8417 6.45118 12.1583 6.64645 12.3536L9.82843 15.5355C10.0237 15.7308 10.3403 15.7308 10.5355 15.5355C10.7308 15.3403 10.7308 15.0237 10.5355 14.8284L7.70711 12L10.5355 9.17157C10.7308 8.97631 10.7308 8.65973 10.5355 8.46447C10.3403 8.2692 10.0237 8.2692 9.82843 8.46447L6.64645 11.6464ZM17 11.5L7 11.5L7 12.5L17 12.5L17 11.5Z' fill='currentColor')
+                    .swiper-button-next.swiper-button_big.swiper-button_white
+                        svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 24' fill='none')
+                            path(d='M17.3536 12.3536C17.5488 12.1583 17.5488 11.8417 17.3536 11.6464L14.1716 8.46447C13.9763 8.2692 13.6597 8.2692 13.4645 8.46447C13.2692 8.65973 13.2692 8.97631 13.4645 9.17157L16.2929 12L13.4645 14.8284C13.2692 15.0237 13.2692 15.3403 13.4645 15.5355C13.6597 15.7308 13.9763 15.7308 14.1716 15.5355L17.3536 12.3536ZM7 12.5L17 12.5L17 11.5L7 11.5L7 12.5Z' fill='currentColor')
         .timeline-section__body.section__body 
             .container 
-                .timeline-section__img 
-                    img(src="./images/about/about-2.png", alt="")
+                .timeline-section__img-slider.img-slider 
+                    .swiper 
+                        .swiper-wrapper
+                            .swiper-slide.img-slider__slide
+                                img(src="./images/about/about-2.png", alt="")
+                            .swiper-slide.img-slider__slide
+                                img(src="./images/about/about-1.png", alt="")
+                            .swiper-slide.img-slider__slide
+                                img(src="./images/about/about-2.png", alt="")
+                            .swiper-slide.img-slider__slide
+                                img(src="./images/about/about-2.png", alt="")
+                //- .timeline-section__img 
+                //-     img(src="./images/about/about-2.png", alt="")
                 .timeline-section__slider.timeline-slider 
                     .swiper 
                         .swiper-wrapper 

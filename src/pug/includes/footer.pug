@@ -1,3 +1,12 @@
+mixin col_menu(listItems, title)
+    .footer__col.footer-col 
+        if title 
+            .footer-col__title= title
+        ul.footer-col__menu(class="footer-col__menu footer-col__menu_" + attributes.modificator)
+            each item_url, item_label  in listItems
+                li.footer-col__menu-item
+                    a.footer-col__menu-link(href=item_url)= item_label
+
 footer.footer 
     aside.footer__commercial.commercial
         .footer__running-line.commercial__running-line.running-line 
@@ -197,42 +206,13 @@ footer.footer
                         .footer__contacts-address 129347, Москва, ул. Палехская, д.131
                         a.footer__contacts-mail(href="mailto:info@stellplus.com") info@stellplus.com
                         a.footer__contacts-phone(href="tel:+74959970687") +7 (495) 997-06-87 
-                .footer__col.footer-col 
-                    ul.footer-col__menu.footer-col__menu_main 
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="projects-page.html") Проекты
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="about-page.html") О компании
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="contacts-page.html") Контакты
-                .footer__col.footer-col 
-                    .footer-col__title Услуги
-                    ul.footer-col__menu 
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="single-service-page.html") Консалтинг
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="single-service-page.html") Проектирование
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="single-service.html") Производство
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="single-service-page.html") Доставка
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="single-service-page.html") Обслуживание
-                .footer__col.footer-col 
-                    .footer-col__title продукция
-                    ul.footer-col__menu 
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="equipment-page.html") Складское оборудование
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="equipment-page.html") Торговое оборудование
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="equipment-page.html") Торгово-холодильное оборудование
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="equipment-page.html") Прочее оборудвание
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="equipment-page.html") Кассовые боксы
-                        li.footer-col__menu-item
-                            a.footer-col__menu-link(href="equipment-page.html") Металлическая мебель
+                    //- .footer__col.footer-col 
+                - var firstColMenu = {"Проекты": "projects-page.html", "О компании": "about-page.html", "Контакты": "contacts-page.html"}
+                +col_menu(firstColMenu)(modificator="main")
+                - var secondColMenu = {"Консалтинг": "single-service-page.html", "Проектирование": "single-service-page.html", "Производство": "single-service-page.html", "Доставка": "single-service-page.html", "Обслуживание": "single-service-page.html"}
+                +col_menu(secondColMenu, "услуги")
+                - var thirdColMenu = {"Складское оборудование": "equipment-page.html", "Торговое оборудование": "equipment-page.html", "Торгово-холодильное оборудование": "equipment-page.html", "Прочее оборудвание": "equipment-page.html", "Кассовые боксы": "equipment-page.html", "Металлическая мебель": "equipment-page.html"}
+                +col_menu(thirdColMenu, "продукция")  
         .footer__footer-bottom 
             .container 
                 .footer__col.footer-col.footer__col_main

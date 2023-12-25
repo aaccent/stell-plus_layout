@@ -1,7 +1,8 @@
 extends templates/layout
 
 block head
-    title  
+    title Оборудование
+    link(rel="stylesheet", href="css/style.min.css")
     link(rel="stylesheet", href="css/equipment-page.min.css")
 block header 
     - var color = "white"
@@ -13,12 +14,12 @@ block content
                     p Складское оборудование&nbsp;
         .hero-section__container.container
             .hero-section__content
-                nav.hero-section__breadcrumbs.breadcrumbs(data-speed="-0.25")
-                        ol.breadcrumbs__list 
-                            li.breadcrumbs__item 
-                                a.breadcrumbs__link(href="/") Главная
-                            li.breadcrumbs__item 
-                                a.breadcrumbs__link(href="#") Сладское оборудование
+                nav.hero-section__breadcrumbs.breadcrumbs.breadcrumbs_black(data-speed="-0.25")
+                    ol.breadcrumbs__list 
+                        li.breadcrumbs__item 
+                            a.breadcrumbs__link(href="/") Главная
+                        li.breadcrumbs__item 
+                            a.breadcrumbs__link(href="#") Сладское оборудование
                 .hero-section__model(data-speed="-0.25")
                     video(autoplay loop muted preload="metadata") 
                         source(src="./videos/stellazh.webm", type="video/webm")
@@ -40,25 +41,25 @@ block content
             .container 
                 .equipment__filter-panel.filter-panel
                     .filter-panel__tags 
-                        .filter-panel__tag.tag
+                        .filter-panel__tag.tag(data-value="frontal")
                             span.tag__text Фронтальные стеллажи
                             button.tag__icon(type="button")
-                        .filter-panel__tag.tag
+                        .filter-panel__tag.tag(data-value="pallet")
                             span.tag__text Паллетные стеллажи
                             button.tag__icon(type="button")
-                        .filter-panel__tag.tag
+                        .filter-panel__tag.tag(data-value="deep")
                             span.tag__text Глубинные стеллажи
                             button.tag__icon(type="button")
-                        .filter-panel__tag.tag
+                        .filter-panel__tag.tag(data-value="stacked")
                             span.tag__text Набивные  стеллажи
                             button.tag__icon(type="button")
-                        .filter-panel__tag.tag
+                        .filter-panel__tag.tag(data-value="medium-duty")
                             span.tag__text Среднегрузовые  стеллажи
                             button.tag__icon(type="button")
-                        .filter-panel__tag.tag
+                        .filter-panel__tag.tag(data-value="cantilever")
                             span.tag__text Консольные  стеллажи
                             button.tag__icon(type="button")
-                        .filter-panel__tag.tag
+                        .filter-panel__tag.tag(data-value="mezzanines")
                             span.tag__text Мезонины
                             button.tag__icon(type="button")
                     .tag.tag_clear.tag_disabled 
@@ -67,35 +68,35 @@ block content
         .equipment__body.section__body
             .container
                 .equipment__grid
-                    a.equipment-item(href="./single-product-page.html")
+                    a.equipment-item(href="./single-product-page.html" data-type="frontal")
                         .equipment-item__img 
                             img(src="./images/equipments/equipment-5.png", alt="")
                         h4.equipment-item__name Фронтальный стеллаж
-                    a.equipment-item(href="./single-product-page.html")
+                    a.equipment-item(href="./single-product-page.html" data-type="frontal")
                         .equipment-item__img 
                             img(src="./images/equipments/equipment.png", alt="")
                         h4.equipment-item__name Набивной стеллаж
-                    a.equipment-item(href="./single-product-page.html")
-                            .equipment-item__img 
-                                img(src="./images/equipments/equipment-6.png", alt="")
-                            h4.equipment-item__name Тоннельный стеллаж
-                    a.equipment-item(href="./single-product-page.html")
+                    a.equipment-item(href="./single-product-page.html" data-type="stacked")
+                        .equipment-item__img 
+                            img(src="./images/equipments/equipment-6.png", alt="")
+                        h4.equipment-item__name Тоннельный стеллаж
+                    a.equipment-item(href="./single-product-page.html" data-type="cantilever")
                         .equipment-item__img 
                             img(src="./images/equipments/equipment-7.png", alt="")
                         h4.equipment-item__name Гравитационный стеллаж
-                    a.equipment-item(href="./single-product-page.html")
+                    a.equipment-item(href="./single-product-page.html" data-type="cantilever")
                         .equipment-item__img 
                             img(src="./images/equipments/equipment-8.png", alt="")
                         h4.equipment-item__name Мобильный стеллаж
-                    a.equipment-item(href="./single-product-page.html")
+                    a.equipment-item(href="./single-product-page.html" data-type="stacked")
                         .equipment-item__img 
                             img(src="./images/equipments/equipment-9.png", alt="")
                         h4.equipment-item__name Глубинный стеллаж
-                    a.equipment-item(href="./single-product-page.html")
+                    a.equipment-item(href="./single-product-page.html" data-type="pallet")
                         .equipment-item__img 
                             img(src="./images/equipments/equipment-10.png", alt="")
                         h4.equipment-item__name Въездной стеллаж
-                    a.equipment-item(href="./single-product-page.html")
+                    a.equipment-item(href="./single-product-page.html" data-type="pallet")
                         .equipment-item__img 
                             img(src="./images/equipments/equipment-11.png", alt="")
                         h4.equipment-item__name Фронтальный стеллаж

@@ -2,6 +2,7 @@ import { handleSwipe } from "../modules/swipe-hint.js"
 
 const innerBannerSwiper = new Swiper(".banner-slider_inner .swiper", {
     slidesPerView: 1,
+    loop: true,
     // observer: true,
     // observeParents: true,
     // resizeObserver: true,
@@ -34,6 +35,7 @@ const innerBannerSwiper = new Swiper(".banner-slider_inner .swiper", {
 
 const outerBannerSwiper = new Swiper(".banner-slider_outer .swiper", {
     slidesPerView: 1,
+    loop: true,
     speed: 800,
 })
 

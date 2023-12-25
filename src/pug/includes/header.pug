@@ -1,3 +1,10 @@
+mixin subMenu(listItems)
+    .header__submenu
+        ul.header__submenu-list
+            each item_url, item_label  in listItems
+                li.header__submenu-item
+                    a.header__submenu-link(href=item_url)= item_label
+
 header.header(class=color && "header_" + color)
     .header__container.container
         a.header__logo.logo(href="/") 
@@ -9,49 +16,24 @@ header.header(class=color && "header_" + color)
             ul.header__menu-list
                 li.header__menu-item
                     a.header__menu-link(href="#") Продукция
-                    .header__submenu
-                        ul.header__submenu-list
-                            li.header__submenu-item 
-                                a.header__submenu-link(href="equipment-page.html") Складское оборудование
-                            li.header__submenu-item 
-                                a.header__submenu-link(href="equipment-page.html") Торговое оборудование
-                            li.header__submenu-item 
-                                a.header__submenu-link(href="equipment-page.html") Торг. холодильное оборудование
-                            li.header__submenu-item 
-                                a.header__submenu-link(href="equipment-page.html") Кассовые боксы
-                            li.header__submenu-item 
-                                a.header__submenu-link(href="equipment-page.html") Металлическая мебель
-                            li.header__submenu-item 
-                                a.header__submenu-link(href="equipment-page.html") Прочее оборудование
+                    - var productsSubMenu = {"Складское оборудование": "equipment-page.html", "Торговое оборудование": "equipment-page.html", "Торг. холодильное оборудование": "equipment-page.html", "Кассовые боксы": "equipment-page.html", "Прочее оборудование": "equipment-page.html"}
+                    +subMenu(productsSubMenu)
                 li.header__menu-item
                     a.header__menu-link(href="#") Услуги
-                    .header__submenu
-                        ul.header__submenu-list
-                            li.header__submenu-item 
-                                a.header__submenu-link(href="single-service-page.html") Услуга 1
-                            li.header__submenu-item 
-                                a.header__submenu-link(href="single-service-page.html") Услуга 2
-                            li.header__submenu-item 
-                                a.header__submenu-link(href="single-service-page.html") Услуга 3
+                    - var servicesSubMenu = {"Услуга 1": "single-service-page.html", "Услуга 2": "single-service-page.html", "Услуга 3": "single-service-page.html",}
+                    +subMenu(servicesSubMenu)
                 li.header__menu-item
                     a.header__menu-link(href="projects-page.html") Проекты
                 li.header__menu-item
                     a.header__menu-link(href="#") Компания
-                    .header__submenu
-                        ul.header__submenu-list
-                            li.header__submenu-item 
-                                a.header__submenu-link(href="about-page.html") О нас
-                            li.header__submenu-item 
-                                a.header__submenu-link(href="#") Блог 
-                            li.header__submenu-item 
-                                a.header__submenu-link(href="typical-page.html") Информация
+                    - var aboutSubMenu = {"О нас": "about-page.html", "Блог": "#", "Информация": "typical-page.html"}
+                    +subMenu(aboutSubMenu)
                 li.header__menu-item
                     a.header__menu-link(href="contacts-page.html") Контакты
         .header__actions 
             .header__phone 
                 a.header__phone-link(href="tel:+74959970687") +7 (495) 997-06-87 
                 a.header__phone-link.header__phone-link_icon.icon-phone(href="tel:+74959970687")
-                    
             .header__dropdown 
                 .header__dropdown-head.site-lang_min
                     img.site-lang__img(src="./images/ru-flag_icon.webp", alt="")

@@ -26,10 +26,6 @@
     }
 }
 
-// .swiper-button-prev {
-//     transform: rotate(-180deg);
-// }
-
 // customize
 .swiper-pagination-divider,
 .swiper-pagination-total {
@@ -73,5 +69,62 @@
         bottom: 40px;
         right: 50%;
         transform: translate(50%, 0);
+    }
+}
+
+.swiper-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.swiper-button {
+    &_big {
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 3.125rem;
+        display: block;
+        padding: 1.5rem 4.625rem;
+        width: auto;
+        height: auto;
+        transition: all 0.3s ease 0s;
+        svg {
+            width: 2rem;
+            height: 2rem;
+            vertical-align: top;
+        }
+        span {
+            font-size: inherit;
+        }
+
+        @include min_container {
+            // border-radius: calc(50px + 50 * var(--screen-diff));
+            // font-size: calc(32px + 32 * var(--screen-diff));
+            // padding: 0.75em 2.3125em
+        }
+        @media (min-width: 768px) and (max-width: 1680px) {
+            padding-left: calc(37px + 37 * (100vw - 768px) / (1680 - 768));
+            padding-right: calc(37px + 37 * (100vw - 768px) / (1680 - 768));
+            padding-top: calc(12px + 12 * (100vw - 768px) / (1680 - 768));
+            padding-bottom: calc(12px + 12 * (100vw - 768px) / (1680 - 768));
+        }
+        // @include phone {
+        //     padding: 12px;
+        // }
+    }
+    &_black {
+        border-color: rgba($color: $base-4, $alpha: 0.2);
+        color: $base-4;
+        @include ishover {
+            background-color: $base-2;
+            border-color: $base-2;
+        }
+    }
+    &_white {
+        border-color: rgba($color: $base-1, $alpha: 0.2);
+        color: $base-1;
+        @include ishover {
+            background-color: $base-1;
+            color: $base-4;
+        }
     }
 }

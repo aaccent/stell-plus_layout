@@ -26,9 +26,32 @@
         }
     }
     &__link {
-        color: $base-1;
         font-size: 1em;
         text-transform: uppercase;
         white-space: nowrap;
+    }
+    &_white {
+        .breadcrumbs__link {
+            color: $base-1;
+        }
+        .breadcrumbs__item {
+            &:not(:last-child) {
+                &:after {
+                    color: $base-1;
+                }
+            }
+        }
+    }
+    &_black {
+        .breadcrumbs__link {
+            color: $base-4;
+        }
+        .breadcrumbs__item {
+            &:not(:last-child) {
+                &:after {
+                    color: $base-4;
+                }
+            }
+        }
     }
 }

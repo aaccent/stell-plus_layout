@@ -3,6 +3,7 @@ extends templates/layout
 block head
     title Продукция
     link(rel="stylesheet", href="css/libs/swiper-bundle.min.css")
+    link(rel="stylesheet", href="css/style.min.css")
     link(rel="stylesheet", href="css/single-product-page.min.css")
 block header
     - var color = "white"
@@ -21,7 +22,7 @@ block content
                         p Фронтальный стеллаж&nbsp;
             .hero-section__container.container
                 .hero-section__content
-                    nav.hero-section__breadcrumbs.breadcrumbs 
+                    nav.hero-section__breadcrumbs.breadcrumbs.breadcrumbs_black 
                         ol.breadcrumbs__list 
                             li.breadcrumbs__item 
                                 a.breadcrumbs__link(href="/") Главная

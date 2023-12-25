@@ -4,6 +4,10 @@ import { linesAnimation } from "./modules/animation-templates.js";
 const scroll = new LocomotiveScroll();
 
 const clearTagEl = document.querySelector(".tag_clear")
+// const equipments = document.querySelectorAll(".equipment-item");
+// const equipmentsContainer = document.querySelector(".equipment__grid")
+// let currentFilters = []
+// let filterMethod = Array.prototype.filter
 
 document.querySelectorAll(".tag").forEach(tagEl => {
     tagEl.addEventListener("click", e => {
@@ -16,6 +20,19 @@ document.querySelectorAll(".tag").forEach(tagEl => {
             tagEl.classList.add("tag_disabled")
         // клик по фильтру
         } else {
+
+            // if (targetEl.classList.contains("tag_selected")) {
+            //     targetEl.classList.remove("tag_selected")
+            //     const filterIdx = currentFilters.indexOf(targetEl.dataset.value)
+            //     currentFilters = [
+            //         ...currentFilters.slice(0, filterIdx),
+            //         ...currentFilters.slice(filterIdx + 1)
+            //     ]
+                
+            // } else {
+            //     targetEl.classList.add("tag_selected")
+            //     currentFilters.push(targetEl.dataset.value)
+            // }
             targetEl.classList.toggle("tag_selected")
             if (!document.querySelectorAll(".tag_selected").length) {
                 clearTagEl.classList.add("tag_disabled")
@@ -39,21 +56,7 @@ heroTimeline
         opacity: 0,
         duration: 0.6,
         ease: "power1.out",
-        onStart: () => { 
-            // let duration = getComputedStyle(document.querySelector(".hero-section__running-line .running-line__wrapper")).animationDuration
-            // duration = parseInt(duration) * document.querySelector(".hero-section__running-line").offsetWidth / document.querySelector(".hero-section__running-line .running-line__wrapper").offsetWidth
-            document.querySelector(".hero-section__content").style.opacity = 1;
-            // document.querySelector(".hero-section__running-line").style = `
-            //     transform: translate(-50%, -50%);
-            //     transition-property: transform;
-            //     transition-timing-function: linear;
-            //     transition-duration: ${duration}s;
-            // `
-            // document.querySelector(".hero-section__running-line .running-line__wrapper").style = `
-            //     animation-delay: ${duration}s;
-            //     animation-play-state: running
-            // `
-        }
+        onStart: () => document.querySelector(".hero-section__content").style.opacity = 1
     })
     .from(heroTitleSplit.lines, linesAnimation, "<0.3")
     .from(".hero-section__stat-value", {

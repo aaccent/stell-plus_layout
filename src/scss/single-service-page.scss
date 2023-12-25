@@ -1,17 +1,11 @@
 @import "base/_vars.scss";
-@import "base/_fonts.scss";
-@import "base/_icons.scss";
 @import "mixins/breakpoints.scss";
 @import "mixins/media.scss";
 @import "mixins/fonts";
-@import "base.scss";
 
-@import "components/button.scss";
-@import "components/breadcrumbs.scss";
 @import "components/project.scss";
 @import "components/person-info.scss";
 @import "components/video.scss";
-@import "components/youtube-modal.scss";
 
 @import "blocks/hero.scss";
 @import "blocks/projects.scss";
@@ -464,6 +458,3 @@
 .projects-section {
     background-color: $base-1
 }
-@import "modules/header.scss";
-
-@import "modules/footer.scss";

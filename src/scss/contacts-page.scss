@@ -1,13 +1,9 @@
 @import "base/_vars.scss";
-@import "base/_fonts.scss";
-@import "base/_icons.scss";
 @import "mixins/_breakpoints.scss";
 @import "mixins/_media.scss";
 @import "mixins/_fonts";
-@import "base.scss";
 
-@import "components/breadcrumbs.scss";
-@import "components/button.scss";
+@import "components/swiper-controls";
 
 body {
     background-color: #333
@@ -17,7 +13,6 @@ body {
     margin: 2rem 0 1.25rem
 }
 
-@import "modules/header.scss";
 
 .map-section {
     &__title {
@@ -208,6 +203,7 @@ body {
         display: flex;
         gap: 2rem;
         flex-wrap: wrap;
+        margin-right: 1rem;
     }
     &__info-col {
         display: flex;
@@ -225,26 +221,27 @@ body {
             margin-bottom: calc(6 / 18 * 1em);
         }
     }
+    .swiper-buttons {
+        align-self: flex-end;
+        margin-left: auto;
+    }
     &__departments {
         margin: 4rem 0 0;
         transition: opacity 0.3s ease 0s
     }
     &__department {
         display: none;
-        grid-template-columns: repeat(auto-fit, minmax(305px, 1fr));
-        column-gap: 1rem;
-        row-gap: 1.5rem;
+        // column-gap: 1rem;
+        // row-gap: 1.5rem;
         &_active {
-            display: grid;
+            display: block;
         }
         @include gap {
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            // grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
             margin-top: 32px;
         }
-        @media (max-width: 615px) {
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 380px;
+        .swiper-wrapper {
+            height: auto;
         }
     }
     @include min_container {
@@ -258,8 +255,11 @@ body {
     }
     @include tablet {
         .section__info {
-            flex-direction: column;
-            gap: 24px;
+            flex-wrap: wrap;
+            // gap: 24px;
+        }
+        &__tab-panel {
+            flex-basis: 100%;
         }
     }
     @include gap {
@@ -279,6 +279,9 @@ body {
             & > div {
                 white-space: nowrap;
             }
+        }
+        &__departments {
+            margin: 2rem 0 0;
         }
     }
 }
@@ -322,5 +325,3 @@ body {
         }
     }
 }
-
-@import "modules/footer.scss";

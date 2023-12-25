@@ -1,15 +1,8 @@
 @import "base/_vars.scss";
-@import "base/_fonts.scss";
-@import "base/_icons.scss";
 @import "mixins/_breakpoints.scss";
 @import "mixins/_media.scss";
 @import "mixins/_fonts";
-@import "base.scss";
 
-@import "components/breadcrumbs.scss";
-@import "components/button.scss";
-
-@import "modules/header.scss";
 
 body {
     background-color: $base-4;

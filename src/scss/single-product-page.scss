@@ -1,13 +1,9 @@
 @import "base/_vars.scss";
-@import "base/_fonts.scss";
-@import "base/_icons.scss";
 @import "mixins/breakpoints.scss";
 @import "mixins/media.scss";
 @import "mixins/fonts";
 @import "base.scss";
 
-@import "components/button.scss";
-@import "components/breadcrumbs.scss";
 @import "components/popup.scss";
 @import "components/project.scss";
 
@@ -202,6 +198,7 @@ tbody td {
 }
 
 @import "blocks/hero.scss";
+
 .hero-section {
     &__content {
         opacity: 0;
@@ -210,16 +207,6 @@ tbody td {
         position: absolute;
         top: 0;
         left: 0;
-        .breadcrumbs__link {
-            color: $base-4
-        }
-        .breadcrumbs__item {
-            &:not(:last-child) {
-                &:after {
-                    color: $base-4;
-                }
-            }
-        }
     }
     &__etc {
         @include text_t5;
@@ -267,7 +254,6 @@ tbody td {
         }
     }
 }
-@import "modules/header.scss";
 
 .product-section {
     background-color: #F0F0F0;
@@ -377,4 +363,3 @@ tbody td {
         }
     }
 }
-@import "modules/footer.scss";

@@ -1,30 +1,15 @@
 @import "base/_vars.scss";
-@import "base/_fonts.scss";
-@import "base/_icons.scss";
 @import "mixins/breakpoints.scss";
 @import "mixins/media.scss";
 @import "mixins/fonts";
-@import "base.scss";
 
-@import "components/button.scss";
-@import "components/breadcrumbs";
 @import "components/project.scss";
 
 @import "blocks/projects.scss";
 
 .breadcrumbs {
-    margin: 32px 0 20px;
-    &__item:not(:last-child) {
-        &:after {
-            color: $base-4
-        }
-    }
-    &__link {
-        color: $base-4;
-    }
+    margin: 2rem 0 1.5rem;
 }
-
-@import "modules/header.scss";
 
 .projects-section {
     padding-top: 0 !important;
@@ -58,4 +43,3 @@
         }
     }
 }
-@import "modules/footer.scss";

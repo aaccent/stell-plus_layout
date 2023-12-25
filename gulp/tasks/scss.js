@@ -2,6 +2,7 @@ import dartSass from "sass" // препроцессор
 import gulpSass from "gulp-sass" // плагин для запуска препроцессора
 import rename from "gulp-rename"
 import webpCss from "gulp-webp-css"
+import cssbeautify from "gulp-cssbeautify"
 
 import cleanCss from "gulp-clean-css"
 import autoprefixer from "gulp-autoprefixer"
@@ -21,6 +22,7 @@ const scss = () => {
             cascade: true
         }))
         .pipe(cleanCss())
+        .pipe(cssbeautify())
         .pipe(rename({
             extname: ".min.css"
         }))

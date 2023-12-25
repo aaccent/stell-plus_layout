@@ -1,113 +1,91 @@
 import { handleSwipe } from "./modules/swipe-hint.js"
 import { imgOpacityAnimation, imgScaleAnimation } from "./modules/animation-templates.js"
 
-new Swiper (".section__images.swiper", {
-    slidesPerView: 1.1,
-    spaceBetween: 16,
-    watchOverflow: true,
-    breakpoints: {
-        768: {
-            slidesPerView: 2
-        }
-    },
-})
-
-new Swiper(".equipments-slider", {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    breakpoints: {
-        480: {
-            slidesPerView: "2",
-            spaceBetween: 16,
+if (document.querySelector(".section__images")) {
+    new Swiper (".section__images.swiper", {
+        slidesPerView: 1.1,
+        spaceBetween: 16,
+        watchOverflow: true,
+        breakpoints: {
+            768: {
+                slidesPerView: 2
+            }
         },
-        768: {
-            slidesPerView: "3"
+    })
+}
+
+if (document.querySelector(".equipments-section")) {
+    new Swiper(".equipments-slider", {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        loop: true,
+        breakpoints: {
+            480: {
+                slidesPerView: 2,
+                spaceBetween: 16,
+            },
+            768: {
+                slidesPerView: 3
+            },
+            1024: {
+                slidesPerView: 4
+            }
         },
-        1024: {
-            slidesPerView: 4
-        }
-    },
-    navigation: {
-        nextEl: ".equipments-section .swiper-button-next",
-        prevEl: ".equipments-section .swiper-button-prev",
-    },
-})
-
-new Swiper(".results-slider .swiper", {
-    slidesPerView: 1,
-    spaceBetween: 16,
-    pagination: {
-        el: ".results-slider .swiper-pagination",
-        type: "fraction",
-        formatFractionCurrent: function(current) {
-            return current < 9 ? "0" + current : current
+        navigation: {
+            nextEl: ".equipments-section .swiper-button-next",
+            prevEl: ".equipments-section .swiper-button-prev",
         },
-        formatFractionTotal: function(total) {
-            return total < 9 ? "0" + total : total
+    })
+}
+
+if (document.querySelector(".results-section")) {
+    new Swiper(".results-slider .swiper", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        loop: true,
+        pagination: {
+            el: ".results-slider .swiper-pagination",
+            type: "fraction",
+            formatFractionCurrent: function(current) {
+                return current < 9 ? "0" + current : current
+            },
+            formatFractionTotal: function(total) {
+                return total < 9 ? "0" + total : total
+            },
+            renderFraction: function (currentClass, totalClass) {
+                return '<span class="' + currentClass + '"></span>' +
+                '<span class="swiper-pagination-divider"> — </span>' +
+                '<span class="' + totalClass + '"></span>';
+            },
         },
-        renderFraction: function (currentClass, totalClass) {
-            return '<span class="' + currentClass + '"></span>' +
-            '<span class="swiper-pagination-divider"> — </span>' +
-            '<span class="' + totalClass + '"></span>';
+        navigation: {
+            nextEl: ".results-slider .swiper-button-next",
+            prevEl: ".results-slider .swiper-button-prev",
         },
-    },
-    navigation: {
-        nextEl: ".results-slider .swiper-button-next",
-        prevEl: ".results-slider .swiper-button-prev",
-    },
-})
+    })
+}
 
-let projectsSwiper = new Swiper(".projects-slider .swiper", {
-    slidesPerView: 1,
-    spaceBetween: 16,
-    breakpoints: {
-        860: {
-            slidesPerView: 2
-        }
-    },
-    navigation: {
-        nextEl: ".projects-section .swiper-button-next",
-        prevEl: ".projects-section .swiper-button-prev",
-    },
-    // on: {
-    //     touchStart: function(swiper) {
-    //         if (isMobile.any()) {
-    //             return
-    //         }
-    //         swiper.el.querySelector(".swiper-swipe").classList.add("swiper-swipe_grab")
-    //     },
-    //     touchMove: function(swiper, event) {
-    //         if (isMobile.any()) {
-    //             return
-    //         }
+if (document.querySelector(".projects-section")) {
+    let projectsSwiper = new Swiper(".projects-slider .swiper", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        loop: true,
+        breakpoints: {
+            860: {
+                slidesPerView: 2
+            }
+        },
+        navigation: {
+            nextEl: ".projects-section .swiper-button-next",
+            prevEl: ".projects-section .swiper-button-prev",
+        },
+    })
+    
+    handleSwipe(projectsSwiper)
+}
 
-    //         let swipeHint = swiper.el.querySelector(".swiper-swipe")
-
-    //         let coordX = event.screenX - swipeHint.offsetWidth * 0.4;
-    //         let coordY = event.clientY - swipeHint.offsetHeight * 0.4;
-
-    //         if (!swipeHint.classList.contains("swiper-swipe_show")) {
-    //             swipeHint.classList.add("swiper-swipe_show")
-    //         }
-    //         swipeHint.style.cssText = `
-    //             position: fixed;
-    //             top: ${coordY}px;
-    //             left: ${coordX}px;
-    //         `            
-    //     },
-    //     touchEnd: function(swiper) {
-    //         if (isMobile.any()) {
-    //             return
-    //         }
-    //         swiper.el.querySelector(".swiper-swipe").classList.remove("swiper-swipe_grab")
-    //     }
-    // }
-})
-
-handleSwipe(projectsSwiper)
 
 // animations
-
 let bannerTimeline = gsap.timeline()
 
 bannerTimeline
@@ -137,6 +115,16 @@ sectionImgEls.forEach(sectionImgEl => {
         .from(sectionImgEl, imgOpacityAnimation, "<")
 })
 
+gsap.from(".equipments-section .swiper-buttons", {
+    scrollTrigger: {
+        trigger: ".equipments-section .section__header",
+        start: "top 80%"
+    },
+    yPercent: 10,
+    opacity: 0,
+    duration: 0.6
+})
+
 gsap.from(".equipments-slider", {
     scrollTrigger: {
         trigger: ".equipments-slider",
@@ -164,6 +152,15 @@ resultImgEls.forEach(resultImgEl => {
         .from(resultImgEl, imgOpacityAnimation, "<")
 })
 
+gsap.from(".projects-section .swiper-buttons", {
+    scrollTrigger: {
+        trigger: ".projects-section .section__header",
+        start: "top 80%"
+    },
+    yPercent: 10,
+    opacity: 0,
+    duration: 0.6
+})
 
 let projectEls = gsap.utils.toArray(".project")
 projectEls.forEach((projectEl, i) => {

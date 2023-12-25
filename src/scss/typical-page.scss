@@ -1,15 +1,9 @@
 @import "base/_vars.scss";
-@import "base/_fonts.scss";
-@import "base/_icons.scss";
 @import "mixins/breakpoints.scss";
 @import "mixins/media.scss";
 @import "mixins/fonts";
-@import "base.scss";
 
-@import "components/button.scss";
-@import "components/breadcrumbs.scss";
 @import "components/video.scss";
-@import "components/youtube-modal.scss";
 
 .breadcrumbs {
     color: $base-4;
@@ -19,7 +13,6 @@
     }
 }
 
-@import "modules/header.scss";
 
 .page {
     color: $base-4;
@@ -173,6 +166,7 @@
         z-index: 3;
     }
 }
+
 .accordion {
     border-top: 1px dashed rgba($color: $base-4, $alpha: 0.25);
     padding: 0 0 1.75rem;
@@ -523,5 +517,3 @@
 //         z-index: 1;
 //     }
 // }
-
-@import "modules/footer.scss";

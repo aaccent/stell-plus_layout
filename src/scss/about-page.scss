@@ -1,14 +1,9 @@
 @import "base/_vars.scss";
-@import "base/_fonts.scss";
-@import "base/_icons.scss";
 @import "mixins/breakpoints.scss";
 @import "mixins/media.scss";
 @import "mixins/fonts";
-@import "base.scss";
 
-@import "components/button.scss";
 @import "components/swiper-controls.scss";
-@import "components/breadcrumbs.scss";
 @import "components/equipment.scss";
 @import "components/person-info.scss";
 
@@ -166,14 +161,18 @@
         }
     }
 }
-@import "modules/header.scss";
 
 .timeline-section {
     background-color: $base-4;
     color: $base-1;
     overflow: hidden;
     &__header {
-        border-color: rgba($color: $base-1, $alpha: 0.25)
+        border-color: rgba($color: $base-1, $alpha: 0.25);
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
     }
     &__title {
         width: 70%;
@@ -184,6 +183,11 @@
             display: flex;
             gap: 70px;
         }
+    }
+    &__img-slider {
+        position: relative;
+        width: calc(723 / 1568 * 100%);
+        z-index: 2;
     }
     &__img {
         border-radius: 16px;
@@ -220,7 +224,7 @@
                 flex-direction: column-reverse;
             }
         }
-        &__img {
+        &__img, &__img-slider {
             width: 100%;
         }
     }
@@ -228,8 +232,32 @@
         &__title {
             width: auto;
         }
-        &__img {
+        &__img-slider {
             height: 450px;
+        }
+    }
+}
+
+.img-slider {
+    .swiper {
+        height: 100%;
+    }
+    .swiper-wrapper {
+        align-items: stretch;
+    }
+    .swiper-slider {
+        height: auto;
+    }
+    &__slide {
+        border-radius: 16px;
+        flex: 0 0 auto;
+        position: relative;
+        overflow: hidden;
+        z-index: 2;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 }
@@ -378,4 +406,3 @@
         }
     }
 }
-@import "modules/footer.scss";

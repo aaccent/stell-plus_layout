@@ -2,14 +2,15 @@ extends templates/layout
 
 block head
     title Проекты
+    link(rel="stylesheet", href="css/style.min.css")
     link(rel="stylesheet", href="css/projects-page.min.css")
 block header
     - var color = "grey"
 block content 
     .page
         .container
-            nav.breadcrumbs 
-                ul.breadcrumbs__list 
+            nav.breadcrumbs.breadcrumbs_black 
+                ol.breadcrumbs__list 
                     li.breadcrumbs__item 
                         a.breadcrumbs__link(href="/") Главная
                     li.breadcrumbs__item 

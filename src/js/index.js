@@ -20,8 +20,10 @@ document.querySelectorAll(".hero-slide__video").forEach(videoButton => {
 })
 
 // sliders
+
 new Swiper(".hero-section__slider .swiper", {
     slidesPerView: 1,
+    loop: true,
     speed: 800,// (getComputedStyle(document.documentElement).getPropertyValue('--screen-diff') && 0),
     observer: true,
     // parallax: true,
@@ -48,25 +50,27 @@ new Swiper(".hero-section__slider .swiper", {
 })
 
 
-new Swiper(".equipment-section__slider .swiper", {
-    slidesPerView: 1,
-    spaceBetween: 16,
-    allowTouchMove: false,
-    breakpoints: {
-        480: {
-            slidesPerView: "2"
+if (document.querySelector(".equipment-section")) {
+    new Swiper(".equipment-section__slider .swiper", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        allowTouchMove: false,
+        breakpoints: {
+            480: {
+                slidesPerView: "2"
+            },
+            768: {
+                slidesPerView: "3"
+            },
+            1024: {
+                slidesPerView: 4
+            }
         },
-        768: {
-            slidesPerView: "3"
-        },
-        1024: {
-            slidesPerView: 4
-        }
-    },
-    allowTouchMove: false
-})
-
-handleEquipmentCard("equipment-section__slider-wrapper")
+        allowTouchMove: false
+    })
+    
+    handleEquipmentCard("equipment-section__slider-wrapper")
+}
 
 // animations
 let heroTitleSplit = new SplitType(".hero-slide__title",{

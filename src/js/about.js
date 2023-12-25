@@ -3,50 +3,74 @@ import { handleSwipe } from "./modules/swipe-hint.js"
 import { handleEquipmentCard } from "./modules/equipment-item.js"
 import { imgOpacityAnimation, imgScaleAnimation, linesAnimation, textAnimation } from "./modules/animation-templates.js"
 
-let timelineSwiper = new Swiper(".timeline-slider .swiper", {
-    slidesPerView: 1,
-    spaceBetween: 55,
-    scrollbar: {
-        el: ".timeline-slider .swiper-scrollbar",
-        draggable: true
-    }
-})
 
-handleSwipe(timelineSwiper)
+if (document.querySelector(".timeline-section")) {
+    let imgSwiper = new Swiper(".img-slider .swiper", {
+        slidesPerView: 1,
+        speed: 800,
+        effect: "fade",
+        fadeEffect: {
+            crossFade: true,
+        },
+        allowTouchMove: false
+    })
 
-new Swiper(".equipment-section__slider .swiper", {
-    slidesPerView: 1,
-    spaceBetween: 16,
-    breakpoints: {
-        480: {
-            slidesPerView: "2"
+    let timelineSwiper = new Swiper(".timeline-slider .swiper", {
+        slidesPerView: 1,
+        spaceBetween: 55,
+        scrollbar: {
+            el: ".timeline-slider .swiper-scrollbar",
+            draggable: true
         },
-        768: {
-            slidesPerView: "3"
-        },
-        1024: {
-            slidesPerView: 4
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
         }
-    },
-})
+    })
 
-handleEquipmentCard("equipment-section__slider-wrapper")
+    // imgSwiper.controller.control = timelineSwiper;
+    timelineSwiper.controller.control = imgSwiper;
+    handleSwipe(timelineSwiper)
+}
 
-let certificateSwiper = new Swiper(".certificates-section__slider .swiper", {
-    slidesPerView: 1,
-    spaceBetween: 16,
-    breakpoints: {
-        576: {
-            slidesPerView: "auto"
+if (document.querySelector(".equipment-section")) {
+    new Swiper(".equipment-section__slider .swiper", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        breakpoints: {
+            480: {
+                slidesPerView: "2"
+            },
+            768: {
+                slidesPerView: "3"
+            },
+            1024: {
+                slidesPerView: 4
+            }
         },
-    },
-    scrollbar: {
-        el: ".swiper-scrollbar",
-        draggable: true
-    }
-})
+    })
 
-handleSwipe(certificateSwiper)
+    handleEquipmentCard("equipment-section__slider-wrapper")
+}
+
+
+if (document.querySelector(".certificates-section")) {
+    let certificateSwiper = new Swiper(".certificates-section__slider .swiper", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        breakpoints: {
+            576: {
+                slidesPerView: "auto"
+            },
+        },
+        scrollbar: {
+            el: ".swiper-scrollbar",
+            draggable: true
+        }
+    })
+    
+    handleSwipe(certificateSwiper)
+}
 
 // animations 
 let heroTitleSplit = new SplitType(".hero-section__title",{

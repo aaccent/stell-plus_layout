@@ -158,8 +158,6 @@ function init() {
         center: [55.75,37.60],
         controls: [],
         zoom: 12,
-    }, {
-        minZoom: 12
     })
 
     let imagesSrc = document.getElementById("map").dataset
@@ -167,7 +165,7 @@ function init() {
     // Создадим пользовательский макет ползунка масштаба.
     let ZoomLayout = ymaps.templateLayoutFactory.createClass(`
         <div id="zoom-controls">
-            <button id='zoom-out' type='button' disabled><img src='${imagesSrc.zoomOutImage}'></button>
+            <button id='zoom-out' type='button'><img src='${imagesSrc.zoomOutImage}'></button>
             <button id='zoom-in' type='button'><img src='${imagesSrc.zoomInImage}'></button>
         </div>`, {
 
@@ -199,17 +197,17 @@ function init() {
         zoomIn: function () {
             let map = this.getData().control.getMap();
             map.setZoom(map.getZoom() + 1, {checkZoomRange: true, duration: 300});
-            if (map.getZoom() >= 12) {
-                document.getElementById("zoom-out").disabled = false
-            }
+            // if (map.getZoom() >= 12) {
+            //     document.getElementById("zoom-out").disabled = false
+            // }
         },
 
         zoomOut: function () {
             let map = this.getData().control.getMap();
             map.setZoom(map.getZoom() - 1, {checkZoomRange: true, duration: 300});
-            if (map.getZoom() <= 13) {
-                document.getElementById("zoom-out").disabled = true
-            }
+            // if (map.getZoom() <= 13) {
+            //     document.getElementById("zoom-out").disabled = true
+            // }
         }
     });
 
@@ -270,10 +268,11 @@ document.querySelectorAll(".departments-section__tab-button").forEach(tabButtonE
         departmentsContainer.addEventListener("transitionend", () => {
             let activeDepartmentClass = "departments-section__department_active"
             departmentsContainer.querySelector("." + activeDepartmentClass).classList.remove(activeDepartmentClass)
-            departmentsContainer.style.opacity = ""
             departmentsContainer.querySelector(".departments-section__department_" + departmentName).classList.add(activeDepartmentClass);
-        
-        }, { once: true })
+            departmentSlider.destroy()
+            initDepartmentSlider()
+            departmentsContainer.style.opacity = "";
+         }, { once: true })
 
     })
 })
@@ -281,85 +280,122 @@ document.querySelectorAll(".departments-section__tab-button").forEach(tabButtonE
 ymaps.ready(init);
 
 
+function initDepartmentSlider() {
+    departmentSlider = new Swiper(".departments-section__department_active .swiper", {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        observer: true,
+        observeParents: true,
+        breakpoints: {
+            576: {
+                slidesPerView: 1.5
+            },
+            961: {
+                slidesPerView: 3
+            },
+            1341: {
+                slidesPerView: 4
+            }
+        },
+        navigation: {
+            nextEl: ".departments-section .swiper-button-next",
+            prevEl: ".departments-section .swiper-button-prev",
+        },
+    })
 
+}
+let departmentSlider 
+initDepartmentSlider()
 // animations
+
+gsap.from(".departments-section .swiper-buttons", {
+    scrollTrigger: {
+        trigger: ".departments-section .section__header",
+        start: "top 80%"
+    },
+    yPercent: 10,
+    opacity: 0,
+    duration: 0.6
+})
 
 let employeeMatchMedia = gsap.matchMedia()
 let employeeEls = gsap.utils.toArray(".departments-section__department_active .employee")
 let paddingValue = window.innerWidth - document.documentElement.clientWidth;
 
-employeeMatchMedia.add({
-    oneColumn: `(max-width: 615px)`,
-    twoColumn: `(max-width: ${987 + paddingValue}px)`,
-    threeColum: `(max-width: ${1307 + paddingValue}px)`,
-    fourColumn: `(min-width: ${1308 + paddingValue}px)`
-}, context => {
-    let { oneColumn, twoColumn, threeColum } = context.conditions
-    employeeEls.forEach((employeeEl, i) => {
-        let tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: employeeEl,
-                start: "top 90%"
-            },
-            delay: () => {
-                if (oneColumn) {
-                    return 0
-                }
-                if (twoColumn) {
-                    return 0.2 * (i % 2)
-                }
-                if (threeColum) {
-                    return 0.2 * (i % 3)
-                }
-                return 0.2 * (i % 4)
-            },
-        })
-        tl.from(employeeEl.querySelector("img"), imgScaleAnimation)
-        tl.from(employeeEl.querySelector("img"), imgOpacityAnimation, "<")
-        tl.from(employeeEl.querySelectorAll(".employee__position, .employee__name, .employee__email"), {
-            yPercent: 100,
-            opacity: 0,
-            duration: 0.5,
-        }, ">") 
-        // gsap.from(employeeEl, {
-        //     scrollTrigger: {
-        //         trigger: employeeEl,
-        //         start: "top 80%"
-        //     },
-        //     y: 100,
-        //     opacity: 0,
-        //     duration: 0.5,
-        //     delay: () => {
-        //         if (oneColumn) {
-        //             return 0
-        //         }
-        //         if (twoColumn) {
-        //             return 0.2 * (i % 2)
-        //         }
-        //         if (threeColum) {
-        //             return 0.2 * (i % 3)
-        //         }
-        //         return 0.2 * (i % 4)
-        //     },
-        //     // stagger: {
-        //     //     amount: 0.4
-        //     // }
-        // })
-    })
-})
+
+// employeeMatchMedia.add({
+//     oneColumn: `(max-width: 615px)`,
+//     twoColumn: `(max-width: ${987 + paddingValue}px)`,
+//     threeColum: `(max-width: ${1307 + paddingValue}px)`,
+//     fourColumn: `(min-width: ${1308 + paddingValue}px)`
+// }, context => {
+//     let { oneColumn, twoColumn, threeColum } = context.conditions
+//     employeeEls.forEach((employeeEl, i) => {
+//         let tl = gsap.timeline({
+//             scrollTrigger: {
+//                 trigger: employeeEl,
+//                 start: "top 90%"
+//             },
+//             delay: () => {
+//                 if (oneColumn) {
+//                     return 0
+//                 }
+//                 if (twoColumn) {
+//                     return 0.2 * (i % 2)
+//                 }
+//                 if (threeColum) {
+//                     return 0.2 * (i % 3)
+//                 }
+//                 return 0.2 * (i % 4)
+//             },
+//         })
+//         tl.from(employeeEl.querySelector("img"), imgScaleAnimation)
+//         tl.from(employeeEl.querySelector("img"), imgOpacityAnimation, "<")
+//         tl.from(employeeEl.querySelectorAll(".employee__position, .employee__name, .employee__email"), {
+//             yPercent: 100,
+//             opacity: 0,
+//             duration: 0.5,
+//         }, ">") 
+//         // gsap.from(employeeEl, {
+//         //     scrollTrigger: {
+//         //         trigger: employeeEl,
+//         //         start: "top 80%"
+//         //     },
+//         //     y: 100,
+//         //     opacity: 0,
+//         //     duration: 0.5,
+//         //     delay: () => {
+//         //         if (oneColumn) {
+//         //             return 0
+//         //         }
+//         //         if (twoColumn) {
+//         //             return 0.2 * (i % 2)
+//         //         }
+//         //         if (threeColum) {
+//         //             return 0.2 * (i % 3)
+//         //         }
+//         //         return 0.2 * (i % 4)
+//         //     },
+//         //     // stagger: {
+//         //     //     amount: 0.4
+//         //     // }
+//         // })
+//     })
+// })
 
 
-let roundedSectionEls = gsap.utils.toArray(".map-section__body")
-roundedSectionEls.forEach(sectionEl => {
-    ScrollTrigger.create({
-        trigger: sectionEl,
-        start: () => {
-            let remValue = getComputedStyle(document.documentElement).fontSize;
-            return sectionEl.offsetHeight < window.innerHeight ? `-5% top` : "bottom bottom"
-        },
-        // end: "+= ",
-        pin: true,
-        pinSpacing: false,
-        pinContainer: ".page"
-    })
-})
+// let roundedSectionEls = gsap.utils.toArray(".map-section__body")
+// roundedSectionEls.forEach(sectionEl => {
+//     ScrollTrigger.create({
+//         trigger: sectionEl,
+//         start: () => {
+//             let remValue = getComputedStyle(document.documentElement).fontSize;
+//             return sectionEl.offsetHeight < window.innerHeight ? `-5% top` : "bottom bottom"
+//         },
+//         // end: "+= ",
+//         pin: true,
+//         pinSpacing: false,
+//         pinContainer: ".page"
+//     })
+// })

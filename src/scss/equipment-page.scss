@@ -1,13 +1,8 @@
 @import "base/_vars.scss";
-@import "base/_fonts.scss";
-@import "base/_icons.scss";
 @import "mixins/breakpoints.scss";
 @import "mixins/media.scss";
 @import "mixins/fonts";
-@import "base.scss";
 
-@import "components/button.scss";
-@import "components/breadcrumbs.scss";
 @import "components/equipment.scss";
 
 .hero-section {
@@ -18,16 +13,6 @@
         position: absolute;
         top: 0;
         left: 0;
-        .breadcrumbs__link {
-            color: $base-4
-        }
-        .breadcrumbs__item {
-            &:not(:last-child) {
-                &:after {
-                    color: $base-4;
-                }
-            }
-        }
     }
     &__head {
         align-items: flex-end;
@@ -59,7 +44,6 @@
         top: 0.5rem
     }
 }
-@import "modules/header.scss";
 @import "modules/equipment.scss";
 
 
