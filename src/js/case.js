@@ -117,10 +117,10 @@ sectionImgEls.forEach(sectionImgEl => {
 
 gsap.from(".equipments-section .swiper-buttons", {
     scrollTrigger: {
-        trigger: ".equipments-section .section__header",
+        trigger: ".equipments-section .swiper-buttons",
         start: "top 80%"
     },
-    yPercent: 10,
+    yPercent: 25,
     opacity: 0,
     duration: 0.6
 })
@@ -154,10 +154,10 @@ resultImgEls.forEach(resultImgEl => {
 
 gsap.from(".projects-section .swiper-buttons", {
     scrollTrigger: {
-        trigger: ".projects-section .section__header",
+        trigger: ".projects-section .swiper-buttons",
         start: "top 80%"
     },
-    yPercent: 10,
+    yPercent: 25,
     opacity: 0,
     duration: 0.6
 })

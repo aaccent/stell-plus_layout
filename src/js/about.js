@@ -197,6 +197,15 @@ advantageMatchMedia.add({
     }
 })
  
+gsap.from(".timeline-section .swiper-buttons", {
+    scrollTrigger: {
+        trigger: ".timeline-section .swiper-buttons",
+        start: "top 80%"
+    },
+    yPercent: 25,
+    opacity: 0,
+    duration: 0.6
+})
 
 gsap.from(".timeline-slider .swiper-wrapper", {
     scrollTrigger: { 

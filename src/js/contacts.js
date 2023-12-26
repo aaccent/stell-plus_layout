@@ -277,7 +277,7 @@ document.querySelectorAll(".departments-section__tab-button").forEach(tabButtonE
     })
 })
 
-ymaps.ready(init);
+// ymaps.ready(init);
 
 
 function initDepartmentSlider() {
@@ -311,7 +311,17 @@ initDepartmentSlider()
 
 gsap.from(".departments-section .swiper-buttons", {
     scrollTrigger: {
-        trigger: ".departments-section .section__header",
+        trigger: ".departments-section .swiper-buttons",
+        start: "top 80%"
+    },
+    yPercent: 25,
+    opacity: 0,
+    duration: 0.6
+})
+
+gsap.from(".departments-section__departments", {
+    scrollTrigger: {
+        trigger: ".departments-section__departments",
         start: "top 80%"
     },
     yPercent: 10,
