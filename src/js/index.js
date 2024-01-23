@@ -134,6 +134,8 @@ gsap.to(".equipment-section__header, .equipment-section__body", {
     }
 });
 
+
+
 let serviceEls = gsap.utils.toArray(".service")
 serviceEls.forEach(serviceEl => {
     gsap.from(serviceEl, {
@@ -229,6 +231,18 @@ mm.add({
 //     scrub: 1,
 //     markers: true,
 // })
+
+// gsap.to(".about-section__stats", {
+//     y: 0.05 * ScrollTrigger.maxScroll(window) ,
+//     ease: "none",
+//     scrollTrigger: {
+//         trigger: ".footer",
+//         start:  "top 80%",
+//         end: "max",
+//         invalidateOnRefresh: true,
+//         scrub: 0
+//     }
+// });
 
 ScrollTrigger.create({
     trigger: document.querySelector("aside"),

@@ -20,7 +20,6 @@ serviceEls.forEach(serviceEl => {
         lock = true
         closeButtonEl.classList.toggle("service__button_open")
 
-
         if (window.innerWidth > 992) {
             contentEl.style.cssText = `
                 height: ${contentEl.offsetHeight}px;
@@ -46,9 +45,12 @@ serviceEls.forEach(serviceEl => {
                     // !isOpen && (contentEl.style.height = "auto");
                     // contentEl.style.opacity = ""
                     serviceEl.classList.toggle("service_open")
-                    contentEl.addEventListener("transitionend", () => lock = false, { once: true }) 
+                    contentEl.addEventListener("transitionend", () => {
+                        ScrollTrigger.refresh(true)
+                        lock = false
+                    }, { once: true }) 
                 }, { once: true })
-
+                
             }, { once: true })
 
         } else {

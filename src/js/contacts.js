@@ -277,16 +277,17 @@ document.querySelectorAll(".departments-section__tab-button").forEach(tabButtonE
     })
 })
 
-// ymaps.ready(init);
-
 
 function initDepartmentSlider() {
+    let loop = document.querySelectorAll(".departments-section__department_active .swiper-slide").length > 4
+
     departmentSlider = new Swiper(".departments-section__department_active .swiper", {
         slidesPerView: 1.2,
         spaceBetween: 16,
-        loop: true,
+        loop,
         observer: true,
         observeParents: true,
+        watchOverflow: true,
         breakpoints: {
             576: {
                 slidesPerView: 1.5
@@ -307,6 +308,9 @@ function initDepartmentSlider() {
 }
 let departmentSlider 
 initDepartmentSlider()
+
+ymaps.ready(init);
+
 // animations
 
 gsap.from(".departments-section .swiper-buttons", {

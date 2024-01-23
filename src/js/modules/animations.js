@@ -3,6 +3,9 @@ let swiperWrapperEl = document.querySelector(".equipment-section__slider .swiper
 let equipmentEls = document.querySelectorAll(".equipment-section__slider .swiper-slide")
 
 gsap.registerPlugin(ScrollTrigger)
+gsap.config({
+    nullTargetWarn: false,
+})
 
 function getScrollAmount() {
 	let swiperWidth = document.querySelector(".equipment-section__slider .swiper").offsetWidth;
@@ -85,12 +88,15 @@ let footerTitleSplit = new SplitType(".footer__contact-us-title",{
     tagName: "span"
 });
   
+
 ScrollTrigger.create({
     trigger: document.querySelector(".footer").previousElementSibling,
     start:  document.querySelector(".footer").previousElementSibling.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
     pin: true,
-    pinSpacing: false
+    pinSpacing: false,
+    scrub: 1,
 })
+
 
 let footerTween = gsap.to(".footer__commercial", {
     marginBottom: () => -document.querySelector(".footer__commercial").offsetHeight,

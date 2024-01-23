@@ -78,7 +78,7 @@
 }
 
 .swiper-button {
-    &_big {
+    &_big:not(.swiper-button-lock) {
         border-style: solid;
         border-width: 1px;
         border-radius: 3.125rem;

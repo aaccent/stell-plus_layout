@@ -12,14 +12,21 @@ const scroll = new LocomotiveScroll();
 
 const projects = document.querySelector(".projects-section")
 const projectsButton = document.querySelector(".hero-section__projects")
+const arrowButton = document.querySelector(".hero-section__button");
 
 projectsButton.addEventListener("click", (e) => {
     e.preventDefault()
-    scroll.scrollTo(projects, {
-            duration: 1500,
-        }
-    )
+    scroll.scrollTo(projects)
 })
+
+arrowButton.addEventListener("click", (e) => {
+    e.preventDefault()
+    scroll.scrollTo(document.querySelector(".hero-section").parentElement.nextElementSibling, {
+        offset: 2 * parseFloat(getComputedStyle(document.documentElement).fontSize)
+
+    })
+})
+
 
 // animations
 let heroTitleSplit = new SplitType(".hero-section__title",{
@@ -236,7 +243,7 @@ gsap.to(".services-section__header, .services-section__list", {
     y: 0.15 * ScrollTrigger.maxScroll(window),
     ease: "none",
     scrollTrigger: {
-        trigger: ".services-section + .pin-spacer",
+        trigger: ".projects-section", //".services-section + .pin-spacer",
         start: "top 60%",
         end: "max",
         invalidateOnRefresh: true,

@@ -2,7 +2,18 @@ import "./components/banner-slider.js"
 import { handleSwipe } from "./modules/swipe-hint.js"
 import { handleEquipmentCard } from "./modules/equipment-item.js"
 import { imgOpacityAnimation, imgScaleAnimation, linesAnimation, textAnimation } from "./modules/animation-templates.js"
+import LocomotiveScroll from "locomotive-scroll"
 
+const scroll = new LocomotiveScroll();
+const arrowButton = document.querySelector(".hero-section__button");
+
+arrowButton.addEventListener("click", (e) => {
+    e.preventDefault()
+    scroll.scrollTo(document.querySelector(".hero-section").parentElement.nextElementSibling, {
+        offset: 2 * parseFloat(getComputedStyle(document.documentElement).fontSize)
+
+    })
+})
 
 if (document.querySelector(".timeline-section")) {
     let imgSwiper = new Swiper(".img-slider .swiper", {
@@ -216,15 +227,15 @@ gsap.from(".timeline-slider .swiper-wrapper", {
     duration: 0.5,
 })
 
-let timelime = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".timeline-section__img",
-        start: "top 80%"
-    }
-})
-timelime
-    .from(".timeline-section__img img", imgScaleAnimation)
-    .from(".timeline-section__img", imgOpacityAnimation, "<")
+// let timelime = gsap.timeline({
+//     scrollTrigger: {
+//         trigger: ".timeline-section__img",
+//         start: "top 80%"
+//     }
+// })
+// timelime
+//     .from(".timeline-section__img img", imgScaleAnimation)
+//     .from(".timeline-section__img", imgOpacityAnimation, "<")
 
 gsap.from(".equipment-section__info", {
     scrollTrigger: {
@@ -245,26 +256,28 @@ gsap.from(".equipment-section__slider", {
 })
 
 let bannerSlideEls = gsap.utils.toArray(".banner-slide")
-
-bannerSlideEls.forEach((bannerSlideEl, i) => {
-    let tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: bannerSlideEl,
-            start: "top 90%"
-        },
-        onStart: () => {
-            if (i === 0) {
-                gsap.from(".banner-slider_inner", {
-                    opacity: 0,
-                    duration: 0.9,
-                    delay: 0.5
-                })
+if (bannerSlideEls.length) {
+    bannerSlideEls.forEach((bannerSlideEl, i) => {
+        console.log(bannerSlideEl)
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: bannerSlideEl,
+                start: "top 90%"
+            },
+            onStart: () => {
+                if (i === 0) {
+                    gsap.from(".banner-slider_inner", {
+                        opacity: 0,
+                        duration: 0.9,
+                        delay: 0.5
+                    })
+                }
             }
-        }
+        })
+        tl.from(bannerSlideEl.querySelector("img"), imgScaleAnimation)
+        tl.from(bannerSlideEl.querySelector("img"), imgOpacityAnimation, "<")
     })
-    tl.from(bannerSlideEl.querySelector("img"), imgScaleAnimation)
-    tl.from(bannerSlideEl.querySelector("img"), imgOpacityAnimation, "<")
-})
+}
 
 gsap.from(".certificates-section__slider .swiper", {
     scrollTrigger: {
