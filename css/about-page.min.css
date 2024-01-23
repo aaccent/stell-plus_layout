@@ -63,7 +63,7 @@
     gap: 1rem
 }
 
-.swiper-button_big {
+.swiper-button_big:not(.swiper-button-lock) {
     border-style: solid;
     border-width: 1px;
     border-radius: 3.125rem;
@@ -76,13 +76,13 @@
     transition: all .3s ease 0s
 }
 
-.swiper-button_big svg {
+.swiper-button_big:not(.swiper-button-lock) svg {
     width: 2rem;
     height: 2rem;
     vertical-align: top
 }
 
-.swiper-button_big span {
+.swiper-button_big:not(.swiper-button-lock) span {
     font-size: inherit
 }
 
@@ -1396,7 +1396,7 @@
 }
 
 @media (min-width:768px) and (max-width:1680px) {
-    .swiper-button_big {
+    .swiper-button_big:not(.swiper-button-lock) {
         padding-left: calc(37px + 37 * (100vw - 768px)/ 912);
         padding-right: calc(37px + 37 * (100vw - 768px)/ 912);
         padding-top: calc(12px + 12 * (100vw - 768px)/ 912);
