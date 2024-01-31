@@ -14,4 +14,7 @@ window.addEventListener('resize', () => {
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 
+window.addEventListener("DOMContentLoaded", () => {
+  
+})
 
