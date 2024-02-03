@@ -28,7 +28,7 @@
     &__menu {
         position: absolute;
         top: 50%;
-        left: 50%;
+        left: calc(50% - 0.5 * var(--padding-value));
         transform: translate(-50%, -50%);
         margin: 0 20px;
     }

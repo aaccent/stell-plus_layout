@@ -102,8 +102,11 @@ input {
 .container {
     margin: 0 auto;
     padding: 0 1.25rem; //20px;
+    padding-right: calc(var(--padding-value) + 1.25rem);
+    padding-left: 1.25rem;
     width: 100%;
     max-width: 100.5rem; //1608px;
+    max-width: calc(100.5rem + var(--padding-value));
     @include phone {
         padding-left: 1rem;
         padding-right: 1rem;

@@ -19,10 +19,6 @@
     &__slogan {
         margin: 0.305em 0 0.22em;
     }
-    // @include min_container {
-    //     padding-top: calc(64px + 64 * var(--screen-diff));
-    //     padding-bottom: calc(77px + 77 * var(--screen-diff))
-    // }
     @media (min-width: 576px) and (max-width: 1608px) {
         padding-top: calc(28px + 26 * (100vw - 576px) / (1608 - 576));
         padding-bottom: calc(34px + 41 * (100vw - 576px) / (1608 - 576))

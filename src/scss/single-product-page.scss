@@ -49,7 +49,7 @@
         }
         img {
             position: absolute;
-            left: calc(535 / 1680 * 100%);
+            left: calc(535 / 1680 * (100% - var(--padding-value)));
             bottom: 4.375rem;
             width: 30%;
             min-width: 500px;
