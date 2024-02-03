@@ -65,8 +65,11 @@ input {
 .container {
     margin: 0 auto;
     padding: 0 1.25rem;
+    padding-right: calc(var(--padding-value) + 1.25rem);
+    padding-left: 1.25rem;
     width: 100%;
-    max-width: 100.5rem
+    max-width: 100.5rem;
+    max-width: calc(100.5rem + var(--padding-value))
 }
 
 .section {
@@ -622,7 +625,7 @@ input {
 
 .wrapper .model-wrapper img {
     position: absolute;
-    left: 31.8452380952%;
+    left: calc(.318452381 * (100% - var(--padding-value)));
     bottom: 4.375rem;
     width: 30%;
     min-width: 500px;
