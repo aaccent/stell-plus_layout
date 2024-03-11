@@ -124,6 +124,8 @@ function handleScroll() {
         if (!headerEl.classList.contains("header_hide")) {
             headerEl.classList.add("header_hide")
             headerEl.classList.remove("header_show")
+            headerEl.querySelector(".header__menu-item_hover")?.classList.remove("header__menu-item_hover")
+            headerEl.querySelector(".header__dropdown_open")?.classList.remove("header__dropdown_open")
         }
     } else if (lastPageY > pageY) {
         if (!headerEl.classList.contains("header_show")) {

@@ -255,6 +255,8 @@ function init() {
     }
 }
 
+ymaps.ready(init);
+
 document.querySelectorAll(".departments-section__tab-button").forEach(tabButtonEl => {
     tabButtonEl.addEventListener("click", e => {
         let targetEl = e.target;
@@ -271,26 +273,33 @@ document.querySelectorAll(".departments-section__tab-button").forEach(tabButtonE
             departmentsContainer.querySelector(".departments-section__department_" + departmentName).classList.add(activeDepartmentClass);
             departmentSlider.destroy()
             initDepartmentSlider()
+            //
+            initDepartmentsAnimation(departmentSlider)
+            ScrollTrigger.refresh()
+            //
             departmentsContainer.style.opacity = "";
          }, { once: true })
 
     })
 })
 
-
 function initDepartmentSlider() {
-    let loop = document.querySelectorAll(".departments-section__department_active .swiper-slide").length > 4
+    // let loop = document.querySelectorAll(".departments-section__department_active .swiper-slide").length > 4
 
     departmentSlider = new Swiper(".departments-section__department_active .swiper", {
         slidesPerView: 1.2,
         spaceBetween: 16,
-        loop,
-        observer: true,
-        observeParents: true,
-        watchOverflow: true,
+        speed: 800,
+        // loop,
+        // observer: true,
+        // observeParents: true,
+        // watchOverflow: true,
         breakpoints: {
             576: {
                 slidesPerView: 1.5
+            },
+            768: {
+                slidesPerView: 2
             },
             961: {
                 slidesPerView: 3
@@ -303,39 +312,272 @@ function initDepartmentSlider() {
             nextEl: ".departments-section .swiper-button-next",
             prevEl: ".departments-section .swiper-button-prev",
         },
+        // on: {
+        //     init: swiper => {
+        //         swiper.lastXOffset = swiper.slidesGrid[swiper.activeIndex];
+        //     },
+        //     slideChange: (swiper) =>{
+        //         let xOffset = swiper.slidesGrid[swiper.activeIndex]
+        //         window.scrollBy(0, xOffset - swiper.lastXOffset)                    
+        //         swiper.lastXOffset = xOffset
+        //     }
+        // }
+    })
+}
+
+// animations
+function killTween() {
+    currentIndex = 0;
+    animating = false;
+    departmentTween?.kill();
+}
+
+function initDepartmentsAnimation(swiper) {
+    killTween()
+    if (swiper.isLocked) {
+        intentObserver.disable();
+        preventScroll.disable();
+        return
+    }
+
+    numPanels = departmentSlider.slides.length - Math.floor(departmentSlider.params.slidesPerView - 1);
+    swiper.on('afterInit', function () {
+        currentIndex = swiper.activeIndex
     })
 
+    swiper.on('slideChange', function () {
+        currentIndex = swiper.activeIndex
+    });
+    
+    swiper.on("slideChangeTransitionEnd", function () {
+        animating = false
+    })
+        
+    // pin swipe section and initiate observer
+   departmentTween = ScrollTrigger.create({
+        trigger: ".departments-section",
+        pin: true,
+        anticipatePin: true,
+        start: () => {
+            let remValue = getComputedStyle(document.documentElement).fontSize;
+            return document.querySelector(".departments-section").offsetHeight < window.innerHeight ? `top+=${parseFloat(remValue)}  top` : `bottom-=${parseFloat(remValue) * 2} bottom`
+        },
+        end: () => {
+            let swiperWidth = document.querySelector(".departments-section__department_active").offsetWidth;
+            let employeeEls = document.querySelectorAll(".departments-section__department_active .employee")
+            let wrapperWidth = 0
+        
+            for (let i = 0; i < employeeEls.length; i++) {
+                wrapperWidth += employeeEls[i].offsetWidth
+            }
+            
+            wrapperWidth += 16 * (employeeEls.length - 1)
+        
+            if (swiperWidth >= wrapperWidth)
+                return 0
+            
+            return `+=${(swiperWidth - wrapperWidth) * 1.2}px`
+        },
+        onEnter: (self) => {
+            if (preventScroll.isEnabled === false) {
+                self.scroll(self.start);
+                preventScroll.enable();
+                intentObserver.enable();
+                
+                gotoPanel(currentIndex + 1, true);
+            }
+        },
+        onEnterBack: (self) => {
+            if (preventScroll.isEnabled === false) {
+                self.scroll(self.start);
+                preventScroll.enable();
+                intentObserver.enable();
+                    
+                gotoPanel(currentIndex - 1, false);
+            }
+        },
+    });
 }
+
 let departmentSlider 
 initDepartmentSlider()
 
-ymaps.ready(init);
+let currentIndex = 0;
+let animating = false;
+let numPanels //= departmentSlider.slides.length - Math.floor(departmentSlider.params.slidesPerView - 1)
+/*
 
-// animations
+ALL OF THE FOLLOWING CODE IS BORROWED FROM THIS PEN FROM GREENSOCK
+https://codepen.io/GreenSock/pen/MWGVJYL?editors=1000
 
-gsap.from(".departments-section .swiper-buttons", {
-    scrollTrigger: {
-        trigger: ".departments-section .swiper-buttons",
-        start: "top 80%"
-    },
-    yPercent: 25,
-    opacity: 0,
-    duration: 0.6
+I MADE SLIGHT ALTERATIONS TO MAKE GOTOPANEL() TALK TO SWIPER
+
+*/
+
+// create an observer and disable it to start
+let intentObserver = ScrollTrigger.observe({
+    type: "wheel,touch",
+    onUp: () => !animating && gotoPanel(currentIndex + 1, true),
+    onDown: () => !animating && gotoPanel(currentIndex - 1, false),
+    wheelSpeed: -1, // to match mobile behavior, invert the wheel speed
+    tolerance: 30,
+    preventDefault: true,
+    onPress: self => {
+        // on touch devices like iOS, if we want to prevent scrolling, we must call preventDefault() on the touchstart (Observer doesn't do that because that would also prevent side-scrolling which is undesirable in most cases)
+        ScrollTrigger.isTouch && self.event.preventDefault()
+    }
 })
+intentObserver.disable();
 
-gsap.from(".departments-section__departments", {
+let preventScroll = ScrollTrigger.observe({
+        preventDefault: true,
+        type: "wheel,scroll",
+        allowClicks: true,
+        onEnable: self => {
+            // console.log("enable")	
+            return self.savedScroll = self.scrollY()
+        }, // save the scroll position
+        onChangeY: self => {
+            // console.log("disable")
+            self.scrollY(self.savedScroll)    // refuse to scroll
+        }
+});
+preventScroll.disable();
+
+// handle the panel swipe animations
+function gotoPanel(index, isScrollingDown) {
+    animating = true;
+    // console.log("gotoPanel", currentIndex, index)
+    // return to normal scroll if we're at the end or back up to the start
+    if (
+        (index === numPanels && isScrollingDown) ||
+        (index === -1 && !isScrollingDown)
+    ) {
+        console.log("return to normal scroll")
+        intentObserver.disable();
+        preventScroll.disable();
+        
+        animating = false;
+        // now make it go 1px beyond in the correct direction so that it doesn't trigger onEnter/onEnterBack.
+        preventScroll.scrollY(preventScroll.scrollY() + (index === numPanels ? 1 : -1));
+        return;
+    }
+    // console.log("call swiper slideTo()")
+    departmentSlider.slideTo(index)
+        
+    currentIndex = index;
+}
+
+ScrollTrigger.config({ 
+    ignoreMobileResize: true
+});
+
+let departmentTween
+
+initDepartmentsAnimation(departmentSlider)
+
+gsap.to(".departments-section .section__header, .departments-section .section__body", {
+    y: 0.15 * ScrollTrigger.maxScroll(window) ,
+    ease: "none",
     scrollTrigger: {
-        trigger: ".departments-section__departments",
-        start: "top 80%"
-    },
-    yPercent: 10,
-    opacity: 0,
-    duration: 0.6
-})
+        trigger: ".footer",
+        start: "top 90%",
+        end: "max",
+        invalidateOnRefresh: true,
+        scrub: 0
+    }
+});
 
-let employeeMatchMedia = gsap.matchMedia()
-let employeeEls = gsap.utils.toArray(".departments-section__department_active .employee")
-let paddingValue = window.innerWidth - document.documentElement.clientWidth;
+gsap.to(".footer__commercial", {
+    scrollTrigger: {
+        trigger: ".footer__commercial",
+        start: "top center",
+        end: "top 10%",
+        // animation: footerTween,
+        scrub: 1,
+    },
+    marginBottom: () => -document.querySelector(".footer__commercial").offsetHeight,
+});
+
+// ScrollTrigger.create({
+// })
+// function initDepartmentsAnimation() {
+//     departmentsAnimation?.kill()
+    
+//     let deltaX = getScrollAmount()
+    
+//     if (deltaX === 0) {
+//         let scrollYOffset = mapSection.offsetTop + mapSection.offsetHeight + departmentsSection.offsetHeight - window.innerHeight;
+//         if (window.pageYOffset >= scrollYOffset) {
+//             window.scrollTo(0, scrollYOffset)
+//         }
+//         return
+//     }
+//     footerCommercialAnimation?.kill()
+
+//     let tween = gsap.to(".departments-section__department_active .swiper-wrapper", {
+//         x: deltaX,
+//         duration: 3,
+//         ease: "none",
+//     });
+
+//     departmentsAnimation = ScrollTrigger.create({
+//         trigger: ".departments-section",
+//         start: () => {
+//             let remValue = getComputedStyle(document.documentElement).fontSize;
+//             return document.querySelector(".departments-section").offsetHeight < window.innerHeight ? `top+=${parseFloat(remValue)}  top` : "bottom bottom"
+//         },
+//         ease: "none",
+//         pin: true,
+//         animation: tween,
+//         scrub: 1,
+//         invalidateOnRefresh: true,
+//     })
+    
+//     footerCommercialAnimation = gsap.to(".footer__commercial", {
+//         scrollTrigger: {
+//             trigger: ".footer__commercial",
+//             start: "top center",
+//             end: "top 10%",
+//             scrub: 1,
+//             markers: true,
+//         },
+//         marginBottom: () => -document.querySelector(".footer__commercial").offsetHeight,
+//     });
+
+// }
+
+
+// let departmentsAnimation, footerCommercialAnimation;
+// const mapSection = document.querySelector(".map-section")
+// const departmentsSection = document.querySelector(".departments-section")
+
+// initDepartmentsAnimation()
+// window.addEventListener("resize", () => ScrollTrigger.refresh())
+
+// gsap.from(".departments-section .swiper-buttons", {
+//     scrollTrigger: {
+//         trigger: ".departments-section .swiper-buttons",
+//         start: "top 80%"
+//     },
+//     yPercent: 25,
+//     opacity: 0,
+//     duration: 0.6
+// })
+
+// gsap.from(".departments-section__departments", {
+//     scrollTrigger: {
+//         trigger: ".departments-section__departments",
+//         start: "top 80%"
+//     },
+//     yPercent: 10,
+//     opacity: 0,
+//     duration: 0.6
+// })
+
+// let employeeMatchMedia = gsap.matchMedia()
+// let employeeEls = gsap.utils.toArray(".departments-section__department_active .employee")
+// let paddingValue = window.innerWidth - document.documentElement.clientWidth;
 
 
 // employeeMatchMedia.add({

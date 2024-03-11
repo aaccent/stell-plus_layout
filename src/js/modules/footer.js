@@ -192,6 +192,10 @@ document.forms["contact-us-form"].elements["comments"].addEventListener("input",
     }
 }) 
 document.querySelector(".contact-us-form__file-input").addEventListener("change", e => {
+    if (e.target.files[0].size > 30 * 1024 * 1024) {
+        alert("Размер файла не должен превышать 30 MB")
+        return
+    }
     const parentEl = e.target.closest(".contact-us-form__file");
     parentEl.querySelector(".contact-us-form__file-doc span").innerHTML = e.target.files[0].name
     parentEl.classList.add("contact-us-form__file_attached")
@@ -202,7 +206,7 @@ document.querySelector(".contact-us-form__file-input").addEventListener("change"
 })
 
 // сброс документа
-document.forms["contact-us-form"].querySelector(".contact-us-form__file-doc button").addУмуте
+// document.forms["contact-us-form"].querySelector(".contact-us-form__file-doc button").addУмуте
 document.forms["contact-us-form"].addEventListener("submit", e => {
     e.preventDefault();
     validateForm(e.target)

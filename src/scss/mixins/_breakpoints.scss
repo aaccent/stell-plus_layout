@@ -36,7 +36,7 @@ $container_max: 1680px;
 };
 
 @mixin min_tablet {
-    @media (min-width: $tablet) {
+    @media (min-width: ($tablet + 0.5px)) {
         @content
     }
 };

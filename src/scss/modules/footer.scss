@@ -572,17 +572,20 @@
     }
     &__actions {
         margin: -1rem 0 0;
-        flex-basis: 100%;
+        width: 100%;
     }
     &__actions-wrapper {
         display: flex;
         align-items: center;
         gap: 1rem;
+        width: 100%;
+        overflow: hidden;
         & > div {
             position: relative;
         }
     }
     &__button {
+        flex-shrink: 0;
         .button__text-wrapper {
             padding-top: 0.45rem
         }
@@ -626,6 +629,11 @@
         @include text_t6;
         padding: 0.7125rem 0.8125rem 0.625rem 1.5rem;
         text-transform: uppercase;
+        span {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
         button {
             font-size: 0.8125rem;
             position: relative;

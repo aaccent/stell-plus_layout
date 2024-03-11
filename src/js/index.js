@@ -78,7 +78,6 @@ let heroTitleSplit = new SplitType(".hero-slide__title",{
     tagName: "div"
 });
   
-
 gsap.from(".hero-section__video video ", {
     opacity: 0,
     duration: 0.9,
@@ -220,29 +219,6 @@ mm.add({
 
     }
   })
-
-
-// let roundedSectionEls = gsap.utils.toArray(".hero-section")
-
-// ScrollTrigger.create({
-//     trigger: ".equipment-section",
-//     start: "bottom bottom",
-//     pin: true,
-//     scrub: 1,
-//     markers: true,
-// })
-
-// gsap.to(".about-section__stats", {
-//     y: 0.05 * ScrollTrigger.maxScroll(window) ,
-//     ease: "none",
-//     scrollTrigger: {
-//         trigger: ".footer",
-//         start:  "top 80%",
-//         end: "max",
-//         invalidateOnRefresh: true,
-//         scrub: 0
-//     }
-// });
 
 ScrollTrigger.create({
     trigger: document.querySelector("aside"),

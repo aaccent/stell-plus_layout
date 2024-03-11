@@ -21,7 +21,8 @@ function getScrollAmount() {
 }
 
 // page preloader animation
-gsap.timeline({
+let preloaderTimeline = gsap.timeline({
+    paused: true,
     onStart: () => {
         let paddingValue = window.innerWidth - document.documentElement.clientWidth;
         document.documentElement.style.setProperty('--padding-value', `${paddingValue}px`);        
@@ -70,6 +71,11 @@ gsap.timeline({
     delay: 0.3,
 })
 
+if (sessionStorage.getItem("entered")) {
+    preloaderTimeline.progress(1)
+} else {
+    preloaderTimeline.play();
+}
 
 if (equipmentSection) {
     let tween = gsap.to(swiperWrapperEl, {
@@ -139,29 +145,29 @@ let footerTitleSplit = new SplitType(".footer__contact-us-title",{
     tagName: "span"
 });
   
+if (window.location.pathname !== "/contacts-page.html") {
+    ScrollTrigger.create({
+        trigger: document.querySelector(".footer").previousElementSibling,
+        start:  document.querySelector(".footer").previousElementSibling.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
+        pin: true,
+        pinSpacing: false,
+        scrub: 1,
+    })
+    let footerTween = gsap.to(".footer__commercial", {
+        marginBottom: () => -document.querySelector(".footer__commercial").offsetHeight,
+    });
+    
+    ScrollTrigger.create({
+        trigger: ".footer__commercial",
+        start: "top center",
+        end: "top 10%",
+        animation: footerTween,
+        scrub: 1,
+    })
+}
 
-ScrollTrigger.create({
-    trigger: document.querySelector(".footer").previousElementSibling,
-    start:  document.querySelector(".footer").previousElementSibling.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
-    pin: true,
-    pinSpacing: false,
-    scrub: 1,
-})
 
-
-let footerTween = gsap.to(".footer__commercial", {
-    marginBottom: () => -document.querySelector(".footer__commercial").offsetHeight,
-});
-
-ScrollTrigger.create({
-    trigger: ".footer__commercial",
-    start: "top center",
-    end: "top 10%",
-    animation: footerTween,
-    scrub: 1,
-})
   
-
 let footerTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: ".footer__contact-us",

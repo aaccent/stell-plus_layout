@@ -1,4 +1,5 @@
 :root {
+    --padding-value: 0px;
     --init-width: 1680;
     --init-width_units: calc(var(--init-width) * 1px);
     --font-size: 16px;
@@ -385,7 +386,7 @@ input {
     }
     &__text {
         color: $base-4;
-        font-family: Inter;
+        font-family: "Inter";
         font-size: 2.125rem;
         font-style: normal;
         font-weight: 600;
