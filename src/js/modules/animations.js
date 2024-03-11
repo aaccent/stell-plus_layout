@@ -145,7 +145,7 @@ let footerTitleSplit = new SplitType(".footer__contact-us-title",{
     tagName: "span"
 });
   
-if (window.location.pathname !== "/contacts-page.html") {
+if (!window.location.pathname.includes("contacts")) {
     ScrollTrigger.create({
         trigger: document.querySelector(".footer").previousElementSibling,
         start:  document.querySelector(".footer").previousElementSibling.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
