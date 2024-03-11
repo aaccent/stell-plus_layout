@@ -514,6 +514,10 @@ body {
     .departments-section__departments {
         margin: 2rem 0 0
     }
+
+    .departments-section .swiper-buttons {
+        display: none
+    }
 }
 
 @media (max-width:576px) {

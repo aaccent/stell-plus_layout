@@ -1066,8 +1066,7 @@
 
 .contact-us-form__actions {
     margin: -1rem 0 0;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%
+    width: 100%
 }
 
 .contact-us-form__actions-wrapper {
@@ -1077,11 +1076,18 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    gap: 1rem
+    gap: 1rem;
+    width: 100%;
+    overflow: hidden
 }
 
 .contact-us-form__actions-wrapper>div {
     position: relative
+}
+
+.contact-us-form__button {
+    -ms-flex-negative: 0;
+    flex-shrink: 0
 }
 
 .contact-us-form__button .button__text-wrapper {
@@ -1150,6 +1156,13 @@
     text-transform: uppercase;
     padding: .7125rem .8125rem .625rem 1.5rem;
     text-transform: uppercase
+}
+
+.contact-us-form__file-doc span {
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden
 }
 
 .contact-us-form__file-doc button {

@@ -132,6 +132,7 @@
 }
 
 :root {
+    --padding-value: 0px;
     --init-width: 1680;
     --init-width_units: calc(var(--init-width) * 1px);
     --font-size: 16px;
@@ -1891,8 +1892,7 @@ input {
 
 .contact-us-form__actions {
     margin: -1rem 0 0;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%
+    width: 100%
 }
 
 .contact-us-form__actions-wrapper {
@@ -1902,11 +1902,18 @@ input {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    gap: 1rem
+    gap: 1rem;
+    width: 100%;
+    overflow: hidden
 }
 
 .contact-us-form__actions-wrapper>div {
     position: relative
+}
+
+.contact-us-form__button {
+    -ms-flex-negative: 0;
+    flex-shrink: 0
 }
 
 .contact-us-form__button .button__text-wrapper {
@@ -1975,6 +1982,13 @@ input {
     text-transform: uppercase;
     padding: .7125rem .8125rem .625rem 1.5rem;
     text-transform: uppercase
+}
+
+.contact-us-form__file-doc span {
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden
 }
 
 .contact-us-form__file-doc button {
@@ -2046,7 +2060,7 @@ input {
     display: block!important
 }
 
-@media screen and (min-width:992px) and (any-hover:hover) {
+@media screen and (min-width:992.5px) and (any-hover:hover) {
     .header__menu-item:hover:hover {
         color: #333
     }
@@ -2069,7 +2083,7 @@ input {
     }
 }
 
-@media (min-width:992px) {
+@media (min-width:992.5px) {
     .header__menu-item_hover {
         color: #333
     }
@@ -2648,7 +2662,7 @@ input {
 .footer__contact-us{background-image:url(../images/form-bg.webp)}
 }
 
- @media screen and (min-width:992px) and (any-hover:hover){
+ @media screen and (min-width:992.5px) and (any-hover:hover){
 
 @supports (-webkit-appearance:none){
 
@@ -2656,7 +2670,7 @@ input {
 
 }
 
- @media (min-width:992px){
+ @media (min-width:992.5px){
 
 @supports (-webkit-appearance:none){
 
