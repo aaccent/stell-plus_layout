@@ -73,7 +73,57 @@ if (document.querySelector(".equipment-section")) {
 }
 
 // animations
-let heroTitleSplit = new SplitType(".hero-slide__title",{
+// page preloader animation
+gsap.timeline({
+    onStart: () => {
+        let paddingValue = window.innerWidth - document.documentElement.clientWidth;
+        document.documentElement.style.setProperty('--padding-value', `${paddingValue}px`);        
+        document.body.style.cssText = `
+            height: 100vh;
+            overflow: hidden
+        `
+    },
+    onComplete: () => {
+        setTimeout(() => {
+            document.documentElement.style.setProperty('--padding-value', `${0}px`);        
+            document.body.style = "";
+            ScrollTrigger.refresh()
+        }, 300)
+    }
+})
+.set(".preloader__logo", { opacity: 1 })
+.from(".preloader__logo svg", {
+    scale: 2,
+    duration: 1.5,
+}, "scaleLabel")
+.from(".preloader__logo svg", {
+    rotate: -360,
+    duration: 1.5,
+    ease: "linear"
+}, "<+=1")
+.to(".preloader__container", {
+    width: () => document.querySelector(".preloader__container").offsetWidth + document.querySelector(".preloader__text").scrollWidth,
+    duration: 1,
+    onStart: () => {
+        document.querySelector(".preloader__container").style.overflow = "hidden"
+    },
+}, "<+=0.5")
+.to(".preloader__text", {
+    opacity: 1,
+    duration: 0
+}, "<")
+.to(".preloader", {
+    backgroundColor: "#333",
+    duration: 0.5,
+    onStart: () => document.querySelector(".preloader").classList.add("preloader_dark"),
+})
+.to(".preloader", {
+    yPercent: -110,
+    duration: 0.8,
+    delay: 0.3,
+})
+
+new SplitType(".hero-slide__title",{
     types: "lines",
     tagName: "div"
 });

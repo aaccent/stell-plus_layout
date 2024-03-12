@@ -6,9 +6,88 @@
 @import "components/swiper-controls.scss";
 @import "components/equipment.scss";
 
+.preloader {
+    background-color: $base-1;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: -1rem;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 2rem);
+    z-index: 15;
+    &__container {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    &__logo {
+        position: relative;
+        opacity: 0;
+        z-index: 2;
+        svg {
+            position: relative;
+            vertical-align: top;
+            width: 4.5625rem;
+            height: 4.5625rem;
+        }
+        &:before {
+            background-color: $base-1;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -10%;
+            width: 120%;
+            height: 100%;
+        }
+    }
+    &__text {
+        color: $base-4;
+        font-family: "Inter";
+        font-size: 2.125rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        padding-left: 1.5rem;
+        position: absolute;
+        right: 0;
+        opacity: 0;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+    &_dark {
+        .preloader__logo {
+            &:before {
+                background-color: transparent;
+            }
+            svg path {
+                fill: $base-1 !important;
+            }
+        }
+        
+        .preloader__text {
+            color: $base-1
+        }
+    }
+    @include phone {
+        &__logo {
+            svg {
+                width: 3rem;
+                height: 3rem;
+            }
+        }
+        &__text {
+            font-size: 1.5rem;
+        }
+    }
+}
+
 .header__wrapper {
     border-bottom: none
 }
+
 @import "modules/hero.scss";
 @import "modules/equipment.scss";
 @import "modules/services.scss";

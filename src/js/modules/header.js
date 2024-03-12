@@ -116,7 +116,7 @@ const headerEl = document.querySelector(".header");
 const minYOffset = 70;
 let lastPageY = 0
 
-function handleScroll() {
+window.handleScroll = function () {
     let pageY = window.pageYOffset;
     if (headerEl.querySelector(".header__burger").classList.contains("header__burger_open"))
         return
