@@ -1312,6 +1312,10 @@
         font-size: 18px
     }
 
+    .swiper-buttons {
+        display: none
+    }
+
     .hero-slide__desc {
         font-size: 18px
     }
