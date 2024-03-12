@@ -488,6 +488,10 @@ body {
         font-size: 18px
     }
 
+    .swiper-buttons {
+        display: none
+    }
+
     .departments-section__department {
         margin-top: 32px
     }

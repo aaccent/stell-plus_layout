@@ -233,6 +233,7 @@
     height: 100vh;
     height: calc(var(--vh,1vh) * 100);
     position: relative;
+    top: 0!important;
     overflow: hidden
 }
 
@@ -1177,6 +1178,10 @@
         font-size: 18px
     }
 
+    .swiper-buttons {
+        display: none
+    }
+
     .person-info {
         gap: 24px
     }
@@ -1205,6 +1210,11 @@
         -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
         flex-direction: column-reverse
+    }
+
+    .timeline-section__title {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%
     }
 
     .timeline-section__img,.timeline-section__img-slider {

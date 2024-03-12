@@ -440,6 +440,10 @@
         font-size: 18px
     }
 
+    .swiper-buttons {
+        display: none
+    }
+
     .banner-section__logo {
         width: 50%
     }
