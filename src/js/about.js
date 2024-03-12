@@ -258,7 +258,6 @@ gsap.from(".equipment-section__slider", {
 let bannerSlideEls = gsap.utils.toArray(".banner-slide")
 if (bannerSlideEls.length) {
     bannerSlideEls.forEach((bannerSlideEl, i) => {
-        console.log(bannerSlideEl)
         let tl = gsap.timeline({
             scrollTrigger: {
                 trigger: bannerSlideEl,

@@ -75,6 +75,9 @@
 .swiper-buttons {
     display: flex;
     gap: 1rem;
+    @include gap {
+        display: none;
+    }
 }
 
 .swiper-button {

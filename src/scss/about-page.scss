@@ -224,6 +224,9 @@
                 flex-direction: column-reverse;
             }
         }
+        &__title {
+            flex-basis: 100%;
+        }
         &__img, &__img-slider {
             width: 100%;
         }

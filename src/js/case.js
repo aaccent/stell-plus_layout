@@ -16,11 +16,11 @@ if (document.querySelector(".section__images")) {
 
 if (document.querySelector(".equipments-section")) {
     new Swiper(".equipments-slider", {
-        slidesPerView: 2,
+        slidesPerView: 1.1,
         spaceBetween: 20,
         loop: true,
         breakpoints: {
-            480: {
+            640: {
                 slidesPerView: 2,
                 spaceBetween: 16,
             },
