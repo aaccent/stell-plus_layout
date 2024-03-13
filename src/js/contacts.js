@@ -272,7 +272,6 @@ document.querySelectorAll(".departments-section__tab-button").forEach(tabButtonE
             departmentSlider.destroy()
             initDepartmentSlider()
             initDepartmentAnimation()
-            ScrollTrigger.refresh();
             departmentsContainer.style.opacity = "";
          }, { once: true })
 
@@ -323,7 +322,7 @@ function getScrollAmount() {
 
 function initDepartmentAnimation() {
     departmentsAnimation?.kill()
-    
+    departmentsBodyTween?.kill()
     let deltaX = getScrollAmount()
     
     if (deltaX === 0) {
@@ -364,9 +363,21 @@ function initDepartmentAnimation() {
         },
         marginBottom: () => -document.querySelector(".footer__commercial").offsetHeight,
     });
+
+    departmentsBodyTween = gsap.to(".departments-section .section__body", {
+        y: 0.15 * ScrollTrigger.maxScroll(window) ,
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".footer",
+            start: "top 75%",
+            end: "max",
+            invalidateOnRefresh: true,
+            scrub: 0
+        }
+    });
 }
 
-let departmentSlider, departmentsAnimation, footerCommercialAnimation;
+let departmentSlider, departmentsAnimation, departmentsBodyTween, footerCommercialAnimation;
 const mapSection = document.querySelector(".map-section")
 const departmentsSection = document.querySelector(".departments-section")
 initDepartmentSlider()
@@ -393,15 +404,3 @@ gsap.from(".departments-section__departments", {
 })
 
 initDepartmentAnimation()
-
-gsap.to(".departments-section .section__body", {
-    y: 0.15 * ScrollTrigger.maxScroll(window) ,
-    ease: "none",
-    scrollTrigger: {
-        trigger: ".footer",
-        start: "top 75%",
-        end: "max",
-        invalidateOnRefresh: true,
-        scrub: 0
-    }
-});
