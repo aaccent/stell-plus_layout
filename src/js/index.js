@@ -271,7 +271,7 @@ mm.add({
         })
 
     }
-  })
+})
 
 ScrollTrigger.create({
     trigger: document.querySelector("aside"),
