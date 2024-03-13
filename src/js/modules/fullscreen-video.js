@@ -61,6 +61,8 @@ function handleVideo(videoEl) {
             e.target.mozRequestFullScreen();
         } else if (e.target.msRequestFullscreen) {
             e.target.msRequestFullscreen();
+        } else if (videoEl.webkitEnterFullscreen) {
+            videoEl.webkitEnterFullscreen()
         }
         // e.target.controls = true
     })

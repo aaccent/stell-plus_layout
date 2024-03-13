@@ -11,10 +11,13 @@ document.querySelectorAll(".hero-slide__video").forEach(videoButton => {
             videoEl.requestFullscreen();
         } else if (videoEl.webkitRequestFullscreen) {
             videoEl.webkitRequestFullscreen();
+            alert("!!!")
         } else if (videoEl.mozRequestFullScreen) {
             videoEl.mozRequestFullScreen();
         } else if (videoEl.msRequestFullscreen) {
             videoEl.msRequestFullscreen();
+        } else if (videoEl.webkitEnterFullscreen) {
+            videoEl.webkitEnterFullscreen()
         }
     })
 })
