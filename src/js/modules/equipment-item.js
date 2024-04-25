@@ -20,7 +20,7 @@ function createItemAnimationsOnMobile() {
 
     let observer = new IntersectionObserver(callback, options);
 
-    const items = document.querySelectorAll('.equipment-section .equipment-item__video')
+    const items = document.querySelectorAll('.equipment-section .equipment-item__video video')
     items.forEach(video => {
         observer.observe(video)
     })
