@@ -1,11 +1,14 @@
 import webpack from "webpack-stream"
 
+const isDev = process.env.NODE_ENV === 'development'
+
 const js = () => {
     return app.gulp.src(app.path.src.js, { sourcemaps: true })
         .pipe(webpack({
-            mode: "development",
+            mode: isDev ? 'development' : 'production',
+            devtool: isDev ? 'eval-source-map' : 'source-map',
             optimization: {
-                minimize: false
+                minimize: !isDev
             },
             entry: {
                 script: "./src/js/script.js",

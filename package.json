@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cross-env NODE_ENV=production gulp build",
+    "dev": "cross-env NODE_ENV=development gulp"
   },
   "author": "Ramiz",
   "license": "ISC",
@@ -35,5 +36,8 @@
     "sass": "^1.52.3",
     "webpack": "^5.73.0",
     "webpack-stream": "^7.0.0"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3"
   }
 }
