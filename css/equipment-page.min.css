@@ -44,7 +44,6 @@
     mix-blend-mode: darken;
     -webkit-transition: -webkit-transform .2s ease 0s;
     transition: -webkit-transform .2s ease 0s;
-    -o-transition: transform .2s ease 0s;
     transition: transform .2s ease 0s;
     transition: transform .2s ease 0s,-webkit-transform .2s ease 0s
 }
@@ -172,7 +171,6 @@
     height: 5rem;
     -webkit-transition: -webkit-transform .3s ease 0s;
     transition: -webkit-transform .3s ease 0s;
-    -o-transition: transform .3s ease 0s;
     transition: transform .3s ease 0s;
     transition: transform .3s ease 0s,-webkit-transform .3s ease 0s;
     z-index: 1
@@ -273,7 +271,6 @@
     position: relative;
     text-transform: uppercase;
     -webkit-transition: background-color .2s ease 0s,border-color .2s ease 0s,padding .2s ease 0s;
-    -o-transition: background-color .2s ease 0s,border-color .2s ease 0s,padding .2s ease 0s;
     transition: background-color .2s ease 0s,border-color .2s ease 0s,padding .2s ease 0s
 }
 
@@ -296,7 +293,6 @@
     opacity: 0;
     visibility: hidden;
     -webkit-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
     transition: all .3s ease 0s
 }
 
@@ -661,7 +657,6 @@
     line-height: 1.2;
     opacity: .6;
     -webkit-transition: color .2s ease 0s;
-    -o-transition: color .2s ease 0s;
     transition: color .2s ease 0s
 }
 
@@ -719,7 +714,6 @@
     transform-origin: center bottom;
     -webkit-transition: background-color .2s ease 0s,-webkit-transform .2s ease 0s;
     transition: background-color .2s ease 0s,-webkit-transform .2s ease 0s;
-    -o-transition: transform .2s ease 0s,background-color .2s ease 0s;
     transition: transform .2s ease 0s,background-color .2s ease 0s;
     transition: transform .2s ease 0s,background-color .2s ease 0s,-webkit-transform .2s ease 0s
 }
@@ -736,7 +730,6 @@
     transform: rotate(90deg);
     -webkit-transition: -webkit-transform .2s ease 0s;
     transition: -webkit-transform .2s ease 0s;
-    -o-transition: transform .2s ease 0s;
     transition: transform .2s ease 0s;
     transition: transform .2s ease 0s,-webkit-transform .2s ease 0s
 }
@@ -749,7 +742,6 @@
     height: 0;
     overflow: hidden;
     -webkit-transition: height .3s ease 0s;
-    -o-transition: height .3s ease 0s;
     transition: height .3s ease 0s
 }
 
@@ -795,7 +787,6 @@
     width: 1em;
     height: 1em;
     -webkit-transition: background-color .2s ease 0s;
-    -o-transition: background-color .2s ease 0s;
     transition: background-color .2s ease 0s
 }
 
@@ -814,7 +805,6 @@
     -ms-transform: scale(.3);
     transform: scale(.3);
     -webkit-transition: all .2s ease 0s;
-    -o-transition: all .2s ease 0s;
     transition: all .2s ease 0s
 }
 
@@ -891,7 +881,6 @@
     transform-origin: center bottom;
     -webkit-transition: background-color .2s ease 0s,-webkit-transform .2s ease 0s;
     transition: background-color .2s ease 0s,-webkit-transform .2s ease 0s;
-    -o-transition: transform .2s ease 0s,background-color .2s ease 0s;
     transition: transform .2s ease 0s,background-color .2s ease 0s;
     transition: transform .2s ease 0s,background-color .2s ease 0s,-webkit-transform .2s ease 0s
 }
@@ -953,7 +942,6 @@
     transform-origin: top left;
     -webkit-transition: -webkit-transform .2s ease 0s;
     transition: -webkit-transform .2s ease 0s;
-    -o-transition: transform .2s ease 0s;
     transition: transform .2s ease 0s;
     transition: transform .2s ease 0s,-webkit-transform .2s ease 0s
 }
@@ -1159,7 +1147,6 @@
 
 .contact-us-form__file-doc span {
     white-space: nowrap;
-    -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     overflow: hidden
 }

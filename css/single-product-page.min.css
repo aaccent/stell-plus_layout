@@ -9,7 +9,6 @@
     opacity: 0;
     visibility: hidden;
     -webkit-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
     transition: all .3s ease 0s;
     z-index: 10
 }
@@ -53,7 +52,6 @@
     -ms-transform: scale(.4);
     transform: scale(.4);
     -webkit-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
     transition: all .3s ease 0s;
     max-height: 100%;
     overflow: auto
@@ -135,7 +133,6 @@
     vertical-align: top;
     -webkit-transition: -webkit-transform .3s linear 0s;
     transition: -webkit-transform .3s linear 0s;
-    -o-transition: transform .3s linear 0s;
     transition: transform .3s linear 0s;
     transition: transform .3s linear 0s,-webkit-transform .3s linear 0s
 }
@@ -256,7 +253,6 @@
     transform: translate(-50%,0);
     -webkit-transition: -webkit-transform .3s ease 0s;
     transition: -webkit-transform .3s ease 0s;
-    -o-transition: transform .3s ease 0s;
     transition: transform .3s ease 0s;
     transition: transform .3s ease 0s,-webkit-transform .3s ease 0s
 }
@@ -275,7 +271,6 @@
     min-width: 500px;
     -webkit-transition: -webkit-transform .3s ease 0s;
     transition: -webkit-transform .3s ease 0s;
-    -o-transition: transform .3s ease 0s;
     transition: transform .3s ease 0s;
     transition: transform .3s ease 0s,-webkit-transform .3s ease 0s
 }
@@ -328,7 +323,6 @@
 }
 
 .popup__gradient {
-    background: -o-linear-gradient(77deg,rgba(255,255,255,.8) 9.4%,rgba(255,255,255,0) 231.73%);
     background: linear-gradient(13deg,rgba(255,255,255,.8) 9.4%,rgba(255,255,255,0) 231.73%);
     position: absolute;
     left: 0;
@@ -336,7 +330,6 @@
     bottom: 0;
     height: 6.625rem;
     -webkit-transition: all .2s ease-in-out 0s;
-    -o-transition: all .2s ease-in-out 0s;
     transition: all .2s ease-in-out 0s
 }
 

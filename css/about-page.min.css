@@ -72,7 +72,6 @@
     width: auto;
     height: auto;
     -webkit-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
     transition: all .3s ease 0s
 }
 
@@ -140,7 +139,6 @@
     mix-blend-mode: darken;
     -webkit-transition: -webkit-transform .2s ease 0s;
     transition: -webkit-transform .2s ease 0s;
-    -o-transition: transform .2s ease 0s;
     transition: transform .2s ease 0s;
     transition: transform .2s ease 0s,-webkit-transform .2s ease 0s
 }
@@ -454,7 +452,6 @@
 
 .hero-section:before {
     background: -webkit-gradient(linear,left bottom,left top,color-stop(1.23%,rgba(0,0,0,.2)),color-stop(25.31%,rgba(0,0,0,0)));
-    background: -o-linear-gradient(bottom,rgba(0,0,0,.2) 1.23%,rgba(0,0,0,0) 25.31%);
     background: linear-gradient(0deg,rgba(0,0,0,.2) 1.23%,rgba(0,0,0,0) 25.31%);
     content: "";
     position: absolute;
@@ -667,7 +664,6 @@
 .timeline-slider .swiper-slide-active .timeline__desc,.timeline-slider .swiper-slide-active .timeline__year {
     opacity: 1;
     -webkit-transition-delay: .15s;
-    -o-transition-delay: .15s;
     transition-delay: .15s
 }
 
@@ -684,7 +680,6 @@
     position: relative;
     opacity: .4;
     -webkit-transition: opacity .2s ease 0s;
-    -o-transition: opacity .2s ease 0s;
     transition: opacity .2s ease 0s
 }
 
@@ -707,7 +702,6 @@
     margin-top: 2.8125rem;
     opacity: 0;
     -webkit-transition: opacity .2s ease 0s;
-    -o-transition: opacity .2s ease 0s;
     transition: opacity .2s ease 0s
 }
 
@@ -764,7 +758,6 @@
     height: 5rem;
     -webkit-transition: -webkit-transform .3s ease 0s;
     transition: -webkit-transform .3s ease 0s;
-    -o-transition: transform .3s ease 0s;
     transition: transform .3s ease 0s;
     transition: transform .3s ease 0s,-webkit-transform .3s ease 0s;
     z-index: 1
@@ -927,7 +920,6 @@
 
 .banner-slider_inner .swiper-slide {
     -webkit-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
     transition: all .3s ease 0s
 }
 
@@ -973,7 +965,6 @@
 }
 
 .banner-slide__img:after {
-    background: -o-linear-gradient(91deg,rgba(0,0,0,.35) 4.85%,rgba(0,0,0,0) 29.04%);
     background: linear-gradient(359deg,rgba(0,0,0,.35) 4.85%,rgba(0,0,0,0) 29.04%);
     content: "";
     position: absolute;

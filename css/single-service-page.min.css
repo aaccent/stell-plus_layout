@@ -22,7 +22,6 @@
     vertical-align: top;
     -webkit-transition: -webkit-transform .3s linear 0s;
     transition: -webkit-transform .3s linear 0s;
-    -o-transition: transform .3s linear 0s;
     transition: transform .3s linear 0s;
     transition: transform .3s linear 0s,-webkit-transform .3s linear 0s
 }
@@ -187,7 +186,6 @@
     -ms-transform: translate(-50%,-50%) scale(1.4);
     transform: translate(-50%,-50%) scale(1.4);
     -webkit-transition: all .2s ease 0s;
-    -o-transition: all .2s ease 0s;
     transition: all .2s ease 0s;
     z-index: 2
 }
@@ -462,7 +460,6 @@
     -ms-transform: translate(-50%,0);
     transform: translate(-50%,0);
     -webkit-transition: background-color .2s ease 0s,color .2s ease 0s;
-    -o-transition: background-color .2s ease 0s,color .2s ease 0s;
     transition: background-color .2s ease 0s,color .2s ease 0s
 }
 
@@ -482,7 +479,6 @@
     gap: 1.125rem;
     padding: .5rem 1.5rem .5rem .5rem;
     -webkit-transition: background-color .2s ease 0s;
-    -o-transition: background-color .2s ease 0s;
     transition: background-color .2s ease 0s
 }
 
@@ -510,7 +506,6 @@
 .hero-section__projects-logo:not(:last-child) {
     margin-right: -2.125rem;
     -webkit-transition: margin-right .2s ease 0s;
-    -o-transition: margin-right .2s ease 0s;
     transition: margin-right .2s ease 0s
 }
 
@@ -550,7 +545,6 @@
     text-transform: uppercase;
     text-transform: uppercase;
     -webkit-transition: color .2s ease 0s;
-    -o-transition: color .2s ease 0s;
     transition: color .2s ease 0s
 }
 
@@ -935,7 +929,6 @@
     padding: .625rem 1.75rem;
     margin-left: auto;
     -webkit-transition: all .2s ease 0s;
-    -o-transition: all .2s ease 0s;
     transition: all .2s ease 0s
 }
 
@@ -960,7 +953,6 @@
     -ms-transform-origin: center center;
     transform-origin: center center;
     -webkit-transition: all .2s ease 0s;
-    -o-transition: all .2s ease 0s;
     transition: all .2s ease 0s
 }
 
@@ -997,7 +989,6 @@
     -ms-flex: 0 1 57.9081632653%;
     flex: 0 1 57.9081632653%;
     -webkit-transition: opacity .2s ease 0s,height .3s ease 0s;
-    -o-transition: opacity .2s ease 0s,height .3s ease 0s;
     transition: opacity .2s ease 0s,height .3s ease 0s;
     overflow: hidden
 }
@@ -1007,7 +998,6 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     -ms-flex-preferred-size: 56.3876651982%;
     flex-basis: 56.3876651982%;
