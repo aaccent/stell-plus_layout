@@ -1396,6 +1396,12 @@
     }
 }
 
+@media only screen and (max-width:390px) {
+    .hero-section__title_small {
+        font-size: 2.1rem
+    }
+}
+
 @media (min-width:768px) and (max-width:1680px) {
     .swiper-button_big:not(.swiper-button-lock) {
         padding-left: calc(37px + 37 * (100vw - 768px)/ 912);
@@ -1490,6 +1496,14 @@
 }
 
  @media (max-width:576px){
+
+@supports (-webkit-appearance:none){
+
+}
+
+}
+
+ @media only screen and (max-width:390px){
 
 @supports (-webkit-appearance:none){
 

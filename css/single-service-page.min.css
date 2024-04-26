@@ -1529,6 +1529,12 @@
     }
 }
 
+@media only screen and (max-width:390px) {
+    .hero-section__title_small {
+        font-size: 2.1rem
+    }
+}
+
 @media (min-width:576px) and (max-width:1608px) {
     .hero-section__title_small {
         font-size: calc(48px + 14 * (100vw - 576px)/ 1032)
@@ -1645,6 +1651,14 @@
 }
 
  @media (max-width:576px){
+
+@supports (-webkit-appearance:none){
+
+}
+
+}
+
+ @media only screen and (max-width:390px){
 
 @supports (-webkit-appearance:none){
 
