@@ -56,7 +56,7 @@
                 font-size: calc(48px +  14 * (100vw - 576px) / (1608 - 576));
             }
             @include phone {
-                font-size: 3rem
+                font-size: 2.6rem
             }
         }
         &_big {
