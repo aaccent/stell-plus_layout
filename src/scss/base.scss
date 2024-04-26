@@ -55,11 +55,13 @@
 
 html {
     font-size: var(--font-size);
+    overflow-x: clip;
 }
 
 body {
     color: $base-1;
     font-family: "Object Sans", "sans-serif";
+    overflow-x: clip;
 }
 
 a {
