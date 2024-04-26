@@ -159,12 +159,14 @@
 }
 
 html {
-    font-size: var(--font-size)
+    font-size: var(--font-size);
+    overflow-x: clip
 }
 
 body {
     color: #fff;
-    font-family: "Object Sans",sans-serif
+    font-family: "Object Sans",sans-serif;
+    overflow-x: clip
 }
 
 a {
