@@ -58,6 +58,9 @@
             @include phone {
                 font-size: 2.6rem
             }
+            @media only screen and (max-width: 390px) {
+                font-size: 2.1rem
+            }
         }
         &_big {
             @include heading_h1;
