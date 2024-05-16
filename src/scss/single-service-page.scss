@@ -220,7 +220,8 @@
     &__name {
         --margin-top: calc(16 / 26 * 1em);
         @include text_t1;
-        margin: var(--margin-top) 0 auto;
+        margin: var(--margin-top) 0 50px;
+        min-height: 104px;
     }
     &__model {
         position: absolute;
@@ -235,7 +236,7 @@
     }
     &__desc {
         @include text_t4-2;
-        margin-top: calc(52 / 316 * 100%);
+        /*margin-top: calc(52 / 316 * 100%);*/
         opacity: 0.6;
     }
     &__icon {
@@ -245,7 +246,7 @@
         position: relative;
         top: 0.75rem;
         left: 0.75rem;
-        margin-top: calc(106 / 316 * 100%);
+        margin-top: auto; /*calc(106 / 316 * 100%);*/
         width: calc(100 / 316 * 100%);
         height: auto;
         max-width: 100px;
