@@ -222,6 +222,7 @@
         @include text_t1;
         margin: var(--margin-top) 0 50px;
         min-height: 104px;
+        z-index: 1;
     }
     &__model {
         position: absolute;
@@ -232,7 +233,8 @@
         height: calc((1 - 2 * 32 / 450) * 100%);
         transform: translate(-50%, 0);
         z-index: 0;
-        mix-blend-mode: exclusion
+        mix-blend-mode: exclusion;
+        opacity: .5
     }
     &__desc {
         @include text_t4-2;
