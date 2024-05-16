@@ -628,7 +628,8 @@
     line-height: 1;
     letter-spacing: .26px;
     margin: var(--margin-top) 0 50px;
-    min-height: 104px
+    min-height: 104px;
+    z-index: 1
 }
 
 .advantage__model {
@@ -642,7 +643,8 @@
     -ms-transform: translate(-50%,0);
     transform: translate(-50%,0);
     z-index: 0;
-    mix-blend-mode: exclusion
+    mix-blend-mode: exclusion;
+    opacity: .5
 }
 
 .advantage__desc {
