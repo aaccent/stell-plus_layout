@@ -627,7 +627,8 @@
     font-weight: 400;
     line-height: 1;
     letter-spacing: .26px;
-    margin: var(--margin-top) 0 auto
+    margin: var(--margin-top) 0 50px;
+    min-height: 104px
 }
 
 .advantage__model {
@@ -651,7 +652,6 @@
     line-height: 1;
     letter-spacing: .16px;
     line-height: 1.25;
-    margin-top: 16.4556962025%;
     opacity: .6
 }
 
@@ -663,7 +663,7 @@
     position: relative;
     top: .75rem;
     left: .75rem;
-    margin-top: 33.5443037975%;
+    margin-top: auto;
     width: 31.6455696203%;
     height: auto;
     max-width: 100px
