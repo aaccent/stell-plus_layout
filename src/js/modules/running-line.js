@@ -1,6 +1,7 @@
 class RunningLine {
     breakpoint;
     mediaQuery;
+    copies = 1;
 
     constructor(elem) {
         this.elem = elem;
@@ -10,10 +11,12 @@ class RunningLine {
     needInsert() {
         // console.log(this.elem.offsetWidth, this.elem.parentElement.offsetWidth)
         let r = Math.floor(this.elem.offsetWidth / (this.elem.parentElement.offsetWidth + this.paddingValue))
-        return r < 2 // r == 1 
+
+        return r < 2 || this.copies === 1 // r == 1
     }
 
     insertItems() {
+        this.copies++;
         const items = Array.from(this.elem.children);
         for (let i = 0; i < items.length; i++) {
             this.elem.append(items[i].cloneNode(true))
