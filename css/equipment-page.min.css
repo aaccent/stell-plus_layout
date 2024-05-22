@@ -358,11 +358,13 @@
 }
 
 .running-line__wrapper {
+    --animation-translate: -50%;
+    --animation-duration: 5s;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-animation: run 5s linear infinite;
-    animation: run 5s linear infinite
+    -webkit-animation: run var(--animation-duration) linear infinite;
+    animation: run var(--animation-duration) linear infinite
 }
 
 .running-line__item {
@@ -388,8 +390,8 @@
     }
 
     100% {
-        -webkit-transform: translate3d(-50%,0,0);
-        transform: translate3d(-50%,0,0)
+        -webkit-transform: translate3d(var(--animation-translate),0,0);
+        transform: translate3d(var(--animation-translate),0,0)
     }
 }
 
@@ -400,8 +402,8 @@
     }
 
     100% {
-        -webkit-transform: translate3d(-50%,0,0);
-        transform: translate3d(-50%,0,0)
+        -webkit-transform: translate3d(var(--animation-translate),0,0);
+        transform: translate3d(var(--animation-translate),0,0)
     }
 }
 
