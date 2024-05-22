@@ -1,4 +1,4 @@
-import { RunningLine } from "./running-line.js"
+import { initRunningLine } from './running-line.js'
 
 const inputEls = document.querySelectorAll(".contact-us-form__input")
 const inputControlClass = "contact-us-form__control"
@@ -212,7 +212,4 @@ document.forms["contact-us-form"].addEventListener("submit", e => {
     validateForm(e.target)
 })
 
-const runningLineEls = document.querySelectorAll(".running-line__wrapper")
-for (let i = 0; i < runningLineEls.length; i++) {
-    new RunningLine(runningLineEls[i]).init()
-}
+document.querySelectorAll('.running-line__wrapper').forEach(initRunningLine)

@@ -1,4 +1,3 @@
-import { RunningLine } from "./modules/running-line.js";
 import "./modules/footer.js";
 // import "./modules/yandex-maps.js"
 
@@ -33,9 +32,3 @@ window.onload = function() {
         // }
     }
     document.addEventListener("click", documentActions)
-
-    // running line 
-    const runningLineEls = document.querySelectorAll(".running-line__wrapper")
-    for (let i = 0; i < runningLineEls.length; i++) {
-        new RunningLine(runningLineEls[i]).init()
-    }
