@@ -2,8 +2,10 @@
     display: flex;
 
     &__wrapper {
+        --animation-translate: -50%;
+        --animation-duration: 5s;
         display: flex;
-        animation: run 5s linear infinite;
+        animation: run var(--animation-duration) linear infinite;
     }
     &__item {
         flex-shrink: 0;
@@ -20,6 +22,6 @@
         transform: translate3d(0, 0, 0);
     }
     100% {
-        transform: translate3d(-50%, 0, 0);
+        transform: translate3d(var(--animation-translate), 0, 0);
     }
 }
