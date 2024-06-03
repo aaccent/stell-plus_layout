@@ -99,17 +99,14 @@ mediaQuery.addEventListener("change", e => {
 })
 
 // scroll to footer
-const scroll = new LocomotiveScroll();
-
 const footerForm = document.querySelector(".footer__contact-us")
 const callButton = document.querySelector(".hero-section__call-button")
 
 callButton.addEventListener("click", (e) => {
     e.preventDefault()
-    scroll.scrollTo(footerForm, {
-            duration: 3000,
-        }
-    )
+    const commercialHeight = document.querySelector(".footer__commercial").offsetHeight
+    const footerPosition = footerForm.getBoundingClientRect().top + window.scrollY - commercialHeight + 50
+    window.scrollTo({ top: footerPosition, left: 0 })
 })
 
 document.querySelector(".popup__body").addEventListener("scroll", e => {
