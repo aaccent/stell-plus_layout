@@ -5,9 +5,12 @@ function getWrapperItems(wrapper) {
 function setAnimationVariables(wrapper, wrapperWidth) {
   const firstItemWidth = wrapper.querySelector('.running-line__item')?.offsetWidth
   const width = firstItemWidth > wrapperWidth ? firstItemWidth : wrapperWidth
-  const durationInMs = Math.trunc(width / .18)
+  const durationInMs = Math.trunc(width / 2500 * 5000)
 
-  wrapper.style.setProperty('--animation-duration', `${durationInMs}ms`)
+  const computedStyles = getComputedStyle(wrapper)
+  if (!computedStyles.getPropertyValue('--animation-duration')) {
+    wrapper.style.setProperty('--animation-duration', `${durationInMs}ms`)
+  }
   wrapper.style.setProperty('--animation-translate', `-${width}px`)
 }
 
