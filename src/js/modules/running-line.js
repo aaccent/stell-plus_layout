@@ -12,7 +12,7 @@ function setAnimationVariables(wrapper, wrapperWidth) {
 }
 
 
-function initRunningLine(wrapper) {
+export function initRunningLine(wrapper) {
   const initWidth = wrapper.offsetWidth
   setAnimationVariables(wrapper, initWidth)
 
