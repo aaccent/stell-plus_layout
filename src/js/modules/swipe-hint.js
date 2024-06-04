@@ -2,18 +2,17 @@ import { isMobile } from "./detect-device.js"
 
 function handleSwipe(swiper, pos = { x: 0.3, y: 0.2 } ) {
     let swiperHintEl = swiper.el.querySelector(".swiper-swipe");
+    document.body.append(swiperHintEl)
 
     function handleTouchMove(e) {
-        if (isMobile.any()) {
-            return
-        }
+        if (isMobile.any()) return
 
         if (!swiperHintEl.classList.contains("swiper-swipe_show")) {
             swiperHintEl.classList.add("swiper-swipe_show")
         }
 
-        let coordX = e.clientX - swiperHintEl.offsetWidth * pos.x;
-        let coordY = e.clientY - swiperHintEl.offsetHeight * pos.y;
+        let coordX = e.clientX;
+        let coordY = e.clientY;
     
         swiperHintEl.style.cssText = `
             position: fixed;
@@ -36,52 +35,31 @@ function handleSwipe(swiper, pos = { x: 0.3, y: 0.2 } ) {
     }
 
     swiper.wrapperEl.addEventListener("mouseenter", () => {
-        if (isMobile.any()) {
-            return
-        }
+        if (isMobile.any()) return
+
         swiperHintEl.classList.add("swiper-swipe_show")
         window.addEventListener("scroll", handleScroll)
     })
     
     swiper.wrapperEl.addEventListener("mousemove", handleTouchMove)
-    
+    swiper.on("touchMove", (swiper, e) => handleTouchMove(e))
+
     swiper.wrapperEl.addEventListener("mouseleave", (e) => {
-        if (isMobile.any()) {
-            return
-        }
+        if (isMobile.any()) return
+
         swiperHintEl.classList.remove("swiper-swipe_show")
         window.removeEventListener("scroll", handleScroll)
     })
 
     swiper.on("touchStart", () => {
-        if (isMobile.any()) {
-            return
-        }
+        if (isMobile.any()) return
+
         swiperHintEl.classList.add("swiper-swipe_grab")
     })
 
-    swiper.on("touchMove", (swiper, event) => handleTouchMove(event))
-    //     if (isMobile.any()) {
-    //         return
-    //     }
-
-    //     let coordX = event.screenX - swipeHintEl.offsetWidth * 0.4;
-    //     let coordY = event.clientY - swipeHintEl.offsetHeight * 0.4;
-
-    //     // if (!swiperHintEl.classList.contains("swiper-swipe_show")) {
-    //     //     swiperHintEl.classList.add("swiper-swipe_show")
-    //     // }
-    //     swiperHintEl.style.cssText = `
-    //         position: fixed;
-    //         top: ${coordY}px;
-    //         left: ${coordX}px;
-    //     `   
-    // })
-
     swiper.on("touchEnd", () => {
-        if (isMobile.any()) {
-            return
-        }
+        if (isMobile.any()) return
+
         swiperHintEl.classList.remove("swiper-swipe_grab")
     })
 }
