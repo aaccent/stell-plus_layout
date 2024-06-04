@@ -32,15 +32,18 @@ const copy_videos = () => copy("/videos/*", "/videos/")
 const copy_json = () => copy("/json/*", "/json/")
 
 const mainTasks = gulp.parallel(html, images, css_libs, scss, js_libs, js, fonts, copy_json, copy_videos)
+const mainTasksWithoutImages = gulp.parallel(html, css_libs, scss, js_libs, js, fonts)
 
 // последовательное выполнение задач
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server))
 const build = gulp.series(reset, mainTasks)
+const buildNoImg = gulp.series(reset, mainTasksWithoutImages)
 const zipping = gulp.series(reset, mainTasks, zip)
 
 //регистрация задачи
 gulp.task('default', dev)
 gulp.task('build', build)
+gulp.task('build-no-img', buildNoImg)
 gulp.task('clear', reset)
 gulp.task("zip", zipping)
 gulp.task("images", images)

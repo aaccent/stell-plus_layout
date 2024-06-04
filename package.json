@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_ENV=production gulp build",
+    "build:no-img": "cross-env NODE_ENV=production gulp build-no-img",
     "dev": "cross-env NODE_ENV=development gulp"
   },
   "author": "Ramiz",
