@@ -1169,6 +1169,12 @@
     }
 }
 
+@media screen and (min-width:1920px) {
+    .hero-section__projects-logo:not(:last-child) {
+        margin-right: -1.125rem
+    }
+}
+
 @media screen and (max-width:1240px) {
     .about-section__advantages {
         -ms-flex-wrap: wrap;
@@ -1605,6 +1611,14 @@
 }
 
  @media screen and (min-width:1680px){
+
+@supports (-webkit-appearance:none){
+
+}
+
+}
+
+ @media screen and (min-width:1920px){
 
 @supports (-webkit-appearance:none){
 
