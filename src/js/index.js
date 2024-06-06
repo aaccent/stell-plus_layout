@@ -35,10 +35,10 @@ new Swiper(".hero-section__slider .swiper", {
         el: ".hero-section .swiper-pagination",
         type: "fraction",
         formatFractionCurrent: function(current) {
-            return current < 9 ? "0" + current : current
+            return current < 10 ? "0" + current : current
         },
         formatFractionTotal: function(total) {
-            return total < 9 ? "0" + total : total
+            return total < 10 ? "0" + total : total
         },
         renderFraction: function (currentClass, totalClass) {
             return '<span class="' + currentClass + '"></span>' +
@@ -69,7 +69,6 @@ if (document.querySelector(".equipment-section")) {
                 slidesPerView: 4
             }
         },
-        allowTouchMove: false
     })
     
     handleEquipmentCard("equipment-section__slider-wrapper")
